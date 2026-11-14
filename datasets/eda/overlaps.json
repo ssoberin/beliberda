@@ -1,0 +1,1167 @@
+{
+  "unique_texts_all_files": 20341,
+  "overlaps": [
+    {
+      "a": "distillate_dataset/hard_edits_500.jsonl",
+      "b": "public/public-train-annotated.jsonl",
+      "unique_texts": 89,
+      "rows_a": 100,
+      "rows_b": 1036
+    },
+    {
+      "a": "hard_dataset/challenge.jsonl",
+      "b": "hard_dataset/v2/challenge.jsonl",
+      "unique_texts": 40,
+      "rows_a": 40,
+      "rows_b": 40
+    },
+    {
+      "a": "hard_dataset/test.jsonl",
+      "b": "hard_dataset/v2/test.jsonl",
+      "unique_texts": 240,
+      "rows_a": 240,
+      "rows_b": 240
+    },
+    {
+      "a": "hard_dataset/train.jsonl",
+      "b": "hard_dataset/v2/train.jsonl",
+      "unique_texts": 1320,
+      "rows_a": 1320,
+      "rows_b": 1320
+    },
+    {
+      "a": "hard_dataset/v2/validation.jsonl",
+      "b": "hard_dataset/validation.jsonl",
+      "unique_texts": 240,
+      "rows_a": 240,
+      "rows_b": 240
+    },
+    {
+      "a": "public/public-test-dataset.parquet",
+      "b": "public/public-train-annotated.jsonl",
+      "unique_texts": 13,
+      "rows_a": 24,
+      "rows_b": 168
+    }
+  ],
+  "conflicting_text_groups": [
+    {
+      "text_sha256": "e6c2a63ae967a5085a216a25b731c55e0edee19041947a20bf71cf71600640d5",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 1,
+          "item_id": "parquet-row-1",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 29,
+          "item_id": "parquet-row-29",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 55,
+          "item_id": "parquet-row-55",
+          "source": 101,
+          "labels": [
+            103,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 71,
+          "item_id": "parquet-row-71",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 136,
+          "item_id": "parquet-row-136",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 168,
+          "item_id": "parquet-row-168",
+          "source": 101,
+          "labels": [
+            103,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 208,
+          "item_id": "parquet-row-208",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "8515e6eb6668de55cb7b5c2dbdfb9afede142ac0407f4eff89d73f242b754ef2",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 14,
+          "item_id": "parquet-row-14",
+          "source": 101,
+          "labels": [
+            103,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 59,
+          "item_id": "parquet-row-59",
+          "source": 101,
+          "labels": []
+        }
+      ]
+    },
+    {
+      "text_sha256": "a3609935121863e7a7f2d6f3bdc7e5c2b62f49f701e2e4afc9d4d8fda0dc61aa",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 16,
+          "item_id": "parquet-row-16",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 30,
+          "item_id": "parquet-row-30",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 34,
+          "item_id": "parquet-row-34",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 36,
+          "item_id": "parquet-row-36",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 47,
+          "item_id": "parquet-row-47",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 61,
+          "item_id": "parquet-row-61",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 72,
+          "item_id": "parquet-row-72",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 93,
+          "item_id": "parquet-row-93",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 119,
+          "item_id": "parquet-row-119",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 146,
+          "item_id": "parquet-row-146",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 156,
+          "item_id": "parquet-row-156",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 157,
+          "item_id": "parquet-row-157",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 199,
+          "item_id": "parquet-row-199",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "8e9efae2ad68bd13f9eb075834295d97fed939bdf668c405842303b050c305d5",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 17,
+          "item_id": "parquet-row-17",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 86,
+          "item_id": "parquet-row-86",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 130,
+          "item_id": "parquet-row-130",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "1636c752f69c2a06acb9dbbf4d821dade4bb56d34faf83fe55fd4ec506ea4f1c",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 37,
+          "item_id": "parquet-row-37",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 204,
+          "item_id": "parquet-row-204",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105,
+            106
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "e6a0074cc44c1008a02bd5b968633a817cafef93304b949cb0e48ffd0864eb99",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 41,
+          "item_id": "parquet-row-41",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 161,
+          "item_id": "parquet-row-161",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "f1f6c1f4fdb76b78d39fbcb1f30cc6aa2b71bb001f2f189d91de5977db6cf17e",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 44,
+          "item_id": "parquet-row-44",
+          "source": 101,
+          "labels": [
+            102,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 48,
+          "item_id": "parquet-row-48",
+          "source": 101,
+          "labels": [
+            102,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 99,
+          "item_id": "parquet-row-99",
+          "source": 101,
+          "labels": [
+            102,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 117,
+          "item_id": "parquet-row-117",
+          "source": 101,
+          "labels": [
+            102
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "ada6dd46046288c47741b83b0f6f69a4efe5e299e5ea2a7e9ebeed16700e3132",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 46,
+          "item_id": "parquet-row-46",
+          "source": 101,
+          "labels": [
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 108,
+          "item_id": "parquet-row-108",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 179,
+          "item_id": "parquet-row-179",
+          "source": 101,
+          "labels": [
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 203,
+          "item_id": "parquet-row-203",
+          "source": 101,
+          "labels": [
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 249,
+          "item_id": 2505921751379,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 603,
+          "item_id": 2520351250817,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 790,
+          "item_id": 2505919252188,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 927,
+          "item_id": 2505920501275,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 1031,
+          "item_id": 2505921500535,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 1454,
+          "item_id": 2515733500582,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 1621,
+          "item_id": 2505915251091,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 1787,
+          "item_id": 2505914000453,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 2199,
+          "item_id": 2505913000808,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 2277,
+          "item_id": 2515735750200,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 2307,
+          "item_id": 2505917250113,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 2498,
+          "item_id": 2505913750652,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 2580,
+          "item_id": 2505920502321,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 3009,
+          "item_id": 2505924001784,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 3231,
+          "item_id": 2505922752061,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 3581,
+          "item_id": 2505922251930,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 3605,
+          "item_id": 2520355001471,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 3660,
+          "item_id": 2515736750459,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 3661,
+          "item_id": 2505923252112,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 3787,
+          "item_id": 2505921751923,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 4695,
+          "item_id": 2505917501691,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 4976,
+          "item_id": 2505916250507,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 5094,
+          "item_id": 2505915750418,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 5343,
+          "item_id": 2515731500189,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 5356,
+          "item_id": 2505914501721,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 5386,
+          "item_id": 2520355002204,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 5494,
+          "item_id": 2520350500587,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 5624,
+          "item_id": 2505917251861,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 5692,
+          "item_id": 2505919501326,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 5901,
+          "item_id": 2505918251909,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 6062,
+          "item_id": 2515736500221,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 6299,
+          "item_id": 2505923251470,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 6912,
+          "item_id": 2505919250304,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 7247,
+          "item_id": 2505916502048,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 7461,
+          "item_id": 2520358001497,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 7582,
+          "item_id": 2505916501715,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 7726,
+          "item_id": 2515734250337,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 8042,
+          "item_id": 2505923002013,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 8432,
+          "item_id": 2515731000802,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 8750,
+          "item_id": 2520360250069,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 9165,
+          "item_id": 2505923251593,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 9357,
+          "item_id": 2505922251966,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-train-annotated.jsonl",
+          "line": 9662,
+          "item_id": 2520351752538,
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "30c7c04b0bfb6e3a80d7e06beecc1cc131b7179a07c40589a1c3c7abd04c0161",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 58,
+          "item_id": "parquet-row-58",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 170,
+          "item_id": "parquet-row-170",
+          "source": 101,
+          "labels": [
+            102,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 178,
+          "item_id": "parquet-row-178",
+          "source": 101,
+          "labels": [
+            102,
+            106
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "f07a0b943bdd625bd90dc22033d3326e5ab62c991d6adc11b4d6e53308eb53fa",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 67,
+          "item_id": "parquet-row-67",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 107,
+          "item_id": "parquet-row-107",
+          "source": 101,
+          "labels": [
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 144,
+          "item_id": "parquet-row-144",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 172,
+          "item_id": "parquet-row-172",
+          "source": 101,
+          "labels": []
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 195,
+          "item_id": "parquet-row-195",
+          "source": 101,
+          "labels": []
+        }
+      ]
+    },
+    {
+      "text_sha256": "1304b5341270f2f2c40ad3cbf6a96cdc225367c0c4227830f89ac7cd6a1602a2",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 70,
+          "item_id": "parquet-row-70",
+          "source": 101,
+          "labels": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 193,
+          "item_id": "parquet-row-193",
+          "source": 101,
+          "labels": [
+            103,
+            104,
+            105,
+            106
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "104a7957b58f1fe344c7425f27ffc78159d6c93cc65b341f4b907e79cd739057",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 95,
+          "item_id": "parquet-row-95",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 152,
+          "item_id": "parquet-row-152",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 162,
+          "item_id": "parquet-row-162",
+          "source": 101,
+          "labels": [
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 163,
+          "item_id": "parquet-row-163",
+          "source": 101,
+          "labels": [
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 201,
+          "item_id": "parquet-row-201",
+          "source": 101,
+          "labels": [
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 206,
+          "item_id": "parquet-row-206",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        }
+      ]
+    },
+    {
+      "text_sha256": "fa14c9967f22c703b55a9bee3eb9c5f581aaab0b1f0240f74540e70fb83f225b",
+      "occurrences": [
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 125,
+          "item_id": "parquet-row-125",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 153,
+          "item_id": "parquet-row-153",
+          "source": 101,
+          "labels": [
+            102,
+            104,
+            105
+          ]
+        },
+        {
+          "file": "public/public-test-dataset.parquet",
+          "line": 159,
+          "item_id": "parquet-row-159",
+          "source": 101,
+          "labels": [
+            104,
+            105
+          ]
+        }
+      ]
+    }
+  ],
+  "v2_group_leaks": [],
+  "v2_family_leaks": []
+}

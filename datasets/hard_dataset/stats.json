@@ -1,0 +1,146 @@
+{
+  "seed": 2026,
+  "total": 1840,
+  "splits": {
+    "train": {
+      "rows": 1320,
+      "contrast_pairs": 660,
+      "empty_targets": 160,
+      "types": {
+        "anaphora": 60,
+        "both_refused": 60,
+        "condition": 60,
+        "correction": 60,
+        "customer": 60,
+        "double_negative": 60,
+        "except": 60,
+        "instead": 60,
+        "ne_tolko_list": 60,
+        "neither": 60,
+        "no_longer": 60,
+        "not_confuse": 60,
+        "not_only": 60,
+        "not_yet": 60,
+        "only_together": 60,
+        "price_scope": 60,
+        "question_answer": 60,
+        "self_vs_team": 60,
+        "seo": 60,
+        "third_party": 60,
+        "time_scope": 60,
+        "without_addon": 60
+      },
+      "source_counts": {
+        "101": 634,
+        "102": 146,
+        "103": 100,
+        "104": 128,
+        "105": 156,
+        "106": 156
+      },
+      "target_counts": {
+        "101": 198,
+        "102": 282,
+        "103": 284,
+        "104": 276,
+        "105": 282,
+        "106": 278
+      }
+    },
+    "validation": {
+      "rows": 240,
+      "contrast_pairs": 120,
+      "empty_targets": 20,
+      "types": {
+        "exception_to_denial": 60,
+        "location_scope": 60,
+        "not_required": 60,
+        "quoted_request": 60
+      },
+      "source_counts": {
+        "101": 112,
+        "102": 18,
+        "103": 22,
+        "104": 30,
+        "105": 22,
+        "106": 36
+      },
+      "target_counts": {
+        "101": 35,
+        "102": 49,
+        "103": 55,
+        "104": 47,
+        "105": 53,
+        "106": 51
+      }
+    },
+    "test": {
+      "rows": 240,
+      "contrast_pairs": 120,
+      "empty_targets": 5,
+      "types": {
+        "list_status": 60,
+        "long_distance": 60,
+        "rumour": 60,
+        "unless": 60
+      },
+      "source_counts": {
+        "101": 102,
+        "102": 16,
+        "103": 42,
+        "104": 24,
+        "105": 38,
+        "106": 18
+      },
+      "target_counts": {
+        "101": 37,
+        "102": 45,
+        "103": 45,
+        "104": 45,
+        "105": 45,
+        "106": 43
+      }
+    },
+    "challenge": {
+      "rows": 40,
+      "contrast_pairs": 20,
+      "empty_targets": 6,
+      "types": {
+        "challenge-001": 2,
+        "challenge-002": 2,
+        "challenge-003": 2,
+        "challenge-004": 2,
+        "challenge-005": 2,
+        "challenge-006": 2,
+        "challenge-007": 2,
+        "challenge-008": 2,
+        "challenge-009": 2,
+        "challenge-010": 2,
+        "challenge-011": 2,
+        "challenge-012": 2,
+        "challenge-013": 2,
+        "challenge-014": 2,
+        "challenge-015": 2,
+        "challenge-016": 2,
+        "challenge-017": 2,
+        "challenge-018": 2,
+        "challenge-019": 2,
+        "challenge-020": 2
+      },
+      "source_counts": {
+        "101": 34,
+        "103": 2,
+        "104": 2,
+        "105": 2
+      },
+      "target_counts": {
+        "101": 2,
+        "102": 5,
+        "103": 10,
+        "104": 12,
+        "105": 11,
+        "106": 10
+      }
+    }
+  }
+}
