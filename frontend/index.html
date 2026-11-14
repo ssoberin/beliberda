@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Подберите категории и подготовьте объявления о своих услугах." />
+    <title>Новое объявление — Авито</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <header class="header page-width">
+      <a class="logo" href="/" aria-label="Авито — на главную">
+        <svg viewBox="0 0 34 34" width="34" height="34" aria-hidden="true">
+          <circle cx="10" cy="22" r="9" fill="#04e061" />
+          <circle cx="23" cy="10" r="8" fill="#00aaff" />
+          <circle cx="26" cy="25" r="5.5" fill="#ff4053" />
+          <circle cx="12" cy="6" r="3.5" fill="#965eeb" />
+        </svg>
+        <span>Авито</span>
+      </a>
+      <span class="header-caption">Помощник для ваших объявлений</span>
+    </header>
+
+    <main class="page-width">
+      <div class="content">
+        <div class="page-heading">
+          <h1>Новое объявление</h1>
+          <p class="muted">Предложение услуг</p>
+        </div>
+
+        <form id="listing-form">
+          <h2>Подробности</h2>
+          <div class="field">
+            <label for="title">Название объявления</label>
+            <div class="input-wrap">
+              <input id="title" name="title" maxlength="100" placeholder="Например, ремонт квартир под ключ" aria-describedby="title-hint" autocomplete="off" />
+              <button class="clear-button" id="clear-title" type="button" aria-label="Очистить название" hidden>×</button>
+            </div>
+            <p class="hint" id="title-hint">Коротко расскажите, какую услугу вы предлагаете</p>
+          </div>
+
+          <div class="field">
+            <label for="description">Описание услуг <span class="required">*</span></label>
+            <textarea id="description" name="description" rows="5" maxlength="12000" required placeholder="Расскажите, что вы умеете. Например: укладываю плитку, устанавливаю сантехнику и меняю розетки." aria-describedby="description-hint description-count"></textarea>
+            <div class="field-meta">
+              <p class="hint" id="description-hint">По этому описанию подберём категории и составим объявления</p>
+              <span class="hint counter" id="description-count">0 / 12 000</span>
+            </div>
+          </div>
+
+          <section class="categories-section" aria-labelledby="categories-heading">
+            <div class="section-heading">
+              <h3 id="categories-heading">Категории</h3>
+              <button class="button button-small button-ai" id="generate-categories" type="button">
+                <svg class="sparkle" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
+                <span>Сгенерировать категории</span>
+              </button>
+            </div>
+            <p class="hint category-hint">Выберите подходящие или подберите автоматически по описанию</p>
+            <div class="category-list" id="category-list" role="group" aria-label="Выбор категорий"></div>
+            <div class="selection-summary">
+              <span class="hint" id="selection-count" aria-live="polite">Категории пока не выбраны</span>
+              <button class="text-button" id="reset-categories" type="button" hidden>Сбросить выбор</button>
+            </div>
+            <p class="message" id="categories-message" role="status" hidden></p>
+          </section>
+
+          <div class="generate-section">
+            <button class="button button-primary" id="generate-listings" type="submit">
+              <svg class="sparkle" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
+              <span>Сгенерировать объявления</span>
+            </button>
+            <p class="hint">Подготовим отдельный черновик для каждой выбранной категории</p>
+            <p class="message" id="generate-message" role="status" hidden></p>
+          </div>
+        </form>
+
+        <section class="results" id="results" aria-labelledby="results-heading" hidden>
+          <div class="section-heading">
+            <h2 id="results-heading" tabindex="-1">Ваши объявления</h2>
+            <span class="result-count" id="result-count"></span>
+          </div>
+          <p class="muted results-hint">Проверьте и отредактируйте тексты перед публикацией.</p>
+          <div id="draft-list"></div>
+        </section>
+        <footer>Хорошее объявление начинается с деталей</footer>
+      </div>
+    </main>
+  </body>
+</html>
