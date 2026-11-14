@@ -52,7 +52,7 @@ assert all(m['thresholds'] == [0.5]*5 for m in features['measurements'].values()
 print('Данные замеров загружены; обучение не выполнялось.')'''),
         markdown('''## 1. Словесные триграммы
 
-Менялся только word ngram_range: (1,2) → (1,3). Символьный analyzer=char, те же train/calibration/test и параметры SGD. Прирост Micro-F1 небольшой; bootstrap-интервал включает ноль. Время — один fit, включая TF-IDF и SGD.'''),
+Менялся только word ngram_range: (1,2) → (1,3). Символьный analyzer=char, те же train/calibration/validation и параметры SGD. Прирост Micro-F1 небольшой; bootstrap-интервал включает ноль. Время — один fit, включая TF-IDF и SGD.'''),
         code('''table(['Метрика', 'Биграммы', 'Триграммы', 'Абсолютная Δ', 'Относительная Δ, %'],
       [[r['metric'], f"{r['bigrams']:.6f}", f"{r['trigrams']:.6f}", f"{r['absolute_difference']:+.6f}", f"{r['relative_difference_percent']:+.3f}"] for r in ngrams['comparison']])
 fig, axes = plt.subplots(1, 2, figsize=(10, 3.5))
@@ -87,8 +87,8 @@ save(fig, '02_feature_limits.png')'''),
 v2 train содержит 8464 коротких синтетических примера. После min_df получено лишь 6483 word +4209 char признаков: лимиты 46k/60k/100k неактивны, коэффициенты моделей совпали. Для сравнения на смеси использованы 3398 дедуплицированных public train +8464 v2 train; готовые проверочные части не переделывались.
 
 Показываем качество отдельно на источниках: общий смешанный Micro-F1 не отражает отсутствие деградации на real public.'''),
-        code('''table(['Смешанная модель', 'Public holdout F1 (729)', 'V2 test F1 (3016)', 'Challenge F1 (40)'],
-      [[n, *[f"{m[k]['micro_f1']:.6f}" for k in ['public_test','v2_test','challenge']]] for n,m in mixed['models'].items()])
+        code('''table(['Смешанная модель', 'Public validation F1 (729)', 'V2 test F1 (3016)', 'Challenge F1 (40)'],
+      [[n, *[f"{m[k]['micro_f1']:.6f}" for k in ['public_validation','v2_test','challenge']]] for n,m in mixed['models'].items()])
 table(['Корпус','Медиана символов','p95 символов','Медиана слов'],
       [[n,lengths[n]['characters']['median'],lengths[n]['characters']['p95'],lengths[n]['words']['median']]
        for n in ['public_raw','public_dedup_normalized','public_prepared_train','v2_train','v2_test']])
@@ -104,7 +104,7 @@ table(['Набор','Строк','F1 public-only','F1 public+v2','Δ п.п.','FP
         f"{r['delta_new_minus_old']['micro_f1']*100:+.3f}",
         f"{r['public_only']['fp']}→{r['public_plus_v2']['fp']}", f"{r['public_only']['fn']}→{r['public_plus_v2']['fn']}"]
        for n,r in paired['comparisons'].items()])
-labels = ['Public208','Public clean114','Public holdout729','V2 test3016','Challenge40']
+labels = ['Public208','Public clean114','Public validation729','V2 test3016','Challenge40']
 x = np.arange(len(tests)); width=.36
 fig, ax = plt.subplots(figsize=(12,4.5))
 for offset, model, title, color in [(-width/2,'public_only','Public only','#64748b'),(width/2,'public_plus_v2','Public + v2','#0f766e')]:
@@ -116,7 +116,7 @@ save(fig,'03_old_vs_mixed.png')
 display(Markdown('Аудит public208:'))
 print(json.dumps(paired['official_audit'],ensure_ascii=False,indent=2))'''),
         code('''fig, axes=plt.subplots(1,2,figsize=(10,3.7))
-for ax,name,title in zip(axes,['public_holdout_729','v2_test_3016'],['Public holdout729','V2 test3016']):
+for ax,name,title in zip(axes,['public_validation_729','v2_test_3016'],['Public validation729','V2 test3016']):
     r=paired['comparisons'][name]
     for offset,model,label,color in [(-.18,'public_only','Public only','#64748b'),(.18,'public_plus_v2','Public+v2','#0f766e')]:
         bars=ax.bar(np.arange(2)+offset,[r[model]['fp'],r[model]['fn']],.36,label=label,color=color)
@@ -127,7 +127,7 @@ save(fig,'04_fp_fn.png')'''),
         markdown('''## Вывод и следующий шаг
 
 - `sublinear_tf=True` полезен в выполненных абляциях. Увеличение лимита признаков до60k/100k не улучшило результат; char_wb46k — лучший измеренный кандидат.
-- Добавление v2 улучшило его собственный test: Micro-F1 **0.3554→0.4470**, но снизило public holdout **0.9371→0.9300**. Challenge не показал однозначного преимущества. Критерий «лучше на сложных случаях без деградации public» пока не выполнен.
+- Добавление v2 улучшило его собственный test: Micro-F1 **0.3554→0.4470**, но снизило public validation **0.9371→0.9300**. Challenge не показал однозначного преимущества. Критерий «лучше на сложных случаях без деградации public» пока не выполнен.
 - Public raw и synthetic v2 сильно различаются длиной, лексикой и сложностью. Почти весь v2 содержит отрицания; формальная логика не должна подменять обычный поток.
 - Далее: подобрать долю/вес синтетики на реальной validation и отдельно разбирать реалистичные ограничения. Новые архитектурные изменения здесь не проверялись. Рабочую модель не заменяли.
 

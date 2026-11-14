@@ -138,7 +138,7 @@
       "new_fixes_label_decisions": 8,
       "new_breaks_label_decisions": 7
     },
-    "public_holdout_729": {
+    "public_validation_729": {
       "public_only": {
         "rows": 729,
         "micro_f1": 0.9371241115363587,
@@ -291,5 +291,10 @@
       "new_fixes_label_decisions": 12,
       "new_breaks_label_decisions": 6
     }
+  },
+  "dataset_roles": {
+    "public_validation_729": "Validation split of original public train; used to compare configurations; not an independent final test.",
+    "official_public_208": "Separate organizer test file; contains conflicts and overlap.",
+    "v2_test_3016": "Supplied synthetic test; already inspected in experiments."
   }
 }

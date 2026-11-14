@@ -15,8 +15,8 @@ def main():
     args = parser.parse_args()
     rows = [json.loads(line) for line in (args.root / 'splits/validation.jsonl').read_text().splitlines()]
     challenge = [json.loads(line) for line in (args.root / 'splits/challenge.jsonl').read_text().splitlines()]
-    sets = {'combined_test': rows,
-            'public_test': [row for row in rows if row['dataset'] == 'public'],
+    sets = {'combined_evaluation': rows,
+            'public_validation': [row for row in rows if row['dataset'] == 'public'],
             'v2_test': [row for row in rows if row['dataset'] == 'v2'], 'challenge': challenge}
     result = {'models': {}, 'evaluation_scope': IDS, 'threshold': 0.5,
               'note': 'Training is public deduplicated train plus v2 train. Ready held-out splits unchanged. Public labels are weak; v2 and challenge are synthetic.'}
@@ -34,7 +34,7 @@ def main():
             scored[label] = metrics(gold, predicted)
         saved = json.loads((args.root / 'runs' / name / 'measurement.json').read_text())
         for key in ('micro_f1', 'macro_f1', 'micro_precision', 'micro_recall'):
-            if saved[key] != scored['combined_test'][key]:
+            if saved[key] != scored['combined_evaluation'][key]:
                 raise ValueError('Independent combined evaluation differs')
         result['models'][name] = scored
         print(name, {label: round(value['micro_f1'], 6) for label, value in scored.items()}, flush=True)
@@ -47,7 +47,7 @@ def main():
     for name, scored in result['models'].items():
         for label, m in scored.items():
             lines.append(f"| {name} | {label} | {m['rows']} | {m['micro_f1']:.6f} | {m['macro_f1']:.6f} | {m['micro_precision']:.6f} | {m['micro_recall']:.6f} | {m['fp']} | {m['fn']} | {m['exact_set_accuracy']:.6f} |")
-    lines += ['', 'Общий результат объединяет разные распределения; он не заменяет отдельные public/v2/challenge метрики. Public-разметка автоматическая, синтетический v2 не представляет реальный поток. Нормализованных точных повторов и пересечений между частями нет; похожие public-шаблоны могут остаться.',
+    lines += ['', 'Общий результат объединяет разные распределения; он не заменяет отдельные public validation/v2 test/challenge метрики. Public-разметка автоматическая, синтетический v2 не представляет реальный поток. Нормализованных точных повторов и пересечений между частями нет; похожие public-шаблоны могут остаться.',
               'Фактические размерности, время и память: runs/comparison.md. Происхождение, состав смеси и SHA-256: splits/stats.json. Рабочие модели не заменены.']
     (args.root / 'report.md').write_text('\n'.join(lines) + '\n')
 

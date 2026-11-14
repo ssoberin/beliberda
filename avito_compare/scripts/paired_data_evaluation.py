@@ -78,7 +78,7 @@ def main():
     v2_test = [row for row in read(mixed_splits/'validation.jsonl') if row['dataset'] == 'v2']
     challenge = read(mixed_splits/'challenge.jsonl')
     tests = {'official_public_208': official, 'official_public_clean_unique': clean,
-             'public_holdout_729': public_holdout, 'v2_test_3016': v2_test, 'challenge_40': challenge}
+             'public_validation_729': public_holdout, 'v2_test_3016': v2_test, 'challenge_40': challenge}
     paths = {'public_only': Path('output/tfidf-feature-experiments/char_wb'),
              'public_plus_v2': Path('output/mixed-charwb-comparison/runs/char_wb')}
     measurements = {name: json.loads((path/'measurement.json').read_text()) for name, path in paths.items()}
@@ -137,7 +137,7 @@ def main():
         old,new=scored['public_only'],scored['public_plus_v2']
         lines.append(f"| {name} | {old['rows']} | {old['micro_f1']:.6f} | {new['micro_f1']:.6f} | {100*(new['micro_f1']-old['micro_f1']):+.3f} | {old['fp']}→{new['fp']} | {old['fn']}→{new['fn']} | {old['exact_set_accuracy']:.4f}→{new['exact_set_accuracy']:.4f} |")
     lines += ['', '## Ограничения публичного теста', '', json.dumps(result['official_audit'],ensure_ascii=False,indent=2),
-              '', 'Полный Parquet сохраняет исходные противоречия и повторы. Очищенная часть исключает их без исправления меток, поэтому меньше и может быть смещена по составу. Показываются обе оценки. Public holdout и v2 test уже использовались в прошлых экспериментах; это сравнительная диагностика, не новый независимый финальный тест.',
+              '', 'Полный Parquet сохраняет исходные противоречия и повторы. Очищенная часть исключает их без исправления меток, поэтому меньше и может быть смещена по составу. Показываются обе оценки. Public validation и v2 test уже использовались в прошлых экспериментах; это сравнительная диагностика, не новый независимый финальный тест.',
               'Confidence intervals: paired bootstrap2000, seed42; нормализованные описания группируются вместе. Для v2 prepared записей group_id не перенесён, поэтому интервал по строкам может недооценивать зависимость между аугментациями. Полные метрики и исправленные/сломанные решения сохранены вcomparison.json.',
               'Рабочие модели и исходные данные не изменялись. Улучшение сложного теста и отсутствие деградации на реальных данных — отдельные критерии; общий смешанный F1 не заменяет их.']
     (args.output/'report.md').write_text('\n'.join(lines)+'\n')

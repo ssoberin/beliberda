@@ -1,0 +1,62 @@
+{
+  "model": "mixed/char_wb46k",
+  "thresholds": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "warning": "These sets include training examples and do not measure unseen generalization. Raw duplicates reweight the original file.",
+  "original_raw_train_file_10000": {
+    "rows": 10000,
+    "micro_f1": 0.9652635555643927,
+    "macro_f1": 0.9654561411581094,
+    "micro_precision": 0.9666281709211103,
+    "micro_recall": 0.963902787705504,
+    "exact_set_accuracy": 0.8802,
+    "fp": 838,
+    "fn": 909,
+    "f1_by_category": {
+      "102": 0.9657377798081316,
+      "103": 0.9781864423359092,
+      "104": 0.9638033495407887,
+      "105": 0.9699141957206473,
+      "106": 0.9496389383850699
+    }
+  },
+  "original_train_file_deduplicated_4855": {
+    "rows": 4855,
+    "micro_f1": 0.9644050319653537,
+    "macro_f1": 0.9644848420019553,
+    "micro_precision": 0.9650817236255572,
+    "micro_recall": 0.963729288599456,
+    "exact_set_accuracy": 0.8809474768280123,
+    "fp": 423,
+    "fn": 440,
+    "f1_by_category": {
+      "102": 0.9589260669204568,
+      "103": 0.9647503147293328,
+      "104": 0.9682710986401899,
+      "105": 0.9658918096893331,
+      "106": 0.9645849200304646
+    }
+  },
+  "actual_public_fit_subset_3398": {
+    "rows": 3398,
+    "micro_f1": 0.9746138824782532,
+    "macro_f1": 0.9747097189414367,
+    "micro_precision": 0.9743256034074775,
+    "micro_recall": 0.9749023321889428,
+    "exact_set_accuracy": 0.9111241907004121,
+    "fp": 217,
+    "fn": 212,
+    "f1_by_category": {
+      "102": 0.9714611872146118,
+      "103": 0.9770572040379321,
+      "104": 0.978644382544104,
+      "105": 0.9735449735449735,
+      "106": 0.9728408473655622
+    }
+  }
+}

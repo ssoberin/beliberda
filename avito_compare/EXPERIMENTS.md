@@ -20,8 +20,8 @@
 | 2 | Public, char→char_wb, лимиты / без лимитов | Лучший измеренный char_wb46k; снятие лимитов хуже | [features](../output/tfidf-feature-experiments/summary.json) |
 | 3 | Public, 60k и100k вместо46k | Качество не улучшилось | [таблица](../output/tfidf-feature-experiments/comparison.md) |
 | 4 | Только v2 train, char_wb46/60/100k | Доступно10692 признака; модели одинаковы, testF1 0.46081 | [v2](../output/v2-charwb-comparison/report.md) |
-| 5 | Public train3398 +v2 train8464 | Реальный holdout около0.93, v2test около0.447 | [mixed](../output/mixed-charwb-comparison/evaluation.json) |
-| 6 | Одинаковая архитектура: до/после добавления v2 | V2 0.35537→0.44701; public holdout0.93712→0.93002; official208 0.81481→0.79217 | [paired](../output/paired-data-evaluation/comparison.json) |
+| 5 | Public train3398 +v2 train8464 | Public validation около0.93, v2test около0.447 | [mixed](../output/mixed-charwb-comparison/evaluation.json) |
+| 6 | Одинаковая архитектура: до/после добавления v2 | V2 0.35537→0.44701; public validation0.93712→0.93002; official208 0.81481→0.79217 | [paired](../output/paired-data-evaluation/comparison.json) |
 | 7 | Независимый EDA v2 и длин | Дедуп public median1467 против v2train143 символов; высокая доля искусственных отрицаний | [lengths](../output/dataset-length-comparison/stats.json) |
 
 Все сравнения используют scope102–106, исключение исходного mcId и пороги0.5.
@@ -62,3 +62,11 @@ JSONL, NPZ с предсказаниями, временные окружени�
 отрицания и формальные стрессовые конструкции. Каждую новую серию записывать
 в новый каталог, сохранять snapshot исходников, SHA-256 данных/разбиений,
 параметры, версии, все срезы и вывод. Старые измерения не заменять новыми.
+
+## Подробный аудит сложности v2
+
+[Отчёт](../output/v2-complexity-audit/report.md), [80полных примеров](../output/v2-complexity-audit/examples_full.md), [notebook](../output/v2-complexity-audit/complexity.ipynb), [доказательство коллизий](../output/v2-complexity-audit/collision_proof.json).
+
+Новые обучения/подбор порогов не запускались. Основная трудность не сводится к искусственным отрицаниям: два статусных списка дают82.81%FN, 642строки имеют конфликтующие gold при одинаковых текущих признаках/source. Разделение реалистичности — экспертная текстовая эвристика.
+
+**Исправление терминологии:**729исходных записей — validation, использованная для выбора конфигураций, не отдельный финальный test. Исторические значения метрик не изменялись. Официальный public test — отдельные208строк.

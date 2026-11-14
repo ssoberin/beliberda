@@ -1,7 +1,7 @@
 {
   "models": {
     "char_wb": {
-      "combined_test": {
+      "combined_evaluation": {
         "rows": 3745,
         "micro_f1": 0.6193309275334049,
         "macro_f1": 0.6195555026537638,
@@ -18,7 +18,7 @@
           "106": 0.6044158233670653
         }
       },
-      "public_test": {
+      "public_validation": {
         "rows": 729,
         "micro_f1": 0.9300164024056862,
         "macro_f1": 0.9300641958089306,
@@ -71,7 +71,7 @@
       }
     },
     "char_wb_60k": {
-      "combined_test": {
+      "combined_evaluation": {
         "rows": 3745,
         "micro_f1": 0.617828773168579,
         "macro_f1": 0.6179921371672501,
@@ -88,7 +88,7 @@
           "106": 0.6074895977808599
         }
       },
-      "public_test": {
+      "public_validation": {
         "rows": 729,
         "micro_f1": 0.9296853625170999,
         "macro_f1": 0.9297340797608262,
@@ -141,7 +141,7 @@
       }
     },
     "char_wb_100k": {
-      "combined_test": {
+      "combined_evaluation": {
         "rows": 3745,
         "micro_f1": 0.6165695665053816,
         "macro_f1": 0.6167252472579684,
@@ -158,7 +158,7 @@
           "106": 0.6076887447892543
         }
       },
-      "public_test": {
+      "public_validation": {
         "rows": 729,
         "micro_f1": 0.9246424642464246,
         "macro_f1": 0.9246029624946432,
@@ -219,5 +219,10 @@
     106
   ],
   "threshold": 0.5,
-  "note": "Training is public deduplicated train plus v2 train. Ready held-out splits unchanged. Public labels are weak; v2 and challenge are synthetic."
+  "note": "Training is public deduplicated train plus v2 train. Ready held-out splits unchanged. Public labels are weak; v2 and challenge are synthetic.",
+  "dataset_roles": {
+    "public_validation": "729 rows from the original train, held out as validation; used for configuration selection.",
+    "v2_test": "3016 supplied synthetic test examples; already inspected.",
+    "combined_evaluation": "Public validation plus synthetic test; not one independent test set."
+  }
 }
