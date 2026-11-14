@@ -1,0 +1,1170 @@
+{
+  "diagnostic_cases": [
+    {
+      "name": "case_1_direct_neg",
+      "text": "Электрику не выполняем.",
+      "cat_id": 105,
+      "deps": [
+        "[S0] 1_1:Электрику(электрик/PROPN) --obj--> 1_3:выполняем",
+        "[S0] 1_2:не(не/PART) --advmod--> 1_3:выполняем",
+        "[S0] 1_3:выполняем(выполнять/VERB) --root--> 1_0:ROOT",
+        "[S0] 1_4:.(./PUNCT) --punct--> 1_3:выполняем"
+      ],
+      "clauses": [
+        {
+          "mention": "Электрику",
+          "pred": "выполняем(выполнять)",
+          "link_kind": "direct_verb_obj",
+          "polarity": "negated",
+          "actor": "seller_team",
+          "temporal": "unknown",
+          "not_only": false,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": true,
+          "neg_tokens": [
+            "не"
+          ],
+          "dist_sa": 1,
+          "dist_an": 1,
+          "dist_sn": 2
+        }
+      ],
+      "global_traces": [],
+      "features": {
+        "best_chunk_polarity": "negated",
+        "dominant_subject": "seller_team",
+        "temporal_state": "unknown",
+        "service_link_status": "direct_verb_obj",
+        "syn_has_neg_on_action": 1,
+        "syn_has_not_only": 0,
+        "syn_double_neg_cancel": 0,
+        "syn_affirmative_offer": 0,
+        "syn_third_party_actor": 0,
+        "syn_seller_actor": 1,
+        "syn_temporal_resumed": 0,
+        "syn_global_turnkey_only": 0,
+        "syn_global_partial_refusal": 0,
+        "syn_min_dist_service_action": 1,
+        "syn_min_dist_action_neg": 1,
+        "syn_min_dist_service_neg": 2
+      }
+    },
+    {
+      "name": "case_2_not_only",
+      "text": "Мы не только укладываем плитку, но и устанавливаем сантехнику.",
+      "cat_id": 104,
+      "deps": [
+        "[S0] 1_1:Мы(мы/PRON) --nsubj--> 1_4:укладываем",
+        "[S0] 1_2:не(не/PART) --cc--> 1_4:укладываем",
+        "[S0] 1_3:только(только/PART) --fixed--> 1_2:не",
+        "[S0] 1_4:укладываем(укладывать/ADJ) --root--> 1_0:ROOT",
+        "[S0] 1_5:плитку(плитка/NOUN) --obj--> 1_4:укладываем",
+        "[S0] 1_6:,(,/PUNCT) --punct--> 1_9:устанавливаем",
+        "[S0] 1_7:но(но/CCONJ) --cc--> 1_9:устанавливаем",
+        "[S0] 1_8:и(и/CCONJ) --fixed--> 1_7:но",
+        "[S0] 1_9:устанавливаем(устанавливать/VERB) --conj--> 1_4:укладываем",
+        "[S0] 1_10:сантехнику(сантехника/NOUN) --obj--> 1_9:устанавливаем",
+        "[S0] 1_11:.(./PUNCT) --punct--> 1_4:укладываем"
+      ],
+      "clauses": [
+        {
+          "mention": "сантехнику",
+          "pred": "устанавливаем(устанавливать)",
+          "link_kind": "direct_verb_obj",
+          "polarity": "offered",
+          "actor": "seller_team",
+          "temporal": "unknown",
+          "not_only": true,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": false,
+          "neg_tokens": [],
+          "dist_sa": 1,
+          "dist_an": -1,
+          "dist_sn": -1
+        },
+        {
+          "mention": "сантехнику",
+          "pred": "укладываем(укладывать)",
+          "link_kind": "direct_verb_obj",
+          "polarity": "offered",
+          "actor": "seller_team",
+          "temporal": "unknown",
+          "not_only": true,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": false,
+          "neg_tokens": [],
+          "dist_sa": 2,
+          "dist_an": -1,
+          "dist_sn": -1
+        }
+      ],
+      "global_traces": [],
+      "features": {
+        "best_chunk_polarity": "offered",
+        "dominant_subject": "seller_team",
+        "temporal_state": "unknown",
+        "service_link_status": "direct_verb_obj",
+        "syn_has_neg_on_action": 0,
+        "syn_has_not_only": 1,
+        "syn_double_neg_cancel": 0,
+        "syn_affirmative_offer": 1,
+        "syn_third_party_actor": 0,
+        "syn_seller_actor": 1,
+        "syn_temporal_resumed": 0,
+        "syn_global_turnkey_only": 0,
+        "syn_global_partial_refusal": 0,
+        "syn_min_dist_service_action": 1,
+        "syn_min_dist_action_neg": -1,
+        "syn_min_dist_service_neg": -1
+      }
+    },
+    {
+      "name": "case_3_double_neg",
+      "text": "Больше не отказываемся от электромонтажа.",
+      "cat_id": 105,
+      "deps": [
+        "[S0] 1_1:Больше(большой/ADV) --advmod--> 1_2:не",
+        "[S0] 1_2:не(не/PART) --advmod--> 1_3:отказываемся",
+        "[S0] 1_3:отказываемся(отказываться/VERB) --root--> 1_0:ROOT",
+        "[S0] 1_4:от(от/ADP) --case--> 1_5:электромонтажа",
+        "[S0] 1_5:электромонтажа(электромонтаж/NOUN) --obl--> 1_3:отказываемся",
+        "[S0] 1_6:.(./PUNCT) --punct--> 1_3:отказываемся"
+      ],
+      "clauses": [
+        {
+          "mention": "электромонтажа",
+          "pred": "отказываемся(отказываться)",
+          "link_kind": "prep_obl_or_nmod",
+          "polarity": "double_neg_positive",
+          "actor": "seller_team",
+          "temporal": "now",
+          "not_only": false,
+          "double_neg": true,
+          "price_cond": false,
+          "has_neg": false,
+          "neg_tokens": [
+            "не"
+          ],
+          "dist_sa": 1,
+          "dist_an": 1,
+          "dist_sn": 2
+        }
+      ],
+      "global_traces": [],
+      "features": {
+        "best_chunk_polarity": "double_neg_positive",
+        "dominant_subject": "seller_team",
+        "temporal_state": "now_only",
+        "service_link_status": "prep_obl_or_nmod",
+        "syn_has_neg_on_action": 0,
+        "syn_has_not_only": 0,
+        "syn_double_neg_cancel": 1,
+        "syn_affirmative_offer": 1,
+        "syn_third_party_actor": 0,
+        "syn_seller_actor": 1,
+        "syn_temporal_resumed": 0,
+        "syn_global_turnkey_only": 0,
+        "syn_global_partial_refusal": 0,
+        "syn_min_dist_service_action": 1,
+        "syn_min_dist_action_neg": 1,
+        "syn_min_dist_service_neg": 2
+      }
+    },
+    {
+      "name": "case_4_third_party",
+      "text": "Сантехнику монтирует подрядчик заказчика.",
+      "cat_id": 104,
+      "deps": [
+        "[S0] 1_1:Сантехнику(сантехник/PROPN) --obj--> 1_2:монтирует",
+        "[S0] 1_2:монтирует(монтировать/VERB) --root--> 1_0:ROOT",
+        "[S0] 1_3:подрядчик(подрядчик/NOUN) --nsubj--> 1_2:монтирует",
+        "[S0] 1_4:заказчика(заказчик/NOUN) --nmod--> 1_3:подрядчик",
+        "[S0] 1_5:.(./PUNCT) --punct--> 1_2:монтирует"
+      ],
+      "clauses": [
+        {
+          "mention": "Сантехнику",
+          "pred": "монтирует(монтировать)",
+          "link_kind": "direct_verb_obj",
+          "polarity": "third_party",
+          "actor": "third_party",
+          "temporal": "past",
+          "not_only": false,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": false,
+          "neg_tokens": [],
+          "dist_sa": 1,
+          "dist_an": -1,
+          "dist_sn": -1
+        }
+      ],
+      "global_traces": [],
+      "features": {
+        "best_chunk_polarity": "third_party",
+        "dominant_subject": "third_party",
+        "temporal_state": "past_only",
+        "service_link_status": "direct_verb_obj",
+        "syn_has_neg_on_action": 0,
+        "syn_has_not_only": 0,
+        "syn_double_neg_cancel": 0,
+        "syn_affirmative_offer": 0,
+        "syn_third_party_actor": 1,
+        "syn_seller_actor": 0,
+        "syn_temporal_resumed": 0,
+        "syn_global_turnkey_only": 0,
+        "syn_global_partial_refusal": 0,
+        "syn_min_dist_service_action": 1,
+        "syn_min_dist_action_neg": -1,
+        "syn_min_dist_service_neg": -1
+      }
+    },
+    {
+      "name": "case_5_seller_contrast",
+      "text": "Сантехнику устанавливает не подрядчик, а наши мастера.",
+      "cat_id": 104,
+      "deps": [
+        "[S0] 1_1:Сантехнику(сантехник/PROPN) --obj--> 1_2:устанавливает",
+        "[S0] 1_2:устанавливает(устанавливать/VERB) --root--> 1_0:ROOT",
+        "[S0] 1_3:не(не/PART) --advmod--> 1_4:подрядчик",
+        "[S0] 1_4:подрядчик(подрядчик/NOUN) --nsubj--> 1_2:устанавливает",
+        "[S0] 1_5:,(,/PUNCT) --punct--> 1_8:мастера",
+        "[S0] 1_6:а(а/CCONJ) --cc--> 1_8:мастера",
+        "[S0] 1_7:наши(наш/DET) --det--> 1_8:мастера",
+        "[S0] 1_8:мастера(мастер/NOUN) --conj--> 1_4:подрядчик",
+        "[S0] 1_9:.(./PUNCT) --punct--> 1_2:устанавливает"
+      ],
+      "clauses": [
+        {
+          "mention": "Сантехнику",
+          "pred": "устанавливает(устанавливать)",
+          "link_kind": "direct_verb_obj",
+          "polarity": "third_party",
+          "actor": "third_party",
+          "temporal": "unknown",
+          "not_only": false,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": false,
+          "neg_tokens": [],
+          "dist_sa": 1,
+          "dist_an": -1,
+          "dist_sn": -1
+        }
+      ],
+      "global_traces": [],
+      "features": {
+        "best_chunk_polarity": "third_party",
+        "dominant_subject": "third_party",
+        "temporal_state": "unknown",
+        "service_link_status": "direct_verb_obj",
+        "syn_has_neg_on_action": 0,
+        "syn_has_not_only": 0,
+        "syn_double_neg_cancel": 0,
+        "syn_affirmative_offer": 0,
+        "syn_third_party_actor": 1,
+        "syn_seller_actor": 0,
+        "syn_temporal_resumed": 0,
+        "syn_global_turnkey_only": 0,
+        "syn_global_partial_refusal": 0,
+        "syn_min_dist_service_action": 1,
+        "syn_min_dist_action_neg": -1,
+        "syn_min_dist_service_neg": -1
+      }
+    },
+    {
+      "name": "case_6_temporal_shift",
+      "text": "Раньше отоплением не занимались, теперь выполняем полный цикл работ.",
+      "cat_id": 104,
+      "deps": [
+        "[S0] 1_1:Раньше(ранний/ADV) --advmod--> 1_4:занимались",
+        "[S0] 1_2:отоплением(отопление/NOUN) --obl--> 1_4:занимались",
+        "[S0] 1_3:не(не/PART) --advmod--> 1_4:занимались",
+        "[S0] 1_4:занимались(заниматься/VERB) --root--> 1_0:ROOT",
+        "[S0] 1_5:,(,/PUNCT) --punct--> 1_7:выполняем",
+        "[S0] 1_6:теперь(теперь/ADV) --advmod--> 1_7:выполняем",
+        "[S0] 1_7:выполняем(выполнять/VERB) --conj--> 1_4:занимались",
+        "[S0] 1_8:полный(полный/ADJ) --amod--> 1_9:цикл",
+        "[S0] 1_9:цикл(цикл/NOUN) --obj--> 1_7:выполняем",
+        "[S0] 1_10:работ(работа/NOUN) --nmod--> 1_9:цикл",
+        "[S0] 1_11:.(./PUNCT) --punct--> 1_4:занимались"
+      ],
+      "clauses": [
+        {
+          "mention": "отоплением",
+          "pred": "занимались(заниматься)",
+          "link_kind": "prep_obl_or_nmod",
+          "polarity": "negated",
+          "actor": "unknown",
+          "temporal": "past",
+          "not_only": false,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": true,
+          "neg_tokens": [
+            "не"
+          ],
+          "dist_sa": 1,
+          "dist_an": 1,
+          "dist_sn": 2
+        },
+        {
+          "mention": "отоплением",
+          "pred": "выполняем(выполнять)",
+          "link_kind": "prep_obl_or_nmod",
+          "polarity": "offered",
+          "actor": "seller_team",
+          "temporal": "now",
+          "not_only": false,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": false,
+          "neg_tokens": [],
+          "dist_sa": 2,
+          "dist_an": -1,
+          "dist_sn": -1
+        }
+      ],
+      "global_traces": [],
+      "features": {
+        "best_chunk_polarity": "offered",
+        "dominant_subject": "seller_team",
+        "temporal_state": "past_neg_to_now_pos",
+        "service_link_status": "prep_obl_or_nmod",
+        "syn_has_neg_on_action": 1,
+        "syn_has_not_only": 0,
+        "syn_double_neg_cancel": 0,
+        "syn_affirmative_offer": 1,
+        "syn_third_party_actor": 0,
+        "syn_seller_actor": 1,
+        "syn_temporal_resumed": 1,
+        "syn_global_turnkey_only": 0,
+        "syn_global_partial_refusal": 0,
+        "syn_min_dist_service_action": 1,
+        "syn_min_dist_action_neg": 1,
+        "syn_min_dist_service_neg": 2
+      }
+    },
+    {
+      "name": "case_7_global_turnkey",
+      "text": "Работаем только под ключ, частичные работы не выполняем.\nОтдельно электромонтаж не делаем.",
+      "cat_id": 105,
+      "deps": [
+        "[S0] 1_1:Работаем(работать/VERB) --root--> 1_0:ROOT",
+        "[S0] 1_2:только(только/PART) --advmod--> 1_4:ключ",
+        "[S0] 1_3:под(под/ADP) --case--> 1_4:ключ",
+        "[S0] 1_4:ключ(ключ/NOUN) --obl--> 1_1:Работаем",
+        "[S0] 1_5:,(,/PUNCT) --punct--> 1_9:выполняем",
+        "[S0] 1_6:частичные(частичный/ADJ) --amod--> 1_7:работы",
+        "[S0] 1_7:работы(работа/NOUN) --obj--> 1_9:выполняем",
+        "[S0] 1_8:не(не/PART) --advmod--> 1_9:выполняем",
+        "[S0] 1_9:выполняем(выполнять/VERB) --conj--> 1_1:Работаем",
+        "[S0] 1_10:.(./PUNCT) --punct--> 1_1:Работаем",
+        "[S1] 2_1:Отдельно(отдельно/ADV) --advmod--> 2_4:делаем",
+        "[S1] 2_2:электромонтаж(электромонтаж/VERB) --obj--> 2_4:делаем",
+        "[S1] 2_3:не(не/PART) --advmod--> 2_4:делаем",
+        "[S1] 2_4:делаем(делать/VERB) --root--> 2_0:ROOT",
+        "[S1] 2_5:.(./PUNCT) --punct--> 2_4:делаем"
+      ],
+      "clauses": [
+        {
+          "mention": "электромонтаж",
+          "pred": "делаем(делать)",
+          "link_kind": "direct_verb_obj",
+          "polarity": "negated",
+          "actor": "seller_team",
+          "temporal": "unknown",
+          "not_only": false,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": true,
+          "neg_tokens": [
+            "не"
+          ],
+          "dist_sa": 1,
+          "dist_an": 1,
+          "dist_sn": 2
+        }
+      ],
+      "global_traces": [
+        "turnkey_only(только->ключ)",
+        "partial_refusal(частичные -> выполняем[не])"
+      ],
+      "features": {
+        "best_chunk_polarity": "negated",
+        "dominant_subject": "seller_team",
+        "temporal_state": "unknown",
+        "service_link_status": "direct_verb_obj",
+        "syn_has_neg_on_action": 1,
+        "syn_has_not_only": 0,
+        "syn_double_neg_cancel": 0,
+        "syn_affirmative_offer": 0,
+        "syn_third_party_actor": 0,
+        "syn_seller_actor": 1,
+        "syn_temporal_resumed": 0,
+        "syn_global_turnkey_only": 1,
+        "syn_global_partial_refusal": 1,
+        "syn_min_dist_service_action": 1,
+        "syn_min_dist_action_neg": 1,
+        "syn_min_dist_service_neg": 2
+      }
+    },
+    {
+      "name": "case_8_non_service_neg",
+      "text": "Предоплату не берём. Выполняем сантехнические работы любой сложности.",
+      "cat_id": 104,
+      "deps": [
+        "[S0] 1_1:Предоплату(предоплата/PROPN) --obj--> 1_3:берём",
+        "[S0] 1_2:не(не/PART) --advmod--> 1_3:берём",
+        "[S0] 1_3:берём(брать/VERB) --root--> 1_0:ROOT",
+        "[S0] 1_4:.(./PUNCT) --punct--> 1_3:берём",
+        "[S1] 2_1:Выполняем(выполнять/VERB) --root--> 2_0:ROOT",
+        "[S1] 2_2:сантехнические(сантехнический/ADJ) --amod--> 2_3:работы",
+        "[S1] 2_3:работы(работа/NOUN) --obj--> 2_1:Выполняем",
+        "[S1] 2_4:любой(любой/DET) --det--> 2_5:сложности",
+        "[S1] 2_5:сложности(сложность/NOUN) --nmod--> 2_3:работы",
+        "[S1] 2_6:.(./PUNCT) --punct--> 2_1:Выполняем"
+      ],
+      "clauses": [
+        {
+          "mention": "сантехнические",
+          "pred": "Выполняем(выполнять)",
+          "link_kind": "prep_obl_or_nmod",
+          "polarity": "offered",
+          "actor": "seller_team",
+          "temporal": "unknown",
+          "not_only": false,
+          "double_neg": false,
+          "price_cond": false,
+          "has_neg": false,
+          "neg_tokens": [],
+          "dist_sa": 2,
+          "dist_an": -1,
+          "dist_sn": -1
+        }
+      ],
+      "global_traces": [],
+      "features": {
+        "best_chunk_polarity": "offered",
+        "dominant_subject": "seller_team",
+        "temporal_state": "unknown",
+        "service_link_status": "prep_obl_or_nmod",
+        "syn_has_neg_on_action": 0,
+        "syn_has_not_only": 0,
+        "syn_double_neg_cancel": 0,
+        "syn_affirmative_offer": 1,
+        "syn_third_party_actor": 0,
+        "syn_seller_actor": 1,
+        "syn_temporal_resumed": 0,
+        "syn_global_turnkey_only": 0,
+        "syn_global_partial_refusal": 0,
+        "syn_min_dist_service_action": 2,
+        "syn_min_dist_action_neg": -1,
+        "syn_min_dist_service_neg": -1
+      }
+    }
+  ],
+  "v3_val_evidence_stats": {
+    "offered/direct": {
+      "n": 381,
+      "pol:offered": 317,
+      "off=1": 317,
+      "neg=0": 381,
+      "matched=1": 381,
+      "pol:unknown": 64,
+      "off=0": 64
+    },
+    "not_offered/denied": {
+      "n": 113,
+      "pol:negated": 105,
+      "off=0": 113,
+      "neg=1": 105,
+      "matched=1": 113,
+      "pol:unknown": 8,
+      "neg=0": 8
+    },
+    "not_offered/other": {
+      "n": 87,
+      "pol:third_party": 87,
+      "off=0": 87,
+      "neg=1": 87,
+      "matched=1": 87
+    },
+    "not_offered/seo": {
+      "n": 60,
+      "pol:negated": 59,
+      "off=0": 60,
+      "neg=1": 59,
+      "matched=1": 60,
+      "pol:unknown": 1,
+      "neg=0": 1
+    },
+    "offered/faq": {
+      "n": 120,
+      "pol:offered": 120,
+      "off=1": 120,
+      "neg=0": 120,
+      "matched=1": 120
+    },
+    "offered/technical_detail": {
+      "n": 871,
+      "pol:offered": 648,
+      "off=1": 648,
+      "neg=0": 871,
+      "matched=1": 847,
+      "pol:unknown": 223,
+      "off=0": 223
+    },
+    "offered/not_only": {
+      "n": 203,
+      "pol:offered": 176,
+      "off=1": 176,
+      "neg=0": 202,
+      "matched=1": 203,
+      "pol:unknown": 27,
+      "off=0": 27,
+      "neg=1": 1
+    },
+    "offered/additional_operation": {
+      "n": 278,
+      "pol:unknown": 39,
+      "off=0": 39,
+      "neg=0": 278,
+      "matched=1": 278,
+      "pol:offered": 239,
+      "off=1": 239
+    },
+    "not_offered/quote": {
+      "n": 76,
+      "pol:negated": 54,
+      "off=0": 56,
+      "neg=1": 75,
+      "matched=1": 75,
+      "pol:third_party": 19,
+      "off=1": 20,
+      "pol:unknown": 1,
+      "neg=0": 1,
+      "pol:offered": 2
+    },
+    "offered/condition": {
+      "n": 234,
+      "pol:offered": 203,
+      "off=1": 203,
+      "neg=0": 234,
+      "matched=1": 234,
+      "pol:unknown": 31,
+      "off=0": 31
+    },
+    "offered/price": {
+      "n": 174,
+      "pol:conditional": 91,
+      "off=1": 75,
+      "neg=0": 145,
+      "matched=1": 173,
+      "pol:negated": 19,
+      "off=0": 99,
+      "neg=1": 29,
+      "pol:offered": 43,
+      "pol:unknown": 21
+    },
+    "offered/past": {
+      "n": 120,
+      "pol:double_neg_positive": 44,
+      "off=1": 113,
+      "neg=0": 54,
+      "matched=1": 120,
+      "pol:offered": 69,
+      "neg=1": 66,
+      "pol:unknown": 5,
+      "off=0": 7,
+      "pol:negated": 2
+    },
+    "not_offered/former": {
+      "n": 73,
+      "pol:negated": 67,
+      "off=0": 73,
+      "neg=1": 67,
+      "matched=1": 73,
+      "pol:unknown": 6,
+      "neg=0": 6
+    },
+    "offered/team": {
+      "n": 123,
+      "pol:offered": 119,
+      "off=1": 119,
+      "neg=0": 55,
+      "matched=1": 122,
+      "neg=1": 68,
+      "pol:unknown": 4,
+      "off=0": 4
+    }
+  },
+  "sample_misses": {
+    "offered/additional_operation": [
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Можем выполнить выведение плоскости стены гипсовым штукатурным раствором."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают ремонт осыпавшегося штукатурного слоя."
+      },
+      {
+        "cat": 105,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают установку терморегулятора электрического подогрева пола."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают шлифование шпаклёвочного слоя перед покраской."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают шлифование шпаклёвочного слоя перед покраской."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Можем выполнить выведение плоскости стены гипсовым штукатурным раствором."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают шлифование шпаклёвочного слоя перед покраской."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Можем выполнить шлифование шпаклёвочного слоя перед покраской."
+      }
+    ],
+    "offered/direct": [
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Можем выполнить наклеивание обойных полотен с подбором узора."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Можем выполнить выведение плоскости стены гипсовым штукатурным раствором."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают ремонт осыпавшегося штукатурного слоя."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают наклеивание обойных полотен с подбором узора."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают наклеивание обойных полотен с подбором узора."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают ремонт осыпавшегося штукатурного слоя."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают шлифование шпаклёвочного слоя перед покраской."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Можем выполнить выведение плоскости стены гипсовым штукатурным раствором."
+      }
+    ],
+    "offered/technical_detail": [
+      {
+        "cat": 105,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Для переноса электрической точки размечаем трассу и положение механизма. Сверяем место установки с планировкой и доступом к подключению. До включения проверяем фиксацию проводников, посадку изделия и соответствие соединения принятой схеме."
+      },
+      {
+        "cat": 105,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заключительная электрическая проверка проводится на согласованном участке. Осматриваем соединения и крепления, проверяем соответствие защиты и назначения цепи. При передаче показываем владельцу, где отключается нужная линия и как она обозначена в схеме."
+      },
+      {
+        "cat": 105,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Для переноса электрической точки размечаем трассу и положение механизма. Сверяем место установки с планировкой и доступом к подключению. До включения проверяем фиксацию проводников, посадку изделия и соответствие соединения принятой схеме."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Маячную плоскость штукатурки размечаем относительно существующих углов. Проверяем вертикальное положение направляющих и расстояние между ними. Нанесённый раствор распределяем правилом с контролем впадин, затем проверяем сопряжение соседних участков стены."
+      },
+      {
+        "cat": 105,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Для переноса электрической точки размечаем трассу и положение механизма. Сверяем место установки с планировкой и доступом к подключению. До включения проверяем фиксацию проводников посадку изделия и соответствие соединения принятой схеме."
+      },
+      {
+        "cat": 105,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Электротехническую задачу уточняем по предполагаемой нагрузке и существующей схеме. Осматриваем место присоединения и возможность обесточивания. Выбор кабеля и защитного устройства привязываем к назначению линии, а не автоматически повторяем прежнее решение."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Маячную плоскость штукатурки размечаем относительно существующих углов. Проверяем вертикальное положение направляющих и расстояние между ними. Нанесённый раствор распределяем правилом с контролем впадин, затем проверяем сопряжение соседних участков стены."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Перед оштукатуриванием простукиваем существующее основание и отмечаем отслаивающиеся места. Слабые фрагменты удаляем в границах принятой задачи. Тип раствора выбираем с учётом стены и влажности, а требуемую толщину определяем по замерам перепада."
+      }
+    ],
+    "not_offered/denied": [
+      {
+        "cat": 104,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заявки на подключение посудомоечной машины к подаче воды и сливу отклоняем: этим не занимаемся."
+      },
+      {
+        "cat": 104,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заявки на подключение посудомоечной машины к подаче воды и сливу отклоняем: этим не занимаемся."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заказывать у нас оштукатуривание внутренних углов помещений не нужно, такой услуги нет."
+      },
+      {
+        "cat": 103,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заявки на укладку кафеля на стены кухни отклоняем: этим не занимаемся."
+      },
+      {
+        "cat": 104,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заявки на подключение посудомоечной машины к подаче воды и сливу отклоняем: этим не занимаемся."
+      },
+      {
+        "cat": 103,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заявки на укладку кафеля на стены кухни отклоняем: этим не занимаемся."
+      },
+      {
+        "cat": 104,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заявки на подключение посудомоечной машины к подаче воды и сливу отклоняем: этим не занимаемся."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Заявки на ремонт осыпавшегося штукатурного слоя отклоняем: этим не занимаемся."
+      }
+    ],
+    "offered/condition": [
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "При свободном подходе к участку готовы выполнить выведение плоскости стены гипсовым штукатурным раствором."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "При свободном подходе к участку готовы выполнить наклеивание обойных полотен с подбором узора."
+      },
+      {
+        "cat": 105,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "При свободном подходе к участку готовы выполнить установку терморегулятора электрического подогрева пола."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "По согласованной дате принимаем выведение плоскости стены гипсовым штукатурным раствором."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "При свободном подходе к участку готовы выполнить ремонт осыпавшегося штукатурного слоя."
+      },
+      {
+        "cat": 103,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "По согласованной дате берём замену смесителя, ремонт квартиры под ключ, окраску стен, укладку мозаики."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "По согласованной дате берём замену смесителя, ремонт квартиры под ключ, окраску стен, укладку мозаики."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "При свободном подходе к участку готовы выполнить ремонт осыпавшегося штукатурного слоя."
+      }
+    ],
+    "offered/price": [
+      {
+        "cat": 105,
+        "pol": "negated",
+        "off": 0,
+        "neg": 1,
+        "span": "Не обещаем выполнить замену неисправной электрической розетки бесплатно но по смете эту услугу оказываем."
+      },
+      {
+        "cat": 104,
+        "pol": "negated",
+        "off": 0,
+        "neg": 1,
+        "span": "Не обещаем выполнить подсоединение умывальника к водоснабжению бесплатно но по смете эту услугу оказываем."
+      },
+      {
+        "cat": 104,
+        "pol": "negated",
+        "off": 0,
+        "neg": 1,
+        "span": "Не обещаем выполнить установку душевого смесителя бесплатно, но по смете эту услугу оказываем."
+      },
+      {
+        "cat": 102,
+        "pol": "negated",
+        "off": 0,
+        "neg": 1,
+        "span": "Не обещаем выполнить машинное нанесение штукатурки в новостройках бесплатно, но по смете эту услугу оказываем."
+      },
+      {
+        "cat": 104,
+        "pol": "negated",
+        "off": 0,
+        "neg": 1,
+        "span": "Не обещаем выполнить установку душевого смесителя бесплатно, но по смете эту услугу оказываем."
+      },
+      {
+        "cat": 102,
+        "pol": "negated",
+        "off": 0,
+        "neg": 1,
+        "span": "Не обещаем выполнить оштукатуривание стен из блоков по маякам бесплатно, но по смете эту услугу оказываем."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Не обещаем выполнить выведение плоскости стены гипсовым штукатурным раствором бесплатно, но по смете эту услугу оказываем."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Не обещаем выполнить выведение плоскости стены гипсовым штукатурным раствором бесплатно, но по смете эту услугу оказываем."
+      }
+    ],
+    "offered/not_only": [
+      {
+        "cat": 103,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Наш перечень не ограничен одной услугой: выполняем разводку кабельных линий по квартире и облицовку санузла керамической мозаикой."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Наш перечень не ограничен одной услугой: выполняем оклейку стен бумажными обоями и выведение плоскости стены гипсовым штукатурным раствором."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Наш перечень не ограничен одной услугой: выполняем выведение плоскости стены гипсовым штукатурным раствором и перенос водопроводных выводов под раковину."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Можем выполнить выведение плоскости стены гипсовым штукатурным раствором."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Выполняем и ремонт квортиры под ключ, и штукотурку откосов."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "У нас заказывают наклеивание обойных полотен с подбором узора."
+      },
+      {
+        "cat": 104,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Наш перечень не ограничен одной услугой: выполняем облицовку фартука мелкоформатным кафелем и замену запорного крана на водяной трубе."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Наш перечень не ограничен одной услугой: выполняем выведение плоскости стены гипсовым штукатурным раствором и комплексное восстановление квартиры после длительной аренды."
+      }
+    ],
+    "offered/past": [
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Сейчас в перечень добавили перекраску стен в жилой комнате; раньше такой услуги у нас не было."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Сейчас в перечень добавили перекраску стен в жилой комнате; раньше такой услуги у нас не было."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Сейчас в перечень добавили ремонт осыпавшегося штукатурного слоя; раньше такой услуги у нас не было."
+      },
+      {
+        "cat": 102,
+        "pol": "negated",
+        "off": 0,
+        "neg": 1,
+        "span": "Сейчас в перечень добавили выведение плоскости стены гипсовым штукатурным раствором; раньше такой услуги у нас не было."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Сейчас в перечень добавили ремонт осыпавшегося штукатурного слоя; раньше такой услуги у нас не было."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Сейчас в перечень добавили ремонт осыпавшегося штукатурного слоя; раньше такой услуги у нас не было."
+      },
+      {
+        "cat": 106,
+        "pol": "negated",
+        "off": 0,
+        "neg": 1,
+        "span": "Сейчас в перечень добавили подготовку потолка шпаклёвкой под окрашивание; раньше такой услуги у нас не было."
+      }
+    ],
+    "not_offered/former": [
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Из перечня убрали подготовку потолка шпаклёвкой под окрашивание: это прежняя услуга, больше её не оказываем."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Из перечня убрали выведение плоскости стены гипсовым штукатурным раствором: это прежняя услуга, больше её не оказываем."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Из перечня убрали подготовку потолка шпаклёвкой под окрашивание: это прежняя услуга, больше её не оказываем."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Из перечня убрали выведение плоскости стены гипсовым штукатурным раствором: это прежняя услуга, больше её не оказываем."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Из перечня убрали подготовку потолка шпаклёвкой под окрашивание: это прежняя услуга, больше её не оказываем."
+      },
+      {
+        "cat": 106,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Из перечня убрали подготовку потолка шпаклёвкой под окрашивание: это прежняя услуга, больше её не оказываем."
+      }
+    ],
+    "not_offered/seo": [
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Поисковый запрос «заказать выведение плоскости стены гипсовым штукатурным раствором» устарел: соответствующих заказов мы не принимаем."
+      }
+    ],
+    "offered/team": [
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Бригадир лично не выезжает выполнять оштукатуривание внутренних углов помещений; за эту работу отвечают наши штатные сотрудники по нашему договору."
+      },
+      {
+        "cat": 104,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Наша штатная команда по нашему договору делает замену смисителя, штукотурку откосов, укладку мозаики, не сам бригадир."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Бригадир лично не выезжает выполнять оштукатуривание внутренних углов помещений; за эту работу отвечают наши штатные сотрудники по нашему договору."
+      },
+      {
+        "cat": 102,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Бригадир лично не выезжает выполнять оштукатуривание внутренних углов помещений; за эту работу отвечают наши штатные сотрудники по нашему договору."
+      }
+    ],
+    "not_offered/quote": [
+      {
+        "cat": 104,
+        "pol": "unknown",
+        "off": 0,
+        "neg": 0,
+        "span": "Клиент хотел замену смисителя. Мы отказали, услуга недоступна."
+      },
+      {
+        "cat": 102,
+        "pol": "offered",
+        "off": 1,
+        "neg": 1,
+        "span": "Клиент хотел штукотурку откосов. Мы отказали, услуга недоступна."
+      },
+      {
+        "cat": 102,
+        "pol": "offered",
+        "off": 1,
+        "neg": 1,
+        "span": "Клиент хотел штукотурку откосов. Мы отказали, услуга недоступна."
+      }
+    ]
+  }
+}

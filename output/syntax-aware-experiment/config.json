@@ -1,0 +1,102 @@
+{
+  "mode": "public_plus_v3",
+  "seed": 42,
+  "train_ads": 6319,
+  "calibration_ads": 1328,
+  "pub_validation_ads": 729,
+  "v3_test_ads": 600,
+  "catboost_params": {
+    "loss_function": "Logloss",
+    "eval_metric": "Logloss",
+    "iterations": 1200,
+    "depth": 4,
+    "learning_rate": 0.05,
+    "l2_leaf_reg": 5.0,
+    "random_seed": 42,
+    "early_stopping_rounds": 50,
+    "thread_count": 4,
+    "verbose": 200
+  },
+  "non_syntax_meta_features": [
+    "cat_id",
+    "ad_char_len",
+    "n_chunks",
+    "n_padded_slots",
+    "sim_slot0",
+    "sim_slot1",
+    "sim_slot2",
+    "sim_max",
+    "sim_mean",
+    "sim_margin_01"
+  ],
+  "syntax_only_features": [
+    "best_chunk_polarity",
+    "dominant_subject",
+    "temporal_state",
+    "service_link_status",
+    "syn_service_mentioned_top3",
+    "syn_service_mentioned_ad",
+    "syn_action_linked",
+    "syn_has_neg_on_action",
+    "syn_has_not_only",
+    "syn_double_neg_cancel",
+    "syn_affirmative_offer",
+    "syn_third_party_actor",
+    "syn_seller_actor",
+    "syn_temporal_stopped",
+    "syn_temporal_resumed",
+    "syn_price_condition_only",
+    "syn_global_turnkey_only",
+    "syn_global_partial_refusal",
+    "syn_global_outside_top3",
+    "syn_has_conflicting_claims",
+    "syn_min_dist_service_action",
+    "syn_min_dist_action_neg",
+    "syn_min_dist_service_neg",
+    "syn_n_offered_clauses_top3",
+    "syn_n_negated_clauses_top3",
+    "syn_n_third_party_clauses_top3",
+    "syn_net_polarity_score",
+    "syn_top_offer_sim",
+    "syn_top_neg_sim"
+  ],
+  "syntax_cat_features": [
+    "cat_id",
+    "best_chunk_polarity",
+    "dominant_subject",
+    "temporal_state",
+    "service_link_status"
+  ],
+  "tfidf_params": {
+    "word_ngram": [
+      1,
+      3
+    ],
+    "word_min_df": 2,
+    "word_max_features": 18000,
+    "char_wb_ngram": [
+      3,
+      5
+    ],
+    "char_min_df": 3,
+    "char_max_features": 28000,
+    "sgd_alpha": 0.0001
+  },
+  "sgd_params": {
+    "loss": "log_loss",
+    "alpha": 1e-06,
+    "max_iter": 1000,
+    "tol": 0.001,
+    "random_state": 42
+  },
+  "alpha_grid": [
+    0.01,
+    0.003,
+    0.001,
+    0.0003,
+    0.0001,
+    3e-05,
+    1e-05,
+    3e-06
+  ]
+}
