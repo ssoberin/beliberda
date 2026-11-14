@@ -1,0 +1,18 @@
+{
+  "source_rows": 10000,
+  "invalid_rows": 0,
+  "label_occurrences": {
+    "102": 5484,
+    "103": 5073,
+    "104": 4582,
+    "105": 4562,
+    "106": 5481
+  },
+  "unique_normalized_descriptions": 4855,
+  "splits": {
+    "train": 3398,
+    "calibration": 728,
+    "validation": 729
+  },
+  "seed": 42
+}

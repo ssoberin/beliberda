@@ -1,0 +1,12 @@
+{
+  "exact_overlap_with_prior_corpora": 0,
+  "near_copy_pairs_jaccard_5gram_ge_0_8": 0,
+  "new_rows_checked": 120,
+  "prior_rows_checked": 23159,
+  "semantic_independence_proven": false,
+  "new_train_vs_new_test_max_5gram_jaccard": {
+    "score": 0.012987012987012988,
+    "train_id": "ctx100-014-b",
+    "test_id": "ctx20-test-002-b"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "rows": 100,
+  "independent_scenarios": 50,
+  "source_mcId": 101,
+  "scope": [
+    102,
+    103,
+    104,
+    105,
+    106
+  ],
+  "topic_counts": {
+    "comparison": 30,
+    "partial_refusal": 20,
+    "actor": 20,
+    "status_binding": 20,
+    "time_condition": 10
+  },
+  "positive_category_counts": {
+    "102": 13,
+    "103": 11,
+    "104": 18,
+    "105": 19,
+    "106": 23
+  },
+  "target_cardinality": {
+    "0": 20,
+    "1": 76,
+    "2": 4
+  },
+  "characters": {
+    "min": 297,
+    "median": 375.0,
+    "max": 1015
+  },
+  "sha256": "1e5d98f979f28e4d5d7f08254c08378f737070137fbfe71a49eba9f41b8c29fc",
+  "separate_test": {
+    "rows": 20,
+    "scenarios": 10,
+    "sha256": "8a24e7527a44471f9cac32ec5c154f7f15652b8c807339785e4734f0d9139494"
+  },
+  "annotation": "Author labels plus explicit self-review; not independent human double annotation.",
+  "role": "User-authorized training supplement; pairs remain together. Separate new20 test is held out. Not representative of production traffic."
+}
