@@ -1,0 +1,132 @@
+{
+  "base": "dataset_v3@0882f80 revision2",
+  "operation": "User-approved exclusion of 79 extreme repetition candidates from train only; original files and all heldout files preserved.",
+  "before": {
+    "rows": 3000,
+    "sources": {
+      "101": 500,
+      "102": 500,
+      "103": 500,
+      "104": 500,
+      "105": 500,
+      "106": 500
+    },
+    "offered_scope_positives": {
+      "102": 1346,
+      "103": 1355,
+      "104": 1340,
+      "105": 1351,
+      "106": 1352
+    },
+    "target_scope_positives": {
+      "102": 995,
+      "103": 995,
+      "104": 994,
+      "105": 995,
+      "106": 996
+    },
+    "target_scope_cardinality": {
+      "0": 490,
+      "1": 930,
+      "2": 890,
+      "3": 510,
+      "4": 165,
+      "5": 15
+    },
+    "median_characters": 648.5
+  },
+  "after": {
+    "rows": 2921,
+    "sources": {
+      "101": 486,
+      "102": 484,
+      "103": 484,
+      "104": 491,
+      "105": 485,
+      "106": 491
+    },
+    "offered_scope_positives": {
+      "102": 1274,
+      "103": 1285,
+      "104": 1271,
+      "105": 1285,
+      "106": 1282
+    },
+    "target_scope_positives": {
+      "102": 938,
+      "103": 941,
+      "104": 933,
+      "105": 943,
+      "106": 934
+    },
+    "target_scope_cardinality": {
+      "0": 490,
+      "1": 930,
+      "2": 890,
+      "3": 475,
+      "4": 126,
+      "5": 10
+    },
+    "median_characters": 644
+  },
+  "removed": {
+    "rows": 79,
+    "sources": {
+      "101": 14,
+      "102": 16,
+      "103": 16,
+      "104": 9,
+      "105": 15,
+      "106": 9
+    },
+    "offered_scope_positives": {
+      "102": 72,
+      "103": 70,
+      "104": 69,
+      "105": 66,
+      "106": 70
+    },
+    "target_scope_positives": {
+      "102": 57,
+      "103": 54,
+      "104": 61,
+      "105": 52,
+      "106": 62
+    },
+    "target_scope_cardinality": {
+      "3": 35,
+      "4": 39,
+      "5": 5
+    },
+    "median_characters": 974
+  },
+  "removed_percent": 2.6333333333333333,
+  "split_rows": {
+    "train": 2921,
+    "validation": 600,
+    "test": 600,
+    "challenge": 144
+  },
+  "source_sha256": {
+    "train": "b5a439f4e679dd2d05a3ef93daa2e29a4fa919be264746f001e8473137057640",
+    "validation": "876cbc10ff4d05450b35a01df4627f0b61b6dae7e809bfaa6a46160d80bab15d",
+    "test": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7",
+    "challenge": "566258947d5a552e8902026e43e63c3c1d1c91ffffff8a712355f1e3067b3f16"
+  },
+  "output_sha256": {
+    "train": "8ed3c4c7f2bc04425343caeb649909f173eaf01383d9b27f2d6a74eccd5c1875",
+    "validation": "876cbc10ff4d05450b35a01df4627f0b61b6dae7e809bfaa6a46160d80bab15d",
+    "test": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7",
+    "challenge": "566258947d5a552e8902026e43e63c3c1d1c91ffffff8a712355f1e3067b3f16"
+  },
+  "audit_sha256": "0bbdcb1a015bf4f8fe740d6cb18cbbfc1627b26a5c03cb4082c09bcb34184d4e",
+  "quarantine_sha256": "ff6cfce922cc6254dd49ddf8473b1de1e20f5a0e49af7e167a3d9d28f3195d89",
+  "checks": {
+    "exactly79_excluded": true,
+    "retained_records_unchanged": true,
+    "heldout_bytes_unchanged": true,
+    "original_files_unchanged": true,
+    "train_heldout_text_overlap": 0
+  },
+  "warning": "Realism judgement is heuristic, not proof of wrong labels. Label/source balance changes; no model improvement has been measured. Quarantine rows were seen in previous training and are not an independent test."
+}
