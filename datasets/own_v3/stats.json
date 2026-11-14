@@ -1,0 +1,388 @@
+{
+  "version": "own_v3",
+  "revision": 2,
+  "seed": 2026,
+  "inputs": [
+    "lexicon.py",
+    "generate.py",
+    "challenge.py",
+    "workflows.py"
+  ],
+  "source_sha256": {
+    "lexicon.py": "ba55c5f8d09eec6afee2fff18f703397dbc3e2a8541f5845a5296324b2339e99",
+    "generate.py": "4d98c080677e83f1fae948b601eab0d6889c0877cdac4d1e841ae6137ed72e06",
+    "challenge.py": "8f5407148bf82f5aa11f675655e1fc3593434b858698b5cf0a6a2af7df28a190",
+    "workflows.py": "04d0a94012e96cf0aab0f8fd9cd0a1616e7abf9e086de87b036083aa78ef7fc6"
+  },
+  "splits": {
+    "train": {
+      "rows": 3000,
+      "unique_descriptions": 3000,
+      "generic_context_share": {
+        "long": {
+          "median_pct": 17.2,
+          "max_pct": 35.0
+        },
+        "extended": {
+          "median_pct": 22.4,
+          "max_pct": 35.0
+        }
+      },
+      "short_diagnostics": {
+        "0": {
+          "rows": 67,
+          "non_direct": 49,
+          "with_negative_mentions": 60
+        },
+        "1": {
+          "rows": 154,
+          "non_direct": 120,
+          "with_negative_mentions": 136
+        },
+        "2": {
+          "rows": 180,
+          "non_direct": 151,
+          "with_negative_mentions": 163
+        },
+        "3": {
+          "rows": 136,
+          "non_direct": 113,
+          "with_negative_mentions": 121
+        },
+        "4": {
+          "rows": 46,
+          "non_direct": 34,
+          "with_negative_mentions": 40
+        },
+        "5": {
+          "rows": 17,
+          "non_direct": 13,
+          "with_negative_mentions": 10
+        }
+      },
+      "characters": {
+        "min": 80,
+        "median": 648.5,
+        "p95": 3037.4,
+        "max": 3498
+      },
+      "length_bins": {
+        "extended": 600,
+        "long": 750,
+        "medium": 1050,
+        "short": 600
+      },
+      "source_counts": {
+        "101": 500,
+        "102": 500,
+        "103": 500,
+        "104": 500,
+        "105": 500,
+        "106": 500
+      },
+      "target_counts": {
+        "101": 995,
+        "102": 995,
+        "103": 995,
+        "104": 994,
+        "105": 995,
+        "106": 996
+      },
+      "target_cardinality": {
+        "0": 360,
+        "1": 780,
+        "2": 840,
+        "3": 660,
+        "4": 270,
+        "5": 90
+      },
+      "noise": {
+        "clean": 2700,
+        "punctuation": 90,
+        "spelling": 210
+      },
+      "construction": {
+        "condition": 585,
+        "direct": 833,
+        "faq": 335,
+        "not_only": 361,
+        "past": 277,
+        "price": 317,
+        "team": 292
+      },
+      "evidence_kinds": {
+        "additional_operation": 1538,
+        "condition": 1616,
+        "denied": 495,
+        "direct": 2184,
+        "faq": 876,
+        "former": 552,
+        "not_only": 1075,
+        "other": 549,
+        "outside_scope": 116,
+        "outside_workflow": 180,
+        "past": 731,
+        "price": 878,
+        "quote": 536,
+        "seo": 392,
+        "team": 729,
+        "technical_detail": 5457
+      },
+      "word_forms": 1210,
+      "words": 393805,
+      "random_8000_words_unique_pct": 14.2
+    },
+    "validation": {
+      "rows": 600,
+      "unique_descriptions": 600,
+      "generic_context_share": {
+        "long": {
+          "median_pct": 17.6,
+          "max_pct": 34.4
+        },
+        "extended": {
+          "median_pct": 22.1,
+          "max_pct": 35.0
+        }
+      },
+      "short_diagnostics": {
+        "0": {
+          "rows": 17,
+          "non_direct": 9,
+          "with_negative_mentions": 16
+        },
+        "1": {
+          "rows": 25,
+          "non_direct": 21,
+          "with_negative_mentions": 24
+        },
+        "2": {
+          "rows": 40,
+          "non_direct": 33,
+          "with_negative_mentions": 34
+        },
+        "3": {
+          "rows": 26,
+          "non_direct": 18,
+          "with_negative_mentions": 24
+        },
+        "4": {
+          "rows": 11,
+          "non_direct": 7,
+          "with_negative_mentions": 8
+        },
+        "5": {
+          "rows": 1,
+          "non_direct": 1,
+          "with_negative_mentions": 1
+        }
+      },
+      "characters": {
+        "min": 80,
+        "median": 672.0,
+        "p95": 2981.5,
+        "max": 3494
+      },
+      "length_bins": {
+        "extended": 120,
+        "long": 150,
+        "medium": 210,
+        "short": 120
+      },
+      "source_counts": {
+        "101": 100,
+        "102": 100,
+        "103": 100,
+        "104": 100,
+        "105": 100,
+        "106": 100
+      },
+      "target_counts": {
+        "101": 199,
+        "102": 199,
+        "103": 199,
+        "104": 199,
+        "105": 199,
+        "106": 199
+      },
+      "target_cardinality": {
+        "0": 72,
+        "1": 156,
+        "2": 168,
+        "3": 132,
+        "4": 54,
+        "5": 18
+      },
+      "noise": {
+        "clean": 540,
+        "punctuation": 18,
+        "spelling": 42
+      },
+      "construction": {
+        "condition": 112,
+        "direct": 172,
+        "faq": 55,
+        "not_only": 80,
+        "past": 49,
+        "price": 76,
+        "team": 56
+      },
+      "evidence_kinds": {
+        "additional_operation": 318,
+        "condition": 288,
+        "denied": 133,
+        "direct": 459,
+        "faq": 136,
+        "former": 86,
+        "not_only": 243,
+        "other": 111,
+        "outside_scope": 24,
+        "outside_workflow": 47,
+        "past": 141,
+        "price": 210,
+        "quote": 88,
+        "seo": 72,
+        "team": 143,
+        "technical_detail": 1042
+      },
+      "word_forms": 1205,
+      "words": 79378,
+      "random_8000_words_unique_pct": 14.0
+    },
+    "test": {
+      "rows": 600,
+      "unique_descriptions": 600,
+      "generic_context_share": {
+        "long": {
+          "median_pct": 17.6,
+          "max_pct": 34.2
+        },
+        "extended": {
+          "median_pct": 22.6,
+          "max_pct": 34.8
+        }
+      },
+      "short_diagnostics": {
+        "0": {
+          "rows": 13,
+          "non_direct": 8,
+          "with_negative_mentions": 13
+        },
+        "1": {
+          "rows": 31,
+          "non_direct": 22,
+          "with_negative_mentions": 26
+        },
+        "2": {
+          "rows": 32,
+          "non_direct": 26,
+          "with_negative_mentions": 26
+        },
+        "3": {
+          "rows": 30,
+          "non_direct": 22,
+          "with_negative_mentions": 25
+        },
+        "4": {
+          "rows": 9,
+          "non_direct": 7,
+          "with_negative_mentions": 7
+        },
+        "5": {
+          "rows": 5,
+          "non_direct": 4,
+          "with_negative_mentions": 3
+        }
+      },
+      "characters": {
+        "min": 82,
+        "median": 650.5,
+        "p95": 3013.1,
+        "max": 3497
+      },
+      "length_bins": {
+        "extended": 120,
+        "long": 150,
+        "medium": 210,
+        "short": 120
+      },
+      "source_counts": {
+        "101": 100,
+        "102": 100,
+        "103": 100,
+        "104": 100,
+        "105": 100,
+        "106": 100
+      },
+      "target_counts": {
+        "101": 199,
+        "102": 198,
+        "103": 199,
+        "104": 199,
+        "105": 199,
+        "106": 200
+      },
+      "target_cardinality": {
+        "0": 72,
+        "1": 156,
+        "2": 168,
+        "3": 132,
+        "4": 54,
+        "5": 18
+      },
+      "noise": {
+        "clean": 540,
+        "punctuation": 18,
+        "spelling": 42
+      },
+      "construction": {
+        "condition": 130,
+        "direct": 171,
+        "faq": 51,
+        "not_only": 84,
+        "past": 63,
+        "price": 52,
+        "team": 49
+      },
+      "evidence_kinds": {
+        "additional_operation": 310,
+        "condition": 347,
+        "denied": 105,
+        "direct": 464,
+        "faq": 127,
+        "former": 107,
+        "not_only": 248,
+        "other": 101,
+        "outside_scope": 18,
+        "outside_workflow": 32,
+        "past": 175,
+        "price": 137,
+        "quote": 99,
+        "seo": 62,
+        "team": 134,
+        "technical_detail": 1044
+      },
+      "word_forms": 1231,
+      "words": 81195,
+      "random_8000_words_unique_pct": 14.14
+    }
+  },
+  "sha256": {
+    "train.jsonl": "b5a439f4e679dd2d05a3ef93daa2e29a4fa919be264746f001e8473137057640",
+    "validation.jsonl": "876cbc10ff4d05450b35a01df4627f0b61b6dae7e809bfaa6a46160d80bab15d",
+    "test.jsonl": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7",
+    "challenge.jsonl": "566258947d5a552e8902026e43e63c3c1d1c91ffffff8a712355f1e3067b3f16"
+  },
+  "limitations": [
+    "Entirely synthetic; does not establish real-world representativeness.",
+    "Scenario-defined labels have no independent human adjudication.",
+    "Split-disjoint service phrases, frames and context banks; shared meanings remain.",
+    "Exact deduplication does not prove absence of all semantic near-duplicates.",
+    "No public records, old datasets, or model predictions used."
+  ],
+  "challenge": {
+    "rows": 144,
+    "independent_descriptions": 24,
+    "purpose": "Scope and source-category probes; not training or prevalence estimation."
+  }
+}

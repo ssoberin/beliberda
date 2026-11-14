@@ -1,0 +1,13 @@
+{
+  "scope": "Only own_v3 train/validation/test; no public data read.",
+  "input_sha256": {
+    "train": "b5a439f4e679dd2d05a3ef93daa2e29a4fa919be264746f001e8473137057640",
+    "validation": "876cbc10ff4d05450b35a01df4627f0b61b6dae7e809bfaa6a46160d80bab15d",
+    "test": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7"
+  },
+  "token_ngram": 5,
+  "jaccard_threshold": 0.8,
+  "cross_split_near_duplicate_pairs": 0,
+  "examples": [],
+  "semantic_independence_proven": false
+}
