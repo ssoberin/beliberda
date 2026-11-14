@@ -1,0 +1,41 @@
+{
+  "seed": {
+    "public_split": 42,
+    "v2_supplied_split": 2026
+  },
+  "sgd_random_state": 42,
+  "splits": {
+    "train": 11862,
+    "calibration": 3168,
+    "validation": 3745,
+    "challenge": 40
+  },
+  "composition": {
+    "train": {
+      "public": 3398,
+      "v2": 8464
+    },
+    "calibration": {
+      "public": 728,
+      "v2": 2440
+    },
+    "validation": {
+      "public": 729,
+      "v2": 3016
+    }
+  },
+  "input_sha256": {
+    "public/train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+    "v2/train": "c3c71cd6ddaae543f16a3a7cfd7844b65034608ceb1d4b1cd6594d59e8e34b73",
+    "public/calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+    "v2/calibration": "b959de20a5474398f29b353d25f6e93a5d432294eb999724389b252e96e14230",
+    "public/validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd",
+    "v2/validation": "d447b5ed13382b42d6c16ab6a2b37ba82e8f57ef62597292b423a499478d8b22"
+  },
+  "resplit": false,
+  "reweighting": false,
+  "normalized_effective_description_intersections": 0,
+  "public_deduplication": "Existing casefold/whitespace deduplication: 10000 raw rows -> 4855 unique; original 70/15/15 split preserved.",
+  "v2_grouping": "Ready-made group/type-disjoint splits preserved; no v2 test or challenge rows used for training.",
+  "note": "Synthetic data is an addition to public real data. Public weak labels remain unchanged. Near-duplicate public templates can remain."
+}

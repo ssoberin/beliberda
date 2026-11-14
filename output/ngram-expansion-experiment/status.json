@@ -1,0 +1,117 @@
+{
+  "ref_46k": {
+    "exit_code": 0,
+    "monitored_peak_rss_mib": 556.89453125,
+    "process_wall_seconds": 78.72818566500064,
+    "command": [
+      "/tmp/innopolis-ngram-venv/bin/python",
+      "-m",
+      "avito_compare.scripts.ngram_expansion_experiment",
+      "--worker",
+      "--name",
+      "ref_46k",
+      "--data-dir",
+      "output/ngram-expansion-experiment/splits",
+      "--run-dir",
+      "output/ngram-expansion-experiment/runs/ref_46k",
+      "--word-ngram-max",
+      "3",
+      "--word-max-features",
+      "18000",
+      "--char-max-features",
+      "28000"
+    ]
+  },
+  "A_1_3_uncapped": {
+    "exit_code": 0,
+    "monitored_peak_rss_mib": 559.75,
+    "process_wall_seconds": 78.56907576199956,
+    "command": [
+      "/tmp/innopolis-ngram-venv/bin/python",
+      "-m",
+      "avito_compare.scripts.ngram_expansion_experiment",
+      "--worker",
+      "--name",
+      "A_1_3_uncapped",
+      "--data-dir",
+      "output/ngram-expansion-experiment/splits",
+      "--run-dir",
+      "output/ngram-expansion-experiment/runs/A_1_3_uncapped",
+      "--word-ngram-max",
+      "3",
+      "--word-max-features",
+      "0",
+      "--char-max-features",
+      "28000"
+    ]
+  },
+  "B_1_4_uncapped": {
+    "exit_code": 0,
+    "monitored_peak_rss_mib": 609.1875,
+    "process_wall_seconds": 70.81116279799971,
+    "command": [
+      "/tmp/innopolis-ngram-venv/bin/python",
+      "-m",
+      "avito_compare.scripts.ngram_expansion_experiment",
+      "--worker",
+      "--name",
+      "B_1_4_uncapped",
+      "--data-dir",
+      "output/ngram-expansion-experiment/splits",
+      "--run-dir",
+      "output/ngram-expansion-experiment/runs/B_1_4_uncapped",
+      "--word-ngram-max",
+      "4",
+      "--word-max-features",
+      "0",
+      "--char-max-features",
+      "28000"
+    ]
+  },
+  "C_1_5_uncapped": {
+    "exit_code": 0,
+    "monitored_peak_rss_mib": 672.86328125,
+    "process_wall_seconds": 40.70968654000171,
+    "command": [
+      "/tmp/innopolis-ngram-venv/bin/python",
+      "-m",
+      "avito_compare.scripts.ngram_expansion_experiment",
+      "--worker",
+      "--name",
+      "C_1_5_uncapped",
+      "--data-dir",
+      "output/ngram-expansion-experiment/splits",
+      "--run-dir",
+      "output/ngram-expansion-experiment/runs/C_1_5_uncapped",
+      "--word-ngram-max",
+      "5",
+      "--word-max-features",
+      "0",
+      "--char-max-features",
+      "28000"
+    ]
+  },
+  "D_1_6_uncapped": {
+    "exit_code": 0,
+    "monitored_peak_rss_mib": 817.703125,
+    "process_wall_seconds": 71.29695604600056,
+    "command": [
+      "/tmp/innopolis-ngram-venv/bin/python",
+      "-m",
+      "avito_compare.scripts.ngram_expansion_experiment",
+      "--worker",
+      "--name",
+      "D_1_6_uncapped",
+      "--data-dir",
+      "output/ngram-expansion-experiment/splits",
+      "--run-dir",
+      "output/ngram-expansion-experiment/runs/D_1_6_uncapped",
+      "--word-ngram-max",
+      "6",
+      "--word-max-features",
+      "0",
+      "--char-max-features",
+      "28000"
+    ]
+  }
+}

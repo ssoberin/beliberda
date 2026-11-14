@@ -1,0 +1,1 @@
+WORKER_DONE B_1_4_uncapped: word_dim=181100 total_dim=209100 pub_f1=0.928513 v2_f1=0.442408 fit=29.13s rss=622.7MiB

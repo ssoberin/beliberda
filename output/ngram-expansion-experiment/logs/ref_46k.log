@@ -1,0 +1,1 @@
+WORKER_DONE ref_46k: word_dim=18000 total_dim=46000 pub_f1=0.930016 v2_f1=0.447005 fit=33.00s rss=558.9MiB
