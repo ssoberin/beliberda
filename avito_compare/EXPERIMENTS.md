@@ -11,6 +11,7 @@
 - [Парное сравнение public-only / public+v2](../output/paired-data-evaluation/report.md)
 - [Результаты смешанного обучения](../output/mixed-charwb-comparison/report.md)
 - [EDA v2 и реалистичность сложных примеров](../output/v2-eda/report.md)
+- [Расширение словесных n-грамм (1,3)→(1,6): отчёт](../output/ngram-expansion-experiment/report.md) и [notebook](../output/ngram-expansion-experiment/ngram_expansion.ipynb)
 
 ## Сохранённые точки
 
@@ -23,6 +24,7 @@
 | 5 | Public train3398 +v2 train8464 | Public validation около0.93, v2test около0.447 | [mixed](../output/mixed-charwb-comparison/evaluation.json) |
 | 6 | Одинаковая архитектура: до/после добавления v2 | V2 0.35537→0.44701; public validation0.93712→0.93002; official208 0.81481→0.79217 | [paired](../output/paired-data-evaluation/comparison.json) |
 | 7 | Независимый EDA v2 и длин | Дедуп public median1467 против v2train143 символов; высокая доля искусственных отрицаний | [lengths](../output/dataset-length-comparison/stats.json) |
+| 8 | Mixed public+v2, word `(1,3)→(1,6)` без `max_features` + char_wb 28k | Конфликтные коллизии `(mcId, вектор)` 231→0 уже на `(1,3)` без лимита (48 векторных остаются до `(1,6)`); но списки 1152 остались 0.000, v2_test 0.44701→0.44322, public val 0.93002→0.92716; размерность 46k→339.5k | [ngram-exp](../output/ngram-expansion-experiment/analysis.json) |
 
 Все сравнения используют scope102–106, исключение исходного mcId и пороги0.5.
 Исключение — старые вспомогательные поля `validation_calibrated` в metrics.json:
