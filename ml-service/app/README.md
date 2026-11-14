@@ -1,12 +1,12 @@
-# Avito Hackathon — replaceable application
+# Avito Hackathon — Git-managed ML service
 
-**Only `app/` is updated between versions.** Persistent resources are siblings under `/srv/Hakaton`:
+**Source of truth:** `/srv/Hakaton/innopolis_2026/ml-service/app/`.
+Do not run the historical `/srv/Hakaton/app/` copy. Persistent resources remain outside Git:
 
 - `/srv/Hakaton/data/` — datasets and splits
 - `/srv/Hakaton/models/baseline/tfidf_baseline.joblib` — trained TF-IDF model
 - `/srv/Hakaton/models/huggingface/` — Qwen weights
 - `/srv/Hakaton/results/` — experiment results
-- `/srv/Hakaton/infrastructure/vllm/compose.yaml` — Docker config
 - `/srv/Hakaton/.venv/` — Python packages
 
 ## One-time environment setup (only if root .venv does not exist)
@@ -15,18 +15,17 @@
 cd /srv/Hakaton
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r app/requirements.txt
+python -m pip install -r innopolis_2026/ml-service/app/requirements.txt
 ```
 
-If there is already a working `/srv/Hakaton/.venv`, reuse it and install only missing packages.
+On the existing server, reuse `/srv/Hakaton/.venv` instead of creating a second environment.
 
 ## Run
 
 ```bash
-cd /srv/Hakaton
-source .venv/bin/activate
-python -m pytest -q app/tests
-uvicorn app.main:app --host 127.0.0.1 --port 8001
+cd /srv/Hakaton/innopolis_2026/ml-service
+/srv/Hakaton/.venv/bin/python -m pytest -q app/tests
+./run.sh  # only if the avito-ml.service user unit is stopped
 ```
 
 Example classification-only request (no LLM):
@@ -46,5 +45,10 @@ curl -sS -X POST 'http://127.0.0.1:8001/generate?generate_text=true' \
 ```
 
 If Qwen is unavailable or rejects evidence, returns a valid draft with `title` and `text` as `null`.
+
+`run.sh` defaults to the existing external model and Python environment. Override
+`AVITO_MODEL_PATH`, `AVITO_PYTHON`, `AVITO_HOST`, and `AVITO_PORT` as needed.
+The user-service template `../avito-ml.service` is configured for this server.
+It does not bundle the model, virtual environment, or Qwen weights.
 
 **Known limitations:** classifier only has trained heads 102–106, so cannot predict target 101 when the source mcId differs from 101. Weak GPT-generated training labels do not guarantee official evaluation F1. Exact evidence matching may reject legitimate generated texts. `GET /health` checks model startup, not Qwen availability. No authentication is provided: keep HTTP ports bound to localhost/private tunnel and do not publicly expose the API without an authenticated gateway.
