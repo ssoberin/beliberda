@@ -1,0 +1,13 @@
+[Unit]
+Description=Avito hackathon ML API (Git working tree)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/Hakaton/innopolis_2026/ml-service
+ExecStart=/srv/Hakaton/innopolis_2026/ml-service/run.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
