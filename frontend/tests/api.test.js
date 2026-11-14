@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { once } from 'node:events';
 import { createServer } from 'node:http';
-import { generateCategories, generateListings, normalizeCategories } from '../src/api.js';
+import { generateCategories, generateListings, normalizeCategories, getConnectionStatus } from '../src/api.js';
 import { createFrontendServer } from '../scripts/server.mjs';
 
 test('категории из JSON и строк: сохраняет ID, убирает дубликаты, отклоняет неверный ответ', () => {
@@ -29,7 +29,7 @@ test('API-клиент отправляет JSON на нужный адрес и
   assert.deepEqual(calls[0].body, payload);
   const categories = [{ id: 105, name: 'Электрика' }];
   response = { drafts: [{ categoryId: 105, title: 'Электрика', description: 'Меняю розетки' }] };
-  assert.deepEqual(await generateListings({ ...payload, categories }), response.drafts);
+  assert.deepEqual(await generateListings({ ...payload, categories }), { drafts: response.drafts, warnings: [] });
   assert.equal(calls[1].url, '/api/generate');
   assert.deepEqual(calls[1].body.categories, categories);
   response = { drafts: [{}] };
@@ -61,7 +61,7 @@ async function start(t, server) {
 }
 
 test('HTTP: страница, подбор категорий, генерация, валидация и изоляция исходников сервера', async t => {
-  const base = await start(t, createFrontendServer({ mockDelay: 0 }));
+  const base = await start(t, createFrontendServer({ mockApi: true, mockDelay: 0 }));
   const post = (path, payload) => fetch(base + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
   const page = await fetch(base);
   assert.equal(page.status, 200);
@@ -90,13 +90,71 @@ test('HTTP: API_TARGET проксирует путь, JSON и ошибку на�
   const upstream = await start(t, createServer(async (request, response) => {
     const chunks = [];
     for await (const chunk of request) chunks.push(chunk);
-    assert.equal(request.url, '/api/categories');
+    assert.equal(request.url, '/api/generate');
     assert.equal(JSON.parse(Buffer.concat(chunks)).description, 'Тест прокси');
     response.writeHead(422, { 'Content-Type': 'application/json' });
     response.end(JSON.stringify({ message: 'Ошибка внешнего API' }));
   }));
   const base = await start(t, createFrontendServer({ apiTarget: upstream }));
-  const response = await fetch(base + '/api/categories', { method: 'POST', body: JSON.stringify({ description: 'Тест прокси' }) });
+  const response = await fetch(base + '/api/generate', { method: 'POST', body: JSON.stringify({ description: 'Тест прокси' }) });
   assert.equal(response.status, 422);
   assert.deepEqual(await response.json(), { message: 'Ошибка внешнего API' });
+});
+
+test('заготовки для выбранных категорий сохраняются вместе с предупреждениями об уточнении', async t => {
+  const body = {
+    drafts: [
+      { categoryId: 103, title: 'Плитка', description: 'Укладываю плитку' },
+      { categoryId: 104, title: 'Сантехника', description: 'Сантехнические работы. [Уточните виды работ.]' },
+    ],
+    warnings: [{ categoryId: 104, reason: 'needs_details', message: 'Уточните сантехнические услуги' }],
+  };
+  t.mock.method(globalThis, 'fetch', async () => new Response(JSON.stringify(body)));
+  assert.deepEqual(await generateListings({}), body);
+  body.warnings = [{ categoryId: 104 }];
+  await assert.rejects(generateListings({}), /предупреждения/);
+});
+
+test('состояние недоступного backend читается клиентом для отображения в форме', async t => {
+  const body = { mode: 'backend', ready: false, categoryGeneration: false, message: 'Qwen недоступен' };
+  t.mock.method(globalThis, 'fetch', async () => new Response(JSON.stringify(body), { status: 503 }));
+  assert.deepEqual(await getConnectionStatus(), body);
+});
+
+test('генерация и readiness проксируются, категории возвращает локальная заглушка', async t => {
+  const calls = [];
+  const result = { drafts: [{ categoryId: 104, title: 'Сантехника', description: 'Меняю трубы' }], warnings: [] };
+  const upstream = await start(t, createServer(async (request, response) => {
+    calls.push(request.url);
+    response.setHeader('Content-Type', 'application/json');
+    if (request.url === '/ready') return response.end(JSON.stringify({ status: 'ready', model: 'avito-qwen' }));
+    for await (const _ of request) { /* Consume the request body. */ }
+    response.end(JSON.stringify(result));
+  }));
+  const base = await start(t, createFrontendServer({ apiTarget: upstream, mockDelay: 0 }));
+  const status = await (await fetch(base + '/api/status')).json();
+  assert.equal(status.mode, 'backend');
+  assert.equal(status.ready, true);
+  assert.equal(status.message, undefined);
+  assert.equal(status.categoryGeneration, true);
+  const generation = await fetch(base + '/api/generate', { method: 'POST', body: JSON.stringify({ description: 'Меняю трубы', categories: [{ id: 104, name: 'Сантехника' }] }) });
+  assert.deepEqual(await generation.json(), result);
+  const categories = await fetch(base + '/api/categories', { method: 'POST', body: JSON.stringify({ description: 'Меняю трубы' }) });
+  assert.equal(categories.status, 200);
+  assert.deepEqual((await categories.json()).categories, [{ id: 104, name: 'Сантехника' }]);
+  assert.deepEqual(calls, ['/ready', '/api/generate']);
+});
+
+test('ошибка backend не подменяется успешной генерацией заглушки', async t => {
+  const upstream = await start(t, createServer((_request, response) => {
+    response.writeHead(503, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify({ message: 'Qwen занят' }));
+  }));
+  const base = await start(t, createFrontendServer({ apiTarget: upstream }));
+  assert.equal((await fetch(base + '/api/status')).status, 503);
+  const response = await fetch(base + '/api/generate', { method: 'POST', body: '{}' });
+  assert.equal(response.status, 503);
+  assert.deepEqual(await response.json(), { message: 'Qwen занят' });
+  const demo = await start(t, createFrontendServer({ mockApi: true, mockDelay: 0 }));
+  assert.equal((await (await fetch(demo + '/api/status')).json()).mode, 'demo');
 });
