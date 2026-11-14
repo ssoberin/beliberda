@@ -1,7 +1,8 @@
 # Avito Hackathon — Git-managed ML service
 
 **Source of truth:** `/srv/Hakaton/innopolis_2026/ml-service/app/`.
-Do not run the historical `/srv/Hakaton/app/` copy. Persistent resources remain outside Git:
+The historical `/srv/Hakaton/app/` and `/srv/Hakaton/app_backup_v1/` copies
+were removed. Persistent resources remain outside Git:
 
 - `/srv/Hakaton/data/` — datasets and splits
 - `/srv/Hakaton/models/baseline/tfidf_baseline.joblib` — trained TF-IDF model
