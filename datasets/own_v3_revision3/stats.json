@@ -1,0 +1,47 @@
+{
+  "base_revision": "dataset_v3@0882f80",
+  "base_files_sha256": {
+    "train": "b5a439f4e679dd2d05a3ef93daa2e29a4fa919be264746f001e8473137057640",
+    "validation": "876cbc10ff4d05450b35a01df4627f0b61b6dae7e809bfaa6a46160d80bab15d",
+    "test": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7",
+    "challenge": "566258947d5a552e8902026e43e63c3c1d1c91ffffff8a712355f1e3067b3f16"
+  },
+  "train_rows": 3000,
+  "replaced": 250,
+  "new_scenario_groups": 50,
+  "variants_per_group": 5,
+  "scope": [
+    102,
+    103,
+    104,
+    105,
+    106
+  ],
+  "topic_counts": {
+    "service_in_background": 40,
+    "rare_operation": 35,
+    "bundle_boundary": 30,
+    "project_and_current_offer": 10,
+    "actor": 25,
+    "partial_refusal": 25,
+    "question_binding": 25,
+    "comparison": 25,
+    "time_condition": 25,
+    "scope_and_material": 10
+  },
+  "replacement_training_positives": {
+    "102": 30,
+    "103": 30,
+    "104": 33,
+    "105": 27,
+    "106": 30
+  },
+  "empty_scope_replacements": 100,
+  "new_train_sha256": "3a40c07bacddc87bc719cf0c046924d3831d0b633cbcfc4a635c05765c59951f",
+  "new_replacements_sha256": "a2dfbb08baf73034e0952f0fd837c851b4da7155f216d74a5fc26bf560a62ec7",
+  "scope_training_and_target_histograms_preserved": true,
+  "source_histogram_preserved": true,
+  "old_selected_median_chars": 428.5,
+  "new_median_chars": 211.0,
+  "annotation": "Author labels and self-review; no independent human gold. Related variants count as groups, not independent examples."
+}
