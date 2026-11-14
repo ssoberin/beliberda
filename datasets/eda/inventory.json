@@ -1,0 +1,86 @@
+[
+  {
+    "path": "public/public-test-dataset.parquet",
+    "rows": 208,
+    "bytes": 166063,
+    "sha256": "65b5a45a98b577d853a928932bbbdf8bd9bdeb469ded3016faace4d11f3eabaa"
+  },
+  {
+    "path": "public/public-train-annotated.jsonl",
+    "rows": 10000,
+    "bytes": 46350817,
+    "sha256": "b7118d68086624fbeab43839f22a635d4e325e4ee339f22d4aa0ad3c2e986615"
+  },
+  {
+    "path": "distillate_dataset/hard_ads_500.jsonl",
+    "rows": 500,
+    "bytes": 768956,
+    "sha256": "bb45e59842c1bee97aafc5680e939c41df09fa85a890e32edb5e16594899c07f"
+  },
+  {
+    "path": "distillate_dataset/hard_edits_500.jsonl",
+    "rows": 500,
+    "bytes": 2297133,
+    "sha256": "5d56d53417fd70423117faf9fde2ba770291c50f20124890e89ba7cde8f094ea"
+  },
+  {
+    "path": "hard_dataset/challenge.jsonl",
+    "rows": 40,
+    "bytes": 27312,
+    "sha256": "db175819218e54da469e270feb8c8815fee2c9942b50ab85349142e45e2e5590"
+  },
+  {
+    "path": "hard_dataset/test.jsonl",
+    "rows": 240,
+    "bytes": 190888,
+    "sha256": "6df1dce2276fa037d2bafbaf629a09697efe5c8df4681328a60ade8815f78dc5"
+  },
+  {
+    "path": "hard_dataset/train.jsonl",
+    "rows": 1320,
+    "bytes": 978110,
+    "sha256": "d9ab439cd8bb68dddb9b9c846d42b8f6a5f5aaf88edc183f9167d93e5ab4c221"
+  },
+  {
+    "path": "hard_dataset/v2/challenge.jsonl",
+    "rows": 40,
+    "bytes": 27312,
+    "sha256": "db175819218e54da469e270feb8c8815fee2c9942b50ab85349142e45e2e5590"
+  },
+  {
+    "path": "hard_dataset/v2/test.jsonl",
+    "rows": 3016,
+    "bytes": 3858775,
+    "sha256": "cde5099d8177e12bd4054548e17e6fd2c60af0740823614e669b331e6c3a7c55"
+  },
+  {
+    "path": "hard_dataset/v2/train.jsonl",
+    "rows": 8464,
+    "bytes": 9718473,
+    "sha256": "0d5bcb4de37cbe2e0efaa990ef8af13bef25239437b03c4559d88edeea0839e9"
+  },
+  {
+    "path": "hard_dataset/v2/validation.jsonl",
+    "rows": 2440,
+    "bytes": 3009728,
+    "sha256": "7677f3c64ccb21d3bea90d4fa09b9b67cdfeedcba7b5b626ab9fc9cef8ae217d"
+  },
+  {
+    "path": "hard_dataset/validation.jsonl",
+    "rows": 240,
+    "bytes": 183456,
+    "sha256": "c65756e8e1612e6ad0456ccc844770a3d992dd5270c9ee4a282fd715785aa3db"
+  },
+  {
+    "path": "hard_negation_300/hard_negation_300.jsonl",
+    "rows": 300,
+    "bytes": 191247,
+    "sha256": "5fc7ba7f4b58fe44478cd4aba80df01552870a19086cbe818d38919c287c4507"
+  },
+  {
+    "path": "hard_illiterate_200/hard_illiterate_200.jsonl",
+    "rows": 200,
+    "bytes": 180937,
+    "sha256": "8da57d08c3209c4f56006c4e1d7c2e8c3adce32fd1e627d9d470cf0c2dc3638e"
+  }
+]

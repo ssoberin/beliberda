@@ -1,0 +1,860 @@
+{
+  "distillate_dataset/hard_ads_500.jsonl": {
+    "rows": 500,
+    "unique_texts": 500,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 140,
+    "label_counts": {
+      "101": 0,
+      "102": 86,
+      "103": 118,
+      "104": 132,
+      "105": 123,
+      "106": 124
+    },
+    "source_counts": {
+      "101": 500
+    },
+    "cardinality": {
+      "0": 140,
+      "1": 185,
+      "2": 128,
+      "3": 46,
+      "4": 1
+    },
+    "characters": {
+      "min": 136.0,
+      "p25": 326.8,
+      "median": 449.5,
+      "p75": 838.0,
+      "p95": 1558.1,
+      "p99": 1715.2,
+      "max": 1934.0
+    },
+    "words": {
+      "median": 61.0,
+      "p95": 228.1,
+      "max": 279.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 239,
+    "two_or_more_negation_tokens_rows": 171,
+    "only_marker_rows": 81,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "not_annotated": 500
+    },
+    "negation_depth": {
+      "not_annotated": 500
+    },
+    "topics": {
+      "not_annotated": 500
+    }
+  },
+  "distillate_dataset/hard_edits_500.jsonl": {
+    "rows": 500,
+    "unique_texts": 489,
+    "duplicate_extra_rows": 11,
+    "duplicate_groups": 9,
+    "largest_duplicate_group": 3,
+    "empty_targets": 170,
+    "label_counts": {
+      "101": 100,
+      "102": 204,
+      "103": 234,
+      "104": 188,
+      "105": 200,
+      "106": 244
+    },
+    "source_counts": {
+      "101": 400,
+      "102": 25,
+      "103": 21,
+      "104": 18,
+      "105": 12,
+      "106": 24
+    },
+    "cardinality": {
+      "0": 170,
+      "1": 38,
+      "2": 46,
+      "3": 75,
+      "4": 40,
+      "5": 131
+    },
+    "characters": {
+      "min": 12.0,
+      "p25": 1180.2,
+      "median": 2077.0,
+      "p75": 3380.0,
+      "p95": 4953.0,
+      "p99": 5380.3,
+      "max": 5434.0
+    },
+    "words": {
+      "median": 263.5,
+      "p95": 614.0,
+      "max": 716.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 2,
+    "standalone_negation_rows": 338,
+    "two_or_more_negation_tokens_rows": 228,
+    "only_marker_rows": 132,
+    "mixed_script_word_rows": 123,
+    "augmentations": {
+      "not_annotated": 500
+    },
+    "negation_depth": {
+      "not_annotated": 500
+    },
+    "topics": {
+      "not_annotated": 500
+    }
+  },
+  "hard_dataset/challenge.jsonl": {
+    "rows": 40,
+    "unique_texts": 40,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 6,
+    "label_counts": {
+      "101": 2,
+      "102": 5,
+      "103": 10,
+      "104": 12,
+      "105": 11,
+      "106": 10
+    },
+    "source_counts": {
+      "101": 34,
+      "103": 2,
+      "104": 2,
+      "105": 2
+    },
+    "cardinality": {
+      "0": 6,
+      "1": 26,
+      "2": 4,
+      "3": 2,
+      "5": 2
+    },
+    "characters": {
+      "min": 67.0,
+      "p25": 88.8,
+      "median": 101.0,
+      "p75": 106.5,
+      "p95": 123.2,
+      "p99": 142.0,
+      "max": 151.0
+    },
+    "words": {
+      "median": 14.0,
+      "p95": 17.0,
+      "max": 23.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 35,
+    "two_or_more_negation_tokens_rows": 15,
+    "only_marker_rows": 19,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "not_annotated": 40
+    },
+    "negation_depth": {
+      "not_annotated": 40
+    },
+    "topics": {
+      "not_annotated": 40
+    }
+  },
+  "hard_dataset/test.jsonl": {
+    "rows": 240,
+    "unique_texts": 240,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 5,
+    "label_counts": {
+      "101": 37,
+      "102": 45,
+      "103": 45,
+      "104": 45,
+      "105": 45,
+      "106": 43
+    },
+    "source_counts": {
+      "101": 102,
+      "102": 16,
+      "103": 42,
+      "104": 24,
+      "105": 38,
+      "106": 18
+    },
+    "cardinality": {
+      "0": 5,
+      "1": 210,
+      "2": 25
+    },
+    "characters": {
+      "min": 99.0,
+      "p25": 124.0,
+      "median": 140.0,
+      "p75": 199.5,
+      "p95": 269.0,
+      "p99": 274.0,
+      "max": 290.0
+    },
+    "words": {
+      "median": 20.0,
+      "p95": 37.0,
+      "max": 40.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 240,
+    "two_or_more_negation_tokens_rows": 150,
+    "only_marker_rows": 60,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "not_annotated": 240
+    },
+    "negation_depth": {
+      "not_annotated": 240
+    },
+    "topics": {
+      "not_annotated": 240
+    }
+  },
+  "hard_dataset/train.jsonl": {
+    "rows": 1320,
+    "unique_texts": 1320,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 160,
+    "label_counts": {
+      "101": 198,
+      "102": 282,
+      "103": 284,
+      "104": 276,
+      "105": 282,
+      "106": 278
+    },
+    "source_counts": {
+      "101": 634,
+      "102": 146,
+      "103": 100,
+      "104": 128,
+      "105": 156,
+      "106": 156
+    },
+    "cardinality": {
+      "0": 160,
+      "1": 720,
+      "2": 440
+    },
+    "characters": {
+      "min": 54.0,
+      "p25": 110.0,
+      "median": 127.0,
+      "p75": 143.0,
+      "p95": 166.0,
+      "p99": 182.0,
+      "max": 203.0
+    },
+    "words": {
+      "median": 18.0,
+      "p95": 23.0,
+      "max": 26.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 990,
+    "two_or_more_negation_tokens_rows": 270,
+    "only_marker_rows": 330,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "not_annotated": 1320
+    },
+    "negation_depth": {
+      "not_annotated": 1320
+    },
+    "topics": {
+      "not_annotated": 1320
+    }
+  },
+  "hard_dataset/v2/challenge.jsonl": {
+    "rows": 40,
+    "unique_texts": 40,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 6,
+    "label_counts": {
+      "101": 2,
+      "102": 5,
+      "103": 10,
+      "104": 12,
+      "105": 11,
+      "106": 10
+    },
+    "source_counts": {
+      "101": 34,
+      "103": 2,
+      "104": 2,
+      "105": 2
+    },
+    "cardinality": {
+      "0": 6,
+      "1": 26,
+      "2": 4,
+      "3": 2,
+      "5": 2
+    },
+    "characters": {
+      "min": 67.0,
+      "p25": 88.8,
+      "median": 101.0,
+      "p75": 106.5,
+      "p95": 123.2,
+      "p99": 142.0,
+      "max": 151.0
+    },
+    "words": {
+      "median": 14.0,
+      "p95": 17.0,
+      "max": 23.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 35,
+    "two_or_more_negation_tokens_rows": 15,
+    "only_marker_rows": 19,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "not_annotated": 40
+    },
+    "negation_depth": {
+      "not_annotated": 40
+    },
+    "topics": {
+      "not_annotated": 40
+    }
+  },
+  "hard_dataset/v2/test.jsonl": {
+    "rows": 3016,
+    "unique_texts": 3016,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 191,
+    "label_counts": {
+      "101": 856,
+      "102": 864,
+      "103": 853,
+      "104": 877,
+      "105": 865,
+      "106": 971
+    },
+    "source_counts": {
+      "101": 604,
+      "102": 544,
+      "103": 552,
+      "104": 522,
+      "105": 506,
+      "106": 288
+    },
+    "cardinality": {
+      "0": 191,
+      "1": 1210,
+      "2": 1039,
+      "3": 348,
+      "4": 186,
+      "5": 42
+    },
+    "characters": {
+      "min": 57.0,
+      "p25": 139.0,
+      "median": 155.0,
+      "p75": 384.0,
+      "p95": 415.0,
+      "p99": 424.0,
+      "max": 433.0
+    },
+    "words": {
+      "median": 21.0,
+      "p95": 60.0,
+      "max": 61.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 3007,
+    "two_or_more_negation_tokens_rows": 2104,
+    "only_marker_rows": 60,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "authored_errors": 4,
+      "clean": 924,
+      "grammar_spacing": 924,
+      "not_annotated": 240,
+      "spelling": 924
+    },
+    "negation_depth": {
+      "1": 576,
+      "2": 580,
+      "3": 540,
+      "4": 1080,
+      "not_annotated": 240
+    },
+    "topics": {
+      "colloquial_particles": 4,
+      "multicategory": 1152,
+      "nested_negation": 1620,
+      "not_annotated": 240
+    }
+  },
+  "hard_dataset/v2/train.jsonl": {
+    "rows": 8464,
+    "unique_texts": 8464,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 737,
+    "label_counts": {
+      "101": 2071,
+      "102": 2156,
+      "103": 2141,
+      "104": 2168,
+      "105": 2156,
+      "106": 2318
+    },
+    "source_counts": {
+      "101": 1890,
+      "102": 1466,
+      "103": 1360,
+      "104": 1370,
+      "105": 1322,
+      "106": 1056
+    },
+    "cardinality": {
+      "0": 737,
+      "1": 3713,
+      "2": 3150,
+      "3": 522,
+      "4": 279,
+      "5": 63
+    },
+    "characters": {
+      "min": 35.0,
+      "p25": 125.0,
+      "median": 143.0,
+      "p75": 172.0,
+      "p95": 409.0,
+      "p99": 465.0,
+      "max": 530.0
+    },
+    "words": {
+      "median": 19.0,
+      "p95": 57.0,
+      "max": 77.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 8109,
+    "two_or_more_negation_tokens_rows": 3820,
+    "only_marker_rows": 870,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "authored_errors": 16,
+      "clean": 2376,
+      "grammar_spacing": 2376,
+      "not_annotated": 1320,
+      "spelling": 2376
+    },
+    "negation_depth": {
+      "1": 1728,
+      "2": 3256,
+      "3": 1620,
+      "4": 540,
+      "not_annotated": 1320
+    },
+    "topics": {
+      "colloquial_particles": 16,
+      "multicategory": 1728,
+      "nested_negation": 5400,
+      "not_annotated": 1320
+    }
+  },
+  "hard_dataset/v2/validation.jsonl": {
+    "rows": 2440,
+    "unique_texts": 2440,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 195,
+    "label_counts": {
+      "101": 620,
+      "102": 634,
+      "103": 634,
+      "104": 639,
+      "105": 639,
+      "106": 691
+    },
+    "source_counts": {
+      "101": 500,
+      "102": 426,
+      "103": 412,
+      "104": 414,
+      "105": 382,
+      "106": 306
+    },
+    "cardinality": {
+      "0": 195,
+      "1": 1056,
+      "2": 901,
+      "3": 174,
+      "4": 93,
+      "5": 21
+    },
+    "characters": {
+      "min": 50.0,
+      "p25": 129.0,
+      "median": 140.0,
+      "p75": 170.2,
+      "p95": 528.0,
+      "p99": 577.0,
+      "max": 631.0
+    },
+    "words": {
+      "median": 19.0,
+      "p95": 75.0,
+      "max": 90.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 2101,
+    "two_or_more_negation_tokens_rows": 1083,
+    "only_marker_rows": 60,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "authored_errors": 4,
+      "clean": 732,
+      "grammar_spacing": 732,
+      "not_annotated": 240,
+      "spelling": 732
+    },
+    "negation_depth": {
+      "1": 576,
+      "2": 4,
+      "3": 1620,
+      "not_annotated": 240
+    },
+    "topics": {
+      "colloquial_particles": 4,
+      "multicategory": 576,
+      "nested_negation": 1620,
+      "not_annotated": 240
+    }
+  },
+  "hard_dataset/validation.jsonl": {
+    "rows": 240,
+    "unique_texts": 240,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 20,
+    "label_counts": {
+      "101": 35,
+      "102": 49,
+      "103": 55,
+      "104": 47,
+      "105": 53,
+      "106": 51
+    },
+    "source_counts": {
+      "101": 112,
+      "102": 18,
+      "103": 22,
+      "104": 30,
+      "105": 22,
+      "106": 36
+    },
+    "cardinality": {
+      "0": 20,
+      "1": 150,
+      "2": 70
+    },
+    "characters": {
+      "min": 89.0,
+      "p25": 115.0,
+      "median": 133.5,
+      "p75": 150.0,
+      "p95": 172.1,
+      "p99": 179.6,
+      "max": 193.0
+    },
+    "words": {
+      "median": 19.0,
+      "p95": 24.0,
+      "max": 27.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 180,
+    "two_or_more_negation_tokens_rows": 30,
+    "only_marker_rows": 60,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "not_annotated": 240
+    },
+    "negation_depth": {
+      "not_annotated": 240
+    },
+    "topics": {
+      "not_annotated": 240
+    }
+  },
+  "hard_illiterate_200/hard_illiterate_200.jsonl": {
+    "rows": 200,
+    "unique_texts": 200,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 49,
+    "label_counts": {
+      "101": 0,
+      "102": 76,
+      "103": 73,
+      "104": 82,
+      "105": 88,
+      "106": 86
+    },
+    "source_counts": {
+      "101": 200
+    },
+    "cardinality": {
+      "0": 49,
+      "1": 38,
+      "2": 36,
+      "3": 35,
+      "4": 20,
+      "5": 22
+    },
+    "characters": {
+      "min": 115.0,
+      "p25": 206.0,
+      "median": 256.0,
+      "p75": 318.0,
+      "p95": 397.1,
+      "p99": 445.1,
+      "max": 469.0
+    },
+    "words": {
+      "median": 38.0,
+      "p95": 58.0,
+      "max": 70.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 109,
+    "two_or_more_negation_tokens_rows": 41,
+    "only_marker_rows": 7,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "not_annotated": 200
+    },
+    "negation_depth": {
+      "not_annotated": 200
+    },
+    "topics": {
+      "not_annotated": 200
+    }
+  },
+  "hard_negation_300/hard_negation_300.jsonl": {
+    "rows": 300,
+    "unique_texts": 300,
+    "duplicate_extra_rows": 0,
+    "duplicate_groups": 0,
+    "largest_duplicate_group": 1,
+    "empty_targets": 0,
+    "label_counts": {
+      "101": 0,
+      "102": 126,
+      "103": 107,
+      "104": 119,
+      "105": 104,
+      "106": 121
+    },
+    "source_counts": {
+      "101": 300
+    },
+    "cardinality": {
+      "1": 90,
+      "2": 146,
+      "3": 62,
+      "4": 1,
+      "5": 1
+    },
+    "characters": {
+      "min": 42.0,
+      "p25": 89.8,
+      "median": 106.0,
+      "p75": 128.0,
+      "p95": 163.0,
+      "p99": 177.0,
+      "max": 199.0
+    },
+    "words": {
+      "median": 16.0,
+      "p95": 24.1,
+      "max": 31.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 0,
+    "standalone_negation_rows": 261,
+    "two_or_more_negation_tokens_rows": 65,
+    "only_marker_rows": 41,
+    "mixed_script_word_rows": 0,
+    "augmentations": {
+      "not_annotated": 300
+    },
+    "negation_depth": {
+      "not_annotated": 300
+    },
+    "topics": {
+      "not_annotated": 300
+    }
+  },
+  "public/public-test-dataset.parquet": {
+    "rows": 208,
+    "unique_texts": 139,
+    "duplicate_extra_rows": 69,
+    "duplicate_groups": 26,
+    "largest_duplicate_group": 13,
+    "empty_targets": 106,
+    "label_counts": {
+      "101": 0,
+      "102": 62,
+      "103": 36,
+      "104": 65,
+      "105": 74,
+      "106": 58
+    },
+    "source_counts": {
+      "101": 208
+    },
+    "cardinality": {
+      "0": 106,
+      "1": 19,
+      "2": 31,
+      "3": 13,
+      "4": 20,
+      "5": 19
+    },
+    "characters": {
+      "min": 4.0,
+      "p25": 575.0,
+      "median": 1343.0,
+      "p75": 2808.2,
+      "p95": 3875.5,
+      "p99": 4225.0,
+      "max": 4480.0
+    },
+    "words": {
+      "median": 175.0,
+      "p95": 464.9,
+      "max": 547.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 7,
+    "standalone_negation_rows": 95,
+    "two_or_more_negation_tokens_rows": 68,
+    "only_marker_rows": 42,
+    "mixed_script_word_rows": 13,
+    "augmentations": {
+      "not_annotated": 208
+    },
+    "negation_depth": {
+      "not_annotated": 208
+    },
+    "topics": {
+      "not_annotated": 208
+    }
+  },
+  "public/public-train-annotated.jsonl": {
+    "rows": 10000,
+    "unique_texts": 4855,
+    "duplicate_extra_rows": 5145,
+    "duplicate_groups": 414,
+    "largest_duplicate_group": 94,
+    "empty_targets": 2909,
+    "label_counts": {
+      "101": 0,
+      "102": 5484,
+      "103": 5073,
+      "104": 4582,
+      "105": 4562,
+      "106": 5481
+    },
+    "source_counts": {
+      "101": 10000
+    },
+    "cardinality": {
+      "0": 2909,
+      "1": 957,
+      "2": 1084,
+      "3": 1316,
+      "4": 561,
+      "5": 3173
+    },
+    "characters": {
+      "min": 1.0,
+      "p25": 1384.8,
+      "median": 2196.0,
+      "p75": 3214.0,
+      "p95": 4960.0,
+      "p99": 5438.0,
+      "max": 5564.0
+    },
+    "words": {
+      "median": 285.0,
+      "p95": 622.0,
+      "max": 765.0
+    },
+    "over_6000_chars": 0,
+    "over_12000_chars": 0,
+    "under_20_chars": 98,
+    "standalone_negation_rows": 6650,
+    "two_or_more_negation_tokens_rows": 4303,
+    "only_marker_rows": 2724,
+    "mixed_script_word_rows": 539,
+    "augmentations": {
+      "not_annotated": 10000
+    },
+    "negation_depth": {
+      "not_annotated": 10000
+    },
+    "topics": {
+      "not_annotated": 10000
+    }
+  }
+}

@@ -9,10 +9,10 @@ hackathon-evaluation.md
 microcategories-guide.md
 Краткий справочник микрокатегорий с описаниями и примерами услуг.
 
-public-test-dataset.parquet
+../../../datasets/public/public-test-dataset.parquet
 Набор из 208 записей с объявлениями и метками категорий. Поля: title — заголовок, description — описание, categories — список названий категорий.
 
-public-train-annotated.jsonl
+../../../datasets/public/public-train-annotated.jsonl
 10 000 объявлений с автоматической разметкой, подготовленной с помощью модели GPT-6. Разметка выполнена с применением предметных правил и смысловой проверкой выбранных сложных случаев моделью; она может содержать ошибки и не является вручную проверенным эталоном.
 
 Формат JSONL: каждая строка — отдельный JSON-объект:

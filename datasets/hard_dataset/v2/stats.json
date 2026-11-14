@@ -1,0 +1,192 @@
+{
+  "version": 2,
+  "seed": 2026,
+  "total": 13960,
+  "splits": {
+    "train": {
+      "rows": 8464,
+      "semantic_groups": 1856,
+      "empty_targets": 737,
+      "target_counts": {
+        "101": 2071,
+        "102": 2156,
+        "103": 2141,
+        "104": 2168,
+        "105": 2156,
+        "106": 2318
+      },
+      "source_counts": {
+        "101": 1890,
+        "102": 1466,
+        "103": 1360,
+        "104": 1370,
+        "105": 1322,
+        "106": 1056
+      },
+      "target_cardinality": {
+        "0": 737,
+        "1": 3713,
+        "2": 3150,
+        "3": 522,
+        "4": 279,
+        "5": 63
+      },
+      "augmentations": {
+        "authored_errors": 16,
+        "clean": 3696,
+        "grammar_spacing": 2376,
+        "spelling": 2376
+      },
+      "topics": {
+        "colloquial_particles": 16,
+        "multicategory": 1728,
+        "nested_negation": 5400,
+        "original_semantics": 1320
+      },
+      "negation_depth": {
+        "0": 1320,
+        "1": 1728,
+        "2": 3256,
+        "3": 1620,
+        "4": 540
+      }
+    },
+    "validation": {
+      "rows": 2440,
+      "semantic_groups": 488,
+      "empty_targets": 195,
+      "target_counts": {
+        "101": 620,
+        "102": 634,
+        "103": 634,
+        "104": 639,
+        "105": 639,
+        "106": 691
+      },
+      "source_counts": {
+        "101": 500,
+        "102": 426,
+        "103": 412,
+        "104": 414,
+        "105": 382,
+        "106": 306
+      },
+      "target_cardinality": {
+        "0": 195,
+        "1": 1056,
+        "2": 901,
+        "3": 174,
+        "4": 93,
+        "5": 21
+      },
+      "augmentations": {
+        "authored_errors": 4,
+        "clean": 972,
+        "grammar_spacing": 732,
+        "spelling": 732
+      },
+      "topics": {
+        "colloquial_particles": 4,
+        "multicategory": 576,
+        "nested_negation": 1620,
+        "original_semantics": 240
+      },
+      "negation_depth": {
+        "0": 240,
+        "1": 576,
+        "2": 4,
+        "3": 1620
+      }
+    },
+    "test": {
+      "rows": 3016,
+      "semantic_groups": 584,
+      "empty_targets": 191,
+      "target_counts": {
+        "101": 856,
+        "102": 864,
+        "103": 853,
+        "104": 877,
+        "105": 865,
+        "106": 971
+      },
+      "source_counts": {
+        "101": 604,
+        "102": 544,
+        "103": 552,
+        "104": 522,
+        "105": 506,
+        "106": 288
+      },
+      "target_cardinality": {
+        "0": 191,
+        "1": 1210,
+        "2": 1039,
+        "3": 348,
+        "4": 186,
+        "5": 42
+      },
+      "augmentations": {
+        "authored_errors": 4,
+        "clean": 1164,
+        "grammar_spacing": 924,
+        "spelling": 924
+      },
+      "topics": {
+        "colloquial_particles": 4,
+        "multicategory": 1152,
+        "nested_negation": 1620,
+        "original_semantics": 240
+      },
+      "negation_depth": {
+        "0": 240,
+        "1": 576,
+        "2": 580,
+        "3": 540,
+        "4": 1080
+      }
+    },
+    "challenge": {
+      "rows": 40,
+      "semantic_groups": 20,
+      "empty_targets": 6,
+      "target_counts": {
+        "101": 2,
+        "102": 5,
+        "103": 10,
+        "104": 12,
+        "105": 11,
+        "106": 10
+      },
+      "source_counts": {
+        "101": 34,
+        "103": 2,
+        "104": 2,
+        "105": 2
+      },
+      "target_cardinality": {
+        "0": 6,
+        "1": 26,
+        "2": 4,
+        "3": 2,
+        "5": 2
+      },
+      "augmentations": {
+        "clean": 40
+      },
+      "topics": {
+        "original_semantics": 40
+      },
+      "negation_depth": {
+        "0": 40
+      }
+    }
+  },
+  "sha256": {
+    "train.jsonl": "0d5bcb4de37cbe2e0efaa990ef8af13bef25239437b03c4559d88edeea0839e9",
+    "validation.jsonl": "7677f3c64ccb21d3bea90d4fa09b9b67cdfeedcba7b5b626ab9fc9cef8ae217d",
+    "test.jsonl": "cde5099d8177e12bd4054548e17e6fd2c60af0740823614e669b331e6c3a7c55",
+    "challenge.jsonl": "db175819218e54da469e270feb8c8815fee2c9942b50ab85349142e45e2e5590"
+  },
+  "lineage": "Includes v1 hard_dataset plus new synthetic scenarios. Do not concatenate v1 and v2. Legacy uncertain corpora and official test are not imported."
+}

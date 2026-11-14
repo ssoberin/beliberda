@@ -19,6 +19,8 @@ venv/
 *.pth
 *.parquet
 *.jsonl
+!/datasets/**/*.jsonl
+!/datasets/**/*.parquet
 
 # Editor/OS files
 .DS_Store
