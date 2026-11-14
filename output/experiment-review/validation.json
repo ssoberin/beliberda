@@ -17,5 +17,12 @@
     }
   },
   "notebook_execution": "Re-executed in the merged test-branch worktree from saved measurements; no retraining",
-  "models_and_datasets_modified": false
+  "models_and_datasets_modified": false,
+  "subsequent_main_merge": {
+    "commit": "d4cdb60",
+    "changed_files": [
+      "datasets/model_points.ipynb"
+    ],
+    "validation": "nbformat schema validated; implementation and datasets unchanged since the 16 passing tests"
+  }
 }
