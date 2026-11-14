@@ -1,0 +1,24 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Generated datasets, model weights and experiment outputs
+**/data/
+**/models/
+**/artifacts/
+**/results/
+*.joblib
+*.safetensors
+*.pt
+*.pth
+*.parquet
+*.jsonl
+
+# Editor/OS files
+.DS_Store
