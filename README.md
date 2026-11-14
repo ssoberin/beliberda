@@ -33,3 +33,13 @@ uvicorn app.main:app --host 127.0.0.1 --port 8001
 Qwen ожидается по адресу `http://127.0.0.1:8000`; подробности и ограничения API
 описаны в [ml-service/app/README.md](ml-service/app/README.md). Не открывайте
 эти порты в публичную сеть без авторизации.
+
+## Эксперименты в test-branch
+
+Код, измерения, выводы и команды воспроизведения: [avito_compare/EXPERIMENTS.md](avito_compare/EXPERIMENTS.md).
+
+- [Выполненный notebook всех экспериментов](output/experiment-review/experiments.ipynb)
+- [Длины реальных и синтетических текстов](output/dataset-length-comparison/lengths.ipynb)
+- [Парное сравнение до/после добавления синтетики](output/paired-data-evaluation/report.md)
+
+Веса, кэши и подготовленные выборки локальные; production-модель не заменялась.

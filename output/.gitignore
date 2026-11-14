@@ -1,0 +1,6 @@
+*.joblib
+*.npz
+*.jsonl
+*.parquet
+__pycache__/
+.ipynb_checkpoints/

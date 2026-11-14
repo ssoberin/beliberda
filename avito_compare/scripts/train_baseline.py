@@ -37,14 +37,22 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--data-dir", default=Path("data/processed"), type=Path)
     p.add_argument("--output-dir", default=Path("artifacts"), type=Path)
+    p.add_argument("--word-ngram-max", type=int, choices=(2, 3), default=2,
+                   help="Maximum word n-gram length; default preserves the bigram baseline")
+    p.add_argument("--char-analyzer", choices=("char", "char_wb"), default="char")
+    p.add_argument("--no-max-features", action="store_true",
+                   help="Remove vocabulary caps from both TF-IDF vectorizers")
+    p.add_argument("--word-max-features", type=int, default=18000)
+    p.add_argument("--char-max-features", type=int, default=28000)
+    p.add_argument("--sublinear-tf", action=argparse.BooleanOptionalAction, default=True)
     args = p.parse_args()
     x_train, y_train = load(args.data_dir / "train.jsonl")
     x_cal, y_cal = load(args.data_dir / "calibration.jsonl")
     x_val, y_val = load(args.data_dir / "validation.jsonl")
 
     vec = FeatureUnion([
-        ("word", TfidfVectorizer(ngram_range=(1, 2), min_df=2, max_features=18000, sublinear_tf=True, dtype=np.float32)),
-        ("char", TfidfVectorizer(analyzer="char", ngram_range=(3, 5), min_df=3, max_features=28000, sublinear_tf=True, dtype=np.float32)),
+        ("word", TfidfVectorizer(ngram_range=(1, args.word_ngram_max), min_df=2, max_features=None if args.no_max_features else args.word_max_features, sublinear_tf=args.sublinear_tf, dtype=np.float32)),
+        ("char", TfidfVectorizer(analyzer=args.char_analyzer, ngram_range=(3, 5), min_df=3, max_features=None if args.no_max_features else args.char_max_features, sublinear_tf=args.sublinear_tf, dtype=np.float32)),
     ])
     model = Pipeline([
         ("vectorizer", vec),

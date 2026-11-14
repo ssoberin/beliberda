@@ -1,0 +1,3866 @@
+{
+  "train": [
+    {
+      "item_id": "hard-anaphora-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Часто спрашивают про комплексный ремонт квартиры под ключ. Это мы не делаем. Зато выполняем штукатурку стен по маякам.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "anaphora",
+      "group_id": "hard-anaphora-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Указание «это» относится к предыдущему упоминанию."
+    },
+    {
+      "item_id": "hard-anaphora-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Часто спрашивают про комплексный ремонт квартиры под ключ. Это мы делаем. А вот штукатурку стен по маякам не выполняем.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "anaphora",
+      "group_id": "hard-anaphora-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Указание «это» относится к предыдущему упоминанию."
+    },
+    {
+      "item_id": "hard-both_refused-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Оказываем две услуги: выполняем комплексный ремонт квартиры под ключ и штукатурку стен по маякам.",
+      "mcId": 104,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "both_refused",
+      "group_id": "hard-both_refused-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание сказуемого относится ко всему перечислению."
+    },
+    {
+      "item_id": "hard-both_refused-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Не оказываем эти две услуги: не выполняем комплексный ремонт квартиры под ключ и штукатурку стен по маякам. Только собираем мебель.",
+      "mcId": 104,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "both_refused",
+      "group_id": "hard-both_refused-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание сказуемого относится ко всему перечислению."
+    },
+    {
+      "item_id": "v2-colloquial-00-0",
+      "title": "Услуги мастера",
+      "description": "я плитку неделаю а вот разетки меняю",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "colloquial-00",
+      "group_id": "v2-colloquial-00",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-00-1",
+      "title": "Услуги мастера",
+      "description": "я разетки неделаю а вот плитку ложу",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "colloquial-00",
+      "group_id": "v2-colloquial-00",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-01-0",
+      "title": "Услуги мастера",
+      "description": "не тока абои клею но и сантехнику делаю трубы меняю",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        },
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        104,
+        106
+      ],
+      "type": "colloquial-01",
+      "group_id": "v2-colloquial-01",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-01-1",
+      "title": "Услуги мастера",
+      "description": "тока абои клею сантехнику неделаю трубы не меняю",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "colloquial-01",
+      "group_id": "v2-colloquial-01",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-02-0",
+      "title": "Услуги мастера",
+      "description": "штукатурку небирём зато шпаклюем под пакраску",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "colloquial-02",
+      "group_id": "v2-colloquial-02",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-02-1",
+      "title": "Услуги мастера",
+      "description": "шпаклёвку небирём зато штукатурим по маякам",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "colloquial-02",
+      "group_id": "v2-colloquial-02",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-03-0",
+      "title": "Услуги мастера",
+      "description": "я ни делаю електрику отказываюсь от таких заказов тока крашу стены",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "colloquial-03",
+      "group_id": "v2-colloquial-03",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-03-1",
+      "title": "Услуги мастера",
+      "description": "я делаю електрику меняю провада а красить стены отказываюсь",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "colloquial-03",
+      "group_id": "v2-colloquial-03",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-04-0",
+      "title": "Услуги мастера",
+      "description": "не не трубы я меняю а плитку не ложу",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "colloquial-04",
+      "group_id": "v2-colloquial-04",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-04-1",
+      "title": "Услуги мастера",
+      "description": "не не плитку я ложу а трубы не меняю",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "colloquial-04",
+      "group_id": "v2-colloquial-04",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-05-0",
+      "title": "Услуги мастера",
+      "description": "мы ни разу не отказывали по укладке кафеля берём такие заказы а обои неклеим",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "colloquial-05",
+      "group_id": "v2-colloquial-05",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-05-1",
+      "title": "Услуги мастера",
+      "description": "мы отказываем по укладке кафеля неберём такие заказы а обои клеим",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "colloquial-05",
+      "group_id": "v2-colloquial-05",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-06-0",
+      "title": "Услуги мастера",
+      "description": "квартиру целиком пад ключ делаем от начала до здачи а проводку сами не меняем",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "colloquial-06",
+      "group_id": "v2-colloquial-06",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-06-1",
+      "title": "Услуги мастера",
+      "description": "квартиру целиком пад ключ неделаем тока проводку меняем",
+      "mcId": 105,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "colloquial-06",
+      "group_id": "v2-colloquial-06",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-07-0",
+      "title": "Услуги мастера",
+      "description": "всё не так написали мы НЕ отказываемся штукатурить стены но красить не будем",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "colloquial-07",
+      "group_id": "v2-colloquial-07",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-07-1",
+      "title": "Услуги мастера",
+      "description": "всё не так написали мы отказываемся штукатурить стены но красить будем",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "colloquial-07",
+      "group_id": "v2-colloquial-07",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-concord-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Мы никому не отказываем в услуге: выполняем комплексный ремонт квартиры под ключ. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "concord",
+      "group_id": "v2-concord-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-concord-101-102-0-0-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-concord-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Мы ни для кого, ни при каких обстоятельствах не выполняем комплексный ремонт квартиры под ключ. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "concord",
+      "group_id": "v2-concord-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-concord-101-102-0-1-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-condition-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Если понадобится, выполним и штукатурку стен по маякам: эта услуга есть в нашем прайсе.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "condition",
+      "group_id": "hard-condition-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Условие выполнения действующей услуги отличается от неподтверждённой возможности."
+    },
+    {
+      "item_id": "hard-condition-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Если бы был специалист, могли бы выполнять штукатурку стен по маякам, но сейчас такой услуги нет.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "condition",
+      "group_id": "hard-condition-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Условие выполнения действующей услуги отличается от неподтверждённой возможности."
+    },
+    {
+      "item_id": "hard-correction-101-102-0",
+      "title": "Услуги мастера",
+      "description": "В старой версии объявления предлагали комплексный ремонт квартиры под ключ и штукатурку стен по маякам. Исправление: первую услугу убрали, сейчас выполняем только вторую.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "correction",
+      "group_id": "hard-correction-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Явное исправление старого списка имеет приоритет."
+    },
+    {
+      "item_id": "hard-correction-101-102-1",
+      "title": "Услуги мастера",
+      "description": "В старой версии объявления предлагали комплексный ремонт квартиры под ключ и штукатурку стен по маякам. Исправление: вторую услугу убрали, сейчас выполняем только первую.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "correction",
+      "group_id": "hard-correction-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Явное исправление старого списка имеет приоритет."
+    },
+    {
+      "item_id": "hard-customer-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Заказчик делает штукатурку стен по маякам своими силами, мы эту работу не предлагаем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "customer",
+      "group_id": "hard-customer-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Следует различать действия заказчика и исполнителя."
+    },
+    {
+      "item_id": "hard-customer-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Заказчик не делает штукатурку стен по маякам своими силами: эту работу предлагаем и выполняем мы.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "customer",
+      "group_id": "hard-customer-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Следует различать действия заказчика и исполнителя."
+    },
+    {
+      "item_id": "v2-denial_of_denial-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Неверно, что мы не выполняем комплексный ремонт квартиры под ключ. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "denial_of_denial",
+      "group_id": "v2-denial_of_denial-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-denial_of_denial-101-102-0-0-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-denial_of_denial-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Верно, что мы не выполняем комплексный ремонт квартиры под ключ. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "denial_of_denial",
+      "group_id": "v2-denial_of_denial-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-denial_of_denial-101-102-0-1-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-double_negative-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. От заказов на штукатурку стен по маякам не отказываемся: эту работу тоже делаем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "double_negative",
+      "group_id": "hard-double_negative-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Не отказываемся» утверждает готовность, а «не берёмся» её отрицает."
+    },
+    {
+      "item_id": "hard-double_negative-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. За штукатурку стен по маякам не берёмся: эту работу не делаем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "double_negative",
+      "group_id": "hard-double_negative-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Не отказываемся» утверждает готовность, а «не берёмся» её отрицает."
+    },
+    {
+      "item_id": "hard-except-101-102-0",
+      "title": "Услуги мастера",
+      "description": "В списке обсуждались две услуги: комплексный ремонт квартиры под ключ и штукатурку стен по маякам. Выполняем обе, кроме первой.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "except",
+      "group_id": "hard-except-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Исключение удаляет только названную услугу из явного списка."
+    },
+    {
+      "item_id": "hard-except-101-102-1",
+      "title": "Услуги мастера",
+      "description": "В списке обсуждались две услуги: комплексный ремонт квартиры под ключ и штукатурку стен по маякам. Выполняем обе, кроме второй.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "except",
+      "group_id": "hard-except-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Исключение удаляет только названную услугу из явного списка."
+    },
+    {
+      "item_id": "v2-four_layer_facts-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Неверно, что опровержение утверждения «мы не выполняем комплексный ремонт квартиры под ключ» не соответствует фактам. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "four_layer_facts",
+      "group_id": "v2-four_layer_facts-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-four_layer_facts-101-102-0-0-clean",
+      "negation_depth": 4,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-four_layer_facts-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Неверно, что опровержение утверждения «мы не выполняем комплексный ремонт квартиры под ключ» соответствует фактам. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "four_layer_facts",
+      "group_id": "v2-four_layer_facts-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-four_layer_facts-101-102-0-1-clean",
+      "negation_depth": 4,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-instead-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Предлагаем не комплексный ремонт квартиры под ключ, а штукатурку стен по маякам.",
+      "mcId": 104,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "instead",
+      "group_id": "hard-instead-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Противопоставление меняет выбранную услугу."
+    },
+    {
+      "item_id": "hard-instead-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Предлагаем комплексный ремонт квартиры под ключ, а не штукатурку стен по маякам.",
+      "mcId": 104,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "instead",
+      "group_id": "hard-instead-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Противопоставление меняет выбранную услугу."
+    },
+    {
+      "item_id": "hard-ne_tolko_list-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Наши услуги ограничиваются одной позицией: выполняем лишь комплексный ремонт квартиры под ключ. На штукатурку стен по маякам заказы не принимаем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "ne_tolko_list",
+      "group_id": "hard-ne_tolko_list-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Ограничительная частица и её отрицание меняют объём предложения."
+    },
+    {
+      "item_id": "hard-ne_tolko_list-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Наши услуги не ограничиваются одной позицией: выполняем как комплексный ремонт квартиры под ключ, так и штукатурку стен по маякам.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "ne_tolko_list",
+      "group_id": "hard-ne_tolko_list-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Ограничительная частица и её отрицание меняют объём предложения."
+    },
+    {
+      "item_id": "hard-neither-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Не выполняем ни комплексный ремонт квартиры под ключ, ни штукатурку стен по маякам. Занимаемся только сборкой мебели.",
+      "mcId": 103,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "neither",
+      "group_id": "hard-neither-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Общее отрицание распространяется на оба однородных дополнения."
+    },
+    {
+      "item_id": "hard-neither-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем и комплексный ремонт квартиры под ключ, и штукатурку стен по маякам. Сборкой мебели не занимаемся.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "neither",
+      "group_id": "hard-neither-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Общее отрицание распространяется на оба однородных дополнения."
+    },
+    {
+      "item_id": "hard-no_longer-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Раньше выполняли комплексный ремонт квартиры под ключ, теперь эту услугу не оказываем. Сейчас предлагаем штукатурку стен по маякам.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "no_longer",
+      "group_id": "hard-no_longer-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Прошлая деятельность отличается от действующего предложения."
+    },
+    {
+      "item_id": "hard-no_longer-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Раньше выполняли комплексный ремонт квартиры под ключ и продолжаем принимать такие заказы. Сейчас также предлагаем штукатурку стен по маякам.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "no_longer",
+      "group_id": "hard-no_longer-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Прошлая деятельность отличается от действующего предложения."
+    },
+    {
+      "item_id": "v2-no_refusal-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Мы не отказываемся выполнять комплексный ремонт квартиры под ключ и принимаем такие заказы. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "no_refusal",
+      "group_id": "v2-no_refusal-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-no_refusal-101-102-0-0-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-no_refusal-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Мы отказываемся выполнять комплексный ремонт квартиры под ключ и не принимаем такие заказы. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "no_refusal",
+      "group_id": "v2-no_refusal-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-no_refusal-101-102-0-1-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-not_all_negative-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Не все работы исключены из нашего списка: комплексный ремонт квартиры под ключ выполняем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_all_negative",
+      "group_id": "v2-not_all_negative-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_all_negative-101-102-0-0-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-not_all_negative-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Не все работы включены в наш список: комплексный ремонт квартиры под ключ не выполняем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "not_all_negative",
+      "group_id": "v2-not_all_negative-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_all_negative-101-102-0-1-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-not_confuse-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Не путайте это с другой услугой: штукатурку стен по маякам мы не предлагаем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "not_confuse",
+      "group_id": "hard-not_confuse-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Упоминание для сравнения не является предложением."
+    },
+    {
+      "item_id": "hard-not_confuse-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Не путайте это с другой услугой: штукатурку стен по маякам мы тоже предлагаем, но считаем отдельной позицией.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_confuse",
+      "group_id": "hard-not_confuse-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Упоминание для сравнения не является предложением."
+    },
+    {
+      "item_id": "v2-not_excluded-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Не исключаем из своих услуг комплексный ремонт квартиры под ключ: заказы принимаем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_excluded",
+      "group_id": "v2-not_excluded-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_excluded-101-102-0-0-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-not_excluded-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Не исключено, что когда-нибудь предложим комплексный ремонт квартиры под ключ, но сейчас такие заказы не принимаем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "not_excluded",
+      "group_id": "v2-not_excluded-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_excluded-101-102-0-1-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-not_only-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем только комплексный ремонт квартиры под ключ. Штукатурку стен по маякам не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "not_only",
+      "group_id": "hard-not_only-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Не только A, но и B» утверждает обе услуги; «только A» ограничивает перечень."
+    },
+    {
+      "item_id": "hard-not_only-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем не только комплексный ремонт квартиры под ключ, но и штукатурку стен по маякам.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_only",
+      "group_id": "hard-not_only-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Не только A, но и B» утверждает обе услуги; «только A» ограничивает перечень."
+    },
+    {
+      "item_id": "v2-not_only_nested-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Неверно, что мы не только не выполняем комплексный ремонт квартиры под ключ, но и не принимаем на неё заказы. Эту работу выполняем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_only_nested",
+      "group_id": "v2-not_only_nested-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_only_nested-101-102-0-0-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-not_only_nested-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Верно, что мы не только не выполняем комплексный ремонт квартиры под ключ, но и не принимаем на неё заказы. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "not_only_nested",
+      "group_id": "v2-not_only_nested-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_only_nested-101-102-0-1-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-not_yet-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Сейчас выполняем комплексный ремонт квартиры под ключ. Планируем добавить штукатурку стен по маякам, но пока заказы на эту работу не принимаем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "not_yet",
+      "group_id": "hard-not_yet-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Намерение на будущее не является текущим предложением."
+    },
+    {
+      "item_id": "hard-not_yet-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Сейчас выполняем комплексный ремонт квартиры под ключ. Уже добавили штукатурку стен по маякам и принимаем заказы на эту работу.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_yet",
+      "group_id": "hard-not_yet-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Намерение на будущее не является текущим предложением."
+    },
+    {
+      "item_id": "hard-only_together-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ; штукатурку стен по маякам делаем только вместе с первой услугой, отдельно не берём.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "only_together",
+      "group_id": "hard-only_together-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Запрет отдельного заказа не отрицает услугу в составе пакета."
+    },
+    {
+      "item_id": "hard-only_together-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ; штукатурку стен по маякам не делаем ни отдельно, ни вместе с первой услугой.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "only_together",
+      "group_id": "hard-only_together-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Запрет отдельного заказа не отрицает услугу в составе пакета."
+    },
+    {
+      "item_id": "hard-price_scope-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Бесплатно штукатурку стен по маякам не выполняем; за оплату по смете эту работу делаем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "price_scope",
+      "group_id": "hard-price_scope-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание бесплатности не является отказом от услуги."
+    },
+    {
+      "item_id": "hard-price_scope-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Ни бесплатно, ни за оплату штукатурку стен по маякам не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "price_scope",
+      "group_id": "hard-price_scope-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание бесплатности не является отказом от услуги."
+    },
+    {
+      "item_id": "hard-question_answer-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Вы выполняете комплексный ремонт квартиры под ключ? Да. А штукатурку стен по маякам? Нет, такую услугу не оказываем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "question_answer",
+      "group_id": "hard-question_answer-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Вопрос о работе интерпретируется вместе с ответом."
+    },
+    {
+      "item_id": "hard-question_answer-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Вы выполняете комплексный ремонт квартиры под ключ? Да. А штукатурку стен по маякам? Тоже да, принимаем заказы.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "question_answer",
+      "group_id": "hard-question_answer-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Вопрос о работе интерпретируется вместе с ответом."
+    },
+    {
+      "item_id": "v2-quote_truth-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Фраза «мы не выполняем комплексный ремонт квартиры под ключ» не соответствует действительности. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "quote_truth",
+      "group_id": "v2-quote_truth-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-quote_truth-101-102-0-0-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-quote_truth-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Фраза «мы не выполняем комплексный ремонт квартиры под ключ» соответствует действительности. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "quote_truth",
+      "group_id": "v2-quote_truth-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-quote_truth-101-102-0-1-clean",
+      "negation_depth": 2,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-refutation_refuted-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Опровержение фразы «мы не выполняем комплексный ремонт квартиры под ключ» верно. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "refutation_refuted",
+      "group_id": "v2-refutation_refuted-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-refutation_refuted-101-102-0-0-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-refutation_refuted-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Опровержение фразы «мы не выполняем комплексный ремонт квартиры под ключ» неверно. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "refutation_refuted",
+      "group_id": "v2-refutation_refuted-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-refutation_refuted-101-102-0-1-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-self_vs_team-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Лично я не выполняю комплексный ремонт квартиры под ключ, но её выполняет моя бригада по нашему договору. Также берём штукатурку стен по маякам.",
+      "mcId": 106,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "self_vs_team",
+      "group_id": "hard-self_vs_team-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание личного участия не исключает услугу собственной бригады."
+    },
+    {
+      "item_id": "hard-self_vs_team-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Лично я не выполняю комплексный ремонт квартиры под ключ, и моя бригада её тоже не выполняет. Берём только штукатурку стен по маякам.",
+      "mcId": 106,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "self_vs_team",
+      "group_id": "hard-self_vs_team-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание личного участия не исключает услугу собственной бригады."
+    },
+    {
+      "item_id": "hard-seo-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Предлагаем комплексный ремонт квартиры под ключ. Поисковые запросы: штукатурку стен по маякам. Последняя фраза — только тег, эту работу не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "seo",
+      "group_id": "hard-seo-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Перечень поисковых запросов без предложения работ не даёт меток."
+    },
+    {
+      "item_id": "hard-seo-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Предлагаем комплексный ремонт квартиры под ключ. Поисковые запросы: штукатурку стен по маякам. Последняя фраза — не только тег, эту работу тоже выполняем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "seo",
+      "group_id": "hard-seo-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Перечень поисковых запросов без предложения работ не даёт меток."
+    },
+    {
+      "item_id": "v2-status_accept-00-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Наш действующий перечень:\nЗаказы на комплексный ремонт квартиры под ключ не принимаем, эту работу не выполняем.\nЗаказы на штукатурку стен по маякам не принимаем, эту работу не выполняем.\nЗаказы на укладку керамогранита не принимаем, эту работу не выполняем.\nЗаказы на установку раковин и унитазов не принимаем, эту работу не выполняем.\nЗаказы на замену электропроводки не принимаем, эту работу не выполняем.\nЗаказы на поклейку обоев не принимаем, эту работу не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "status_accept",
+      "group_id": "v2-status_accept-00-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_accept-00-0-0-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_accept-00-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Наш действующий перечень:\nЗаказы на комплексный ремонт квартиры под ключ не принимаем, эту работу не выполняем.\nЗаказы на штукатурку стен по маякам не принимаем, эту работу не выполняем.\nЗаказы на укладку керамогранита не принимаем, эту работу не выполняем.\nЗаказы на установку раковин и унитазов не принимаем, эту работу не выполняем.\nЗаказы на замену электропроводки не принимаем, эту работу не выполняем.\nЗаказы на поклейку обоев принимаем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "status_accept",
+      "group_id": "v2-status_accept-00-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_accept-00-0-1-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_offer-00-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Условия заказа по каждой позиции:\nНе предлагаем комплексный ремонт квартиры под ключ.\nНе предлагаем штукатурку стен по маякам.\nНе предлагаем укладку керамогранита.\nНе предлагаем установку раковин и унитазов.\nНе предлагаем замену электропроводки.\nНе предлагаем поклейку обоев.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "status_offer",
+      "group_id": "v2-status_offer-00-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_offer-00-0-0-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_offer-00-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Условия заказа по каждой позиции:\nНе предлагаем комплексный ремонт квартиры под ключ.\nНе предлагаем штукатурку стен по маякам.\nНе предлагаем укладку керамогранита.\nНе предлагаем установку раковин и унитазов.\nНе предлагаем замену электропроводки.\nПредлагаем поклейку обоев.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "status_offer",
+      "group_id": "v2-status_offer-00-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_offer-00-0-1-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_scope-00-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Список услуг с ограничениями:\nНе выполняем комплексный ремонт квартиры под ключ даже за доплату.\nНе выполняем штукатурку стен по маякам даже за доплату.\nНе выполняем укладку керамогранита даже за доплату.\nНе выполняем установку раковин и унитазов даже за доплату.\nНе выполняем замену электропроводки даже за доплату.\nНе выполняем поклейку обоев даже за доплату.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "status_scope",
+      "group_id": "v2-status_scope-00-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_scope-00-0-0-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_scope-00-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Список услуг с ограничениями:\nНе выполняем комплексный ремонт квартиры под ключ даже за доплату.\nНе выполняем штукатурку стен по маякам даже за доплату.\nНе выполняем укладку керамогранита даже за доплату.\nНе выполняем установку раковин и унитазов даже за доплату.\nНе выполняем замену электропроводки даже за доплату.\nВыполняем поклейку обоев, но не бесплатно.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "status_scope",
+      "group_id": "v2-status_scope-00-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_scope-00-0-1-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-third_party-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. На штукатурку стен по маякам можем дать телефон другой бригады; сами эту работу не берём.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "third_party",
+      "group_id": "hard-third_party-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Рекомендация другого исполнителя не становится своей услугой."
+    },
+    {
+      "item_id": "hard-third_party-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. На штукатурку стен по маякам приезжает наш мастер; эту работу берём на себя по нашему договору.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "third_party",
+      "group_id": "hard-third_party-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Рекомендация другого исполнителя не становится своей услугой."
+    },
+    {
+      "item_id": "hard-time_scope-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. По выходным не выполняем штукатурку стен по маякам, а по будням принимаем и выполняем такие заказы.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "time_scope",
+      "group_id": "hard-time_scope-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Запрет на конкретное время не отменяет услугу в другое время."
+    },
+    {
+      "item_id": "hard-time_scope-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Не выполняем штукатурку стен по маякам ни по выходным, ни по будням.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "time_scope",
+      "group_id": "hard-time_scope-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Запрет на конкретное время не отменяет услугу в другое время."
+    },
+    {
+      "item_id": "v2-triple_claim-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Неверно, что мы не подтверждаем предложение выполнять комплексный ремонт квартиры под ключ: предложение подтверждаем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "triple_claim",
+      "group_id": "v2-triple_claim-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-triple_claim-101-102-0-0-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-triple_claim-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Неверно, что мы подтверждаем предложение выполнять комплексный ремонт квартиры под ключ: такую работу не берём. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "triple_claim",
+      "group_id": "v2-triple_claim-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-triple_claim-101-102-0-1-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-without_addon-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Можно заказать комплексный ремонт квартиры под ключ без второй услуги. Вторую услугу — штукатурку стен по маякам — мы также выполняем по желанию клиента.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "without_addon",
+      "group_id": "hard-without_addon-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Ограничение комплектации отделяет услугу от дополнения."
+    },
+    {
+      "item_id": "hard-without_addon-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Можно заказать комплексный ремонт квартиры под ключ без второй услуги. Вторую услугу — штукатурку стен по маякам — мы вообще не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "without_addon",
+      "group_id": "hard-without_addon-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Ограничение комплектации отделяет услугу от дополнения."
+    }
+  ],
+  "validation": [
+    {
+      "item_id": "v2-colloquial-08-0",
+      "title": "Услуги мастера",
+      "description": "сантехнику неберу кроме замены смесителя это могу остальное нет",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "colloquial-08",
+      "group_id": "v2-colloquial-08",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-08-1",
+      "title": "Услуги мастера",
+      "description": "сантехнику неберу даже смеситель менять не буду тока шкафы собираю",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "colloquial-08",
+      "group_id": "v2-colloquial-08",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-09-0",
+      "title": "Услуги мастера",
+      "description": "электрику нивкоем случае не делаем но абои поклеим",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "colloquial-09",
+      "group_id": "v2-colloquial-09",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-09-1",
+      "title": "Услуги мастера",
+      "description": "абои нивкоем случае не клеим но электрику делаем проводку меняем",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "colloquial-09",
+      "group_id": "v2-colloquial-09",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-exception_to_denial-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Из двух работ — комплексный ремонт квартиры под ключ и штукатурку стен по маякам — не выполняем ничего, кроме первой.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "exception_to_denial",
+      "group_id": "hard-exception_to_denial-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Кроме» может задавать исключение из отрицательного списка."
+    },
+    {
+      "item_id": "hard-exception_to_denial-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Из двух работ — комплексный ремонт квартиры под ключ и штукатурку стен по маякам — не выполняем ничего, кроме второй.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "exception_to_denial",
+      "group_id": "hard-exception_to_denial-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Кроме» может задавать исключение из отрицательного списка."
+    },
+    {
+      "item_id": "v2-false_report-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Сообщение о том, что мы больше не выполняем комплексный ремонт квартиры под ключ, ошибочно. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "false_report",
+      "group_id": "v2-false_report-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-false_report-101-102-0-0-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-false_report-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Сообщение о том, что мы больше не выполняем комплексный ремонт квартиры под ключ, не ошибочно. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "false_report",
+      "group_id": "v2-false_report-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-false_report-101-102-0-1-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-location_scope-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Предлагаем также штукатурку стен по маякам, но только в городе; за городом эту работу не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "location_scope",
+      "group_id": "hard-location_scope-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание географии не равно отрицанию самой услуги."
+    },
+    {
+      "item_id": "hard-location_scope-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Не предлагаем штукатурку стен по маякам ни в городе, ни за городом.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "location_scope",
+      "group_id": "hard-location_scope-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание географии не равно отрицанию самой услуги."
+    },
+    {
+      "item_id": "v2-not_denied-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Не отрицаем, что выполняем комплексный ремонт квартиры под ключ: это наша действующая услуга. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_denied",
+      "group_id": "v2-not_denied-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_denied-101-102-0-0-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-not_denied-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Не отрицаем, что не выполняем комплексный ремонт квартиры под ключ: это не наша услуга. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "not_denied",
+      "group_id": "v2-not_denied-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_denied-101-102-0-1-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-not_required-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Заказывать штукатурку стен по маякам необязательно, но по желанию клиента мы эту услугу оказываем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_required",
+      "group_id": "hard-not_required-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отсутствие обязанности заказывать B не отменяет доступность B."
+    },
+    {
+      "item_id": "hard-not_required-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. Заказывать у нас штукатурку стен по маякам невозможно: такой услуги у нас нет.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "not_required",
+      "group_id": "hard-not_required-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отсутствие обязанности заказывать B не отменяет доступность B."
+    },
+    {
+      "item_id": "v2-not_unavailable-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Нельзя считать недоступной нашу услугу: комплексный ремонт квартиры под ключ выполняем по записи. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "not_unavailable",
+      "group_id": "v2-not_unavailable-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_unavailable-101-102-0-0-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-not_unavailable-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Нельзя считать доступной нашу услугу: комплексный ремонт квартиры под ключ больше не выполняем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "not_unavailable",
+      "group_id": "v2-not_unavailable-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-not_unavailable-101-102-0-1-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-quoted_request-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Клиент написал: «Нужно выполнить комплексный ремонт квартиры под ключ и штукатурку стен по маякам». Мы согласились только на первую работу; вторую не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "quoted_request",
+      "group_id": "hard-quoted_request-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Пожелание в цитате не доказывает согласие исполнителя."
+    },
+    {
+      "item_id": "hard-quoted_request-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Клиент написал: «Нужно выполнить комплексный ремонт квартиры под ключ и штукатурку стен по маякам». Мы согласились на обе работы и предлагаем их новым клиентам.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "quoted_request",
+      "group_id": "hard-quoted_request-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Пожелание в цитате не доказывает согласие исполнителя."
+    },
+    {
+      "item_id": "v2-status_delegation-00-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Кто отвечает за работы:\nЗаказчик заказывает комплексный ремонт квартиры под ключ у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает штукатурку стен по маякам у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает укладку керамогранита у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает установку раковин и унитазов у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает замену электропроводки у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает поклейку обоев у другой бригады; мы эту работу не предлагаем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "status_delegation",
+      "group_id": "v2-status_delegation-00-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_delegation-00-0-0-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_delegation-00-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Кто отвечает за работы:\nЗаказчик заказывает комплексный ремонт квартиры под ключ у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает штукатурку стен по маякам у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает укладку керамогранита у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает установку раковин и унитазов у другой бригады; мы эту работу не предлагаем.\nЗаказчик заказывает замену электропроводки у другой бригады; мы эту работу не предлагаем.\nВыполняем поклейку обоев своими силами.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "status_delegation",
+      "group_id": "v2-status_delegation-00-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_delegation-00-0-1-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    }
+  ],
+  "test": [
+    {
+      "item_id": "v2-colloquial-10-0",
+      "title": "Услуги мастера",
+      "description": "ниправда што я не ложу плитку ложу а сантехника не ко мне",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "colloquial-10",
+      "group_id": "v2-colloquial-10",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-10-1",
+      "title": "Услуги мастера",
+      "description": "правда што я не ложу плитку неберусь а сантехнику делаю трубы меняю",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "colloquial-10",
+      "group_id": "v2-colloquial-10",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-11-0",
+      "title": "Услуги мастера",
+      "description": "нехачу сказать што не крашу крашу стены а разетки неставлю",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "colloquial-11",
+      "group_id": "v2-colloquial-11",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-colloquial-11-1",
+      "title": "Услуги мастера",
+      "description": "хачу сказать што не крашу стены неберусь а разетки ставлю",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "colloquial-11",
+      "group_id": "v2-colloquial-11",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Разговорная фраза и ошибочное написание частицы размечены целиком по смыслу; это не случайное удаление НЕ.",
+      "topic": "colloquial_particles",
+      "augmentation": "authored_errors",
+      "negation_depth": 2,
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-concord_never-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Никто не может сказать, что мы не предлагаем комплексный ремонт квартиры под ключ: мы её выполняем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "concord_never",
+      "group_id": "v2-concord_never-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-concord_never-101-102-0-0-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-concord_never-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Никто не может сказать, что мы предлагаем комплексный ремонт квартиры под ключ: мы её не выполняем. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "concord_never",
+      "group_id": "v2-concord_never-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-concord_never-101-102-0-1-clean",
+      "negation_depth": 3,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-double_report-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Не соответствует правде сообщение, будто неверно, что мы выполняем комплексный ремонт квартиры под ключ. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "double_report",
+      "group_id": "v2-double_report-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-double_report-101-102-0-0-clean",
+      "negation_depth": 4,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-double_report-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Не соответствует правде сообщение, будто неверно, что мы не выполняем комплексный ремонт квартиры под ключ. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "double_report",
+      "group_id": "v2-double_report-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-double_report-101-102-0-1-clean",
+      "negation_depth": 4,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-four_layers-101-102-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Неверно, что опровержение фразы «мы не выполняем комплексный ремонт квартиры под ключ» неверно. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "four_layers",
+      "group_id": "v2-four_layers-101-102-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-four_layers-101-102-0-0-clean",
+      "negation_depth": 4,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-four_layers-101-102-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Неверно, что опровержение фразы «мы не выполняем комплексный ремонт квартиры под ключ» верно. Отдельно выполняем механизированную штукатурку стен.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "four_layers",
+      "group_id": "v2-four_layers-101-102-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Первый вариант утверждает A, второй отрицает A. B предлагается в обоих. Вложенное отрицание высказывания отличается от русского отрицательного согласования.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-four_layers-101-102-0-1-clean",
+      "negation_depth": 4,
+      "topic": "nested_negation",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-list_status-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Список работ:\n— комплексный ремонт квартиры под ключ: принимаем заказы;\n— штукатурку стен по маякам: не принимаем заказы, услугу сняли.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "list_status",
+      "group_id": "hard-list_status-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Статус позиций важнее наличия их названий в списке."
+    },
+    {
+      "item_id": "hard-list_status-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Список работ:\n— комплексный ремонт квартиры под ключ: не принимаем заказы, услугу сняли;\n— штукатурку стен по маякам: принимаем заказы.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "list_status",
+      "group_id": "hard-list_status-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Статус позиций важнее наличия их названий в списке."
+    },
+    {
+      "item_id": "hard-long_distance-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Обсуждали комплексный ремонт квартиры под ключ и штукатурку стен по маякам. Сначала уточняем объём, затем согласуем доступ и порядок работ. Это порядок переговоров, а не подтверждение всех услуг. Из названных работ берём только первую, вторую не предлагаем.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "long_distance",
+      "group_id": "hard-long_distance-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Область отрицания может определяться после длинного перечисления."
+    },
+    {
+      "item_id": "hard-long_distance-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Обсуждали комплексный ремонт квартиры под ключ и штукатурку стен по маякам. Сначала уточняем объём, затем согласуем доступ и порядок работ. Это порядок переговоров, а не подтверждение всех услуг. Из названных работ берём только вторую, первую не предлагаем.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "long_distance",
+      "group_id": "hard-long_distance-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Область отрицания может определяться после длинного перечисления."
+    },
+    {
+      "item_id": "hard-rumour-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Говорят, что мы не выполняем комплексный ремонт квартиры под ключ. Это неверно: выполняем. А штукатурку стен по маякам не предлагаем.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "rumour",
+      "group_id": "hard-rumour-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание чужого утверждения об отказе восстанавливает предложение."
+    },
+    {
+      "item_id": "hard-rumour-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Говорят, что мы не выполняем комплексный ремонт квартиры под ключ. Это верно: не выполняем. А штукатурку стен по маякам предлагаем.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "rumour",
+      "group_id": "hard-rumour-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание чужого утверждения об отказе восстанавливает предложение."
+    },
+    {
+      "item_id": "v2-status_confirmation-00-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Ответы на вопросы об услугах:\nВыполняем ли комплексный ремонт квартиры под ключ? Нет, не выполняем.\nВыполняем ли штукатурку стен по маякам? Нет, не выполняем.\nВыполняем ли укладку керамогранита? Нет, не выполняем.\nВыполняем ли установку раковин и унитазов? Нет, не выполняем.\nВыполняем ли замену электропроводки? Нет, не выполняем.\nВыполняем ли поклейку обоев? Нет, не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "status_confirmation",
+      "group_id": "v2-status_confirmation-00-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_confirmation-00-0-0-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_confirmation-00-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Ответы на вопросы об услугах:\nВыполняем ли комплексный ремонт квартиры под ключ? Нет, не выполняем.\nВыполняем ли штукатурку стен по маякам? Нет, не выполняем.\nВыполняем ли укладку керамогранита? Нет, не выполняем.\nВыполняем ли установку раковин и унитазов? Нет, не выполняем.\nВыполняем ли замену электропроводки? Нет, не выполняем.\nВыполняем ли поклейку обоев? Да, выполняем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "status_confirmation",
+      "group_id": "v2-status_confirmation-00-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_confirmation-00-0-1-clean",
+      "negation_depth": 1,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_negated_denial-00-0-0-clean",
+      "title": "Услуги мастера",
+      "description": "Уточнение информации о работах:\nВерно, что мы не выполняем комплексный ремонт квартиры под ключ.\nВерно, что мы не выполняем штукатурку стен по маякам.\nВерно, что мы не выполняем укладку керамогранита.\nВерно, что мы не выполняем установку раковин и унитазов.\nВерно, что мы не выполняем замену электропроводки.\nВерно, что мы не выполняем поклейку обоев.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "status_negated_denial",
+      "group_id": "v2-status_negated_denial-00-0",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_negated_denial-00-0-0-clean",
+      "negation_depth": 2,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "v2-status_negated_denial-00-0-1-clean",
+      "title": "Услуги мастера",
+      "description": "Уточнение информации о работах:\nВерно, что мы не выполняем комплексный ремонт квартиры под ключ.\nВерно, что мы не выполняем штукатурку стен по маякам.\nВерно, что мы не выполняем укладку керамогранита.\nВерно, что мы не выполняем установку раковин и унитазов.\nВерно, что мы не выполняем замену электропроводки.\nНеверно, что мы не выполняем поклейку обоев.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "status_negated_denial",
+      "group_id": "v2-status_negated_denial-00-0",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Каждая из шести услуг имеет отдельный явный статус. Отрицание одной позиции не распространяется на другие.",
+      "augmentation": "clean",
+      "clean_item_id": "v2-status_negated_denial-00-0-1-clean",
+      "negation_depth": 2,
+      "topic": "multicategory",
+      "semantic_version": "v2"
+    },
+    {
+      "item_id": "hard-unless-101-102-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. За штукатурку стен по маякам не берёмся, если нет доступа в помещение; при наличии доступа работу выполняем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102
+      ],
+      "type": "unless",
+      "group_id": "hard-unless-101-102",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Условное ограничение не означает полного отказа."
+    },
+    {
+      "item_id": "hard-unless-101-102-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт квартиры под ключ. За штукатурку стен по маякам не берёмся даже при наличии доступа в помещение.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "unless",
+      "group_id": "hard-unless-101-102",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Условное ограничение не означает полного отказа."
+    }
+  ],
+  "challenge": [
+    {
+      "item_id": "challenge-001-0",
+      "title": "Услуги мастера",
+      "description": "Проводку не меняю, только устанавливаю новые розетки вместо старых.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "challenge-001",
+      "group_id": "challenge-001",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отказ от одной электрической операции не исключает другую."
+    },
+    {
+      "item_id": "challenge-001-1",
+      "title": "Услуги мастера",
+      "description": "Проводку не меняю и новые розетки вместо старых не устанавливаю. Только собираю мебель.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "challenge-001",
+      "group_id": "challenge-001",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отказ от одной электрической операции не исключает другую."
+    },
+    {
+      "item_id": "challenge-002-0",
+      "title": "Услуги мастера",
+      "description": "Не штукатурим: только шпаклюем стены под покраску. Саму покраску не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "challenge-002",
+      "group_id": "challenge-002",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Шпаклёвка под финиш относится к 106, штукатурные составы — к 102."
+    },
+    {
+      "item_id": "challenge-002-1",
+      "title": "Услуги мастера",
+      "description": "Не шпаклюем под покраску: только штукатурим стены по маякам. Саму покраску не выполняем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "challenge-002",
+      "group_id": "challenge-002",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Шпаклёвка под финиш относится к 106, штукатурные составы — к 102."
+    },
+    {
+      "item_id": "challenge-003-0",
+      "title": "Услуги мастера",
+      "description": "Монтируем тёплый пол, но не электрический: укладываем водяные трубы, собираем коллектор и делаем опрессовку.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "challenge-003",
+      "group_id": "challenge-003",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание разновидности оборудования меняет категорию."
+    },
+    {
+      "item_id": "challenge-003-1",
+      "title": "Услуги мастера",
+      "description": "Монтируем тёплый пол, но не водяной: укладываем электрические маты и подключаем терморегулятор.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "challenge-003",
+      "group_id": "challenge-003",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание разновидности оборудования меняет категорию."
+    },
+    {
+      "item_id": "challenge-004-0",
+      "title": "Услуги мастера",
+      "description": "Стиральную машину подключаем только к воде и сливу. Розетку под неё не устанавливаем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "challenge-004",
+      "group_id": "challenge-004",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Объект один, но работы относятся к разным инженерным системам."
+    },
+    {
+      "item_id": "challenge-004-1",
+      "title": "Услуги мастера",
+      "description": "Стиральную машину подключаем не только к воде и сливу, но и устанавливаем для неё отдельную розетку.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        },
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        104,
+        105
+      ],
+      "type": "challenge-004",
+      "group_id": "challenge-004",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Объект один, но работы относятся к разным инженерным системам."
+    },
+    {
+      "item_id": "challenge-005-0",
+      "title": "Услуги мастера",
+      "description": "Выполняем укладку плитки под ключ. Комплексный ремонт помещения не предлагаем.",
+      "mcId": 104,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "challenge-005",
+      "group_id": "challenge-005",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Под ключ» у отдельной операции не даёт 101, комплексный ремонт помещения даёт."
+    },
+    {
+      "item_id": "challenge-005-1",
+      "title": "Услуги мастера",
+      "description": "Выполняем комплексный ремонт ванной под ключ со сдачей готового помещения; в составе работ явно предлагаем укладку плитки.",
+      "mcId": 104,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        },
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        103
+      ],
+      "type": "challenge-005",
+      "group_id": "challenge-005",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Под ключ» у отдельной операции не даёт 101, комплексный ремонт помещения даёт."
+    },
+    {
+      "item_id": "challenge-006-0",
+      "title": "Услуги мастера",
+      "description": "Ремонт квартиры под ключ. Конкретные этапы здесь не перечисляем: перечень определяем после осмотра.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        101
+      ],
+      "type": "challenge-006",
+      "group_id": "challenge-006",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Общая фраза не позволяет вывести пять услуг; явный список позволяет."
+    },
+    {
+      "item_id": "challenge-006-1",
+      "title": "Услуги мастера",
+      "description": "Ремонт квартиры под ключ. Конкретно предлагаем штукатурку стен, укладку плитки, разводку труб, замену проводки и поклейку обоев.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        },
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        },
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        },
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        },
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106
+      ],
+      "type": "challenge-006",
+      "group_id": "challenge-006",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Общая фраза не позволяет вывести пять услуг; явный список позволяет."
+    },
+    {
+      "item_id": "challenge-007-0",
+      "title": "Услуги мастера",
+      "description": "Ни трубы, ни проводку не меняем. Клеим обои, а штукатурку и укладку плитки оставляем другой бригаде.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "challenge-007",
+      "group_id": "challenge-007",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Несколько независимых областей отрицания в одном объявлении."
+    },
+    {
+      "item_id": "challenge-007-1",
+      "title": "Услуги мастера",
+      "description": "Не только трубы и проводку меняем, но и клеим обои. Штукатурку и укладку плитки оставляем другой бригаде.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        },
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        },
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        104,
+        105,
+        106
+      ],
+      "type": "challenge-007",
+      "group_id": "challenge-007",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Несколько независимых областей отрицания в одном объявлении."
+    },
+    {
+      "item_id": "challenge-008-0",
+      "title": "Услуги мастера",
+      "description": "Только плитка: не кладу новую, зато обновляю затирку существующих плиточных швов. Сантехнику не трогаю.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "challenge-008",
+      "group_id": "challenge-008",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Затирка швов остаётся плиточной услугой без укладки."
+    },
+    {
+      "item_id": "challenge-008-1",
+      "title": "Услуги мастера",
+      "description": "Плитку не кладу и затирку плиточных швов не обновляю. Зато меняю смесители.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "challenge-008",
+      "group_id": "challenge-008",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Затирка швов остаётся плиточной услугой без укладки."
+    },
+    {
+      "item_id": "challenge-009-0",
+      "title": "Услуги мастера",
+      "description": "Обои не клеим, но снимаем старые обои, шпаклюем и грунтуем стены под новое покрытие.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "challenge-009",
+      "group_id": "challenge-009",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Подготовка под финиш даёт 106 даже без поклейки."
+    },
+    {
+      "item_id": "challenge-009-1",
+      "title": "Услуги мастера",
+      "description": "Обои не клеим, не снимаем, стены под новое покрытие не готовим. Только устанавливаем межкомнатные двери.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "challenge-009",
+      "group_id": "challenge-009",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Подготовка под финиш даёт 106 даже без поклейки."
+    },
+    {
+      "item_id": "challenge-010-0",
+      "title": "Услуги мастера",
+      "description": "Штукатурку стен не выполняем: выравниваем их только гипсокартоном на каркасе, без шпаклёвки и окраски.",
+      "mcId": 101,
+      "found_microcategories": [],
+      "offered_microcategories": [],
+      "type": "challenge-010",
+      "group_id": "challenge-010",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "ГКЛ сам по себе вне шести категорий; явно предложенный финиш относится к 106."
+    },
+    {
+      "item_id": "challenge-010-1",
+      "title": "Услуги мастера",
+      "description": "Штукатурку стен не выполняем: выравниваем их гипсокартоном на каркасе, затем шпаклюем под покраску и красим.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "challenge-010",
+      "group_id": "challenge-010",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "ГКЛ сам по себе вне шести категорий; явно предложенный финиш относится к 106."
+    },
+    {
+      "item_id": "challenge-011-0",
+      "title": "Услуги мастера",
+      "description": "Заказчик: «Нужны электрика, сантехника и плитка». Мастер: «Электрику и сантехнику не беру; только укладываю плитку».",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "challenge-011",
+      "group_id": "challenge-011",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Нужно учитывать говорящего и ответ на запрос."
+    },
+    {
+      "item_id": "challenge-011-1",
+      "title": "Услуги мастера",
+      "description": "Заказчик: «Нужны электрика, сантехника и плитка». Мастер: «Не только укладываю плитку, но и меняю проводку, развожу трубы».",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        },
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        },
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        103,
+        104,
+        105
+      ],
+      "type": "challenge-011",
+      "group_id": "challenge-011",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Нужно учитывать говорящего и ответ на запрос."
+    },
+    {
+      "item_id": "challenge-012-0",
+      "title": "Услуги мастера",
+      "description": "Не обещаем закончить покраску за день, но стены красим. Обои не клеим, розетки не переносим.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "challenge-012",
+      "group_id": "challenge-012",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание срока не является отрицанием работы."
+    },
+    {
+      "item_id": "challenge-012-1",
+      "title": "Услуги мастера",
+      "description": "Покраску не выполняем. Обои не клеим, зато переносим розетки; закончить за день не обещаем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "challenge-012",
+      "group_id": "challenge-012",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание срока не является отрицанием работы."
+    },
+    {
+      "item_id": "challenge-013-0",
+      "title": "Услуги мастера",
+      "description": "Без замены труб устанавливаем новый смеситель. Электрику не выполняем, хотя у прибора есть подсветка.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "challenge-013",
+      "group_id": "challenge-013",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Упоминание оборудования не доказывает выполнение всех связанных работ."
+    },
+    {
+      "item_id": "challenge-013-1",
+      "title": "Услуги мастера",
+      "description": "Смеситель и трубы устанавливает сантехник заказчика. Мы только монтируем розетку для подсветки.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "challenge-013",
+      "group_id": "challenge-013",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Упоминание оборудования не доказывает выполнение всех связанных работ."
+    },
+    {
+      "item_id": "challenge-014-0",
+      "title": "Услуги мастера",
+      "description": "Не нужен сантехник? Могу помочь с плиткой: укладываю керамогранит. Сантехнические услуги сам не оказываю.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "challenge-014",
+      "group_id": "challenge-014",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Риторический вопрос не должен превращаться в метку."
+    },
+    {
+      "item_id": "challenge-014-1",
+      "title": "Услуги мастера",
+      "description": "Не нужен плиточник? Могу помочь с сантехникой: меняю трубы. Плитку сам не укладываю.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "challenge-014",
+      "group_id": "challenge-014",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Риторический вопрос не должен превращаться в метку."
+    },
+    {
+      "item_id": "challenge-015-0",
+      "title": "Услуги мастера",
+      "description": "Не могу сказать, что не занимаюсь электрикой: меняю проводку и собираю щиты. Сантехнику не предлагаю.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "challenge-015",
+      "group_id": "challenge-015",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Вложенное отрицание нужно разрешать с учётом подтверждающей фразы."
+    },
+    {
+      "item_id": "challenge-015-1",
+      "title": "Услуги мастера",
+      "description": "Могу сказать точно: электрикой не занимаюсь, проводку и щиты не меняю. Предлагаю замену труб.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        104
+      ],
+      "type": "challenge-015",
+      "group_id": "challenge-015",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Вложенное отрицание нужно разрешать с учётом подтверждающей фразы."
+    },
+    {
+      "item_id": "challenge-016-0",
+      "title": "Услуги мастера",
+      "description": "Штукатурим стены и красим потолки. Не все работы берём: плитку не кладём, трубы и проводку не меняем.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        },
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102,
+        106
+      ],
+      "type": "challenge-016",
+      "group_id": "challenge-016",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Не все» не отрицает ранее предложенные работы; «не только» расширяет их."
+    },
+    {
+      "item_id": "challenge-016-1",
+      "title": "Услуги мастера",
+      "description": "Штукатурим стены и красим потолки. Не только эти работы берём: также кладём плитку, меняем трубы и проводку.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        },
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        },
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        },
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        },
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102,
+        103,
+        104,
+        105,
+        106
+      ],
+      "type": "challenge-016",
+      "group_id": "challenge-016",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "«Не все» не отрицает ранее предложенные работы; «не только» расширяет их."
+    },
+    {
+      "item_id": "challenge-017-0",
+      "title": "Услуги мастера",
+      "description": "Только укладываем плитку. Электрику, сантехнику и ремонт квартиры под ключ не предлагаем.",
+      "mcId": 103,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "challenge-017",
+      "group_id": "challenge-017",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Реально предложенная исходная категория 103 исключается из целевых меток."
+    },
+    {
+      "item_id": "challenge-017-1",
+      "title": "Услуги мастера",
+      "description": "Не только укладываем плитку: ещё монтируем розетки. Сантехнику и ремонт квартиры под ключ не предлагаем.",
+      "mcId": 103,
+      "found_microcategories": [
+        {
+          "mcId": 105,
+          "label": "Электрика"
+        }
+      ],
+      "offered_microcategories": [
+        103,
+        105
+      ],
+      "type": "challenge-017",
+      "group_id": "challenge-017",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Реально предложенная исходная категория 103 исключается из целевых меток."
+    },
+    {
+      "item_id": "challenge-018-0",
+      "title": "Услуги мастера",
+      "description": "Не берём ремонт квартиры под ключ. Выполняем только замену проводки и монтаж розеток.",
+      "mcId": 105,
+      "found_microcategories": [],
+      "offered_microcategories": [
+        105
+      ],
+      "type": "challenge-018",
+      "group_id": "challenge-018",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Категория 101 должна предсказываться при явном комплексном предложении и другом mcId."
+    },
+    {
+      "item_id": "challenge-018-1",
+      "title": "Услуги мастера",
+      "description": "Берём ремонт квартиры под ключ с полным циклом отделки и сдачей результата. Из конкретных работ также явно предлагаем замену проводки и монтаж розеток.",
+      "mcId": 105,
+      "found_microcategories": [
+        {
+          "mcId": 101,
+          "label": "Ремонт под ключ"
+        }
+      ],
+      "offered_microcategories": [
+        101,
+        105
+      ],
+      "type": "challenge-018",
+      "group_id": "challenge-018",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Категория 101 должна предсказываться при явном комплексном предложении и другом mcId."
+    },
+    {
+      "item_id": "challenge-019-0",
+      "title": "Услуги мастера",
+      "description": "Не оставим стены без штукатурки: штукатурим по маякам. Но обои клеит заказчик, а плитку — другая бригада.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 102,
+          "label": "Штукатурные работы"
+        }
+      ],
+      "offered_microcategories": [
+        102
+      ],
+      "type": "challenge-019",
+      "group_id": "challenge-019",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание отсутствия работы и разграничение исполнителей."
+    },
+    {
+      "item_id": "challenge-019-1",
+      "title": "Услуги мастера",
+      "description": "Оставим штукатурку заказчику: сами стены не штукатурим. Зато клеим обои, а плитку укладывает другая бригада.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 106,
+          "label": "Поклейка обоев и малярные работы"
+        }
+      ],
+      "offered_microcategories": [
+        106
+      ],
+      "type": "challenge-019",
+      "group_id": "challenge-019",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Отрицание отсутствия работы и разграничение исполнителей."
+    },
+    {
+      "item_id": "challenge-020-0",
+      "title": "Услуги мастера",
+      "description": "Укладка плитки — только после замены труб. Трубы меняет заказчик, мы их не меняем; плитку укладываем сами.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        }
+      ],
+      "offered_microcategories": [
+        103
+      ],
+      "type": "challenge-020",
+      "group_id": "challenge-020",
+      "variant": 0,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Технологическая предпосылка сама по себе не доказывает предложение услуги."
+    },
+    {
+      "item_id": "challenge-020-1",
+      "title": "Услуги мастера",
+      "description": "Укладка плитки — только после замены труб. Обе работы выполняем сами: сначала меняем трубы, затем укладываем плитку.",
+      "mcId": 101,
+      "found_microcategories": [
+        {
+          "mcId": 103,
+          "label": "Плиточные работы"
+        },
+        {
+          "mcId": 104,
+          "label": "Сантехника"
+        }
+      ],
+      "offered_microcategories": [
+        103,
+        104
+      ],
+      "type": "challenge-020",
+      "group_id": "challenge-020",
+      "variant": 1,
+      "confidence": "high",
+      "provenance": "synthetic_rule_authored",
+      "note": "Технологическая предпосылка сама по себе не доказывает предложение услуги."
+    }
+  ]
+}

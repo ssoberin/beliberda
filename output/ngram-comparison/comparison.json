@@ -1,0 +1,107 @@
+{
+  "source_sha256": "b7118d68086624fbeab43839f22a635d4e325e4ee339f22d4aa0ad3c2e986615",
+  "split_sha256": {
+    "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+    "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+    "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+  },
+  "comparison": [
+    {
+      "metric": "Micro-F1",
+      "bigrams": 0.9346458846048674,
+      "trigrams": 0.9362168081029291,
+      "absolute_difference": 0.0015709234980616493,
+      "relative_difference_percent": 0.1680768646112186
+    },
+    {
+      "metric": "Macro-F1",
+      "bigrams": 0.9346819727428721,
+      "trigrams": 0.9362250247151952,
+      "absolute_difference": 0.001543051972323073,
+      "relative_difference_percent": 0.16508844904699593
+    },
+    {
+      "metric": "Precision (micro)",
+      "bigrams": 0.9364383561643835,
+      "trigrams": 0.9390444810543658,
+      "absolute_difference": 0.002606124889982242,
+      "relative_difference_percent": 0.2783018094919597
+    },
+    {
+      "metric": "Recall (micro)",
+      "bigrams": 0.9328602620087336,
+      "trigrams": 0.9334061135371179,
+      "absolute_difference": 0.0005458515283842669,
+      "relative_difference_percent": 0.05851375073142053
+    },
+    {
+      "metric": "Training wall time, seconds",
+      "bigrams": 7.80162153999936,
+      "trigrams": 8.210605140999178,
+      "absolute_difference": 0.408983600999818,
+      "relative_difference_percent": 5.242289681740337
+    },
+    {
+      "metric": "Training CPU time, seconds",
+      "bigrams": 7.787721976,
+      "trigrams": 8.209601036,
+      "absolute_difference": 0.4218790600000002,
+      "relative_difference_percent": 5.417233194766533
+    },
+    {
+      "metric": "TF-IDF dimensions",
+      "bigrams": 46000,
+      "trigrams": 46000,
+      "absolute_difference": 0,
+      "relative_difference_percent": 0.0
+    },
+    {
+      "metric": "Artifact bytes",
+      "bigrams": 2777562,
+      "trigrams": 2886202,
+      "absolute_difference": 108640,
+      "relative_difference_percent": 3.9113438331889623
+    },
+    {
+      "metric": "False positives",
+      "bigrams": 116,
+      "trigrams": 111,
+      "absolute_difference": -5,
+      "relative_difference_percent": -4.310344827586207
+    },
+    {
+      "metric": "False negatives",
+      "bigrams": 123,
+      "trigrams": 122,
+      "absolute_difference": -1,
+      "relative_difference_percent": -0.8130081300813008
+    }
+  ],
+  "paired_bootstrap_micro_f1_difference_95_ci": [
+    -0.0006507480353418499,
+    0.003758180281484318
+  ],
+  "bootstrap_resamples": 2000,
+  "bootstrap_seed": 42,
+  "changed_label_decisions": 16,
+  "word_vocabulary_sizes": [
+    18000,
+    18000
+  ],
+  "trigrams_in_new_word_vocabulary": 6728,
+  "checks": {
+    "same_split_hashes": true,
+    "same_thresholds": true,
+    "same_classifier_parameters": true,
+    "same_character_parameters_vocabulary_and_idf": true,
+    "only_word_ngram_parameter_changed": true
+  },
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "recommendation": "The observed gain is small and its interval includes zero. Keep bigrams as the default; trigram support remains opt-in."
+}

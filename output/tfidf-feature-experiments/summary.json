@@ -1,0 +1,2469 @@
+{
+  "source_sha256": "b7118d68086624fbeab43839f22a635d4e325e4ee339f22d4aa0ad3c2e986615",
+  "split_sha256": {
+    "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+    "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+    "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+  },
+  "limits": {
+    "rss_mib": 2048,
+    "process_wall_seconds": 180
+  },
+  "main_experiments": [
+    "baseline",
+    "char_wb",
+    "uncapped_char",
+    "uncapped_char_wb",
+    "char_100k",
+    "char_wb_100k",
+    "char_60k",
+    "char_wb_60k"
+  ],
+  "top_two_by_validation_micro_f1": [
+    "char_wb",
+    "baseline"
+  ],
+  "status": {
+    "baseline": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 489.39453125,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/baseline",
+        "--word-ngram-max",
+        "3"
+      ],
+      "process_wall_seconds": 14.138539411000238
+    },
+    "char_wb": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 473.8671875,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/char_wb",
+        "--word-ngram-max",
+        "3",
+        "--char-analyzer",
+        "char_wb"
+      ],
+      "process_wall_seconds": 10.936548587999823
+    },
+    "uncapped_char": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 549.28125,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/uncapped_char",
+        "--word-ngram-max",
+        "3",
+        "--no-max-features"
+      ],
+      "process_wall_seconds": 13.847309308000149
+    },
+    "uncapped_char_wb": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 453.7421875,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/uncapped_char_wb",
+        "--word-ngram-max",
+        "3",
+        "--char-analyzer",
+        "char_wb",
+        "--no-max-features"
+      ],
+      "process_wall_seconds": 10.232352017999801
+    },
+    "char_wb_linear_tf": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 412.87890625,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/char_wb_linear_tf",
+        "--word-ngram-max",
+        "3",
+        "--char-analyzer",
+        "char_wb",
+        "--no-sublinear-tf"
+      ],
+      "process_wall_seconds": 10.735074354000062
+    },
+    "baseline_linear_tf": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 498.71484375,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/baseline_linear_tf",
+        "--word-ngram-max",
+        "3",
+        "--no-sublinear-tf"
+      ],
+      "process_wall_seconds": 13.94672109900057
+    },
+    "char_100k": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 493.74609375,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/char_100k",
+        "--word-ngram-max",
+        "3",
+        "--word-max-features",
+        "40000",
+        "--char-max-features",
+        "60000"
+      ],
+      "process_wall_seconds": 14.93981625700053
+    },
+    "char_wb_100k": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 484.671875,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/char_wb_100k",
+        "--word-ngram-max",
+        "3",
+        "--char-analyzer",
+        "char_wb",
+        "--word-max-features",
+        "40000",
+        "--char-max-features",
+        "60000"
+      ],
+      "process_wall_seconds": 11.338856224000665
+    },
+    "char_60k": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 520.1328125,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/char_60k",
+        "--word-ngram-max",
+        "3",
+        "--word-max-features",
+        "24000",
+        "--char-max-features",
+        "36000"
+      ],
+      "process_wall_seconds": 14.544714200999806
+    },
+    "char_wb_60k": {
+      "status": "complete",
+      "reason": null,
+      "exit_code": 0,
+      "monitored_peak_process_rss_mib": 413.77734375,
+      "command": [
+        "/tmp/innopolis-ngram-venv/bin/python",
+        "-m",
+        "avito_compare.scripts.measure_training",
+        "--data-dir",
+        "output/ngram-comparison/splits",
+        "--output-dir",
+        "output/tfidf-feature-experiments/char_wb_60k",
+        "--word-ngram-max",
+        "3",
+        "--char-analyzer",
+        "char_wb",
+        "--word-max-features",
+        "24000",
+        "--char-max-features",
+        "36000"
+      ],
+      "process_wall_seconds": 11.035576267000579
+    }
+  },
+  "measurements": {
+    "baseline": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char",
+      "max_features": {
+        "word": 18000,
+        "char": 28000
+      },
+      "sublinear_tf": true,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9362168081029291,
+      "macro_f1": 0.9362250247151952,
+      "micro_precision": 0.9390444810543658,
+      "micro_recall": 0.9334061135371179,
+      "fit_wall_seconds": 8.45408832799967,
+      "fit_cpu_seconds": 8.451979986,
+      "fit_peak_process_rss_mib": 538.8984375,
+      "dimensions": {
+        "word": 18000,
+        "char": 28000,
+        "total": 46000
+      },
+      "artifact_bytes": 2886202,
+      "confusion_counts": {
+        "tp": 1710,
+        "fp": 111,
+        "fn": 122,
+        "tn": 1702
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 349,
+          "103": 334,
+          "104": 325,
+          "105": 330,
+          "106": 372
+        },
+        "fp": {
+          "102": 28,
+          "103": 31,
+          "104": 20,
+          "105": 17,
+          "106": 15
+        },
+        "fn": {
+          "102": 22,
+          "103": 20,
+          "104": 28,
+          "105": 19,
+          "106": 33
+        },
+        "tn": {
+          "102": 330,
+          "103": 344,
+          "104": 356,
+          "105": 363,
+          "106": 309
+        }
+      },
+      "f1_by_category": {
+        "102": 0.9331550802139037,
+        "103": 0.9290681502086231,
+        "104": 0.9312320916905444,
+        "105": 0.9482758620689655,
+        "106": 0.9393939393939394
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 18000,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 28000,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "char_wb": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char_wb",
+      "max_features": {
+        "word": 18000,
+        "char": 28000
+      },
+      "sublinear_tf": true,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9371241115363587,
+      "macro_f1": 0.9371960435869818,
+      "micro_precision": 0.9386637458926615,
+      "micro_recall": 0.9355895196506551,
+      "fit_wall_seconds": 6.094649755000319,
+      "fit_cpu_seconds": 6.09431508,
+      "fit_peak_process_rss_mib": 473.6171875,
+      "dimensions": {
+        "word": 18000,
+        "char": 28000,
+        "total": 46000
+      },
+      "artifact_bytes": 2887514,
+      "confusion_counts": {
+        "tp": 1714,
+        "fp": 112,
+        "fn": 118,
+        "tn": 1701
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 348,
+          "103": 334,
+          "104": 327,
+          "105": 332,
+          "106": 373
+        },
+        "fp": {
+          "102": 29,
+          "103": 33,
+          "104": 19,
+          "105": 16,
+          "106": 15
+        },
+        "fn": {
+          "102": 23,
+          "103": 20,
+          "104": 26,
+          "105": 17,
+          "106": 32
+        },
+        "tn": {
+          "102": 329,
+          "103": 342,
+          "104": 357,
+          "105": 364,
+          "106": 309
+        }
+      },
+      "f1_by_category": {
+        "102": 0.93048128342246,
+        "103": 0.926490984743412,
+        "104": 0.9356223175965666,
+        "105": 0.9526542324246772,
+        "106": 0.9407313997477932
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 18000,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char_wb",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 28000,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "uncapped_char": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char",
+      "max_features": {
+        "word": null,
+        "char": null
+      },
+      "sublinear_tf": true,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9286103542234332,
+      "macro_f1": 0.9284003155528984,
+      "micro_precision": 0.9270946681175191,
+      "micro_recall": 0.9301310043668122,
+      "fit_wall_seconds": 7.700332309999794,
+      "fit_cpu_seconds": 7.6990109040000005,
+      "fit_peak_process_rss_mib": 617.56640625,
+      "dimensions": {
+        "word": 111157,
+        "char": 153393,
+        "total": 264550
+      },
+      "artifact_bytes": 13237178,
+      "confusion_counts": {
+        "tp": 1704,
+        "fp": 134,
+        "fn": 128,
+        "tn": 1679
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 349,
+          "103": 327,
+          "104": 324,
+          "105": 330,
+          "106": 374
+        },
+        "fp": {
+          "102": 32,
+          "103": 35,
+          "104": 22,
+          "105": 27,
+          "106": 18
+        },
+        "fn": {
+          "102": 22,
+          "103": 27,
+          "104": 29,
+          "105": 19,
+          "106": 31
+        },
+        "tn": {
+          "102": 326,
+          "103": 340,
+          "104": 354,
+          "105": 353,
+          "106": 306
+        }
+      },
+      "f1_by_category": {
+        "102": 0.9281914893617021,
+        "103": 0.9134078212290503,
+        "104": 0.927038626609442,
+        "105": 0.9348441926345609,
+        "106": 0.9385194479297365
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": null,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": null,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "uncapped_char_wb": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char_wb",
+      "max_features": {
+        "word": null,
+        "char": null
+      },
+      "sublinear_tf": true,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9347885402455661,
+      "macro_f1": 0.9347985329288171,
+      "micro_precision": 0.9345335515548282,
+      "micro_recall": 0.9350436681222707,
+      "fit_wall_seconds": 5.488020705999588,
+      "fit_cpu_seconds": 5.487419193999999,
+      "fit_peak_process_rss_mib": 503.28515625,
+      "dimensions": {
+        "word": 111157,
+        "char": 68433,
+        "total": 179590
+      },
+      "artifact_bytes": 9844602,
+      "confusion_counts": {
+        "tp": 1713,
+        "fp": 120,
+        "fn": 119,
+        "tn": 1693
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 347,
+          "103": 334,
+          "104": 328,
+          "105": 331,
+          "106": 373
+        },
+        "fp": {
+          "102": 26,
+          "103": 38,
+          "104": 21,
+          "105": 19,
+          "106": 16
+        },
+        "fn": {
+          "102": 24,
+          "103": 20,
+          "104": 25,
+          "105": 18,
+          "106": 32
+        },
+        "tn": {
+          "102": 332,
+          "103": 337,
+          "104": 355,
+          "105": 361,
+          "106": 308
+        }
+      },
+      "f1_by_category": {
+        "102": 0.9327956989247311,
+        "103": 0.9201101928374655,
+        "104": 0.9344729344729344,
+        "105": 0.9470672389127325,
+        "106": 0.9395465994962217
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": null,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char_wb",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": null,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "char_100k": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char",
+      "max_features": {
+        "word": 40000,
+        "char": 60000
+      },
+      "sublinear_tf": true,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9309967141292442,
+      "macro_f1": 0.9309060408092293,
+      "micro_precision": 0.9340659340659341,
+      "micro_recall": 0.9279475982532751,
+      "fit_wall_seconds": 8.448113931999615,
+      "fit_cpu_seconds": 8.446487837,
+      "fit_peak_process_rss_mib": 555.75390625,
+      "dimensions": {
+        "word": 40000,
+        "char": 60000,
+        "total": 100000
+      },
+      "artifact_bytes": 6375498,
+      "confusion_counts": {
+        "tp": 1700,
+        "fp": 120,
+        "fn": 132,
+        "tn": 1693
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 347,
+          "103": 332,
+          "104": 323,
+          "105": 327,
+          "106": 371
+        },
+        "fp": {
+          "102": 29,
+          "103": 35,
+          "104": 21,
+          "105": 20,
+          "106": 15
+        },
+        "fn": {
+          "102": 24,
+          "103": 22,
+          "104": 30,
+          "105": 22,
+          "106": 34
+        },
+        "tn": {
+          "102": 329,
+          "103": 340,
+          "104": 355,
+          "105": 360,
+          "106": 309
+        }
+      },
+      "f1_by_category": {
+        "102": 0.92904953145917,
+        "103": 0.9209431345353676,
+        "104": 0.926829268292683,
+        "105": 0.9396551724137931,
+        "106": 0.9380530973451328
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 40000,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 60000,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "char_wb_100k": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char_wb",
+      "max_features": {
+        "word": 40000,
+        "char": 60000
+      },
+      "sublinear_tf": true,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9343544857768052,
+      "macro_f1": 0.9343219087727285,
+      "micro_precision": 0.9364035087719298,
+      "micro_recall": 0.9323144104803494,
+      "fit_wall_seconds": 5.984489358999781,
+      "fit_cpu_seconds": 5.982303690999999,
+      "fit_peak_process_rss_mib": 487.30078125,
+      "dimensions": {
+        "word": 40000,
+        "char": 60000,
+        "total": 100000
+      },
+      "artifact_bytes": 6367754,
+      "confusion_counts": {
+        "tp": 1708,
+        "fp": 116,
+        "fn": 124,
+        "tn": 1697
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 348,
+          "103": 332,
+          "104": 326,
+          "105": 330,
+          "106": 372
+        },
+        "fp": {
+          "102": 26,
+          "103": 36,
+          "104": 20,
+          "105": 19,
+          "106": 15
+        },
+        "fn": {
+          "102": 23,
+          "103": 22,
+          "104": 27,
+          "105": 19,
+          "106": 33
+        },
+        "tn": {
+          "102": 332,
+          "103": 339,
+          "104": 356,
+          "105": 361,
+          "106": 309
+        }
+      },
+      "f1_by_category": {
+        "102": 0.934228187919463,
+        "103": 0.9196675900277008,
+        "104": 0.932761087267525,
+        "105": 0.9455587392550143,
+        "106": 0.9393939393939394
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 40000,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char_wb",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 60000,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "char_60k": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char",
+      "max_features": {
+        "word": 24000,
+        "char": 36000
+      },
+      "sublinear_tf": true,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9332600933809393,
+      "macro_f1": 0.9332218300877442,
+      "micro_precision": 0.9391929242675512,
+      "micro_recall": 0.9274017467248908,
+      "fit_wall_seconds": 8.500639034000415,
+      "fit_cpu_seconds": 8.497971438,
+      "fit_peak_process_rss_mib": 540.0234375,
+      "dimensions": {
+        "word": 24000,
+        "char": 36000,
+        "total": 60000
+      },
+      "artifact_bytes": 3789610,
+      "confusion_counts": {
+        "tp": 1699,
+        "fp": 110,
+        "fn": 133,
+        "tn": 1703
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 347,
+          "103": 328,
+          "104": 325,
+          "105": 328,
+          "106": 371
+        },
+        "fp": {
+          "102": 28,
+          "103": 29,
+          "104": 20,
+          "105": 18,
+          "106": 15
+        },
+        "fn": {
+          "102": 24,
+          "103": 26,
+          "104": 28,
+          "105": 21,
+          "106": 34
+        },
+        "tn": {
+          "102": 330,
+          "103": 346,
+          "104": 356,
+          "105": 362,
+          "106": 309
+        }
+      },
+      "f1_by_category": {
+        "102": 0.9302949061662198,
+        "103": 0.9226441631504922,
+        "104": 0.9312320916905444,
+        "105": 0.943884892086331,
+        "106": 0.9380530973451328
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 24000,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 36000,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "char_wb_60k": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char_wb",
+      "max_features": {
+        "word": 24000,
+        "char": 36000
+      },
+      "sublinear_tf": true,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9353424657534246,
+      "macro_f1": 0.9352997458409815,
+      "micro_precision": 0.9389438943894389,
+      "micro_recall": 0.9317685589519651,
+      "fit_wall_seconds": 6.072247657999469,
+      "fit_cpu_seconds": 6.069817867,
+      "fit_peak_process_rss_mib": 480.203125,
+      "dimensions": {
+        "word": 24000,
+        "char": 36000,
+        "total": 60000
+      },
+      "artifact_bytes": 3789306,
+      "confusion_counts": {
+        "tp": 1707,
+        "fp": 111,
+        "fn": 125,
+        "tn": 1702
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 348,
+          "103": 329,
+          "104": 326,
+          "105": 330,
+          "106": 374
+        },
+        "fp": {
+          "102": 30,
+          "103": 29,
+          "104": 20,
+          "105": 17,
+          "106": 15
+        },
+        "fn": {
+          "102": 23,
+          "103": 25,
+          "104": 27,
+          "105": 19,
+          "106": 31
+        },
+        "tn": {
+          "102": 328,
+          "103": 346,
+          "104": 356,
+          "105": 363,
+          "106": 309
+        }
+      },
+      "f1_by_category": {
+        "102": 0.9292389853137517,
+        "103": 0.9241573033707865,
+        "104": 0.932761087267525,
+        "105": 0.9482758620689655,
+        "106": 0.9420654911838791
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 24000,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char_wb",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 36000,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": true,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "char_wb_linear_tf": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char_wb",
+      "max_features": {
+        "word": 18000,
+        "char": 28000
+      },
+      "sublinear_tf": false,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.930921052631579,
+      "macro_f1": 0.9309005662017856,
+      "micro_precision": 0.9350220264317181,
+      "micro_recall": 0.9268558951965066,
+      "fit_wall_seconds": 5.939167049999924,
+      "fit_cpu_seconds": 5.938699345,
+      "fit_peak_process_rss_mib": 476.46875,
+      "dimensions": {
+        "word": 18000,
+        "char": 28000,
+        "total": 46000
+      },
+      "artifact_bytes": 2887514,
+      "confusion_counts": {
+        "tp": 1698,
+        "fp": 118,
+        "fn": 134,
+        "tn": 1695
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 343,
+          "103": 329,
+          "104": 326,
+          "105": 331,
+          "106": 369
+        },
+        "fp": {
+          "102": 29,
+          "103": 31,
+          "104": 20,
+          "105": 24,
+          "106": 14
+        },
+        "fn": {
+          "102": 28,
+          "103": 25,
+          "104": 27,
+          "105": 18,
+          "106": 36
+        },
+        "tn": {
+          "102": 329,
+          "103": 344,
+          "104": 356,
+          "105": 356,
+          "106": 310
+        }
+      },
+      "f1_by_category": {
+        "102": 0.9232839838492598,
+        "103": 0.9215686274509803,
+        "104": 0.932761087267525,
+        "105": 0.9403409090909091,
+        "106": 0.9365482233502538
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 18000,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": false,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char_wb",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 28000,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": false,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    },
+    "baseline_linear_tf": {
+      "word_ngram_range": [
+        1,
+        3
+      ],
+      "char_analyzer": "char",
+      "max_features": {
+        "word": 18000,
+        "char": 28000
+      },
+      "sublinear_tf": false,
+      "thresholds": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "micro_f1": 0.9296853625170999,
+      "macro_f1": 0.9296134785091154,
+      "micro_precision": 0.931980252331322,
+      "micro_recall": 0.9274017467248908,
+      "fit_wall_seconds": 8.247800072000246,
+      "fit_cpu_seconds": 8.247284752999999,
+      "fit_peak_process_rss_mib": 539.03125,
+      "dimensions": {
+        "word": 18000,
+        "char": 28000,
+        "total": 46000
+      },
+      "artifact_bytes": 2886202,
+      "confusion_counts": {
+        "tp": 1699,
+        "fp": 124,
+        "fn": 133,
+        "tn": 1689
+      },
+      "confusion_counts_by_category": {
+        "tp": {
+          "102": 343,
+          "103": 329,
+          "104": 328,
+          "105": 330,
+          "106": 369
+        },
+        "fp": {
+          "102": 28,
+          "103": 33,
+          "104": 24,
+          "105": 25,
+          "106": 14
+        },
+        "fn": {
+          "102": 28,
+          "103": 25,
+          "104": 25,
+          "105": 19,
+          "106": 36
+        },
+        "tn": {
+          "102": 330,
+          "103": 342,
+          "104": 352,
+          "105": 355,
+          "106": 310
+        }
+      },
+      "f1_by_category": {
+        "102": 0.9245283018867925,
+        "103": 0.9189944134078212,
+        "104": 0.9304964539007092,
+        "105": 0.9375,
+        "106": 0.9365482233502538
+      },
+      "split_sha256": {
+        "train": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+        "calibration": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+        "validation": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd"
+      },
+      "normalized_effective_split_intersections": 0,
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "sklearn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "estimator_parameters": {
+        "alpha": 0.0001,
+        "average": false,
+        "class_weight": null,
+        "early_stopping": false,
+        "epsilon": 0.1,
+        "eta0": 0.01,
+        "fit_intercept": true,
+        "l1_ratio": 0.15,
+        "learning_rate": "optimal",
+        "loss": "log_loss",
+        "max_iter": 1000,
+        "n_iter_no_change": 5,
+        "n_jobs": null,
+        "penalty": "l2",
+        "power_t": 0.5,
+        "random_state": 42,
+        "shuffle": true,
+        "tol": 0.001,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "vectorizer_parameters": {
+        "word": {
+          "analyzer": "word",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 18000,
+          "min_df": 2,
+          "ngram_range": [
+            1,
+            3
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": false,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        },
+        "char": {
+          "analyzer": "char",
+          "binary": false,
+          "decode_error": "strict",
+          "dtype": "<class 'numpy.float32'>",
+          "encoding": "utf-8",
+          "input": "content",
+          "lowercase": true,
+          "max_df": 1.0,
+          "max_features": 28000,
+          "min_df": 3,
+          "ngram_range": [
+            3,
+            5
+          ],
+          "norm": "l2",
+          "preprocessor": null,
+          "smooth_idf": true,
+          "stop_words": null,
+          "strip_accents": null,
+          "sublinear_tf": false,
+          "token_pattern": "(?u)\\b\\w\\w+\\b",
+          "tokenizer": null,
+          "use_idf": true,
+          "vocabulary": null
+        }
+      },
+      "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+    }
+  },
+  "deltas_from_baseline": {
+    "baseline": {
+      "micro_f1": {
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      },
+      "macro_f1": {
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      },
+      "micro_precision": {
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      },
+      "micro_recall": {
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      },
+      "fit_wall_seconds": {
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      },
+      "artifact_bytes": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "fp": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "fn": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "word_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "char_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "total_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      }
+    },
+    "char_wb": {
+      "micro_f1": {
+        "absolute": 0.000907303433429596,
+        "relative_percent": 0.09691167959995362
+      },
+      "macro_f1": {
+        "absolute": 0.000971018871786633,
+        "relative_percent": 0.10371639789077403
+      },
+      "micro_precision": {
+        "absolute": -0.0003807351617042265,
+        "relative_percent": -0.04054495493938104
+      },
+      "micro_recall": {
+        "absolute": 0.0021834061135371785,
+        "relative_percent": 0.2339181286549863
+      },
+      "fit_wall_seconds": {
+        "absolute": -2.359438572999352,
+        "relative_percent": -27.908846956152168
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": -65.28125,
+        "relative_percent": -12.113831745893677
+      },
+      "artifact_bytes": {
+        "absolute": 1312,
+        "relative_percent": 0.04545766373940108
+      },
+      "fp": {
+        "absolute": 1,
+        "relative_percent": 0.9009009009008917
+      },
+      "fn": {
+        "absolute": -4,
+        "relative_percent": -3.2786885245901676
+      },
+      "word_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "char_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "total_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      }
+    },
+    "uncapped_char": {
+      "micro_f1": {
+        "absolute": -0.007606453879495878,
+        "relative_percent": -0.8124671351403046
+      },
+      "macro_f1": {
+        "absolute": -0.007824709162296828,
+        "relative_percent": -0.8357722722352134
+      },
+      "micro_precision": {
+        "absolute": -0.011949812936846715,
+        "relative_percent": -1.2725502548536771
+      },
+      "micro_recall": {
+        "absolute": -0.0032751091703057122,
+        "relative_percent": -0.35087719298245723
+      },
+      "fit_wall_seconds": {
+        "absolute": -0.7537560179998763,
+        "relative_percent": -8.915875831382792
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": 78.66796875,
+        "relative_percent": 14.597921106423684
+      },
+      "artifact_bytes": {
+        "absolute": 10350976,
+        "relative_percent": 358.6365749867819
+      },
+      "fp": {
+        "absolute": 23,
+        "relative_percent": 20.72072072072073
+      },
+      "fn": {
+        "absolute": 6,
+        "relative_percent": 4.918032786885251
+      },
+      "word_dimensions": {
+        "absolute": 93157,
+        "relative_percent": 517.5388888888889
+      },
+      "char_dimensions": {
+        "absolute": 125393,
+        "relative_percent": 447.83214285714286
+      },
+      "total_dimensions": {
+        "absolute": 218550,
+        "relative_percent": 475.1086956521739
+      }
+    },
+    "uncapped_char_wb": {
+      "micro_f1": {
+        "absolute": -0.0014282678573629415,
+        "relative_percent": -0.15255738254230655
+      },
+      "macro_f1": {
+        "absolute": -0.0014264917863781035,
+        "relative_percent": -0.15236633808330957
+      },
+      "micro_precision": {
+        "absolute": -0.004510929499537575,
+        "relative_percent": -0.4803744221437367
+      },
+      "micro_recall": {
+        "absolute": 0.0016375545851528006,
+        "relative_percent": 0.17543859649122862
+      },
+      "fit_wall_seconds": {
+        "absolute": -2.9660676220000823,
+        "relative_percent": -35.08441723014132
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": -35.61328125,
+        "relative_percent": -6.608533031792286
+      },
+      "artifact_bytes": {
+        "absolute": 6958400,
+        "relative_percent": 241.09192634472572
+      },
+      "fp": {
+        "absolute": 9,
+        "relative_percent": 8.108108108108114
+      },
+      "fn": {
+        "absolute": -3,
+        "relative_percent": -2.4590163934426257
+      },
+      "word_dimensions": {
+        "absolute": 93157,
+        "relative_percent": 517.5388888888889
+      },
+      "char_dimensions": {
+        "absolute": 40433,
+        "relative_percent": 144.4035714285714
+      },
+      "total_dimensions": {
+        "absolute": 133590,
+        "relative_percent": 290.4130434782609
+      }
+    },
+    "char_100k": {
+      "micro_f1": {
+        "absolute": -0.005220093973684836,
+        "relative_percent": -0.5575731954932994
+      },
+      "macro_f1": {
+        "absolute": -0.005318983905965857,
+        "relative_percent": -0.5681309263853462
+      },
+      "micro_precision": {
+        "absolute": -0.004978546988431698,
+        "relative_percent": -0.5301715828031628
+      },
+      "micro_recall": {
+        "absolute": -0.00545851528384278,
+        "relative_percent": -0.5847953216374213
+      },
+      "fit_wall_seconds": {
+        "absolute": -0.005974396000056004,
+        "relative_percent": -0.07066871989341861
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": 16.85546875,
+        "relative_percent": 3.127763522231408
+      },
+      "artifact_bytes": {
+        "absolute": 3489296,
+        "relative_percent": 120.89576543845509
+      },
+      "fp": {
+        "absolute": 9,
+        "relative_percent": 8.108108108108114
+      },
+      "fn": {
+        "absolute": 10,
+        "relative_percent": 8.196721311475418
+      },
+      "word_dimensions": {
+        "absolute": 22000,
+        "relative_percent": 122.22222222222223
+      },
+      "char_dimensions": {
+        "absolute": 32000,
+        "relative_percent": 114.28571428571428
+      },
+      "total_dimensions": {
+        "absolute": 54000,
+        "relative_percent": 117.39130434782608
+      }
+    },
+    "char_wb_100k": {
+      "micro_f1": {
+        "absolute": -0.001862322326123822,
+        "relative_percent": -0.1989199841324618
+      },
+      "macro_f1": {
+        "absolute": -0.0019031159424667266,
+        "relative_percent": -0.20327548316129151
+      },
+      "micro_precision": {
+        "absolute": -0.0026409722824359827,
+        "relative_percent": -0.2812403816559006
+      },
+      "micro_recall": {
+        "absolute": -0.0010917030567685337,
+        "relative_percent": -0.11695906432748204
+      },
+      "fit_wall_seconds": {
+        "absolute": -2.4695989689998896,
+        "relative_percent": -29.21188983584021
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": -51.59765625,
+        "relative_percent": -9.574653155308132
+      },
+      "artifact_bytes": {
+        "absolute": 3481552,
+        "relative_percent": 120.62745435004203
+      },
+      "fp": {
+        "absolute": 5,
+        "relative_percent": 4.504504504504503
+      },
+      "fn": {
+        "absolute": 2,
+        "relative_percent": 1.6393442622950838
+      },
+      "word_dimensions": {
+        "absolute": 22000,
+        "relative_percent": 122.22222222222223
+      },
+      "char_dimensions": {
+        "absolute": 32000,
+        "relative_percent": 114.28571428571428
+      },
+      "total_dimensions": {
+        "absolute": 54000,
+        "relative_percent": 117.39130434782608
+      }
+    },
+    "char_60k": {
+      "micro_f1": {
+        "absolute": -0.0029567147219897727,
+        "relative_percent": -0.31581517191311415
+      },
+      "macro_f1": {
+        "absolute": -0.0030031946274510224,
+        "relative_percent": -0.32077700853644364
+      },
+      "micro_precision": {
+        "absolute": 0.00014844321318541187,
+        "relative_percent": 0.01580790007080779
+      },
+      "micro_recall": {
+        "absolute": -0.006004366812227047,
+        "relative_percent": -0.6432748538011679
+      },
+      "fit_wall_seconds": {
+        "absolute": 0.04655070600074396,
+        "relative_percent": 0.550629520235435
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": 1.125,
+        "relative_percent": 0.20875918757883305
+      },
+      "artifact_bytes": {
+        "absolute": 903408,
+        "relative_percent": 31.30092765509829
+      },
+      "fp": {
+        "absolute": -1,
+        "relative_percent": -0.9009009009009028
+      },
+      "fn": {
+        "absolute": 11,
+        "relative_percent": 9.016393442622949
+      },
+      "word_dimensions": {
+        "absolute": 6000,
+        "relative_percent": 33.33333333333333
+      },
+      "char_dimensions": {
+        "absolute": 8000,
+        "relative_percent": 28.57142857142858
+      },
+      "total_dimensions": {
+        "absolute": 14000,
+        "relative_percent": 30.434782608695656
+      }
+    },
+    "char_wb_60k": {
+      "micro_f1": {
+        "absolute": -0.0008743423495044533,
+        "relative_percent": -0.09339101177601172
+      },
+      "macro_f1": {
+        "absolute": -0.0009252788742136753,
+        "relative_percent": -0.09883082055995862
+      },
+      "micro_precision": {
+        "absolute": -0.00010058666492684942,
+        "relative_percent": -0.0107115974755434
+      },
+      "micro_recall": {
+        "absolute": -0.0016375545851528006,
+        "relative_percent": -0.17543859649122862
+      },
+      "fit_wall_seconds": {
+        "absolute": -2.3818406700002015,
+        "relative_percent": -28.173832323369762
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": -58.6953125,
+        "relative_percent": -10.891720668609285
+      },
+      "artifact_bytes": {
+        "absolute": 903104,
+        "relative_percent": 31.29039478179283
+      },
+      "fp": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "fn": {
+        "absolute": 3,
+        "relative_percent": 2.4590163934426146
+      },
+      "word_dimensions": {
+        "absolute": 6000,
+        "relative_percent": 33.33333333333333
+      },
+      "char_dimensions": {
+        "absolute": 8000,
+        "relative_percent": 28.57142857142858
+      },
+      "total_dimensions": {
+        "absolute": 14000,
+        "relative_percent": 30.434782608695656
+      }
+    },
+    "char_wb_linear_tf": {
+      "micro_f1": {
+        "absolute": -0.005295755471350083,
+        "relative_percent": -0.565654816866723
+      },
+      "macro_f1": {
+        "absolute": -0.005324458513409569,
+        "relative_percent": -0.5687156797618553
+      },
+      "micro_precision": {
+        "absolute": -0.00402245462264772,
+        "relative_percent": -0.42835613262230954
+      },
+      "micro_recall": {
+        "absolute": -0.0065502183406113135,
+        "relative_percent": -0.7017543859649034
+      },
+      "fit_wall_seconds": {
+        "absolute": -2.514921277999747,
+        "relative_percent": -29.747989143553276
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": -62.4296875,
+        "relative_percent": -11.584685194044564
+      },
+      "artifact_bytes": {
+        "absolute": 1312,
+        "relative_percent": 0.04545766373940108
+      },
+      "fp": {
+        "absolute": 7,
+        "relative_percent": 6.3063063063063085
+      },
+      "fn": {
+        "absolute": 12,
+        "relative_percent": 9.836065573770503
+      },
+      "word_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "char_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "total_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      }
+    },
+    "baseline_linear_tf": {
+      "micro_f1": {
+        "absolute": -0.0065314455858291876,
+        "relative_percent": -0.6976424188606445
+      },
+      "macro_f1": {
+        "absolute": -0.0066115462060798436,
+        "relative_percent": -0.7061919978149644
+      },
+      "micro_precision": {
+        "absolute": -0.007064228723043797,
+        "relative_percent": -0.7522783920855369
+      },
+      "micro_recall": {
+        "absolute": -0.006004366812227047,
+        "relative_percent": -0.6432748538011679
+      },
+      "fit_wall_seconds": {
+        "absolute": -0.20628825599942502,
+        "relative_percent": -2.4401005524889663
+      },
+      "fit_peak_process_rss_mib": {
+        "absolute": 0.1328125,
+        "relative_percent": 0.024645181866955745
+      },
+      "artifact_bytes": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "fp": {
+        "absolute": 13,
+        "relative_percent": 11.711711711711704
+      },
+      "fn": {
+        "absolute": 11,
+        "relative_percent": 9.016393442622949
+      },
+      "word_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "char_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      },
+      "total_dimensions": {
+        "absolute": 0,
+        "relative_percent": 0.0
+      }
+    }
+  },
+  "bootstrap_95_ci_micro_f1_difference_from_baseline": {
+    "char_wb": [
+      -0.001247677639589545,
+      0.0032431156868913515
+    ],
+    "uncapped_char": [
+      -0.012681422172926688,
+      -0.002827505652340966
+    ],
+    "uncapped_char_wb": [
+      -0.0055793739000614875,
+      0.0027992336785636423
+    ],
+    "char_100k": [
+      -0.008575655148727278,
+      -0.002057823521621119
+    ],
+    "char_wb_100k": [
+      -0.005541240793246527,
+      0.0017949823212024176
+    ],
+    "char_60k": [
+      -0.006035081772493655,
+      1.1158248077621805e-05
+    ],
+    "char_wb_60k": [
+      -0.004071424479118568,
+      0.0021597783799786135
+    ],
+    "char_wb_linear_tf": [
+      -0.010508684926377368,
+      -3.745343508046728e-05
+    ],
+    "baseline_linear_tf": [
+      -0.011934679333259516,
+      -0.001320096618919603
+    ]
+  },
+  "checks": "All measured variants have identical source/splits, thresholds, dependencies and estimator parameters; only requested TF-IDF parameters differ. Sublinear=False checked separately for top two.",
+  "sublinear_true_minus_false": {
+    "char_wb": {
+      "micro_f1": 0.006203058904779679,
+      "macro_f1": 0.006295477385196202,
+      "micro_precision": 0.0036417194609434933,
+      "micro_recall": 0.008733624454148492,
+      "fit_wall_seconds": 0.15548270500039507,
+      "fit_peak_process_rss_mib": -2.8515625,
+      "artifact_bytes": 0,
+      "micro_f1_95_ci": [
+        0.0014271953575553831,
+        0.011136262925019244
+      ]
+    },
+    "baseline": {
+      "micro_f1": 0.0065314455858291876,
+      "macro_f1": 0.0066115462060798436,
+      "micro_precision": 0.007064228723043797,
+      "micro_recall": 0.006004366812227047,
+      "fit_wall_seconds": 0.20628825599942502,
+      "fit_peak_process_rss_mib": -0.1328125,
+      "artifact_bytes": 0,
+      "micro_f1_95_ci": [
+        0.0013200966189196028,
+        0.011934679333259514
+      ]
+    }
+  }
+}

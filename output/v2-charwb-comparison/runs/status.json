@@ -1,0 +1,73 @@
+{
+  "char_wb": {
+    "status": "complete",
+    "reason": null,
+    "exit_code": 0,
+    "monitored_peak_process_rss_mib": 231.83203125,
+    "command": [
+      "/tmp/innopolis-ngram-venv/bin/python",
+      "-m",
+      "avito_compare.scripts.measure_training",
+      "--data-dir",
+      "output/v2-charwb-comparison/splits",
+      "--output-dir",
+      "output/v2-charwb-comparison/runs/char_wb",
+      "--word-ngram-max",
+      "3",
+      "--char-analyzer",
+      "char_wb",
+      "--exclude-source-category"
+    ],
+    "process_wall_seconds": 4.614900210999622
+  },
+  "char_wb_60k": {
+    "status": "complete",
+    "reason": null,
+    "exit_code": 0,
+    "monitored_peak_process_rss_mib": 232.171875,
+    "command": [
+      "/tmp/innopolis-ngram-venv/bin/python",
+      "-m",
+      "avito_compare.scripts.measure_training",
+      "--data-dir",
+      "output/v2-charwb-comparison/splits",
+      "--output-dir",
+      "output/v2-charwb-comparison/runs/char_wb_60k",
+      "--word-ngram-max",
+      "3",
+      "--char-analyzer",
+      "char_wb",
+      "--word-max-features",
+      "24000",
+      "--char-max-features",
+      "36000",
+      "--exclude-source-category"
+    ],
+    "process_wall_seconds": 4.614567546001126
+  },
+  "char_wb_100k": {
+    "status": "complete",
+    "reason": null,
+    "exit_code": 0,
+    "monitored_peak_process_rss_mib": 230.421875,
+    "command": [
+      "/tmp/innopolis-ngram-venv/bin/python",
+      "-m",
+      "avito_compare.scripts.measure_training",
+      "--data-dir",
+      "output/v2-charwb-comparison/splits",
+      "--output-dir",
+      "output/v2-charwb-comparison/runs/char_wb_100k",
+      "--word-ngram-max",
+      "3",
+      "--char-analyzer",
+      "char_wb",
+      "--word-max-features",
+      "40000",
+      "--char-max-features",
+      "60000",
+      "--exclude-source-category"
+    ],
+    "process_wall_seconds": 4.513965197000289
+  }
+}

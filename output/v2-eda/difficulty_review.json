@@ -1,0 +1,185 @@
+{
+  "classification_is_expert_heuristic_not_population_estimate": true,
+  "samples": [
+    {
+      "split": "train",
+      "item_id": "v2-colloquial-00-0",
+      "type": "colloquial-00",
+      "author_negation_depth": 2,
+      "difficulty_class_heuristic": "типовые пользовательские",
+      "reason": "Разговорная короткая фраза с опечатками: полезный основной сценарий.",
+      "description": "я плитку неделаю а вот разетки меняю",
+      "mcId": 101,
+      "target_102_106": [
+        105
+      ]
+    },
+    {
+      "split": "challenge",
+      "item_id": "challenge-002-0",
+      "type": "challenge-002",
+      "author_negation_depth": 0,
+      "difficulty_class_heuristic": "типовые пользовательские",
+      "reason": "Обычное различение штукатурки и подготовки под покраску; не требует формальной логики.",
+      "description": "Не штукатурим: только шпаклюем стены под покраску. Саму покраску не выполняем.",
+      "mcId": 101,
+      "target_102_106": [
+        106
+      ]
+    },
+    {
+      "split": "challenge",
+      "item_id": "challenge-006-0",
+      "type": "challenge-006",
+      "author_negation_depth": 0,
+      "difficulty_class_heuristic": "типовые пользовательские",
+      "reason": "Общее обещание ремонта под ключ без конкретного перечня услуг.",
+      "description": "Ремонт квартиры под ключ. Конкретные этапы здесь не перечисляем: перечень определяем после осмотра.",
+      "mcId": 101,
+      "target_102_106": []
+    },
+    {
+      "split": "challenge",
+      "item_id": "challenge-013-1",
+      "type": "challenge-013",
+      "author_negation_depth": 0,
+      "difficulty_class_heuristic": "типовые пользовательские",
+      "reason": "Разграничение исполнителей и связанного оборудования.",
+      "description": "Смеситель и трубы устанавливает сантехник заказчика. Мы только монтируем розетку для подсветки.",
+      "mcId": 101,
+      "target_102_106": [
+        105
+      ]
+    },
+    {
+      "split": "train",
+      "item_id": "v2-no_refusal-101-103-1-0-clean",
+      "type": "no_refusal",
+      "author_negation_depth": 2,
+      "difficulty_class_heuristic": "реалистичные, но редкие",
+      "reason": "Отрицание отказа встречается в естественной речи; здесь смысл дополнительно подтверждён.",
+      "description": "Мы не отказываемся выполнять полный цикл ремонта дома со сдачей готового результата и принимаем такие заказы. Отдельно выполняем укладку мозаики.",
+      "mcId": 102,
+      "target_102_106": [
+        103
+      ]
+    },
+    {
+      "split": "validation",
+      "item_id": "v2-false_report-106-104-0-0-clean",
+      "type": "false_report",
+      "author_negation_depth": 3,
+      "difficulty_class_heuristic": "реалистичные, но редкие",
+      "reason": "Опровержение слуха/сообщения возможно, но не типичный рекламный список.",
+      "description": "Сообщение о том, что мы больше не выполняем поклейку обоев, ошибочно. Отдельно выполняем разводку водоснабжения и канализации.",
+      "mcId": 101,
+      "target_102_106": [
+        104,
+        106
+      ]
+    },
+    {
+      "split": "train",
+      "item_id": "v2-refutation_refuted-102-105-2-0-clean",
+      "type": "refutation_refuted",
+      "author_negation_depth": 3,
+      "difficulty_class_heuristic": "искусственные стрессовые",
+      "reason": "Суждение об истинности опровержения звучит как логическая задача.",
+      "description": "Опровержение фразы «мы не выполняем выравнивание стен штукатурными составами» верно. Отдельно выполняем замену электропроводки.",
+      "mcId": 106,
+      "target_102_106": [
+        102,
+        105
+      ]
+    },
+    {
+      "split": "train",
+      "item_id": "v2-four_layer_facts-101-103-0-1-clean",
+      "type": "four_layer_facts",
+      "author_negation_depth": 4,
+      "difficulty_class_heuristic": "искусственные стрессовые",
+      "reason": "Несколько вложенных утверждений об опровержении и соответствии фактам.",
+      "description": "Неверно, что опровержение утверждения «мы не выполняем комплексный ремонт квартиры под ключ» соответствует фактам. Отдельно выполняем облицовку стен плиткой.",
+      "mcId": 106,
+      "target_102_106": [
+        103
+      ]
+    },
+    {
+      "split": "test",
+      "item_id": "v2-double_report-102-103-0-1-clean",
+      "type": "double_report",
+      "author_negation_depth": 4,
+      "difficulty_class_heuristic": "искусственные стрессовые",
+      "reason": "Вложенные сообщение, неверность и отказ; требуется распутывать формальную конструкцию.",
+      "description": "Не соответствует правде сообщение, будто неверно, что мы не выполняем штукатурку стен по маякам. Отдельно выполняем облицовку стен плиткой.",
+      "mcId": 101,
+      "target_102_106": [
+        103
+      ]
+    },
+    {
+      "split": "test",
+      "item_id": "v2-status_negated_denial-17-0-0-clean",
+      "type": "status_negated_denial",
+      "author_negation_depth": 2,
+      "difficulty_class_heuristic": "искусственные стрессовые",
+      "reason": "Шесть позиций сформулированы через Верно/Неверно, что не…: намеренный тест композиции, а не типичный перечень услуг.",
+      "description": "Уточнение информации о работах:\nНеверно, что мы не выполняем комплексный ремонт квартиры под ключ.\nВерно, что мы не выполняем штукатурку стен по маякам.\nВерно, что мы не выполняем укладку керамогранита.\nВерно, что мы не выполняем установку раковин и унитазов.\nНеверно, что мы не выполняем замену электропроводки.\nВерно, что мы не выполняем поклейку обоев.",
+      "mcId": 103,
+      "target_102_106": [
+        105
+      ]
+    }
+  ],
+  "objective_counts": {
+    "train": {
+      "rows": 8464,
+      "author_depth_at_least_3": 2160,
+      "author_depth_at_least_3_percent": 25.51984877126654,
+      "author_depth4": 540,
+      "author_depth4_percent": 6.379962192816635,
+      "selected_strict_formal_families": [
+        "four_layer_facts",
+        "not_only_nested",
+        "refutation_refuted",
+        "triple_claim"
+      ],
+      "rows_in_selected_strict_formal_families": 2160,
+      "rows_in_selected_strict_formal_families_percent": 25.51984877126654
+    },
+    "validation": {
+      "rows": 2440,
+      "author_depth_at_least_3": 1620,
+      "author_depth_at_least_3_percent": 66.39344262295081,
+      "author_depth4": 0,
+      "author_depth4_percent": 0.0,
+      "selected_strict_formal_families": [],
+      "rows_in_selected_strict_formal_families": 0,
+      "rows_in_selected_strict_formal_families_percent": 0.0
+    },
+    "test": {
+      "rows": 3016,
+      "author_depth_at_least_3": 1620,
+      "author_depth_at_least_3_percent": 53.713527851458885,
+      "author_depth4": 1080,
+      "author_depth4_percent": 35.80901856763926,
+      "selected_strict_formal_families": [
+        "double_report",
+        "four_layers"
+      ],
+      "rows_in_selected_strict_formal_families": 1080,
+      "rows_in_selected_strict_formal_families_percent": 35.80901856763926
+    },
+    "challenge": {
+      "rows": 40,
+      "author_depth_at_least_3": 0,
+      "author_depth_at_least_3_percent": 0.0,
+      "author_depth4": 0,
+      "author_depth4_percent": 0.0,
+      "selected_strict_formal_families": [],
+      "rows_in_selected_strict_formal_families": 0,
+      "rows_in_selected_strict_formal_families_percent": 0.0
+    }
+  }
+}

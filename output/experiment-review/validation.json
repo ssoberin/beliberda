@@ -1,0 +1,21 @@
+{
+  "merged_main_commit": "8d915a9",
+  "data_snapshot": "0b1be5d",
+  "unit_tests": {
+    "avito_compare/tests": 5,
+    "datasets/hard_dataset": 6,
+    "frontend/tests/api.test.js": 5
+  },
+  "notebooks": {
+    "output/experiment-review/experiments.ipynb": {
+      "executed_code_cells": 6,
+      "errors": 0
+    },
+    "output/dataset-length-comparison/lengths.ipynb": {
+      "executed_code_cells": 5,
+      "errors": 0
+    }
+  },
+  "notebook_execution": "Re-executed in the merged test-branch worktree from saved measurements; no retraining",
+  "models_and_datasets_modified": false
+}

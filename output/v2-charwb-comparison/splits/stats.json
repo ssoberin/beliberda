@@ -1,0 +1,32 @@
+{
+  "seed": 2026,
+  "sgd_random_state": 42,
+  "source_sha256": {
+    "train": "0d5bcb4de37cbe2e0efaa990ef8af13bef25239437b03c4559d88edeea0839e9",
+    "validation": "7677f3c64ccb21d3bea90d4fa09b9b67cdfeedcba7b5b626ab9fc9cef8ae217d",
+    "test": "cde5099d8177e12bd4054548e17e6fd2c60af0740823614e669b331e6c3a7c55",
+    "challenge": "db175819218e54da469e270feb8c8815fee2c9942b50ab85349142e45e2e5590"
+  },
+  "source_splits": {
+    "train": 8464,
+    "validation": 2440,
+    "test": 3016,
+    "challenge": 40
+  },
+  "splits": {
+    "train": 8464,
+    "calibration": 2440,
+    "validation": 3016,
+    "challenge": 40
+  },
+  "mapping": {
+    "train": "train",
+    "validation": "calibration",
+    "test": "validation",
+    "challenge": "challenge"
+  },
+  "training_labels": "offered_microcategories intersect 102..106",
+  "evaluation_labels": "found_microcategories intersect 102..106; source category excluded",
+  "text_and_group_intersections": 0,
+  "resplit": false
+}
