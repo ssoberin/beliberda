@@ -1,0 +1,775 @@
+[
+  {
+    "item_id": "tail60-train-001",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      102
+    ],
+    "rationale": "Единственное конкретное целевое предложение — штукатурка в сведениях о работах.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-002",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      103
+    ],
+    "rationale": "В хвосте прямо предлагается укладка керамогранита, не его продажа.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-003",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      104
+    ],
+    "rationale": "Конкретный перечень в последнем абзаце является предложением сантехнических работ.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-004",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      105
+    ],
+    "rationale": "Все три операции в техническом хвосте относятся к электрике.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-005",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      106
+    ],
+    "rationale": "Услуги 106 однозначно перечислены в параметрах заказа.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-006",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      102
+    ],
+    "rationale": "Последний абзац определяет реально выполняемую штукатурку.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-007",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      103
+    ],
+    "rationale": "Подрезка вокруг отверстий не означает электромонтаж; предлагается только плиточная работа.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-008",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      104
+    ],
+    "rationale": "В конце перечислены самостоятельные сантехнические операции.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-009",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      105
+    ],
+    "rationale": "Названные электрические работы предлагаются исполнителем, а не обсуждаются как проект.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-010",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      106
+    ],
+    "rationale": "Комплектация явно включает поклейку обоев.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-011",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      102
+    ],
+    "rationale": "Ведомость относится к выполняемым работам этой бригады, а не к составлению документа.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-012",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      103
+    ],
+    "rationale": "Мозаичная облицовка и швы — плиточные работы 103.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-013",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      104
+    ],
+    "rationale": "Сантехника предлагается явным списком в конце.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-014",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      105
+    ],
+    "rationale": "Это монтаж щита, а не только разработка схемы.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-015",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      106
+    ],
+    "rationale": "В профиле явно предлагаются малярные работы 106.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-016",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      102
+    ],
+    "rationale": "Предложение штукатурных работ по цоколю и откосам.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-017",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      103
+    ],
+    "rationale": "Керамогранит именно укладывается исполнителем, готовая стяжка не добавляет 102.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-018",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      104
+    ],
+    "rationale": "Явное предложение подключения сантехнического оборудования.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-019",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      105
+    ],
+    "rationale": "Предлагается электромонтаж, готовность выводов не отменяет услугу.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-020",
+    "split": "train",
+    "focus": "tail",
+    "gold": [
+      106
+    ],
+    "rationale": "Шпаклёвка и окраска — 106; штукатурка не обещана.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-021",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      102
+    ],
+    "rationale": "Редкая форма «оштукатуриваю», действия и материал однозначно задают 102.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-022",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      102
+    ],
+    "rationale": "Восстановление откосов раствором — 102, установка двери чужая и вне целевых категорий.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-023",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      102
+    ],
+    "rationale": "Штукатурное выравнивание является собственным предложением.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-024",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      102
+    ],
+    "rationale": "Гипсовое оштукатуривание явно предложено, заглаживание здесь не отдельная услуга 106.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-025",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      103
+    ],
+    "rationale": "Все предложенные действия — плиточная работа; трубы и провода только состояние объекта.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-026",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      103
+    ],
+    "rationale": "Облицовка керамогранитом, даже без слова «плитка», относится к 103.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-027",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      103
+    ],
+    "rationale": "Мозаика укладывается, а не только проектируется.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-028",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      103
+    ],
+    "rationale": "Локальная замена плитки и затирка — 103.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-029",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      104
+    ],
+    "rationale": "Разговорные названия сантехнических деталей сопровождаются явными действиями мастера.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-030",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      104
+    ],
+    "rationale": "Монтаж узла водоснабжения относится к 104.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-031",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      104
+    ],
+    "rationale": "Ремонт бачка — сантехника, хотя общего слова «сантехника» нет.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-032",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      104
+    ],
+    "rationale": "Предложение ограничено водяной обвязкой 104; электропитание готовит другой мастер.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-033",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      105
+    ],
+    "rationale": "Монтаж и подключение аппаратов защиты — 105.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-034",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      105
+    ],
+    "rationale": "Силовая линия и подключение панели являются электрическими работами.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-035",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      105
+    ],
+    "rationale": "Освещение реально монтируется и подключается — 105.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-036",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      105
+    ],
+    "rationale": "Ремонт электрических точек, без обещания отделочных работ.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-037",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      106
+    ],
+    "rationale": "Финишная шпаклёвка и окраска — 106, черновая штукатурка не предлагается.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-038",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      106
+    ],
+    "rationale": "Предлагается поклейка; слово «розетки» не добавляет электрику.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-039",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      106
+    ],
+    "rationale": "Малярные операции с мелким шпаклеванием относятся к 106.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-040",
+    "split": "train",
+    "focus": "lexical",
+    "gold": [
+      106
+    ],
+    "rationale": "Декоративный тонкослойный финиш относится к 106 по справочнику, не к 102.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-041",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      102
+    ],
+    "rationale": "Штукатурное предложение сохраняется при поисковом хвосте.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-042",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      102
+    ],
+    "rationale": "SEO не превращает реальное выполнение штукатурки в продажу оборудования.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-043",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      103
+    ],
+    "rationale": "Плиточные работы явно предложены до хвоста.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-044",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      103
+    ],
+    "rationale": "Хештеги сопровождают реальную услугу 103.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-045",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      104
+    ],
+    "rationale": "Целевая услуга сантехники находится в основной части, слова в хвосте не меняют gold.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-046",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      104
+    ],
+    "rationale": "Монтаж водяного оборудования — собственная услуга 104, организация отключения не отменяет её.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-047",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      105
+    ],
+    "rationale": "Электромонтаж предложен явно; служебный код и ключи не меняют смысл.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-048",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      105
+    ],
+    "rationale": "Собственное предложение электромонтажа сохраняется при тегах.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-049",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      106
+    ],
+    "rationale": "В основной части реальная малярная услуга 106.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-050",
+    "split": "train",
+    "focus": "seo_positive",
+    "gold": [
+      106
+    ],
+    "rationale": "Поклейка предлагается прямо, хештеги дублируют её.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-051",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Фактическая услуга — перевозка чужого материала; целевые работы не предлагаются.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-052",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Предлагается аренда оборудования, применения не являются предложением целевых услуг.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-053",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Проектирование и консультация не означают электромонтаж 105.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-054",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Подбор и закупка материалов и оборудования, не 103/104.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-055",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Упоминание покрытий нужно для защиты при дверной работе, не предложение 102/103/106.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-056",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Аудит сметы не выполнение перечисленных в ней работ.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-057",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Целевые услуги относятся к работам заказчика фотографии.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-058",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Сборка мебели с учётом коммуникаций, их подключение не предлагается.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-059",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Ковролин вне целевых категорий; плитка обозначает старое покрытие.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-train-060",
+    "split": "train",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Обмеры и фиксация существующих объектов не являются целевыми услугами.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-001",
+    "split": "test",
+    "focus": "tail",
+    "gold": [
+      102
+    ],
+    "rationale": "Самостоятельное предложение штукатурки в конце.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-002",
+    "split": "test",
+    "focus": "tail",
+    "gold": [
+      103
+    ],
+    "rationale": "Состав услуги — собственная плиточная работа.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-003",
+    "split": "test",
+    "focus": "tail",
+    "gold": [
+      104
+    ],
+    "rationale": "Ремонт бачка предложен, не продажа клапана.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-004",
+    "split": "test",
+    "focus": "tail",
+    "gold": [
+      105
+    ],
+    "rationale": "Явное предложение электрического монтажа.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-005",
+    "split": "test",
+    "focus": "tail",
+    "gold": [
+      106
+    ],
+    "rationale": "106 без обещания штукатурки 102.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-006",
+    "split": "test",
+    "focus": "lexical",
+    "gold": [
+      102
+    ],
+    "rationale": "Технологические действия задают штукатурку 102.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-007",
+    "split": "test",
+    "focus": "lexical",
+    "gold": [
+      103
+    ],
+    "rationale": "Керамическая облицовка предлагается, мебель — другой исполнитель.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-008",
+    "split": "test",
+    "focus": "lexical",
+    "gold": [
+      104
+    ],
+    "rationale": "Монтаж водяного узла — сантехника.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-009",
+    "split": "test",
+    "focus": "lexical",
+    "gold": [
+      105
+    ],
+    "rationale": "Ремонт электрических точек 105.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-010",
+    "split": "test",
+    "focus": "lexical",
+    "gold": [
+      106
+    ],
+    "rationale": "Поклейка и окраска — 106, штукатурка основания не предложена.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-011",
+    "split": "test",
+    "focus": "seo_positive",
+    "gold": [
+      102
+    ],
+    "rationale": "Поисковый хвост сопровождает реальную штукатурку.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-012",
+    "split": "test",
+    "focus": "seo_positive",
+    "gold": [
+      103
+    ],
+    "rationale": "Реально предлагается плитка, трубы здесь только препятствия при подрезке.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-013",
+    "split": "test",
+    "focus": "seo_positive",
+    "gold": [
+      104
+    ],
+    "rationale": "Сантехника явно предлагается до поискового списка.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-014",
+    "split": "test",
+    "focus": "seo_positive",
+    "gold": [
+      105
+    ],
+    "rationale": "Подключение освещения — 105, мебель не наша услуга.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-015",
+    "split": "test",
+    "focus": "seo_positive",
+    "gold": [
+      106
+    ],
+    "rationale": "Реальная услуга 106 сохраняется при SEO.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-016",
+    "split": "test",
+    "focus": "multi_tail",
+    "gold": [
+      104,
+      105
+    ],
+    "rationale": "В конце явно предложены две целевые услуги; мебельщик другой.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-017",
+    "split": "test",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Продажа плитки, описание применения не предложение укладки.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-018",
+    "split": "test",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Чертёж не монтаж сантехники.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-019",
+    "split": "test",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Учет проводки при сборке мебели не электрические работы.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  },
+  {
+    "item_id": "tail60-test-020",
+    "split": "test",
+    "focus": "context_empty",
+    "gold": [],
+    "rationale": "Целевые материалы — загрязнения при уборке, не предложение отделки.",
+    "annotation_status": "authored_and_expert_self_reviewed_not_independent_official_gold"
+  }
+]
