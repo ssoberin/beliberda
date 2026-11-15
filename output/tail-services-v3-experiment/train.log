@@ -1,0 +1,39 @@
+Groups {'n_ads': 6379, 'n_components': 5543, 'multi_item_groups': 224, 'max_group_size': 189, 'sim_threshold': 0.85}
+Recomputing all nested grouped OOF probabilities...
+OOF complete 949.5058031670051
+Missing syntax pairs 2043
+syntax 0
+syntax 100
+syntax 200
+syntax 300
+syntax 400
+syntax 500
+syntax 600
+syntax 700
+syntax 800
+syntax 900
+syntax 1000
+syntax 1100
+syntax 1200
+syntax 1300
+syntax 1400
+syntax 1500
+syntax 1600
+syntax 1700
+syntax 1800
+syntax 1900
+syntax 2000
+Fitting existing C_syntax CatBoost...
+0:	learn: 0.6153099	test: 0.6165018	best: 0.6165018 (0)	total: 82.4ms	remaining: 1m 38s
+200:	learn: 0.1071434	test: 0.1101157	best: 0.1101157 (200)	total: 4.65s	remaining: 23.1s
+400:	learn: 0.0946546	test: 0.1034616	best: 0.1034363 (399)	total: 8.96s	remaining: 17.9s
+600:	learn: 0.0883685	test: 0.1005991	best: 0.1005991 (600)	total: 13.6s	remaining: 13.5s
+800:	learn: 0.0831081	test: 0.0989952	best: 0.0989378 (796)	total: 18.3s	remaining: 9.13s
+1000:	learn: 0.0790627	test: 0.0979588	best: 0.0979277 (999)	total: 23.3s	remaining: 4.64s
+Stopped by overfitting detector  (50 iterations wait)
+
+bestTest = 0.09776760242
+bestIteration = 1031
+
+Shrink model to first 1032 iterations.
+TRAINING VALIDATED; no final test metrics computed.

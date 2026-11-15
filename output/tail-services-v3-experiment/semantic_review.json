@@ -1,0 +1,14 @@
+[
+  {"split":"official_208","rows":[4],"assessment":"genuine_improvement","reason":"A adds102 despite no plaster offer; B removes it and preserves explicit104/105/106."},
+  {"split":"official_208","rows":[148],"assessment":"genuine_improvement","reason":"Structural building reconstruction/leveling does not offer plaster; B removes102."},
+  {"split":"official_208","rows":[189],"assessment":"semantic_improvement_despite_formal_FP","reason":"Final characteristics explicitly offer wallpapering; B106 is supported despite gold empty. Source101 follows convention, is not in parquet."},
+  {"split":"official_208","rows":[6],"assessment":"likely_semantic_improvement_despite_formal_FN","reason":"Puttying and drywall alone support106 rather than plaster102; B removes unsupported102. Official gold102 remains unchanged."},
+  {"split":"official_208","rows":[113,115],"assessment":"formal_improvement_semantically_unsubstantiated","reason":"Only technical project and socket layout are explicit. Electrical installation105 is not established by a generic turnkey promise; B matches gold without clear offer evidence."},
+  {"split":"official_208","rows":[66,106,143,171,194],"assessment":"genuine_regression","reason":"Textile stretch-wall installation is offered, wet plaster/paint/wallpaper processes are not. B adds106, amplifying a repeated real error."},
+  {"split":"official_208","rows":[3],"assessment":"formal_improvement_semantically_plausible_not_certain","reason":"Plumbing is named in an unmarked search list after a generic full-cycle repair offer; B adds104. The role of that list is less certain than an explicit scope-of-work section."},
+  {"split":"tail_holdout20","rows":[1],"assessment":"genuine_improvement","reason":"Only ceramic wall tiling is offered in the final section; B removes102."},
+  {"split":"tail_holdout20","rows":[19],"assessment":"partial_genuine_improvement","reason":"Cleaning construction residue is offered; B removes103 but retains unsupported102/106."},
+  {"split":"tail_holdout20","rows":[16,17,18,19],"assessment":"remaining_genuine_errors","reason":"Respectively tile sale, plumbing planning, furniture assembly, cleaning. Target mentions do not establish the classified services. Both models fail all four empty gold ads."},
+  {"split":"v3_test","rows":[87,274],"assessment":"genuine_new_empty_regressions","reason":"Clear own offer of water/plumbing work or electrical-panel assembly remains in text; A had the right category, B returns empty."},
+  {"split":"v3_test","rows":[210,478],"assessment":"additional_new_empty_with_prior_A_errors","reason":"B becomes empty despite positive service evidence. A was already wrong/incomplete, so these are not two additional formerly-exact failures."}
+]

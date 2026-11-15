@@ -1,11 +1,12 @@
 """Text-only duplicate audit; never use predictions or existing test labels."""
 import os
 for k in ['OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS']:os.environ[k]='1'
-import collections,hashlib,json,sys
+import collections,hashlib,json,sys,runpy
 from pathlib import Path
 import duckdb,joblib,numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 sys.path.insert(0,str(Path.cwd()))
+from avito_compare.scripts.fixed_chunker import chunk_ad_fixed
 P=Path('output/tail-services-v3-experiment');P.mkdir(parents=True,exist_ok=True)
 D=Path('datasets/v3_tail_services_60')
 def load(p):return [json.loads(l) for l in Path(p).read_text().splitlines() if l.strip()]
@@ -34,6 +35,15 @@ def main():
   lens=np.array([len(r['description']) for r in rows]);reviews=json.loads((D/'annotation_review.json').read_text());rev={a['item_id']:a for a in reviews}
   stats[name]={'rows':len(rows),'empty_gold':sum(not r['gold'] for r in rows),'category_counts':{str(c):sum(c in r['gold'] for r in rows) for c in range(102,107)},'focus':dict(collections.Counter(rev[r['item_id']]['focus'] for r in rows)),'length':{'min':int(lens.min()),'median':float(np.median(lens)),'max':int(lens.max())}}
  out={'stats':stats,'exact_overlaps':exact,'max_internal_similarity':float(inside.max()),'max_new_train_holdout_similarity':float(inside[:60,60:].max()),'near_pairs_over_0_5':pairs,'max_similarity_by_existing_split':{name:max(a['similarity'] for a in arr) for name,arr in nearest.items()},'input_sha256':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in [D/'train_addition.jsonl',D/'test_holdout.jsonl',D/'annotation_review.json']}}
+ catalog=runpy.run_path(str(D/'catalog.py'));positions={}
+ for split,rows,authored in [('train',tr,catalog['TRAIN']),('test',te,catalog['TEST'])]:
+  rec=[]
+  for r,(focus,gold,original,reason) in zip(rows,authored):
+   if focus not in ['tail','multi_tail']:continue
+   tail=original.rsplit('\n\n',1)[-1];pos=r['description'].rfind(tail);assert pos>=0
+   rec.append({'item_id':r['item_id'],'chars':len(r['description']),'chunks':len(chunk_ad_fixed(r['description'])),'service_section_start':pos,'relative_service_section_start':pos/len(r['description'])})
+  positions[split]={'rows':rec,'median_relative_start':float(np.median([r['relative_service_section_start'] for r in rec])),'min_chunks':min(r['chunks'] for r in rec),'max_chunks':max(r['chunks'] for r in rec),'ads_more_than_three_chunks':sum(r['chunks']>3 for r in rec)}
+ (P/'tail_position_audit.json').write_text(json.dumps(positions,indent=2)+'\n')
  (P/'dataset_audit.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');(P/'nearest_neighbors.json').write_text(json.dumps(nearest,ensure_ascii=False,indent=2)+'\n')
  print(json.dumps({k:v for k,v in out.items() if k!='near_pairs_over_0_5'},ensure_ascii=False,indent=2));print('Internal review pairs',len(pairs))
 if __name__=='__main__':main()

@@ -1,0 +1,24 @@
+{
+  "same_fixed_catboost_parameters": {
+    "iterations": 1200,
+    "depth": 4,
+    "learning_rate": 0.05000000075,
+    "l2_leaf_reg": 5,
+    "random_seed": 42,
+    "random_strength": 1,
+    "bootstrap_type": "MVS",
+    "border_count": 254,
+    "grow_policy": "SymmetricTree",
+    "leaf_estimation_method": "Newton",
+    "rsm": 1,
+    "auto_class_weights": "None"
+  },
+  "same_sgd_parameters": true,
+  "same_features": true,
+  "baseline_trees": 959,
+  "candidate_trees": 1032,
+  "baseline_cb_bytes": 399120,
+  "candidate_cb_bytes": 428564,
+  "candidate_sgd_bytes": 64518,
+  "candidate_sha256": "6eb1b7e1dc705e8122f2aed2d0f832e9bd4cc4e64d89535f93d27cbbe2e3f0bd"
+}

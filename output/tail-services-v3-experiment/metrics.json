@@ -1,0 +1,1699 @@
+{
+  "pub_validation": {
+    "rows": 729,
+    "A": {
+      "micro_f1": 0.9561238223418573,
+      "macro_f1": 0.956031156810481,
+      "precision": 0.9431757833244823,
+      "recall": 0.9694323144104804,
+      "tp": 1776,
+      "fp": 107,
+      "fn": 56,
+      "exact_match": 0.8381344307270233,
+      "wrong_ads": 118,
+      "fp_on_empty_gold": 56,
+      "empty_gold_ads_with_fp": 33,
+      "fn_on_nonempty_gold": 56,
+      "empty_gold_ads": 203,
+      "per_category": {
+        "102": {
+          "f1": 0.9427430093209055,
+          "precision": 0.9315789473684211,
+          "recall": 0.954177897574124,
+          "tp": 354,
+          "fp": 26,
+          "fn": 17,
+          "support": 371
+        },
+        "103": {
+          "f1": 0.9587912087912088,
+          "precision": 0.9331550802139037,
+          "recall": 0.9858757062146892,
+          "tp": 349,
+          "fp": 25,
+          "fn": 5,
+          "support": 354
+        },
+        "104": {
+          "f1": 0.9509116409537167,
+          "precision": 0.9416666666666667,
+          "recall": 0.9603399433427762,
+          "tp": 339,
+          "fp": 21,
+          "fn": 14,
+          "support": 353
+        },
+        "105": {
+          "f1": 0.9633802816901409,
+          "precision": 0.9473684210526315,
+          "recall": 0.9799426934097422,
+          "tp": 342,
+          "fp": 19,
+          "fn": 7,
+          "support": 349
+        },
+        "106": {
+          "f1": 0.964329643296433,
+          "precision": 0.9607843137254902,
+          "recall": 0.9679012345679012,
+          "tp": 392,
+          "fp": 16,
+          "fn": 13,
+          "support": 405
+        }
+      }
+    },
+    "B": {
+      "micro_f1": 0.9572695511959151,
+      "macro_f1": 0.9571348294016475,
+      "precision": 0.9428268925357332,
+      "recall": 0.9721615720524017,
+      "tp": 1781,
+      "fp": 108,
+      "fn": 51,
+      "exact_match": 0.8381344307270233,
+      "wrong_ads": 118,
+      "fp_on_empty_gold": 58,
+      "empty_gold_ads_with_fp": 34,
+      "fn_on_nonempty_gold": 51,
+      "empty_gold_ads": 203,
+      "per_category": {
+        "102": {
+          "f1": 0.9433962264150944,
+          "precision": 0.9433962264150944,
+          "recall": 0.9433962264150944,
+          "tp": 350,
+          "fp": 21,
+          "fn": 21,
+          "support": 371
+        },
+        "103": {
+          "f1": 0.9628610729023384,
+          "precision": 0.938337801608579,
+          "recall": 0.9887005649717514,
+          "tp": 350,
+          "fp": 23,
+          "fn": 4,
+          "support": 354
+        },
+        "104": {
+          "f1": 0.9486823855755895,
+          "precision": 0.9293478260869565,
+          "recall": 0.9688385269121813,
+          "tp": 342,
+          "fp": 26,
+          "fn": 11,
+          "support": 353
+        },
+        "105": {
+          "f1": 0.9651324965132496,
+          "precision": 0.9402173913043478,
+          "recall": 0.9914040114613181,
+          "tp": 346,
+          "fp": 22,
+          "fn": 3,
+          "support": 349
+        },
+        "106": {
+          "f1": 0.9656019656019657,
+          "precision": 0.960880195599022,
+          "recall": 0.9703703703703703,
+          "tp": 393,
+          "fp": 16,
+          "fn": 12,
+          "support": 405
+        }
+      }
+    },
+    "transitions": {
+      "both_correct": 3461,
+      "base_wrong_cand_right_fixed": 25,
+      "base_right_cand_wrong_broken": 21,
+      "both_wrong": 138,
+      "net_gain": 4,
+      "fixed_breakdown": {
+        "fn_to_tp": 10,
+        "fp_to_tn": 15
+      },
+      "broken_breakdown": {
+        "tp_to_fn": 5,
+        "tn_to_fp": 16
+      },
+      "ads_fully_fixed": 14,
+      "ads_newly_wrong": 14,
+      "ads_with_fewer_errors": 22,
+      "ads_with_more_errors": 17,
+      "new_erroneous_empty_on_nonempty_gold": 0
+    },
+    "bootstrap_delta_micro_f1": {
+      "method": "paired bootstrap by normalized exact-description groups",
+      "groups": 729,
+      "n_boot": 4000,
+      "ci95_low": -0.0028204869724140157,
+      "ci95_high": 0.00497894271020668,
+      "fraction_positive": 0.72275
+    },
+    "delta": {
+      "micro_f1": 0.001145728854057726,
+      "macro_f1": 0.0011036725911665046,
+      "precision": -0.00034889078874911217,
+      "recall": 0.0027292576419213344,
+      "fp": 1,
+      "fn": -5,
+      "tp": 5,
+      "exact_match": 0.0
+    }
+  },
+  "v3_test": {
+    "rows": 600,
+    "A": {
+      "micro_f1": 0.9159159159159159,
+      "macro_f1": 0.9161098862928284,
+      "precision": 0.9122632103688934,
+      "recall": 0.9195979899497487,
+      "tp": 915,
+      "fp": 88,
+      "fn": 80,
+      "exact_match": 0.7566666666666667,
+      "wrong_ads": 146,
+      "fp_on_empty_gold": 9,
+      "empty_gold_ads_with_fp": 9,
+      "fn_on_nonempty_gold": 80,
+      "empty_gold_ads": 98,
+      "per_category": {
+        "102": {
+          "f1": 0.94,
+          "precision": 0.9306930693069307,
+          "recall": 0.9494949494949495,
+          "tp": 188,
+          "fp": 14,
+          "fn": 10,
+          "support": 198
+        },
+        "103": {
+          "f1": 0.9043927648578811,
+          "precision": 0.9308510638297872,
+          "recall": 0.8793969849246231,
+          "tp": 175,
+          "fp": 13,
+          "fn": 24,
+          "support": 199
+        },
+        "104": {
+          "f1": 0.8872901678657075,
+          "precision": 0.8486238532110092,
+          "recall": 0.9296482412060302,
+          "tp": 185,
+          "fp": 33,
+          "fn": 14,
+          "support": 199
+        },
+        "105": {
+          "f1": 0.9521410579345088,
+          "precision": 0.9545454545454546,
+          "recall": 0.949748743718593,
+          "tp": 189,
+          "fp": 9,
+          "fn": 10,
+          "support": 199
+        },
+        "106": {
+          "f1": 0.8967254408060453,
+          "precision": 0.9035532994923858,
+          "recall": 0.89,
+          "tp": 178,
+          "fp": 19,
+          "fn": 22,
+          "support": 200
+        }
+      }
+    },
+    "B": {
+      "micro_f1": 0.9160457029309488,
+      "macro_f1": 0.9160194332580982,
+      "precision": 0.9056974459724951,
+      "recall": 0.9266331658291457,
+      "tp": 922,
+      "fp": 96,
+      "fn": 73,
+      "exact_match": 0.7516666666666667,
+      "wrong_ads": 149,
+      "fp_on_empty_gold": 11,
+      "empty_gold_ads_with_fp": 11,
+      "fn_on_nonempty_gold": 73,
+      "empty_gold_ads": 98,
+      "per_category": {
+        "102": {
+          "f1": 0.9319899244332494,
+          "precision": 0.9296482412060302,
+          "recall": 0.9343434343434344,
+          "tp": 185,
+          "fp": 14,
+          "fn": 13,
+          "support": 198
+        },
+        "103": {
+          "f1": 0.90625,
+          "precision": 0.9405405405405406,
+          "recall": 0.8743718592964824,
+          "tp": 174,
+          "fp": 11,
+          "fn": 25,
+          "support": 199
+        },
+        "104": {
+          "f1": 0.9044289044289044,
+          "precision": 0.8434782608695652,
+          "recall": 0.9748743718592965,
+          "tp": 194,
+          "fp": 36,
+          "fn": 5,
+          "support": 199
+        },
+        "105": {
+          "f1": 0.9434889434889435,
+          "precision": 0.9230769230769231,
+          "recall": 0.964824120603015,
+          "tp": 192,
+          "fp": 16,
+          "fn": 7,
+          "support": 199
+        },
+        "106": {
+          "f1": 0.8939393939393939,
+          "precision": 0.9030612244897959,
+          "recall": 0.885,
+          "tp": 177,
+          "fp": 19,
+          "fn": 23,
+          "support": 200
+        }
+      }
+    },
+    "transitions": {
+      "both_correct": 2311,
+      "base_wrong_cand_right_fixed": 20,
+      "base_right_cand_wrong_broken": 21,
+      "both_wrong": 148,
+      "net_gain": -1,
+      "fixed_breakdown": {
+        "fn_to_tp": 17,
+        "fp_to_tn": 3
+      },
+      "broken_breakdown": {
+        "tp_to_fn": 10,
+        "tn_to_fp": 11
+      },
+      "ads_fully_fixed": 14,
+      "ads_newly_wrong": 17,
+      "ads_with_fewer_errors": 19,
+      "ads_with_more_errors": 21,
+      "new_erroneous_empty_on_nonempty_gold": 4
+    },
+    "bootstrap_delta_micro_f1": {
+      "method": "paired bootstrap by normalized exact-description groups",
+      "groups": 600,
+      "n_boot": 4000,
+      "ci95_low": -0.006426098827418727,
+      "ci95_high": 0.006946329682286897,
+      "fraction_positive": 0.523
+    },
+    "delta": {
+      "micro_f1": 0.00012978701503285617,
+      "macro_f1": -9.045303473020905e-05,
+      "precision": -0.0065657643963982215,
+      "recall": 0.007035175879396949,
+      "fp": 8,
+      "fn": -7,
+      "tp": 7,
+      "exact_match": -0.0050000000000000044
+    }
+  },
+  "official_208": {
+    "rows": 208,
+    "A": {
+      "micro_f1": 0.8197674418604651,
+      "macro_f1": 0.8208313545291379,
+      "precision": 0.7175572519083969,
+      "recall": 0.9559322033898305,
+      "tp": 282,
+      "fp": 111,
+      "fn": 13,
+      "exact_match": 0.6778846153846154,
+      "wrong_ads": 67,
+      "fp_on_empty_gold": 82,
+      "empty_gold_ads_with_fp": 31,
+      "fn_on_nonempty_gold": 13,
+      "empty_gold_ads": 106,
+      "per_category": {
+        "102": {
+          "f1": 0.7044025157232704,
+          "precision": 0.5773195876288659,
+          "recall": 0.9032258064516129,
+          "tp": 56,
+          "fp": 41,
+          "fn": 6,
+          "support": 62
+        },
+        "103": {
+          "f1": 0.8045977011494253,
+          "precision": 0.6862745098039216,
+          "recall": 0.9722222222222222,
+          "tp": 35,
+          "fp": 16,
+          "fn": 1,
+          "support": 36
+        },
+        "104": {
+          "f1": 0.863013698630137,
+          "precision": 0.7777777777777778,
+          "recall": 0.9692307692307692,
+          "tp": 63,
+          "fp": 18,
+          "fn": 2,
+          "support": 65
+        },
+        "105": {
+          "f1": 0.8571428571428571,
+          "precision": 0.7659574468085106,
+          "recall": 0.972972972972973,
+          "tp": 72,
+          "fp": 22,
+          "fn": 2,
+          "support": 74
+        },
+        "106": {
+          "f1": 0.875,
+          "precision": 0.8,
+          "recall": 0.9655172413793104,
+          "tp": 56,
+          "fp": 14,
+          "fn": 2,
+          "support": 58
+        }
+      }
+    },
+    "B": {
+      "micro_f1": 0.8184438040345822,
+      "macro_f1": 0.8173766672827728,
+      "precision": 0.7117794486215538,
+      "recall": 0.9627118644067797,
+      "tp": 284,
+      "fp": 115,
+      "fn": 11,
+      "exact_match": 0.6923076923076923,
+      "wrong_ads": 64,
+      "fp_on_empty_gold": 86,
+      "empty_gold_ads_with_fp": 31,
+      "fn_on_nonempty_gold": 11,
+      "empty_gold_ads": 106,
+      "per_category": {
+        "102": {
+          "f1": 0.7051282051282052,
+          "precision": 0.5851063829787234,
+          "recall": 0.8870967741935484,
+          "tp": 55,
+          "fp": 39,
+          "fn": 7,
+          "support": 62
+        },
+        "103": {
+          "f1": 0.8045977011494253,
+          "precision": 0.6862745098039216,
+          "recall": 0.9722222222222222,
+          "tp": 35,
+          "fp": 16,
+          "fn": 1,
+          "support": 36
+        },
+        "104": {
+          "f1": 0.8707482993197279,
+          "precision": 0.7804878048780488,
+          "recall": 0.9846153846153847,
+          "tp": 64,
+          "fp": 18,
+          "fn": 1,
+          "support": 65
+        },
+        "105": {
+          "f1": 0.8705882352941177,
+          "precision": 0.7708333333333334,
+          "recall": 1.0,
+          "tp": 74,
+          "fp": 22,
+          "fn": 0,
+          "support": 74
+        },
+        "106": {
+          "f1": 0.835820895522388,
+          "precision": 0.7368421052631579,
+          "recall": 0.9655172413793104,
+          "tp": 56,
+          "fp": 20,
+          "fn": 2,
+          "support": 58
+        }
+      }
+    },
+    "transitions": {
+      "both_correct": 909,
+      "base_wrong_cand_right_fixed": 5,
+      "base_right_cand_wrong_broken": 7,
+      "both_wrong": 119,
+      "net_gain": -2,
+      "fixed_breakdown": {
+        "fn_to_tp": 3,
+        "fp_to_tn": 2
+      },
+      "broken_breakdown": {
+        "tp_to_fn": 1,
+        "tn_to_fp": 6
+      },
+      "ads_fully_fixed": 4,
+      "ads_newly_wrong": 1,
+      "ads_with_fewer_errors": 5,
+      "ads_with_more_errors": 7,
+      "new_erroneous_empty_on_nonempty_gold": 0
+    },
+    "bootstrap_delta_micro_f1": {
+      "method": "paired bootstrap by normalized exact-description groups",
+      "groups": 139,
+      "n_boot": 4000,
+      "ci95_low": -0.017356955896850587,
+      "ci95_high": 0.012610441310679557,
+      "fraction_positive": 0.454
+    },
+    "delta": {
+      "micro_f1": -0.0013236378258829617,
+      "macro_f1": -0.003454687246365107,
+      "precision": -0.005777803286843075,
+      "recall": 0.006779661016949157,
+      "fp": 4,
+      "fn": -2,
+      "tp": 2,
+      "exact_match": 0.014423076923076872
+    }
+  },
+  "tail_holdout20": {
+    "rows": 20,
+    "A": {
+      "micro_f1": 0.8095238095238095,
+      "macro_f1": 0.8103174603174603,
+      "precision": 0.68,
+      "recall": 1.0,
+      "tp": 17,
+      "fp": 8,
+      "fn": 0,
+      "exact_match": 0.7,
+      "wrong_ads": 6,
+      "fp_on_empty_gold": 6,
+      "empty_gold_ads_with_fp": 4,
+      "fn_on_nonempty_gold": 0,
+      "empty_gold_ads": 4,
+      "per_category": {
+        "102": {
+          "f1": 0.6666666666666666,
+          "precision": 0.5,
+          "recall": 1.0,
+          "tp": 3,
+          "fp": 3,
+          "fn": 0,
+          "support": 3
+        },
+        "103": {
+          "f1": 0.75,
+          "precision": 0.6,
+          "recall": 1.0,
+          "tp": 3,
+          "fp": 2,
+          "fn": 0,
+          "support": 3
+        },
+        "104": {
+          "f1": 0.8888888888888888,
+          "precision": 0.8,
+          "recall": 1.0,
+          "tp": 4,
+          "fp": 1,
+          "fn": 0,
+          "support": 4
+        },
+        "105": {
+          "f1": 0.8888888888888888,
+          "precision": 0.8,
+          "recall": 1.0,
+          "tp": 4,
+          "fp": 1,
+          "fn": 0,
+          "support": 4
+        },
+        "106": {
+          "f1": 0.8571428571428571,
+          "precision": 0.75,
+          "recall": 1.0,
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "support": 3
+        }
+      }
+    },
+    "B": {
+      "micro_f1": 0.85,
+      "macro_f1": 0.8484126984126984,
+      "precision": 0.7391304347826086,
+      "recall": 1.0,
+      "tp": 17,
+      "fp": 6,
+      "fn": 0,
+      "exact_match": 0.75,
+      "wrong_ads": 5,
+      "fp_on_empty_gold": 5,
+      "empty_gold_ads_with_fp": 4,
+      "fn_on_nonempty_gold": 0,
+      "empty_gold_ads": 4,
+      "per_category": {
+        "102": {
+          "f1": 0.75,
+          "precision": 0.6,
+          "recall": 1.0,
+          "tp": 3,
+          "fp": 2,
+          "fn": 0,
+          "support": 3
+        },
+        "103": {
+          "f1": 0.8571428571428571,
+          "precision": 0.75,
+          "recall": 1.0,
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "support": 3
+        },
+        "104": {
+          "f1": 0.8888888888888888,
+          "precision": 0.8,
+          "recall": 1.0,
+          "tp": 4,
+          "fp": 1,
+          "fn": 0,
+          "support": 4
+        },
+        "105": {
+          "f1": 0.8888888888888888,
+          "precision": 0.8,
+          "recall": 1.0,
+          "tp": 4,
+          "fp": 1,
+          "fn": 0,
+          "support": 4
+        },
+        "106": {
+          "f1": 0.8571428571428571,
+          "precision": 0.75,
+          "recall": 1.0,
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "support": 3
+        }
+      }
+    },
+    "transitions": {
+      "both_correct": 92,
+      "base_wrong_cand_right_fixed": 2,
+      "base_right_cand_wrong_broken": 0,
+      "both_wrong": 6,
+      "net_gain": 2,
+      "fixed_breakdown": {
+        "fn_to_tp": 0,
+        "fp_to_tn": 2
+      },
+      "broken_breakdown": {
+        "tp_to_fn": 0,
+        "tn_to_fp": 0
+      },
+      "ads_fully_fixed": 1,
+      "ads_newly_wrong": 0,
+      "ads_with_fewer_errors": 2,
+      "ads_with_more_errors": 0,
+      "new_erroneous_empty_on_nonempty_gold": 0
+    },
+    "bootstrap_delta_micro_f1": {
+      "method": "paired bootstrap by normalized exact-description groups",
+      "groups": 20,
+      "n_boot": 4000,
+      "ci95_low": 0.0,
+      "ci95_high": 0.09013785790031814,
+      "fraction_positive": 0.875
+    },
+    "delta": {
+      "micro_f1": 0.04047619047619044,
+      "macro_f1": 0.03809523809523807,
+      "precision": 0.0591304347826086,
+      "recall": 0.0,
+      "fp": -2,
+      "fn": 0,
+      "tp": 0,
+      "exact_match": 0.050000000000000044
+    }
+  },
+  "public_test_clean": {
+    "rows": 152,
+    "A": {
+      "micro_f1": 0.8126801152737753,
+      "macro_f1": 0.8137600222856867,
+      "precision": 0.7230769230769231,
+      "recall": 0.9276315789473685,
+      "tp": 141,
+      "fp": 54,
+      "fn": 11,
+      "exact_match": 0.75,
+      "wrong_ads": 38,
+      "fp_on_empty_gold": 39,
+      "empty_gold_ads_with_fp": 18,
+      "fn_on_nonempty_gold": 11,
+      "empty_gold_ads": 93,
+      "per_category": {
+        "102": {
+          "f1": 0.7012987012987013,
+          "precision": 0.5869565217391305,
+          "recall": 0.8709677419354839,
+          "tp": 27,
+          "fp": 19,
+          "fn": 4,
+          "support": 31
+        },
+        "103": {
+          "f1": 0.7857142857142857,
+          "precision": 0.6666666666666666,
+          "recall": 0.9565217391304348,
+          "tp": 22,
+          "fp": 11,
+          "fn": 1,
+          "support": 23
+        },
+        "104": {
+          "f1": 0.835820895522388,
+          "precision": 0.7567567567567568,
+          "recall": 0.9333333333333333,
+          "tp": 28,
+          "fp": 9,
+          "fn": 2,
+          "support": 30
+        },
+        "105": {
+          "f1": 0.8536585365853658,
+          "precision": 0.7777777777777778,
+          "recall": 0.9459459459459459,
+          "tp": 35,
+          "fp": 10,
+          "fn": 2,
+          "support": 37
+        },
+        "106": {
+          "f1": 0.8923076923076924,
+          "precision": 0.8529411764705882,
+          "recall": 0.9354838709677419,
+          "tp": 29,
+          "fp": 5,
+          "fn": 2,
+          "support": 31
+        }
+      }
+    },
+    "B": {
+      "micro_f1": 0.8218390804597702,
+      "macro_f1": 0.8202196849255673,
+      "precision": 0.7295918367346939,
+      "recall": 0.9407894736842105,
+      "tp": 143,
+      "fp": 53,
+      "fn": 9,
+      "exact_match": 0.7697368421052632,
+      "wrong_ads": 35,
+      "fp_on_empty_gold": 39,
+      "empty_gold_ads_with_fp": 18,
+      "fn_on_nonempty_gold": 9,
+      "empty_gold_ads": 93,
+      "per_category": {
+        "102": {
+          "f1": 0.7027027027027027,
+          "precision": 0.6046511627906976,
+          "recall": 0.8387096774193549,
+          "tp": 26,
+          "fp": 17,
+          "fn": 5,
+          "support": 31
+        },
+        "103": {
+          "f1": 0.7857142857142857,
+          "precision": 0.6666666666666666,
+          "recall": 0.9565217391304348,
+          "tp": 22,
+          "fp": 11,
+          "fn": 1,
+          "support": 23
+        },
+        "104": {
+          "f1": 0.8529411764705882,
+          "precision": 0.7631578947368421,
+          "recall": 0.9666666666666667,
+          "tp": 29,
+          "fp": 9,
+          "fn": 1,
+          "support": 30
+        },
+        "105": {
+          "f1": 0.8809523809523809,
+          "precision": 0.7872340425531915,
+          "recall": 1.0,
+          "tp": 37,
+          "fp": 10,
+          "fn": 0,
+          "support": 37
+        },
+        "106": {
+          "f1": 0.8787878787878788,
+          "precision": 0.8285714285714286,
+          "recall": 0.9354838709677419,
+          "tp": 29,
+          "fp": 6,
+          "fn": 2,
+          "support": 31
+        }
+      }
+    },
+    "transitions": {
+      "both_correct": 693,
+      "base_wrong_cand_right_fixed": 5,
+      "base_right_cand_wrong_broken": 2,
+      "both_wrong": 60,
+      "net_gain": 3,
+      "fixed_breakdown": {
+        "fn_to_tp": 3,
+        "fp_to_tn": 2
+      },
+      "broken_breakdown": {
+        "tp_to_fn": 1,
+        "tn_to_fp": 1
+      },
+      "ads_fully_fixed": 4,
+      "ads_newly_wrong": 1,
+      "ads_with_fewer_errors": 5,
+      "ads_with_more_errors": 2,
+      "new_erroneous_empty_on_nonempty_gold": 0
+    },
+    "bootstrap_delta_micro_f1": {
+      "method": "paired bootstrap by normalized exact-description groups",
+      "groups": 126,
+      "n_boot": 4000,
+      "ci95_low": -0.006973402131678044,
+      "ci95_high": 0.030879579215592732,
+      "fraction_positive": 0.8275
+    },
+    "delta": {
+      "micro_f1": 0.009158965185994905,
+      "macro_f1": 0.006459662639880626,
+      "precision": 0.006514913657770793,
+      "recall": 0.013157894736842035,
+      "fp": -1,
+      "fn": -2,
+      "tp": 2,
+      "exact_match": 0.019736842105263164
+    },
+    "excluded_rows": [
+      0,
+      13,
+      15,
+      16,
+      28,
+      29,
+      33,
+      35,
+      36,
+      40,
+      43,
+      45,
+      46,
+      47,
+      54,
+      57,
+      58,
+      60,
+      66,
+      69,
+      70,
+      71,
+      85,
+      92,
+      94,
+      98,
+      106,
+      107,
+      116,
+      118,
+      124,
+      129,
+      135,
+      143,
+      145,
+      151,
+      152,
+      155,
+      156,
+      158,
+      160,
+      161,
+      162,
+      167,
+      169,
+      171,
+      177,
+      178,
+      192,
+      194,
+      198,
+      200,
+      202,
+      203,
+      205,
+      207
+    ]
+  },
+  "pub_validation_complex_repair": {
+    "rows": 377,
+    "A": {
+      "micro_f1": 0.9770535417359495,
+      "macro_f1": 0.9771457365590767,
+      "precision": 0.9812959251837008,
+      "recall": 0.9728476821192052,
+      "tp": 1469,
+      "fp": 28,
+      "fn": 41,
+      "exact_match": 0.8488063660477454,
+      "wrong_ads": 57,
+      "fp_on_empty_gold": 0,
+      "empty_gold_ads_with_fp": 0,
+      "fn_on_nonempty_gold": 41,
+      "empty_gold_ads": 0,
+      "per_category": {
+        "102": {
+          "f1": 0.9691056910569106,
+          "precision": 0.9770491803278688,
+          "recall": 0.9612903225806452,
+          "tp": 298,
+          "fp": 7,
+          "fn": 12,
+          "support": 310
+        },
+        "103": {
+          "f1": 0.9828767123287672,
+          "precision": 0.9795221843003413,
+          "recall": 0.9862542955326461,
+          "tp": 287,
+          "fp": 6,
+          "fn": 4,
+          "support": 291
+        },
+        "104": {
+          "f1": 0.9704918032786886,
+          "precision": 0.976897689768977,
+          "recall": 0.9641693811074918,
+          "tp": 296,
+          "fp": 7,
+          "fn": 11,
+          "support": 307
+        },
+        "105": {
+          "f1": 0.9833887043189369,
+          "precision": 0.9866666666666667,
+          "recall": 0.9801324503311258,
+          "tp": 296,
+          "fp": 4,
+          "fn": 6,
+          "support": 302
+        },
+        "106": {
+          "f1": 0.9798657718120806,
+          "precision": 0.9864864864864865,
+          "recall": 0.9733333333333334,
+          "tp": 292,
+          "fp": 4,
+          "fn": 8,
+          "support": 300
+        }
+      }
+    },
+    "B": {
+      "micro_f1": 0.979076718698107,
+      "macro_f1": 0.979172378143373,
+      "precision": 0.9820119920053297,
+      "recall": 0.976158940397351,
+      "tp": 1474,
+      "fp": 27,
+      "fn": 36,
+      "exact_match": 0.8541114058355438,
+      "wrong_ads": 55,
+      "fp_on_empty_gold": 0,
+      "empty_gold_ads_with_fp": 0,
+      "fn_on_nonempty_gold": 36,
+      "empty_gold_ads": 0,
+      "per_category": {
+        "102": {
+          "f1": 0.9623567921440261,
+          "precision": 0.9767441860465116,
+          "recall": 0.9483870967741935,
+          "tp": 294,
+          "fp": 7,
+          "fn": 16,
+          "support": 310
+        },
+        "103": {
+          "f1": 0.9863013698630136,
+          "precision": 0.9829351535836177,
+          "recall": 0.9896907216494846,
+          "tp": 288,
+          "fp": 5,
+          "fn": 3,
+          "support": 291
+        },
+        "104": {
+          "f1": 0.9755301794453507,
+          "precision": 0.9771241830065359,
+          "recall": 0.9739413680781759,
+          "tp": 299,
+          "fp": 7,
+          "fn": 8,
+          "support": 307
+        },
+        "105": {
+          "f1": 0.9900990099009901,
+          "precision": 0.9868421052631579,
+          "recall": 0.9933774834437086,
+          "tp": 300,
+          "fp": 4,
+          "fn": 2,
+          "support": 302
+        },
+        "106": {
+          "f1": 0.981574539363484,
+          "precision": 0.9865319865319865,
+          "recall": 0.9766666666666667,
+          "tp": 293,
+          "fp": 4,
+          "fn": 7,
+          "support": 300
+        }
+      }
+    },
+    "transitions": {
+      "both_correct": 1811,
+      "base_wrong_cand_right_fixed": 11,
+      "base_right_cand_wrong_broken": 5,
+      "both_wrong": 58,
+      "net_gain": 6,
+      "fixed_breakdown": {
+        "fn_to_tp": 9,
+        "fp_to_tn": 2
+      },
+      "broken_breakdown": {
+        "tp_to_fn": 4,
+        "tn_to_fp": 1
+      },
+      "ads_fully_fixed": 7,
+      "ads_newly_wrong": 5,
+      "ads_with_fewer_errors": 11,
+      "ads_with_more_errors": 5,
+      "new_erroneous_empty_on_nonempty_gold": 0
+    },
+    "bootstrap_delta_micro_f1": {
+      "method": "paired bootstrap by normalized exact-description groups",
+      "groups": 377,
+      "n_boot": 4000,
+      "ci95_low": -0.0003631528672552342,
+      "ci95_high": 0.004759943917407173,
+      "fraction_positive": 0.93875
+    },
+    "delta": {
+      "micro_f1": 0.0020231769621574802,
+      "macro_f1": 0.0020266415842963292,
+      "precision": 0.0007160668216289467,
+      "recall": 0.0033112582781457123,
+      "fp": -1,
+      "fn": -5,
+      "tp": 5,
+      "exact_match": 0.0053050397877983935
+    }
+  },
+  "tail_holdout20_focus": {
+    "context_empty": {
+      "rows": 4,
+      "A": {
+        "micro_f1": 0.0,
+        "macro_f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 6,
+        "fn": 0,
+        "exact_match": 0.0,
+        "wrong_ads": 4,
+        "fp_on_empty_gold": 6,
+        "empty_gold_ads_with_fp": 4,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 4,
+        "per_category": {
+          "102": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          },
+          "103": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 2,
+            "fn": 0,
+            "support": 0
+          },
+          "104": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          },
+          "105": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          },
+          "106": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "B": {
+        "micro_f1": 0.0,
+        "macro_f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 5,
+        "fn": 0,
+        "exact_match": 0.0,
+        "wrong_ads": 4,
+        "fp_on_empty_gold": 5,
+        "empty_gold_ads_with_fp": 4,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 4,
+        "per_category": {
+          "102": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          },
+          "103": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          },
+          "104": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          },
+          "105": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          },
+          "106": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      }
+    },
+    "lexical": {
+      "rows": 5,
+      "A": {
+        "micro_f1": 1.0,
+        "macro_f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": 1.0,
+        "wrong_ads": 0,
+        "fp_on_empty_gold": 0,
+        "empty_gold_ads_with_fp": 0,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 0,
+        "per_category": {
+          "102": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "103": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "104": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "105": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "106": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          }
+        }
+      },
+      "B": {
+        "micro_f1": 1.0,
+        "macro_f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": 1.0,
+        "wrong_ads": 0,
+        "fp_on_empty_gold": 0,
+        "empty_gold_ads_with_fp": 0,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 0,
+        "per_category": {
+          "102": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "103": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "104": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "105": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "106": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          }
+        }
+      }
+    },
+    "multi_tail": {
+      "rows": 1,
+      "A": {
+        "micro_f1": 1.0,
+        "macro_f1": 0.4,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": 1.0,
+        "wrong_ads": 0,
+        "fp_on_empty_gold": 0,
+        "empty_gold_ads_with_fp": 0,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 0,
+        "per_category": {
+          "102": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          },
+          "103": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          },
+          "104": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "105": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "106": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      },
+      "B": {
+        "micro_f1": 1.0,
+        "macro_f1": 0.4,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": 1.0,
+        "wrong_ads": 0,
+        "fp_on_empty_gold": 0,
+        "empty_gold_ads_with_fp": 0,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 0,
+        "per_category": {
+          "102": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          },
+          "103": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          },
+          "104": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "105": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "106": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "support": 0
+          }
+        }
+      }
+    },
+    "seo_positive": {
+      "rows": 5,
+      "A": {
+        "micro_f1": 1.0,
+        "macro_f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": 1.0,
+        "wrong_ads": 0,
+        "fp_on_empty_gold": 0,
+        "empty_gold_ads_with_fp": 0,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 0,
+        "per_category": {
+          "102": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "103": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "104": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "105": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "106": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          }
+        }
+      },
+      "B": {
+        "micro_f1": 1.0,
+        "macro_f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": 1.0,
+        "wrong_ads": 0,
+        "fp_on_empty_gold": 0,
+        "empty_gold_ads_with_fp": 0,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 0,
+        "per_category": {
+          "102": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "103": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "104": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "105": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "106": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          }
+        }
+      }
+    },
+    "tail": {
+      "rows": 5,
+      "A": {
+        "micro_f1": 0.8333333333333334,
+        "macro_f1": 0.9,
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "tp": 5,
+        "fp": 2,
+        "fn": 0,
+        "exact_match": 0.6,
+        "wrong_ads": 2,
+        "fp_on_empty_gold": 0,
+        "empty_gold_ads_with_fp": 0,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 0,
+        "per_category": {
+          "102": {
+            "f1": 0.5,
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 2,
+            "fn": 0,
+            "support": 1
+          },
+          "103": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "104": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "105": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "106": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          }
+        }
+      },
+      "B": {
+        "micro_f1": 0.9090909090909091,
+        "macro_f1": 0.9333333333333332,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "tp": 5,
+        "fp": 1,
+        "fn": 0,
+        "exact_match": 0.8,
+        "wrong_ads": 1,
+        "fp_on_empty_gold": 0,
+        "empty_gold_ads_with_fp": 0,
+        "fn_on_nonempty_gold": 0,
+        "empty_gold_ads": 0,
+        "per_category": {
+          "102": {
+            "f1": 0.6666666666666666,
+            "precision": 0.5,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "support": 1
+          },
+          "103": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "104": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "105": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          },
+          "106": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "support": 1
+          }
+        }
+      }
+    }
+  },
+  "provenance": {
+    "threshold": 0.5,
+    "data_only_single_candidate": true,
+    "training_validation_passed": true,
+    "baseline_sha256": "3b7dbea4b3fe6ba6c61b2499dd82911e904282217a7281d8cc1c22b19b399ca9",
+    "candidate_sha256": "6eb1b7e1dc705e8122f2aed2d0f832e9bd4cc4e64d89535f93d27cbbe2e3f0bd",
+    "known_baseline_f1": {
+      "pub_validation": 0.956124,
+      "v3_test": 0.915916,
+      "official_208": 0.819767
+    }
+  }
+}

@@ -41,7 +41,16 @@ f"Получено {v['group_diagnostics']['n_components']} групп train; ma
  for n in ['pub_validation','v3_test','official_208','tail_holdout20']:
   for typ,sign in [('Исправление',-1),('Регрессия',1)]:
    arr=[e for e in examples if e['split']==n and (e['errors_B']-e['errors_A'])*sign>0]
-   for e in arr[:2]:chosen.append((typ,e))
+   seen=set();selected=[]
+   for e in arr:
+    key=' '.join(e['description'].casefold().split())
+    if key in seen:continue
+    seen.add(key);selected.append(e)
+    if len(selected)==2:break
+   for e in selected:chosen.append((typ,e))
+ for idx,title in [(189,'Обоснованная106 вопреки пустому gold'),(113,'Формальное исправление со спорным смыслом')]:
+  row=next(e for e in examples if e['split']=='official_208' and e['row_idx']==idx)
+  if not any(e['split']=='official_208' and e['row_idx']==idx for _,e in chosen):chosen.append((title,row))
  for typ,e in chosen:
   lines +=[f"### {typ}: {e['split']} #{e['row_idx']}",'',f"Source={e['source_mcId']}; gold={e['gold']}; A={e['A']}; B={e['B']}.",'','```text',e['description'],'```','']
  lines+=['## Новый test20: полный реестр ответов','',
@@ -50,8 +59,10 @@ f"Получено {v['group_diagnostics']['n_components']} групп train; ma
   if e['split']=='tail_holdout20':lines.append(f"| {e['item_id']} | {e['gold']} | {e['A']} | {e['B']} | {e['errors_A']}→{e['errors_B']} |")
  lines+=['','## Вывод','',
 'Окончательная смысловая интерпретация и рекомендация сохранены ниже после просмотра исправлений/регрессий. Ни одна последующая интерпретация не ведёт к повторному обучению или перенастройке этого эксперимента. Новые60 — менее1% исходного train; они не гарантируют устойчивость ко всем хвостам и редким формулировкам. Даже выигрыш на test20 может отражать перенос на стиль автора, поэтому общий перенос оцениваем вместе с прежними публичными и V3 наборами.','',
-'Один B-кандидат не позволяет отделить эффект содержания новых объявлений от изменений фолдов и чувствительности оптимизации. Проверка обучающих примеров не является доказательством обобщения. Автоматической замены baseline нет. Файлы metrics.json, predictions.csv, config.json, training_validation.json, verification.json и dataset_audit.md содержат измерения и проверки; models/ — отдельные веса B локально.','']
+'Один B-кандидат не позволяет отделить эффект содержания новых объявлений от изменений фолдов и чувствительности оптимизации. Проверка обучающих примеров не является доказательством обобщения. Автоматической замены baseline нет. Файлы metrics.json, predictions.csv, config.json, training_validation.json, verification.json и dataset_audit.md содержат измерения и проверки; models/ — отдельные версионированные веса B.','']
  (P/'report.md').write_text('\n'.join(lines))
+ if (P/'conclusion.md').exists():
+  with (P/'report.md').open('a') as f:f.write('\n'+(P/'conclusion.md').read_text()+'\n')
  if 'tail_holdout20_focus' in m:
   extra=['','## Новый test20 по заранее заданным конструкциям','','| Конструкция | N | Exact A→B | FP A→B | FN A→B |','|---|---:|---|---|---|']
   for key,r in m['tail_holdout20_focus'].items():

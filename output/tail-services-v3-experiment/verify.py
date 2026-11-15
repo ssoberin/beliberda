@@ -2,6 +2,8 @@
 import hashlib,json
 from pathlib import Path
 import numpy as np,pandas as pd
+import joblib
+from catboost import CatBoostClassifier
 P=Path('output/tail-services-v3-experiment')
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
@@ -9,6 +11,13 @@ def main():
  for p,h in {**config['source_sha256'],**freeze['files']}.items():assert sha(p)==h,p
  assert sha('output/syntax-aware-experiment/models/catboost_C_syntax.cbm')==config['baseline_model_sha256']
  assert sha('output/syntax-aware-experiment/models/sgd_full_heads.joblib')==config['baseline_heads_sha256']
+ ha=joblib.load('output/syntax-aware-experiment/models/sgd_full_heads.joblib')['heads'];hb=joblib.load(P/'models/sgd_heads_B.joblib')['heads']
+ assert all(ha[c].get_params()==hb[c].get_params() for c in ha)
+ a=CatBoostClassifier();a.load_model('output/syntax-aware-experiment/models/catboost_C_syntax.cbm');b=CatBoostClassifier();b.load_model(str(P/'models/catboost_C_syntax_B.cbm'))
+ keys=['iterations','depth','learning_rate','l2_leaf_reg','random_seed','random_strength','bootstrap_type','border_count','grow_policy','leaf_estimation_method','rsm','auto_class_weights']
+ pa=a.get_all_params();pb=b.get_all_params();assert all(pa.get(k)==pb.get(k) for k in keys);assert a.feature_names_==b.feature_names_
+ model_info={'same_fixed_catboost_parameters':{k:pa.get(k) for k in keys},'same_sgd_parameters':True,'same_features':True,'baseline_trees':a.tree_count_,'candidate_trees':b.tree_count_,'baseline_cb_bytes':Path('output/syntax-aware-experiment/models/catboost_C_syntax.cbm').stat().st_size,'candidate_cb_bytes':(P/'models/catboost_C_syntax_B.cbm').stat().st_size,'candidate_sgd_bytes':(P/'models/sgd_heads_B.joblib').stat().st_size,'candidate_sha256':sha(P/'models/catboost_C_syntax_B.cbm')}
+ (P/'model_comparison.json').write_text(json.dumps(model_info,indent=2)+'\n')
  z=np.load(P/'cache/oof_B.npz');oof=z['oof'];groups=z['groups'];assert oof.shape==(6379,5) and np.isfinite(oof).all()
  folds=json.loads((P/'oof_folds.json').read_text())
  for cid,fs in folds.items():

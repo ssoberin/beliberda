@@ -1,0 +1,5 @@
+pub_validation F1 0.9561238223418573 -> 0.9572695511959151 FP 107 -> 108 FN 56 -> 51
+v3_test F1 0.9159159159159159 -> 0.9160457029309488 FP 88 -> 96 FN 80 -> 73
+official_208 F1 0.8197674418604651 -> 0.8184438040345822 FP 111 -> 115 FN 13 -> 11
+tail_holdout20 F1 0.8095238095238095 -> 0.85 FP 8 -> 6 FN 0 -> 0
+Final evaluation saved once; baseline unchanged.
