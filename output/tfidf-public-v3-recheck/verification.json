@@ -1,0 +1,11 @@
+{
+  "source_data_old_weights_and_saved_predictions_unchanged": true,
+  "metrics_independently_verified": true,
+  "source_category_exclusion_verified": true,
+  "examples_full_text_verified": 5,
+  "fresh_model_probabilities_reproduce_previous": true,
+  "thresholds_tuned_on_tests": false,
+  "main_model_replaced": false,
+  "public_test_preexisting_exact_overlap_rows": 20,
+  "v3_test_exact_overlap_rows": 0
+}
