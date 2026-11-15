@@ -168,6 +168,10 @@ class QwenClient:
             raise BackendError(502, 'Ответ Qwen не соответствует выбранным категориям.')
         by_id = {draft.categoryId: draft for draft in result.drafts}
         drafts, warnings = [], []
+        def placeholder(category):
+            return Draft(categoryId=category, title=NAMES[category],
+                         description=f'{NAMES[category]}. [Уточните, какие работы вы предлагаете, и условия заказа.]')
+
         for category in expected:
             draft = by_id[category]
             if not draft.supported:
@@ -178,8 +182,7 @@ class QwenClient:
                 if draft.title is None and draft.text is None:
                     # Older/refusing model outputs must not silently remove a
                     # selected category. Return an explicit editable placeholder.
-                    drafts.append(Draft(categoryId=category, title=NAMES[category],
-                                        description=f'{NAMES[category]}. [Уточните, какие работы вы предлагаете, и условия заказа.]'))
+                    drafts.append(placeholder(category))
                     continue
             try:
                 grounded(draft, request.description)
@@ -192,7 +195,14 @@ class QwenClient:
                                    'Qwen добавил неподтверждённые рекламные условия.': 'claims',
                                    'Qwen вернул служебное пояснение вместо самостоятельного объявления.': 'meta_text',
                                }.get(exc.message, 'other'))
-                raise
+                if warnings and warnings[-1].categoryId == category:
+                    warnings.pop()
+                warnings.append(GenerationWarning(
+                    categoryId=category,
+                    message='Модель не подтвердила сведения для этой категории исходным текстом. Черновик заменён заготовкой; уточните услугу вручную.',
+                ))
+                drafts.append(placeholder(category))
+                continue
             drafts.append(Draft(categoryId=category, title=draft.title.strip(), description=draft.text.strip()))
         logger.info('qwen_success request_id=%s categories=%s warnings=%d elapsed_ms=%d',
                     request_id, expected, len(warnings), int((time.monotonic() - started) * 1000))

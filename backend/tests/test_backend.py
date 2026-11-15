@@ -105,7 +105,12 @@ def test_diagnostics_for_invalid_json_and_grounding_do_not_log_model_output(capl
                 model_draft(evidence=[private]), model_draft(104),
         ]))) as client:
             response = client.post('/api/generate', json=REQUEST)
-        assert response.status_code == 502
+        assert response.status_code == 200
+        assert [d['categoryId'] for d in response.json()['drafts']] == [103, 104]
+        assert response.json()['warnings'][0]['categoryId'] == 103
+        assert 'Уточните' in response.json()['drafts'][0]['description']
+        assert 'Меняем смесители' in response.json()['drafts'][1]['description']
+        assert private not in response.text
         assert 'stage=grounding category_id=103 reason=evidence' in caplog.text
     finally:
         package_logger.removeHandler(caplog.handler)
@@ -124,7 +129,10 @@ def test_evidence_accepts_only_case_and_whitespace_differences():
     for invalid in ['укладываем керамогранит', 'укладываем  плитку бесплатно', 'укладываем плитку, меняем трубы']:
         example['evidence'] = [invalid]
         with client_for(lambda r: httpx.Response(200, json=completion([example]))) as client:
-            assert client.post('/api/generate', json=request).status_code == 502
+            response = client.post('/api/generate', json=request)
+            assert response.status_code == 200
+            assert response.json()['warnings'][0]['categoryId'] == 103
+            assert 'Уточните' in response.json()['drafts'][0]['description']
 
 
 @pytest.mark.parametrize('title,text', [(None, None), ('Сантехнические работы', 'Сантехнические работы. [Уточните виды работ.]')])
@@ -153,9 +161,6 @@ def test_invalid_requests_do_not_call_remote(update):
 
 
 @pytest.mark.parametrize('drafts', [
-    [model_draft(evidence=['Выдуманная цитата']), model_draft(104)],
-    [model_draft(text='Укладываем плитку за 999 рублей.'), model_draft(104)],
-    [model_draft(text='Гарантия на плитку.'), model_draft(104)],
     [model_draft(), model_draft()],
     [model_draft()],
     [model_draft(), model_draft(105)],
@@ -166,6 +171,24 @@ def test_untrusted_model_output_is_rejected(drafts):
         response = client.post('/api/generate', json=REQUEST)
         assert response.status_code == 502
         assert response.json()['message']
+
+
+@pytest.mark.parametrize('invalid', [
+    model_draft(evidence=['Выдуманная цитата']),
+    model_draft(text='Укладываем плитку за 999 рублей.'),
+    model_draft(text='Гарантия на плитку.'),
+])
+def test_unsafe_single_draft_becomes_explicit_placeholder_without_losing_valid_drafts(invalid):
+    with client_for(lambda r: httpx.Response(200, json=completion([invalid, model_draft(104)]))) as client:
+        response = client.post('/api/generate', json=REQUEST)
+    assert response.status_code == 200
+    body = response.json()
+    assert [d['categoryId'] for d in body['drafts']] == [103, 104]
+    assert 'Уточните' in body['drafts'][0]['description']
+    assert body['drafts'][0]['title'] == 'Плиточные работы'
+    assert body['drafts'][1]['description'] == 'Меняем смесители. Работаем только по записи.'
+    assert body['warnings'][0]['reason'] == 'needs_details'
+    assert body['warnings'][0]['categoryId'] == 103
 
 
 @pytest.mark.parametrize('body', [
