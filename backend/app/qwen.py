@@ -8,9 +8,11 @@ import httpx
 from pydantic import ValidationError
 
 from .config import Settings
+from .catalog import NAMES
 from .errors import BackendError
 from .prompts import messages
 from .schemas import Draft, GenerateRequest, GenerateResponse, ModelResponse
+from .titles import repair_title
 
 logger = logging.getLogger(__name__)
 SCHEMA_FIELDS = {'drafts', 'categoryId', 'title', 'text'}
@@ -28,19 +30,19 @@ def validation_issues(error: ValidationError):
 
 
 def parse_drafts(content: str, request_id: str):
-    """Repair only oversized titles; keep strict validation for every other field."""
+    """Repair title formatting only; keep strict validation for other fields."""
     body = json.loads(content)
     if isinstance(body, dict) and isinstance(body.get('drafts'), list):
         for draft in body['drafts']:
             if not isinstance(draft, dict) or not isinstance(draft.get('title'), str):
                 continue
-            title = draft['title'].strip()
-            if len(title) > 50:
-                prefix = title[:50]
-                shortened = prefix.rsplit(' ', 1)[0] if ' ' in prefix else prefix
-                draft['title'] = shortened or prefix
-                logger.info('qwen_title_shortened request_id=%s category_id=%s original_chars=%d',
-                            request_id, draft.get('categoryId') if type(draft.get('categoryId')) is int else '-', len(title))
+            category_id = draft.get('categoryId')
+            if type(category_id) is not int or category_id not in NAMES or not draft['title'].strip():
+                continue
+            repaired = repair_title(draft['title'], category_id)
+            if repaired != draft['title']:
+                draft['title'] = repaired
+                logger.info('qwen_title_repaired request_id=%s category_id=%d', request_id, category_id)
     return ModelResponse.model_validate(body)
 
 

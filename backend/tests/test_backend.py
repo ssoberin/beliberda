@@ -10,6 +10,7 @@ import pytest
 from backend.app.config import Settings
 from backend.app.main import create_app
 from backend.app.ssh_tunnel import SSHTunnel, ssh_command
+from backend.app.titles import repair_title, valid_title
 
 SOURCE = 'Укладываем плитку и меняем смесители. Работы выполняем только по записи.'
 REQUEST = {'title': 'Услуги мастера', 'description': SOURCE,
@@ -47,8 +48,8 @@ def test_frontend_contract_prompt_and_one_batch_request():
         assert payload['temperature'] == 0
         assert 'Не добавляй неподтверждённые операции' in payload['messages'][0]['content']
         assert 'Не оценивай supported' in payload['messages'][0]['content']
-        assert len(payload['messages']) == 6
-        assert [m['role'] for m in payload['messages']] == ['system', 'user', 'assistant', 'user', 'assistant', 'user']
+        assert len(payload['messages']) == 8
+        assert [m['role'] for m in payload['messages']] == ['system', 'user', 'assistant', 'user', 'assistant', 'user', 'assistant', 'user']
         user = json.loads(payload['messages'][-1]['content'])
         assert user['description'] == SOURCE
         assert [c['id'] for c in user['requested_categories']] == [103, 104]
@@ -83,7 +84,7 @@ def test_diagnostics_correlate_json_schema_error_without_logging_private_text(ca
     assert len(response.json()['drafts'][0]['title']) <= 50
     assert response.json()['drafts'][0]['description'] == model_draft()['text']
     assert response.json()['drafts'][1]['title'] == model_draft(104)['title']
-    assert any('qwen_title_shortened' in record.message
+    assert any('qwen_title_repaired' in record.message
                and request_id in record.message for record in caplog.records)
     assert private not in caplog.text
     assert SOURCE not in caplog.text
@@ -167,10 +168,42 @@ def test_oversized_title_preserves_other_drafts_and_full_text():
         response = client.post('/api/generate', json=REQUEST)
     assert response.status_code == 200
     drafts = response.json()['drafts']
-    assert drafts[0]['title'] == 'Реконструкция деревянных домов и замена старых'
+    assert drafts[0]['title'] == 'Плиточные работы'
     assert drafts[0]['description'] == model_draft()['text']
     assert drafts[1] == {'categoryId': 104, 'title': valid['title'], 'description': valid['text']}
     assert response.json()['warnings'] == []
+
+
+@pytest.mark.parametrize('title,expected', [
+    ('Замена инженерных сетей (водоснабжение,', 'Замена инженерных сетей'),
+    ('Укладка плитки,', 'Плиточные работы'),
+    ('Плиточные работы и', 'Плиточные работы'),
+    ('Плиточные работы «под ключ', 'Плиточные работы'),
+    ('Плиточные работы (санузел)', 'Плиточные работы (санузел)'),
+    ('Монтаж плитки и сантехники в санузле под ключ с договором', 'Плиточные работы'),
+])
+def test_title_repair_avoids_dangling_fragments(title, expected):
+    assert repair_title(title, 103) == expected
+    assert valid_title(expected)
+
+
+def test_title_repair_does_not_rewrite_description_or_category():
+    first = model_draft(title='Замена инженерных сетей (водоснабжение,')
+    with client_for(lambda r: httpx.Response(200, json=completion([first, model_draft(104)]))) as client:
+        response = client.post('/api/generate', json=REQUEST)
+    assert response.status_code == 200
+    assert response.json()['drafts'][0] == {
+        'categoryId': 103, 'title': 'Замена инженерных сетей', 'description': first['text'],
+    }
+
+
+def test_few_shot_separates_electricity_and_painting():
+    from backend.app.prompts import FEW_SHOTS
+    user = json.loads(FEW_SHOTS[-2]['content'])
+    drafts = json.loads(FEW_SHOTS[-1]['content'])['drafts']
+    assert [c['id'] for c in user['requested_categories']] == [105, 106]
+    assert 'покраск' not in drafts[0]['text'].lower()
+    assert 'розетк' not in drafts[1]['text'].lower()
 
 
 @pytest.mark.parametrize('body', [
@@ -305,7 +338,7 @@ def test_actual_token_budget_includes_all_few_shots(count, expected_status, expe
         calls.append(request.url.path)
         body = json.loads(request.content)
         if request.url.path == '/tokenize':
-            assert len(body['messages']) == 6
+            assert len(body['messages']) == 8
             return httpx.Response(200, json={'count': count, 'max_model_len': 8192})
         assert body['max_tokens'] == expected_budget
         return httpx.Response(200, json=completion())
