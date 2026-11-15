@@ -1,0 +1,92 @@
+[
+  {
+    "chunk": 1,
+    "text": "Выполняем все виды отделочных работ (как частичный ремонт отдельных комнат, так и комплексную отделку «под ключ» для новостроек и вторичного жилья). Электрику и сантехнику НЕ делаем (занимаемся исключительно чистовой и черновой отделкой).",
+    "category": 104,
+    "matched": true,
+    "clauses": [
+      {
+        "mention": "сантехнику",
+        "pred": "делаем(делать)",
+        "link_kind": "prep_obl_or_nmod",
+        "polarity": "negated",
+        "actor": "seller_team",
+        "temporal": "unknown",
+        "not_only": false,
+        "double_neg": false,
+        "price_cond": false,
+        "has_neg": true,
+        "neg_tokens": [
+          "НЕ"
+        ],
+        "dist_sa": 2,
+        "dist_an": 1,
+        "dist_sn": 3
+      },
+      {
+        "mention": "сантехнику",
+        "pred": "занимаемся(заниматься)",
+        "link_kind": "prep_obl_or_nmod",
+        "polarity": "offered",
+        "actor": "seller_team",
+        "temporal": "unknown",
+        "not_only": false,
+        "double_neg": false,
+        "price_cond": false,
+        "has_neg": false,
+        "neg_tokens": [],
+        "dist_sa": 3,
+        "dist_an": -1,
+        "dist_sn": -1
+      }
+    ],
+    "min_dist_sa": 2,
+    "min_dist_an": 1,
+    "min_dist_sn": 3
+  },
+  {
+    "chunk": 1,
+    "text": "Выполняем все виды отделочных работ (как частичный ремонт отдельных комнат, так и комплексную отделку «под ключ» для новостроек и вторичного жилья). Электрику и сантехнику НЕ делаем (занимаемся исключительно чистовой и черновой отделкой).",
+    "category": 105,
+    "matched": true,
+    "clauses": [
+      {
+        "mention": "Электрику",
+        "pred": "делаем(делать)",
+        "link_kind": "direct_verb_obj",
+        "polarity": "negated",
+        "actor": "seller_team",
+        "temporal": "unknown",
+        "not_only": false,
+        "double_neg": false,
+        "price_cond": false,
+        "has_neg": true,
+        "neg_tokens": [
+          "НЕ"
+        ],
+        "dist_sa": 1,
+        "dist_an": 1,
+        "dist_sn": 2
+      },
+      {
+        "mention": "Электрику",
+        "pred": "занимаемся(заниматься)",
+        "link_kind": "direct_verb_obj",
+        "polarity": "offered",
+        "actor": "seller_team",
+        "temporal": "unknown",
+        "not_only": false,
+        "double_neg": false,
+        "price_cond": false,
+        "has_neg": false,
+        "neg_tokens": [],
+        "dist_sa": 2,
+        "dist_an": -1,
+        "dist_sn": -1
+      }
+    ],
+    "min_dist_sa": 1,
+    "min_dist_an": 1,
+    "min_dist_sn": 2
+  }
+]
