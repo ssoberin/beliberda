@@ -1,0 +1,85 @@
+{
+  "method": "Natural exact normalized-body matches; unchanged full inputs; frozen C_syntax threshold 0.5; no training or counterfactual predictions",
+  "model_sha256": "3b7dbea4b3fe6ba6c61b2499dd82911e904282217a7281d8cc1c22b19b399ca9",
+  "stats": {
+    "public_raw_10000": {
+      "rows": 10000,
+      "detected_rows": {
+        "attributes": 306,
+        "none": 7709,
+        "unmarked_list_candidate": 1436,
+        "explicit_seo": 549
+      },
+      "unique_descriptions_by_type": {
+        "attributes": 304,
+        "none": 3669,
+        "unmarked_list_candidate": 477,
+        "explicit_seo": 405
+      }
+    },
+    "public_train_3398": {
+      "rows": 3398,
+      "detected_rows": {
+        "attributes": 211,
+        "unmarked_list_candidate": 323,
+        "none": 2588,
+        "explicit_seo": 276
+      },
+      "unique_descriptions_by_type": {
+        "attributes": 211,
+        "unmarked_list_candidate": 323,
+        "none": 2588,
+        "explicit_seo": 276
+      }
+    },
+    "public_calibration_728": {
+      "rows": 728,
+      "detected_rows": {
+        "none": 536,
+        "unmarked_list_candidate": 70,
+        "attributes": 50,
+        "explicit_seo": 72
+      },
+      "unique_descriptions_by_type": {
+        "none": 536,
+        "unmarked_list_candidate": 70,
+        "attributes": 50,
+        "explicit_seo": 72
+      }
+    },
+    "public_validation_729": {
+      "rows": 729,
+      "detected_rows": {
+        "none": 545,
+        "explicit_seo": 57,
+        "unmarked_list_candidate": 84,
+        "attributes": 43
+      },
+      "unique_descriptions_by_type": {
+        "none": 545,
+        "explicit_seo": 57,
+        "unmarked_list_candidate": 84,
+        "attributes": 43
+      }
+    },
+    "public_test_208": {
+      "rows": 208,
+      "detected_rows": {
+        "unmarked_list_candidate": 14,
+        "none": 181,
+        "explicit_seo": 6,
+        "attributes": 7
+      },
+      "unique_descriptions_by_type": {
+        "unmarked_list_candidate": 6,
+        "none": 120,
+        "explicit_seo": 6,
+        "attributes": 7
+      }
+    }
+  },
+  "body_groups_with_distinct_tails": 70,
+  "groups_with_gold_changes": 2,
+  "groups_with_at_least_two_scored_variants": 30,
+  "groups_with_prediction_changes": 2
+}
