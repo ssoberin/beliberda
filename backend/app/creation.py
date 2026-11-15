@@ -90,7 +90,9 @@ async def creation_events(app, items, generate_text, request_id):
     """Bound item workers; run synchronous TF-IDF in actual backend threads.
 
     Qwen HTTP calls stay asynchronous and have a shared concurrency limit.
-    Each category is generated independently so a single input also streams.
+    Normally one model call writes all categories of an item to avoid mixing
+    cross-category details. On a technical model failure, retry categories
+    independently to preserve any valid sibling drafts.
     """
     queue = asyncio.Queue(maxsize=32)
     pending = iter(enumerate(items))
@@ -109,47 +111,62 @@ async def creation_events(app, items, generate_text, request_id):
             categories = [Category.model_validate(value) for value in values]
         await queue.put({'type': 'categories', **identity, 'categories': [c.model_dump() for c in categories]})
         parts = {}
-        warnings = []
         errors = []
+
+        async def call_qwen(selected):
+            tunnel = app.state.tunnel
+            if tunnel is not None and not tunnel.alive:
+                raise BackendError(503, 'SSH-туннель отключён и автоматически переподключается.')
+            async with app.state.creation_slots:
+                return await app.state.qwen.generate(GenerateRequest(
+                    title=item.title, description=item.description, mcId=item.mcId,
+                    categories=selected,
+                ), request_id=request_id)
+
+        async def emit_draft(category, draft):
+            values = [{'mcId': category.id, 'title': draft.title, 'text': draft.description}]
+            parts[category.id] = values
+            await queue.put({'type': 'drafts', **identity, 'drafts': values, 'warnings': []})
 
         async def create_category(category):
             try:
                 if not generate_text:
-                    drafts = [{'mcId': category.id, 'title': None, 'text': None}]
-                    notices = []
+                    values = [{'mcId': category.id, 'title': None, 'text': None}]
+                    parts[category.id] = values
+                    await queue.put({'type': 'drafts', **identity, 'drafts': values, 'warnings': []})
                 else:
-                    tunnel = app.state.tunnel
-                    if tunnel is not None and not tunnel.alive:
-                        raise BackendError(503, 'SSH-туннель отключён и автоматически переподключается.')
-                    async with app.state.creation_slots:
-                        result = await app.state.qwen.generate(GenerateRequest(
-                            title=item.title, description=item.description, mcId=item.mcId,
-                            categories=[category],
-                        ), request_id=request_id)
-                    # Automatic suggestions require support in the source, unlike
-                    # explicitly requested manual templates on the legacy route.
-                    notices = [w.model_dump() for w in result.warnings]
-                    drafts = [{'mcId': d.categoryId, 'title': d.title, 'text': d.description}
-                              for d in result.drafts if item.categories is not None or not notices]
-                parts[category.id] = drafts
-                warnings.extend(notices)
-                await queue.put({'type': 'drafts', **identity, 'drafts': drafts, 'warnings': notices})
+                    result = await call_qwen([category])
+                    await emit_draft(category, result.drafts[0])
             except BackendError as exc:
                 errors.append({'mcId': category.id, 'message': exc.message})
                 await queue.put({'type': 'category_error', **identity, 'mcId': category.id, 'message': exc.message})
 
-        tasks = [asyncio.create_task(create_category(category)) for category in categories]
-        try:
-            if tasks:
-                await asyncio.gather(*tasks)
-        finally:
-            for task in tasks:
-                task.cancel()
-            if tasks:
-                await asyncio.gather(*tasks, return_exceptions=True)
+        if generate_text and len(categories) > 1:
+            try:
+                result = await call_qwen(categories)
+                for category, draft in zip(categories, result.drafts, strict=True):
+                    await emit_draft(category, draft)
+            except BackendError as exc:
+                logger.warning('creation_batch_retry request_id=%s index=%d status=%d',
+                               request_id, index, exc.status_code)
+                tasks = [asyncio.create_task(create_category(category)) for category in categories]
+                try:
+                    await asyncio.gather(*tasks)
+                finally:
+                    for task in tasks:
+                        task.cancel()
+                    await asyncio.gather(*tasks, return_exceptions=True)
+        else:
+            tasks = [asyncio.create_task(create_category(category)) for category in categories]
+            try:
+                if tasks:
+                    await asyncio.gather(*tasks)
+            finally:
+                for task in tasks:
+                    task.cancel()
+                if tasks:
+                    await asyncio.gather(*tasks, return_exceptions=True)
         result = {**identity, 'drafts': [draft for c in categories for draft in parts.get(c.id, [])]}
-        if warnings:
-            result['warnings'] = warnings
         if errors:
             result['errors'] = errors
         return result

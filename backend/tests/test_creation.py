@@ -27,12 +27,13 @@ def api(categories=None, generate=None):
             yield client
 
 
-def response(category):
-    return GenerateResponse(drafts=[Draft(categoryId=category, title='Услуги', description=SOURCE)])
+def response(*categories):
+    return GenerateResponse(drafts=[Draft(categoryId=category, title='Услуги', description=SOURCE)
+                                    for category in categories])
 
 
 async def generate(payload, **_):
-    return response(payload.categories[0].id)
+    return response(*(category.id for category in payload.categories))
 
 
 def test_single_and_batch_json_contract_and_no_generation():
@@ -97,11 +98,14 @@ def test_stream_has_identity_drafts_progress_and_final_event():
         assert events[-1] == {'type': 'done', 'total': 1, 'completed': 1, 'failed': 0}
 
 
-def test_independent_categories_stream_before_slow_sibling_and_cancel_on_close():
+def test_fallback_streams_valid_category_before_slow_sibling_and_cancels():
     async def run():
         started = asyncio.Event()
         cancelled = asyncio.Event()
         async def slow(payload, **_):
+            if len(payload.categories) > 1:
+                from backend.app.errors import BackendError
+                raise BackendError(502, 'Ошибка формата.')
             if payload.categories[0].id == 103:
                 started.set()
                 try:
@@ -148,7 +152,7 @@ def test_generation_concurrency_is_bounded_across_batch():
         peak = max(peak, active)
         await asyncio.sleep(.01)
         active -= 1
-        return response(payload.categories[0].id)
+        return response(*(category.id for category in payload.categories))
     with api(generate=tracked) as client:
         result = client.post('/api/create', json=[{'description': SOURCE, 'categories': [{'id': 103}, {'id': 104}]}] * 8)
         assert result.status_code == 200
@@ -156,32 +160,32 @@ def test_generation_concurrency_is_bounded_across_batch():
     assert peak == 2
 
 
-def test_real_qwen_adapter_is_called_per_category_and_unconfirmed_auto_draft_is_omitted():
+def test_real_qwen_adapter_batches_selected_categories_without_support_gate():
     calls = []
     def remote(request):
         payload = json.loads(request.content)
-        category = json.loads(payload['messages'][-1]['content'])['requested_categories'][0]['id']
-        calls.append(category)
-        draft = {'categoryId': category, 'supported': category == 104,
-                 'title': 'Замена смесителей' if category == 104 else None,
-                 'text': 'Меняем смесители.' if category == 104 else None,
-                 'evidence': ['меняем смесители'] if category == 104 else []}
+        categories = [c['id'] for c in json.loads(payload['messages'][-1]['content'])['requested_categories']]
+        calls.append(categories)
+        drafts = [{'categoryId': category, 'title': 'Плиточные работы' if category == 103 else 'Замена смесителей',
+                   'text': 'Укладываем плитку.' if category == 103 else 'Меняем смесители.'} for category in categories]
         return httpx.Response(200, json={'choices': [{'finish_reason': 'stop', 'message': {
-            'content': json.dumps({'drafts': [draft]}, ensure_ascii=False),
+            'content': json.dumps({'drafts': drafts}, ensure_ascii=False),
         }}]})
     with patch('backend.app.main.load_classifier', return_value=object()), \
          patch('backend.app.creation.classify', return_value=[{'id': 103}, {'id': 104}]):
         with TestClient(create_app(Settings(tokenize_before_generate=False), transport=httpx.MockTransport(remote))) as client:
             result = client.post('/api/create', json={'description': SOURCE}).json()
-            assert result['drafts'] == [{'mcId': 104, 'title': 'Замена смесителей', 'text': 'Меняем смесители.'}]
-            assert result['warnings'][0]['categoryId'] == 103
-            assert sorted(calls) == [103, 104]
+            assert result['drafts'] == [
+                {'mcId': 103, 'title': 'Плиточные работы', 'text': 'Укладываем плитку.'},
+                {'mcId': 104, 'title': 'Замена смесителей', 'text': 'Меняем смесители.'},
+            ]
+            assert calls == [[103, 104]]
 
 
 def test_one_category_failure_preserves_sibling_draft_and_other_items():
     from backend.app.errors import BackendError
     async def partial(payload, **_):
-        if payload.categories[0].id == 103:
+        if any(c.id == 103 for c in payload.categories):
             raise BackendError(504, 'Qwen не ответил за отведённое время.')
         return response(104)
     with api(generate=partial) as client:
