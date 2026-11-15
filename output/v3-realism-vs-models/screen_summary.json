@@ -1,6 +1,7 @@
 {
   "train": {
     "rows": 2921,
+    "unique_descriptions": 2921,
     "sha256": "8ed3c4c7f2bc04425343caeb649909f173eaf01383d9b27f2d6a74eccd5c1875",
     "tiers": {
       "rewrite_candidate": 393,
@@ -20,6 +21,7 @@
   },
   "validation": {
     "rows": 600,
+    "unique_descriptions": 600,
     "sha256": "876cbc10ff4d05450b35a01df4627f0b61b6dae7e809bfaa6a46160d80bab15d",
     "tiers": {
       "no_high_priority_flag": 450,
@@ -41,6 +43,7 @@
   },
   "test": {
     "rows": 600,
+    "unique_descriptions": 600,
     "sha256": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7",
     "tiers": {
       "no_high_priority_flag": 442,
@@ -60,8 +63,23 @@
     "at_least4_or_meta": 75,
     "meta_explanation": 43
   },
+  "challenge": {
+    "rows": 144,
+    "unique_descriptions": 24,
+    "sha256": "566258947d5a552e8902026e43e63c3c1d1c91ffffff8a712355f1e3067b3f16",
+    "tiers": {
+      "no_high_priority_flag": 144
+    },
+    "max_complex_repeats": {
+      "0": 144
+    },
+    "extreme_or_meta": 0,
+    "at_least4_or_meta": 0,
+    "meta_explanation": 0
+  },
   "quarantine": {
     "rows": 79,
+    "unique_descriptions": 79,
     "sha256": "ff6cfce922cc6254dd49ddf8473b1de1e20f5a0e49af7e167a3d9d28f3195d89",
     "tiers": {
       "rewrite_candidate": 79

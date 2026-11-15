@@ -17,7 +17,7 @@ def main():
     spec=importlib.util.spec_from_file_location('historical_realism_screen',PATTERN_SOURCE)
     mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
     catalog={};summary={};keys=['repeated_team','repeated_faq','repeated_offer_correction','repeated_price']
-    for split in ['train','validation','test','quarantine']:
+    for split in ['train','validation','test','challenge','quarantine']:
         path=Path('datasets/own_v3_clean')/('quarantine/excluded_train_79.jsonl' if split=='quarantine' else split+'.jsonl')
         digest=sha(path);raw=[json.loads(s) for s in path.read_text().splitlines() if s.strip()];rs=[]
         for i,r in enumerate(raw):
@@ -26,7 +26,7 @@ def main():
             rs.append(a)
         assert sha(path)==digest
         catalog[split]=rs
-        summary[split]=dict(rows=len(raw),sha256=digest,tiers=dict(collections.Counter(r['tier'] for r in rs)),
+        summary[split]=dict(rows=len(raw),unique_descriptions=len({' '.join(r['description'].casefold().split()) for r in rs}),sha256=digest,tiers=dict(collections.Counter(r['tier'] for r in rs)),
                             max_complex_repeats=dict(collections.Counter(r['max_complex_repeats'] for r in rs)),
                             extreme_or_meta=sum(r['extreme_flag'] for r in rs),
                             at_least4_or_meta=sum(bool(r['max_complex_repeats']>=4 or r['text_counts']['price_explanation']) for r in rs),

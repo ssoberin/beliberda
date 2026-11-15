@@ -1,0 +1,80 @@
+{
+  "method": "One-expert post-score semantic check of the 15 exact C_syntax corrections in fixed R+P sample. Original gold unchanged; scope102-106, source exclusion retained.",
+  "cases": [
+    {
+      "row_idx": 52,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Электрика и плитка прямо предложены; малярка106 исключена как исходная категория,101 вне оцениваемой проекции."
+    },
+    {
+      "row_idx": 238,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Проверка кабельной линии и электрические маты явно предложены; TF-IDF пропускает105."
+    },
+    {
+      "row_idx": 364,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Электрощит выполняет чужой подрядчик, автор предлагает ламинат; пустой ответ в scope102–106 обоснован."
+    },
+    {
+      "row_idx": 366,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Штукатурное выравнивание относится к чужому подрядчику, а керамогранит и электрощит предложены своими."
+    },
+    {
+      "row_idx": 459,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Раковина104 предложена, шпаклевка106 прямо прекращена; C_syntax правильно исправляет оба решения."
+    },
+    {
+      "row_idx": 467,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Обработка бетонных перегородок штукатурным составом прямо предложена; TF-IDF пропускает102."
+    },
+    {
+      "row_idx": 48,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Обои106 и гипсовая штукатурка102 прямо предложены; TF-IDF пропускает их."
+    },
+    {
+      "row_idx": 71,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Устранение течи104, электрические маты и розетка105 прямо предложены; TF-IDF пропускает104/105."
+    },
+    {
+      "row_idx": 95,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Подгонка кафеля103 и малярка/обои106 прямо предложены; TF-IDF пропускает103/106."
+    },
+    {
+      "row_idx": 207,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Стеклохолст под окраску сейчас не принимают; сантехническая подводка104 предложена. C_syntax не приписывает106."
+    },
+    {
+      "row_idx": 208,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Штукатурный раствор для глубоких неровностей прямо предложен; TF-IDF пропускает102."
+    },
+    {
+      "row_idx": 235,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Монтаж плитки большого формата прямо предложен; TF-IDF пропускает103."
+    },
+    {
+      "row_idx": 310,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "На вопрос о штукатурной обработке дан утвердительный ответ; TF-IDF пропускает102."
+    },
+    {
+      "row_idx": 399,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Установка бра105 прямо прекращена; C_syntax верно исключает105."
+    },
+    {
+      "row_idx": 421,
+      "verdict": "C_syntax_supported_in_declared_scope",
+      "rationale": "Штукатурка102 утвердительно предложена в FAQ; ванна104 совпадает с исходной и исключена."
+    }
+  ]
+}

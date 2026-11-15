@@ -1,0 +1,10 @@
+{
+  "fixed_random_sample_verified": true,
+  "text_ratings_frozen_before_score_join": true,
+  "all_slice_transition_counts_verified": true,
+  "six_full_examples_verified": true,
+  "source_data_and_old_model_weights_unchanged": true,
+  "gold_unchanged": true,
+  "no_training": true,
+  "no_new_model_inference": true
+}
