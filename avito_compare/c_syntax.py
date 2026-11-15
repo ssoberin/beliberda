@@ -48,13 +48,19 @@ class CSyntaxClassifier:
         directory = Path(directory)
         started = time.monotonic()
         LOG.info('model_load_start model=C_syntax directory=%s', directory)
-        for name, digest in EXPECTED_FILES.items():
+        manifest_path = directory / 'manifest.json'
+        if not manifest_path.is_file():
+            raise ValueError('Отсутствует manifest.json модели.')
+        self.manifest = json.loads(manifest_path.read_text())
+        expected_files = EXPECTED_FILES if directory.resolve() == DEFAULT_MODEL_DIR.resolve() else self.manifest.get('files', {})
+        if set(expected_files) != {'catboost.cbm', 'sgd_heads.joblib', 'queries.npz'}:
+            raise ValueError('Некорректный список файлов в manifest.json модели.')
+        for name, digest in expected_files.items():
             path = directory / name
             if not path.is_file() or _sha(path) != digest:
                 LOG.error('model_hash_failed file=%s', name)
-                raise ValueError(f'Хеш или файл C_syntax не соответствует зафиксированной модели: {name}')
+                raise ValueError(f'Хеш или файл {self.manifest.get("name", "C_syntax")} не соответствует зафиксированной модели: {name}')
             LOG.info('model_hash_verified file=%s sha256=%s', name, digest)
-        self.manifest = json.loads((directory / 'manifest.json').read_text())
         if tuple(self.manifest['ids']) != IDS or self.manifest['thresholds'] != [.5] * 5:
             raise ValueError('Неверные категории или пороги C_syntax.')
         for name, digest in self.manifest['source_sha256'].items():
@@ -108,7 +114,11 @@ class CSyntaxClassifier:
         with self._lock:
             for description in descriptions:
                 started = time.monotonic()
-                chunks = chunk_ad_fixed(description)
+                proc_desc = description
+                if self.manifest.get('preprocess') == 'h12_normalize_and_strip_prompt':
+                    from .scripts.text_preprocess import normalize_ad_text, strip_prompt_injections
+                    proc_desc = strip_prompt_injections(normalize_ad_text(description))
+                chunks = chunk_ad_fixed(proc_desc) or ['']
                 LOG.info('model_prediction_start description_chars=%d chunks=%d', len(description), len(chunks))
                 unique = list(dict.fromkeys(chunks))
                 vectors = self._encode(unique)
@@ -129,7 +139,7 @@ class CSyntaxClassifier:
                         scores = sims[indices, ALL_IDS.index(cid)]
                         selected = np.argsort(-scores, kind='stable')[:3].tolist()
                         row = extract_pair_features(self._analyzer, chunks, selected,
-                            [float(scores[p]) for p in selected], cid, len(description))
+                            [float(scores[p]) for p in selected], cid, len(proc_desc))
                         row['p_sgd'] = float(self.heads[cid].predict_proba(features[cid])[0, 1])
                         records.append(row)
                 finally:

@@ -1,0 +1,35 @@
+{
+  "name": "H123_robust",
+  "profile": "original_public_plus_v3_6319",
+  "ids": [
+    102,
+    103,
+    104,
+    105,
+    106
+  ],
+  "thresholds": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "encoder": "Qwen/Qwen3-Embedding-0.6B",
+  "encoder_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "max_seq_length": 1024,
+  "top_k": 3,
+  "embedding_dimension": 1024,
+  "features": 40,
+  "preprocess": "h12_normalize_and_strip_prompt",
+  "files": {
+    "catboost.cbm": "30ca7413d79ff3cce258210c75cfddb031dc3f08077811e3ac99aebde7b75c90",
+    "queries.npz": "988e0d8fe92a3d10299cadb4c0bd58cf1946f1fb10e597c02c6babc1587482b7",
+    "sgd_heads.joblib": "49d95c79e2633d4ba2fc95593e04e8acc4ce0845549a7dcf7348f73af007c45f"
+  },
+  "source_sha256": {
+    "avito_compare/scripts/fixed_chunker.py": "877c81a97f33cf73e76e218ea56da85f602b835a68e46cb13b4fb713860a42bd",
+    "avito_compare/scripts/syntax_features.py": "1a0a2f756fa76c48c35f8069284cb67d419da6d4ee99cabffda453a2376e274c",
+    "avito_compare/scripts/text_preprocess.py": "99ae5c9026343ab47f3241d28ec8743ff4d33644f8ddad356e66480ef089f61a"
+  }
+}
