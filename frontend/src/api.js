@@ -57,5 +57,19 @@ export async function generateListings(payload, signal) {
     || typeof draft.title !== 'string' || typeof draft.description !== 'string')) {
     throw new Error('Сервер вернул некорректный список объявлений.');
   }
-  return body.drafts;
+  const warnings = body.warnings ?? [];
+  if (!Array.isArray(warnings) || warnings.some(warning => !warning
+    || !['string', 'number'].includes(typeof warning.categoryId) || typeof warning.message !== 'string')) {
+    throw new Error('Сервер вернул некорректные предупреждения.');
+  }
+  return { drafts: body.drafts, warnings };
+}
+
+export async function getConnectionStatus(signal) {
+  const response = await fetch('/api/status', { signal, headers: { Accept: 'application/json' } });
+  const body = await response.json();
+  if (!['backend', 'demo'].includes(body?.mode) || typeof body.ready !== 'boolean') {
+    throw new Error('Не удалось определить состояние генерации.');
+  }
+  return body;
 }
