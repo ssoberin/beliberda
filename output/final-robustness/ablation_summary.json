@@ -1,0 +1,1305 @@
+{
+  "calibration": {
+    "baseline_C_syntax_fixed": {
+      "rows": 1328,
+      "micro_f1": 0.965129,
+      "macro_f1": 0.96483,
+      "micro_precision": 0.967856,
+      "micro_recall": 0.962417,
+      "fpr": 0.027634,
+      "fnr": 0.037583,
+      "specificity": 0.972366,
+      "exact_match": 0.881024,
+      "micro_ap": 0.99369,
+      "macro_ap": 0.993726,
+      "empty_predictions": 293,
+      "empty_gold": 302,
+      "confusion": {
+        "tp": 2740,
+        "fp": 91,
+        "fn": 107,
+        "tn": 3202
+      },
+      "per_category": {
+        "102": {
+          "support": 568,
+          "tp": 548,
+          "fp": 29,
+          "fn": 20,
+          "tn": 631,
+          "precision": 0.94974,
+          "recall": 0.964789,
+          "f1": 0.957205,
+          "fpr": 0.043939,
+          "fnr": 0.035211,
+          "specificity": 0.956061,
+          "ap": 0.991494
+        },
+        "103": {
+          "support": 586,
+          "tp": 581,
+          "fp": 16,
+          "fn": 5,
+          "tn": 626,
+          "precision": 0.973199,
+          "recall": 0.991468,
+          "f1": 0.982249,
+          "fpr": 0.024922,
+          "fnr": 0.008532,
+          "specificity": 0.975078,
+          "ap": 0.998456
+        },
+        "104": {
+          "support": 550,
+          "tp": 513,
+          "fp": 18,
+          "fn": 37,
+          "tn": 660,
+          "precision": 0.966102,
+          "recall": 0.932727,
+          "f1": 0.949121,
+          "fpr": 0.026549,
+          "fnr": 0.067273,
+          "specificity": 0.973451,
+          "ap": 0.989713
+        },
+        "105": {
+          "support": 545,
+          "tp": 525,
+          "fp": 16,
+          "fn": 20,
+          "tn": 667,
+          "precision": 0.970425,
+          "recall": 0.963303,
+          "f1": 0.966851,
+          "fpr": 0.023426,
+          "fnr": 0.036697,
+          "specificity": 0.976574,
+          "ap": 0.994095
+        },
+        "106": {
+          "support": 598,
+          "tp": 573,
+          "fp": 12,
+          "fn": 25,
+          "tn": 618,
+          "precision": 0.979487,
+          "recall": 0.958194,
+          "f1": 0.968724,
+          "fpr": 0.019048,
+          "fnr": 0.041806,
+          "specificity": 0.980952,
+          "ap": 0.994873
+        }
+      }
+    },
+    "H3_retrained": {
+      "rows": 1328,
+      "micro_f1": 0.965699,
+      "macro_f1": 0.965284,
+      "micro_precision": 0.96723,
+      "micro_recall": 0.964173,
+      "fpr": 0.028242,
+      "fnr": 0.035827,
+      "specificity": 0.971758,
+      "exact_match": 0.884789,
+      "micro_ap": 0.993776,
+      "macro_ap": 0.993807,
+      "empty_predictions": 299,
+      "empty_gold": 302,
+      "confusion": {
+        "tp": 2745,
+        "fp": 93,
+        "fn": 102,
+        "tn": 3200
+      },
+      "per_category": {
+        "102": {
+          "support": 568,
+          "tp": 547,
+          "fp": 25,
+          "fn": 21,
+          "tn": 635,
+          "precision": 0.956294,
+          "recall": 0.963028,
+          "f1": 0.959649,
+          "fpr": 0.037879,
+          "fnr": 0.036972,
+          "specificity": 0.962121,
+          "ap": 0.991581
+        },
+        "103": {
+          "support": 586,
+          "tp": 581,
+          "fp": 13,
+          "fn": 5,
+          "tn": 629,
+          "precision": 0.978114,
+          "recall": 0.991468,
+          "f1": 0.984746,
+          "fpr": 0.020249,
+          "fnr": 0.008532,
+          "specificity": 0.979751,
+          "ap": 0.998499
+        },
+        "104": {
+          "support": 550,
+          "tp": 509,
+          "fp": 18,
+          "fn": 41,
+          "tn": 660,
+          "precision": 0.965844,
+          "recall": 0.925455,
+          "f1": 0.945218,
+          "fpr": 0.026549,
+          "fnr": 0.074545,
+          "specificity": 0.973451,
+          "ap": 0.989463
+        },
+        "105": {
+          "support": 545,
+          "tp": 529,
+          "fp": 22,
+          "fn": 16,
+          "tn": 661,
+          "precision": 0.960073,
+          "recall": 0.970642,
+          "f1": 0.965328,
+          "fpr": 0.032211,
+          "fnr": 0.029358,
+          "specificity": 0.967789,
+          "ap": 0.99428
+        },
+        "106": {
+          "support": 598,
+          "tp": 579,
+          "fp": 15,
+          "fn": 19,
+          "tn": 615,
+          "precision": 0.974747,
+          "recall": 0.968227,
+          "f1": 0.971477,
+          "fpr": 0.02381,
+          "fnr": 0.031773,
+          "specificity": 0.97619,
+          "ap": 0.995212
+        }
+      }
+    },
+    "H1+H2+H3_retrained": {
+      "rows": 1328,
+      "micro_f1": 0.964267,
+      "macro_f1": 0.963863,
+      "micro_precision": 0.966478,
+      "micro_recall": 0.962065,
+      "fpr": 0.028849,
+      "fnr": 0.037935,
+      "specificity": 0.971151,
+      "exact_match": 0.881024,
+      "micro_ap": 0.994112,
+      "macro_ap": 0.994091,
+      "empty_predictions": 299,
+      "empty_gold": 302,
+      "confusion": {
+        "tp": 2739,
+        "fp": 95,
+        "fn": 108,
+        "tn": 3198
+      },
+      "per_category": {
+        "102": {
+          "support": 568,
+          "tp": 547,
+          "fp": 27,
+          "fn": 21,
+          "tn": 633,
+          "precision": 0.952962,
+          "recall": 0.963028,
+          "f1": 0.957968,
+          "fpr": 0.040909,
+          "fnr": 0.036972,
+          "specificity": 0.959091,
+          "ap": 0.992143
+        },
+        "103": {
+          "support": 586,
+          "tp": 579,
+          "fp": 13,
+          "fn": 7,
+          "tn": 629,
+          "precision": 0.978041,
+          "recall": 0.988055,
+          "f1": 0.983022,
+          "fpr": 0.020249,
+          "fnr": 0.011945,
+          "specificity": 0.979751,
+          "ap": 0.998524
+        },
+        "104": {
+          "support": 550,
+          "tp": 509,
+          "fp": 19,
+          "fn": 41,
+          "tn": 659,
+          "precision": 0.964015,
+          "recall": 0.925455,
+          "f1": 0.944341,
+          "fpr": 0.028024,
+          "fnr": 0.074545,
+          "specificity": 0.971976,
+          "ap": 0.989372
+        },
+        "105": {
+          "support": 545,
+          "tp": 526,
+          "fp": 21,
+          "fn": 19,
+          "tn": 662,
+          "precision": 0.961609,
+          "recall": 0.965138,
+          "f1": 0.96337,
+          "fpr": 0.030747,
+          "fnr": 0.034862,
+          "specificity": 0.969253,
+          "ap": 0.994803
+        },
+        "106": {
+          "support": 598,
+          "tp": 578,
+          "fp": 15,
+          "fn": 20,
+          "tn": 615,
+          "precision": 0.974705,
+          "recall": 0.966555,
+          "f1": 0.970613,
+          "fpr": 0.02381,
+          "fnr": 0.033445,
+          "specificity": 0.97619,
+          "ap": 0.995615
+        }
+      }
+    }
+  },
+  "robustness": {
+    "H3_retrained": {
+      "label": "H3_retrained",
+      "passed": 16,
+      "total": 26,
+      "pass_rate": 0.6154,
+      "short_median_ms": 7.6,
+      "long_median_ms": 13.6,
+      "stress_75k_chars": 73188,
+      "stress_75k_pred": [
+        103,
+        104
+      ],
+      "stress_75k_probs": {
+        "102": 0.0144,
+        "103": 0.9975,
+        "104": 0.951,
+        "105": 0.0763,
+        "106": 0.0051
+      },
+      "stress_75k_ms": 89.2,
+      "cases": [
+        {
+          "name": "dup_flood_offer_retained",
+          "group": "A1_dup_flood",
+          "ok": true,
+          "expected": [
+            103,
+            104
+          ],
+          "predicted": [
+            103,
+            104
+          ],
+          "probs": {
+            "102": 0.2004,
+            "103": 0.9952,
+            "104": 0.9959,
+            "105": 0.0044,
+            "106": 0.0043
+          },
+          "ms": 17.3
+        },
+        {
+          "name": "dup_flood_sale_noise",
+          "group": "A1_dup_flood",
+          "ok": false,
+          "expected": [
+            103
+          ],
+          "predicted": [
+            102,
+            103
+          ],
+          "probs": {
+            "102": 0.5029,
+            "103": 0.9934,
+            "104": 0.1182,
+            "105": 0.3682,
+            "106": 0.0808
+          },
+          "ms": 14.3
+        },
+        {
+          "name": "dup_flood_pure_irrel_neg",
+          "group": "A1_dup_flood",
+          "ok": false,
+          "expected": [],
+          "predicted": [
+            104,
+            105,
+            106
+          ],
+          "probs": {
+            "102": 0.0074,
+            "103": 0.0036,
+            "104": 0.9117,
+            "105": 0.9877,
+            "106": 0.6729
+          },
+          "ms": 6.7
+        },
+        {
+          "name": "long_noise_offer_start",
+          "group": "A2_long_dilution",
+          "ok": true,
+          "expected": [
+            102
+          ],
+          "predicted": [
+            102
+          ],
+          "probs": {
+            "102": 0.9939,
+            "103": 0.0127,
+            "104": 0.0062,
+            "105": 0.0029,
+            "106": 0.0035
+          },
+          "ms": 12.5
+        },
+        {
+          "name": "long_noise_offer_end",
+          "group": "A2_long_dilution",
+          "ok": true,
+          "expected": [
+            106
+          ],
+          "predicted": [
+            106
+          ],
+          "probs": {
+            "102": 0.026,
+            "103": 0.0073,
+            "104": 0.0062,
+            "105": 0.0029,
+            "106": 0.8612
+          },
+          "ms": 12.7
+        },
+        {
+          "name": "long_noise_with_local_neg",
+          "group": "A2_long_dilution",
+          "ok": true,
+          "expected": [
+            104
+          ],
+          "predicted": [
+            104
+          ],
+          "probs": {
+            "102": 0.016,
+            "103": 0.0243,
+            "104": 0.9923,
+            "105": 0.2983,
+            "106": 0.0034
+          },
+          "ms": 13.6
+        },
+        {
+          "name": "prompt_inj_override_empty",
+          "group": "A3_prompt_inj",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0011,
+            "103": 0.0005,
+            "104": 0.0055,
+            "105": 0.0007,
+            "106": 0.0008
+          },
+          "ms": 809.4
+        },
+        {
+          "name": "prompt_inj_around_real_offer",
+          "group": "A3_prompt_inj",
+          "ok": true,
+          "expected": [
+            102,
+            106
+          ],
+          "predicted": [
+            102,
+            106
+          ],
+          "probs": {
+            "102": 0.9956,
+            "103": 0.0017,
+            "104": 0.0017,
+            "105": 0.0019,
+            "106": 0.8546
+          },
+          "ms": 671.4
+        },
+        {
+          "name": "prompt_inj_fake_services_tags",
+          "group": "A3_prompt_inj",
+          "ok": false,
+          "expected": [],
+          "predicted": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ],
+          "probs": {
+            "102": 0.8744,
+            "103": 0.6961,
+            "104": 0.9923,
+            "105": 0.965,
+            "106": 0.8108
+          },
+          "ms": 531.8
+        },
+        {
+          "name": "html_tags_and_entities_neg",
+          "group": "A4_html_noise",
+          "ok": false,
+          "expected": [
+            104
+          ],
+          "predicted": [
+            104,
+            105
+          ],
+          "probs": {
+            "102": 0.0047,
+            "103": 0.0019,
+            "104": 0.9957,
+            "105": 0.9985,
+            "106": 0.0026
+          },
+          "ms": 304.7
+        },
+        {
+          "name": "html_zero_width_offer",
+          "group": "A4_html_noise",
+          "ok": true,
+          "expected": [
+            103,
+            106
+          ],
+          "predicted": [
+            103,
+            106
+          ],
+          "probs": {
+            "102": 0.1102,
+            "103": 0.992,
+            "104": 0.001,
+            "105": 0.0025,
+            "106": 0.981
+          },
+          "ms": 324.0
+        },
+        {
+          "name": "homoglyph_offer_and_neg",
+          "group": "A5_homoglyph",
+          "ok": false,
+          "expected": [
+            104
+          ],
+          "predicted": [],
+          "probs": {
+            "102": 0.0011,
+            "103": 0.0003,
+            "104": 0.0005,
+            "105": 0.0021,
+            "106": 0.0002
+          },
+          "ms": 345.6
+        },
+        {
+          "name": "homoglyph_multi_brands",
+          "group": "A5_homoglyph",
+          "ok": false,
+          "expected": [
+            102,
+            105
+          ],
+          "predicted": [],
+          "probs": {
+            "102": 0.0017,
+            "103": 0.0013,
+            "104": 0.0008,
+            "105": 0.448,
+            "106": 0.0003
+          },
+          "ms": 366.1
+        },
+        {
+          "name": "caps_emoji_spacing",
+          "group": "A6_formatting",
+          "ok": true,
+          "expected": [
+            102,
+            106
+          ],
+          "predicted": [
+            102,
+            106
+          ],
+          "probs": {
+            "102": 0.8847,
+            "103": 0.0008,
+            "104": 0.0008,
+            "105": 0.0003,
+            "106": 0.9405
+          },
+          "ms": 17.3
+        },
+        {
+          "name": "article_how_to_choose",
+          "group": "B1_non_exec_info",
+          "ok": false,
+          "expected": [],
+          "predicted": [
+            105
+          ],
+          "probs": {
+            "102": 0.0009,
+            "103": 0.0008,
+            "104": 0.0003,
+            "105": 0.9791,
+            "106": 0.0003
+          },
+          "ms": 5.3
+        },
+        {
+          "name": "article_video_review",
+          "group": "B1_non_exec_info",
+          "ok": false,
+          "expected": [],
+          "predicted": [
+            103
+          ],
+          "probs": {
+            "102": 0.0022,
+            "103": 0.9952,
+            "104": 0.1272,
+            "105": 0.0004,
+            "106": 0.0005
+          },
+          "ms": 5.9
+        },
+        {
+          "name": "material_sale_only_no_install",
+          "group": "B2_material_sale",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0009,
+            "103": 0.001,
+            "104": 0.0007,
+            "105": 0.096,
+            "106": 0.0005
+          },
+          "ms": 7.0
+        },
+        {
+          "name": "material_delivery_only",
+          "group": "B2_material_sale",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0283,
+            "103": 0.0035,
+            "104": 0.001,
+            "105": 0.0006,
+            "106": 0.0063
+          },
+          "ms": 7.4
+        },
+        {
+          "name": "projecting_only_elec",
+          "group": "B3_projecting",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0004,
+            "103": 0.0005,
+            "104": 0.0005,
+            "105": 0.0195,
+            "106": 0.0002
+          },
+          "ms": 6.6
+        },
+        {
+          "name": "past_and_future_plan_only_now_plumb",
+          "group": "B4_temporal_plan",
+          "ok": false,
+          "expected": [
+            104
+          ],
+          "predicted": [
+            104,
+            106
+          ],
+          "probs": {
+            "102": 0.0107,
+            "103": 0.0042,
+            "104": 0.9749,
+            "105": 0.0021,
+            "106": 0.9504
+          },
+          "ms": 8.2
+        },
+        {
+          "name": "client_self_paint_seller_tile",
+          "group": "B5_actor",
+          "ok": true,
+          "expected": [
+            103
+          ],
+          "predicted": [
+            103
+          ],
+          "probs": {
+            "102": 0.0366,
+            "103": 0.9985,
+            "104": 0.0008,
+            "105": 0.0075,
+            "106": 0.1413
+          },
+          "ms": 8.3
+        },
+        {
+          "name": "turnkey_multi_partial_refusal_1",
+          "group": "B6_turnkey_partial",
+          "ok": false,
+          "expected": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ],
+          "predicted": [],
+          "probs": {
+            "102": 0.2714,
+            "103": 0.3261,
+            "104": 0.415,
+            "105": 0.4092,
+            "106": 0.1593
+          },
+          "ms": 7.0
+        },
+        {
+          "name": "turnkey_multi_partial_refusal_2",
+          "group": "B6_turnkey_partial",
+          "ok": true,
+          "expected": [
+            102,
+            105,
+            106
+          ],
+          "predicted": [
+            102,
+            105,
+            106
+          ],
+          "probs": {
+            "102": 0.9825,
+            "103": 0.0026,
+            "104": 0.0022,
+            "105": 0.9347,
+            "106": 0.7715
+          },
+          "ms": 7.6
+        },
+        {
+          "name": "clean_multi_offer",
+          "group": "B7_sensitivity",
+          "ok": true,
+          "expected": [
+            105,
+            106
+          ],
+          "predicted": [
+            105,
+            106
+          ],
+          "probs": {
+            "102": 0.0305,
+            "103": 0.0436,
+            "104": 0.0438,
+            "105": 0.9998,
+            "106": 0.9952
+          },
+          "ms": 5.3
+        },
+        {
+          "name": "clean_unrelated_service",
+          "group": "B7_sensitivity",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0017,
+            "103": 0.0006,
+            "104": 0.0004,
+            "105": 0.0004,
+            "106": 0.0004
+          },
+          "ms": 4.5
+        },
+        {
+          "name": "contra_clause_neg",
+          "group": "B7_sensitivity",
+          "ok": true,
+          "expected": [
+            106
+          ],
+          "predicted": [
+            106
+          ],
+          "probs": {
+            "102": 0.0006,
+            "103": 0.0257,
+            "104": 0.0001,
+            "105": 0.0004,
+            "106": 0.844
+          },
+          "ms": 4.2
+        }
+      ]
+    },
+    "H1+H2+H3_retrained": {
+      "label": "H1+H2+H3_retrained",
+      "passed": 20,
+      "total": 26,
+      "pass_rate": 0.7692,
+      "short_median_ms": 5.3,
+      "long_median_ms": 14.0,
+      "stress_75k_chars": 73188,
+      "stress_75k_pred": [
+        103,
+        104
+      ],
+      "stress_75k_probs": {
+        "102": 0.0079,
+        "103": 0.9979,
+        "104": 0.8799,
+        "105": 0.0106,
+        "106": 0.0021
+      },
+      "stress_75k_ms": 96.5,
+      "cases": [
+        {
+          "name": "dup_flood_offer_retained",
+          "group": "A1_dup_flood",
+          "ok": true,
+          "expected": [
+            103,
+            104
+          ],
+          "predicted": [
+            103,
+            104
+          ],
+          "probs": {
+            "102": 0.1139,
+            "103": 0.997,
+            "104": 0.9984,
+            "105": 0.0027,
+            "106": 0.0028
+          },
+          "ms": 10.7
+        },
+        {
+          "name": "dup_flood_sale_noise",
+          "group": "A1_dup_flood",
+          "ok": false,
+          "expected": [
+            103
+          ],
+          "predicted": [
+            102,
+            103
+          ],
+          "probs": {
+            "102": 0.5226,
+            "103": 0.9815,
+            "104": 0.0774,
+            "105": 0.1769,
+            "106": 0.0428
+          },
+          "ms": 15.2
+        },
+        {
+          "name": "dup_flood_pure_irrel_neg",
+          "group": "A1_dup_flood",
+          "ok": false,
+          "expected": [],
+          "predicted": [
+            104,
+            105,
+            106
+          ],
+          "probs": {
+            "102": 0.0059,
+            "103": 0.0036,
+            "104": 0.9202,
+            "105": 0.9713,
+            "106": 0.6389
+          },
+          "ms": 6.6
+        },
+        {
+          "name": "long_noise_offer_start",
+          "group": "A2_long_dilution",
+          "ok": true,
+          "expected": [
+            102
+          ],
+          "predicted": [
+            102
+          ],
+          "probs": {
+            "102": 0.996,
+            "103": 0.0124,
+            "104": 0.0029,
+            "105": 0.0016,
+            "106": 0.0047
+          },
+          "ms": 12.6
+        },
+        {
+          "name": "long_noise_offer_end",
+          "group": "A2_long_dilution",
+          "ok": true,
+          "expected": [
+            106
+          ],
+          "predicted": [
+            106
+          ],
+          "probs": {
+            "102": 0.0496,
+            "103": 0.0072,
+            "104": 0.0029,
+            "105": 0.0016,
+            "106": 0.9493
+          },
+          "ms": 14.0
+        },
+        {
+          "name": "long_noise_with_local_neg",
+          "group": "A2_long_dilution",
+          "ok": true,
+          "expected": [
+            104
+          ],
+          "predicted": [
+            104
+          ],
+          "probs": {
+            "102": 0.0145,
+            "103": 0.0156,
+            "104": 0.9968,
+            "105": 0.3308,
+            "106": 0.0026
+          },
+          "ms": 14.1
+        },
+        {
+          "name": "prompt_inj_override_empty",
+          "group": "A3_prompt_inj",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0006,
+            "103": 0.0003,
+            "104": 0.0003,
+            "105": 0.0003,
+            "106": 0.0001
+          },
+          "ms": 4.3
+        },
+        {
+          "name": "prompt_inj_around_real_offer",
+          "group": "A3_prompt_inj",
+          "ok": true,
+          "expected": [
+            102,
+            106
+          ],
+          "predicted": [
+            102,
+            106
+          ],
+          "probs": {
+            "102": 0.9994,
+            "103": 0.0134,
+            "104": 0.0002,
+            "105": 0.0009,
+            "106": 0.9333
+          },
+          "ms": 4.2
+        },
+        {
+          "name": "prompt_inj_fake_services_tags",
+          "group": "A3_prompt_inj",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0016,
+            "103": 0.0003,
+            "104": 0.0002,
+            "105": 0.0026,
+            "106": 0.0002
+          },
+          "ms": 3.9
+        },
+        {
+          "name": "html_tags_and_entities_neg",
+          "group": "A4_html_noise",
+          "ok": true,
+          "expected": [
+            104
+          ],
+          "predicted": [
+            104
+          ],
+          "probs": {
+            "102": 0.0008,
+            "103": 0.0006,
+            "104": 0.9995,
+            "105": 0.0108,
+            "106": 0.0003
+          },
+          "ms": 6.2
+        },
+        {
+          "name": "html_zero_width_offer",
+          "group": "A4_html_noise",
+          "ok": true,
+          "expected": [
+            103,
+            106
+          ],
+          "predicted": [
+            103,
+            106
+          ],
+          "probs": {
+            "102": 0.1644,
+            "103": 0.995,
+            "104": 0.0004,
+            "105": 0.0015,
+            "106": 0.9917
+          },
+          "ms": 5.4
+        },
+        {
+          "name": "homoglyph_offer_and_neg",
+          "group": "A5_homoglyph",
+          "ok": true,
+          "expected": [
+            104
+          ],
+          "predicted": [
+            104
+          ],
+          "probs": {
+            "102": 0.0006,
+            "103": 0.0005,
+            "104": 0.9963,
+            "105": 0.1599,
+            "106": 0.0003
+          },
+          "ms": 4.6
+        },
+        {
+          "name": "homoglyph_multi_brands",
+          "group": "A5_homoglyph",
+          "ok": true,
+          "expected": [
+            102,
+            105
+          ],
+          "predicted": [
+            102,
+            105
+          ],
+          "probs": {
+            "102": 0.9003,
+            "103": 0.0305,
+            "104": 0.001,
+            "105": 0.9821,
+            "106": 0.0015
+          },
+          "ms": 5.2
+        },
+        {
+          "name": "caps_emoji_spacing",
+          "group": "A6_formatting",
+          "ok": true,
+          "expected": [
+            102,
+            106
+          ],
+          "predicted": [
+            102,
+            106
+          ],
+          "probs": {
+            "102": 0.9087,
+            "103": 0.0004,
+            "104": 0.0004,
+            "105": 0.0003,
+            "106": 0.9152
+          },
+          "ms": 5.2
+        },
+        {
+          "name": "article_how_to_choose",
+          "group": "B1_non_exec_info",
+          "ok": false,
+          "expected": [],
+          "predicted": [
+            105
+          ],
+          "probs": {
+            "102": 0.001,
+            "103": 0.0006,
+            "104": 0.0003,
+            "105": 0.9801,
+            "106": 0.0002
+          },
+          "ms": 5.4
+        },
+        {
+          "name": "article_video_review",
+          "group": "B1_non_exec_info",
+          "ok": false,
+          "expected": [],
+          "predicted": [
+            103
+          ],
+          "probs": {
+            "102": 0.0017,
+            "103": 0.9921,
+            "104": 0.1566,
+            "105": 0.0004,
+            "106": 0.0005
+          },
+          "ms": 5.8
+        },
+        {
+          "name": "material_sale_only_no_install",
+          "group": "B2_material_sale",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0011,
+            "103": 0.0008,
+            "104": 0.0007,
+            "105": 0.0752,
+            "106": 0.0005
+          },
+          "ms": 5.0
+        },
+        {
+          "name": "material_delivery_only",
+          "group": "B2_material_sale",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0298,
+            "103": 0.0028,
+            "104": 0.0008,
+            "105": 0.0006,
+            "106": 0.0097
+          },
+          "ms": 5.2
+        },
+        {
+          "name": "projecting_only_elec",
+          "group": "B3_projecting",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0007,
+            "103": 0.0004,
+            "104": 0.0005,
+            "105": 0.0226,
+            "106": 0.0003
+          },
+          "ms": 5.2
+        },
+        {
+          "name": "past_and_future_plan_only_now_plumb",
+          "group": "B4_temporal_plan",
+          "ok": false,
+          "expected": [
+            104
+          ],
+          "predicted": [
+            104,
+            106
+          ],
+          "probs": {
+            "102": 0.0104,
+            "103": 0.0037,
+            "104": 0.9779,
+            "105": 0.0019,
+            "106": 0.9575
+          },
+          "ms": 6.7
+        },
+        {
+          "name": "client_self_paint_seller_tile",
+          "group": "B5_actor",
+          "ok": true,
+          "expected": [
+            103
+          ],
+          "predicted": [
+            103
+          ],
+          "probs": {
+            "102": 0.0327,
+            "103": 0.9985,
+            "104": 0.0006,
+            "105": 0.0057,
+            "106": 0.2062
+          },
+          "ms": 5.3
+        },
+        {
+          "name": "turnkey_multi_partial_refusal_1",
+          "group": "B6_turnkey_partial",
+          "ok": false,
+          "expected": [
+            102,
+            103,
+            104,
+            105,
+            106
+          ],
+          "predicted": [],
+          "probs": {
+            "102": 0.2283,
+            "103": 0.3562,
+            "104": 0.3715,
+            "105": 0.4553,
+            "106": 0.1563
+          },
+          "ms": 9.0
+        },
+        {
+          "name": "turnkey_multi_partial_refusal_2",
+          "group": "B6_turnkey_partial",
+          "ok": true,
+          "expected": [
+            102,
+            105,
+            106
+          ],
+          "predicted": [
+            102,
+            105,
+            106
+          ],
+          "probs": {
+            "102": 0.9779,
+            "103": 0.0024,
+            "104": 0.0014,
+            "105": 0.8835,
+            "106": 0.7903
+          },
+          "ms": 6.3
+        },
+        {
+          "name": "clean_multi_offer",
+          "group": "B7_sensitivity",
+          "ok": true,
+          "expected": [
+            105,
+            106
+          ],
+          "predicted": [
+            105,
+            106
+          ],
+          "probs": {
+            "102": 0.0339,
+            "103": 0.0449,
+            "104": 0.0406,
+            "105": 0.9998,
+            "106": 0.9947
+          },
+          "ms": 6.6
+        },
+        {
+          "name": "clean_unrelated_service",
+          "group": "B7_sensitivity",
+          "ok": true,
+          "expected": [],
+          "predicted": [],
+          "probs": {
+            "102": 0.0015,
+            "103": 0.0004,
+            "104": 0.0003,
+            "105": 0.0005,
+            "106": 0.0004
+          },
+          "ms": 5.9
+        },
+        {
+          "name": "contra_clause_neg",
+          "group": "B7_sensitivity",
+          "ok": true,
+          "expected": [
+            106
+          ],
+          "predicted": [
+            106
+          ],
+          "probs": {
+            "102": 0.0006,
+            "103": 0.0436,
+            "104": 0.0002,
+            "105": 0.0004,
+            "106": 0.8478
+          },
+          "ms": 4.8
+        }
+      ]
+    }
+  }
+}

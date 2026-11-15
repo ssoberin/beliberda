@@ -58,7 +58,8 @@ ACTION_LEMMAS = {
     "выполнять", "выполнить", "делать", "сделать", "оказывать", "оказать", "предлагать", "предложить",
     "брать", "взять", "браться", "взяться", "принимать", "принять", "работать", "устанавливать",
     "установить", "укладывать", "уложить", "монтировать", "смонтировать", "клеить", "наклеить",
-    "поклейка", "красить", "покрасить", "штукатурить", "оштукатурить", "шпаклевать", "заменять",
+    "поклеить", "приклеивать", "приклеить",
+    "красить", "покрасить", "штукатурить", "оштукатурить", "шпаклевать", "заменять",
     "заменить", "менять", "поменять", "подключать", "подключить", "прокладывать", "проложить",
     "собирать", "собрать", "заниматься", "заняться", "помогать", "помочь", "заказывать", "заказать",
     "нанимать", "нанять", "приезжать", "приехать", "проводить", "провести", "производить", "осуществлять",
@@ -77,6 +78,23 @@ REFUSAL_ACTION_LEMMAS = {
 }
 REFUSAL_NOUN_LEMMAS = {"отказ", "исключение", "недоступность", "рамка"}
 INQUIRY_LEMMAS = {"спрашивать", "спросить", "просить", "попросить", "уточнять", "уточнить", "интересоваться"}
+NON_EXECUTION_LEMMAS = {
+    "продавать", "продать", "поставлять", "закупать", "закупить", "покупать", "купить",
+    "выбирать", "выбрать", "подбирать", "подобрать", "искать", "поискать",
+    "рассказывать", "рассказать", "читать", "прочитать", "изучать", "изучить",
+    "обсуждать", "обсудить", "советовать", "посоветовать", "планировать", "спланировать",
+    "описывать", "описать", "сравнивать", "сравнить",
+    "публиковать", "опубликовать", "показывать", "показать", "перечислять", "перечислить",
+    "мечтать", "думать",
+}
+DESIGN_ONLY_VERBS = {
+    "разрабатывать", "разработать", "проектировать", "спроектировать",
+    "чертить", "начертить", "составлять", "составить", "рисовать", "подготавливать", "подготовить",
+}
+DESIGN_DOC_NOUNS = {"проект", "схема", "чертеж", "чертёж", "план", "эскиз", "спецификация", "документация", "смета"}
+INFO_META_NOUNS = {"статья", "обзор", "совет", "инструкция", "руководство", "гайд", "faq", "рейтинг", "подборка", "памятка"}
+RETAIL_SELLER_NOUNS = {"магазин", "гипермаркет", "супермаркет", "маркет", "склад", "база", "салон", "шоурум", "витрина"}
+CTA_SOCIAL_NOUNS = {"сердце", "сердечко", "лайк", "избранное", "оценка", "отзыв", "звезда", "комментарий", "профиль"}
 CLIENT_WISH_LEMMAS = {"хотеть", "планировать", "собираться", "пытаться", "намереваться"}
 MODAL_NEG_LEMMAS = {"нужный", "нужно", "надо", "стоит", "следовать", "мочь", "смочь", "нельзя"}
 PRICE_MOD_LEMMAS = {"бесплатно", "даром", "безвозмездно"}
@@ -235,11 +253,43 @@ def _is_neg_particle(tok: ParsedToken, sent: ParsedSentence) -> bool:
     return False
 
 
-def _find_not_only_in_clause(pred: ParsedToken, sent: ParsedSentence) -> bool:
+CONTRASTIVE_CONJ_LEMMAS = {"но", "а", "зато", "однако", "хотя"}
+EXCLUSION_PREP_LEMMAS = {"кроме", "без"}
+
+
+def _is_contrastive_conj_token(tok: ParsedToken, sent: ParsedSentence) -> bool:
+    """True for true contrastive conjunctions, excluding additive 'не только ... но и' and 'а также/именно'."""
+    if tok.lemma not in CONTRASTIVE_CONJ_LEMMAS:
+        return False
+    if tok.lemma == "но" and tok.idx + 1 < len(sent.tokens) and sent.tokens[tok.idx + 1].lemma == "и":
+        for i in range(tok.idx - 1):
+            if sent.tokens[i].lemma == "не" and sent.tokens[i + 1].lemma == "только":
+                return False
+    if tok.lemma == "а" and tok.idx + 1 < len(sent.tokens) and sent.tokens[tok.idx + 1].lemma in ("также", "именно"):
+        return False
+    return True
+
+
+def _is_hard_clause_separator(tok: ParsedToken, sent: ParsedSentence) -> bool:
+    return tok.text in (";", ":", "—", "–") or _is_contrastive_conj_token(tok, sent)
+
+
+def _find_not_only_in_clause(pred: ParsedToken, sent: ParsedSentence, mtok: ParsedToken | None = None) -> bool:
     nodes = [pred]
     if pred.rel == "conj" and pred.head_id in sent.by_id:
         nodes.append(sent.by_id[pred.head_id])
+    for ch in sent.children.get(pred.id, ()):
+        if ch.rel in ("obj", "obl", "nsubj", "nsubj:pass", "iobj"):
+            nodes.append(ch)
+    if mtok is not None:
+        nodes.append(mtok)
+        if mtok.rel == "conj" and mtok.head_id in sent.by_id:
+            nodes.append(sent.by_id[mtok.head_id])
+    seen_ids: set[str] = set()
     for node in nodes:
+        if node.id in seen_ids:
+            continue
+        seen_ids.add(node.id)
         for ch in sent.children.get(node.id, ()):
             if ch.lemma == "не" and (ch.rel == "cc" or any(k.lemma == "только" for k in sent.children.get(ch.id, ()))):
                 return True
@@ -280,6 +330,8 @@ def _detect_predicate_negation(pred: ParsedToken, sent: ParsedSentence) -> tuple
     # Wait: that is handled when deciding if negation applies to a service vs non-service object,
     # whereas here we check whether `pred` itself is negated or only a price adverb is negated.
     for ch in kids:
+        if ch.rel in ("parataxis", "conj", "advcl", "ccomp"):
+            continue
         if _is_neg_particle(ch, sent):
             # Look closely at "Не бесплатно, а по смете выполняем ...":
             # if "не" precedes a price modifier sibling or child ("не бесплатно") and there's a positive "а по смете"
@@ -438,22 +490,353 @@ def _extract_clause_temporal(pred: ParsedToken, sent: ParsedSentence, has_neg: b
     return "unknown"
 
 
+def _cat_in_tokens(tokens: list[ParsedToken], exclude_cat_id: int | None = None) -> set[int]:
+    found: set[int] = set()
+    for t in tokens:
+        for cid in CATEGORY_PATTERNS:
+            if exclude_cat_id is not None and cid == exclude_cat_id:
+                continue
+            if _token_matches_category(t, cid):
+                found.add(cid)
+    return found
+
+
+def _predicate_local_arg_tokens(pred: ParsedToken, sent: ParsedSentence) -> list[ParsedToken]:
+    """Collect NP/PP argument tokens directly governed by `pred` without crossing into other verb clauses."""
+    out: list[ParsedToken] = []
+    q: deque[str] = deque()
+    seen: set[str] = {pred.id}
+    for ch in sent.children.get(pred.id, ()):
+        if ch.rel in ("obj", "nsubj", "nsubj:pass", "obl", "iobj") and not _is_predicate_like(ch, sent):
+            q.append(ch.id)
+            seen.add(ch.id)
+    while q:
+        cur_id = q.popleft()
+        cur_tok = sent.by_id.get(cur_id)
+        if cur_tok is None:
+            continue
+        out.append(cur_tok)
+        for ch in sent.children.get(cur_id, ()):
+            if ch.id in seen:
+                continue
+            if ch.rel in ("parataxis", "ccomp", "advcl", "acl") or _is_predicate_like(ch, sent):
+                continue
+            seen.add(ch.id)
+            q.append(ch.id)
+    return out
+
+
+def _clause_has_distinct_target(
+    cp: ParsedToken,
+    mtok: ParsedToken,
+    cat_id: int,
+    sent: ParsedSentence,
+) -> bool:
+    """True if predicate `cp` governs its own service/category/object argument rather than sharing `mtok` via ellipsis."""
+    arg_toks = _predicate_local_arg_tokens(cp, sent)
+    if any(t.id == mtok.id for t in arg_toks):
+        return False
+    # Different service category governed by `cp`
+    if _cat_in_tokens(arg_toks, exclude_cat_id=cat_id):
+        return True
+    # Also check any local dependents inside cp's direct clause subtree OR its own linear comma segment for another category
+    local_all = _subtree_tokens(cp.id, sent, stop_rels={"conj", "parataxis", "ccomp", "advcl"})
+    if _cat_in_tokens(local_all, exclude_cat_id=cat_id):
+        return True
+    cp_lo, cp_hi = _segment_bounds(cp, sent, split_comma=True)
+    if _cat_in_tokens(sent.tokens[cp_lo : cp_hi + 1], exclude_cat_id=cat_id):
+        return True
+    # Explicit direct object / passive subject / service noun (not anaphora, not price/time adverbial)
+    for ch in sent.children.get(cp.id, ()):
+        if ch.rel in ("obj", "nsubj:pass") and not _is_predicate_like(ch, sent):
+            if ANAPHORA_NOUN_RE.match(ch.lemma) or ANAPHORA_NOUN_RE.match(ch.text):
+                continue
+            return True
+        if ch.rel == "obl" and (SERVICE_WORK_NOUN_RE.match(ch.lemma) or _token_matches_category(ch, cat_id)):
+            if ANAPHORA_NOUN_RE.match(ch.lemma) or ANAPHORA_NOUN_RE.match(ch.text):
+                continue
+            return True
+    return False
+
+
+def _segment_bounds(tok: ParsedToken, sent: ParsedSentence, split_comma: bool = True) -> tuple[int, int]:
+    """Return [lo, hi] token index bounds around `tok` inside its linear clause segment."""
+    lo = 0
+    for i in range(tok.idx - 1, -1, -1):
+        t = sent.tokens[i]
+        if _is_hard_clause_separator(t, sent) or (split_comma and t.text == ","):
+            lo = i + 1
+            break
+    hi = len(sent.tokens) - 1
+    for i in range(tok.idx + 1, len(sent.tokens)):
+        t = sent.tokens[i]
+        if _is_hard_clause_separator(t, sent) or (split_comma and t.text == ","):
+            hi = i - 1
+            break
+    return lo, hi
+
+
+def _is_seg_predicate_candidate(p: ParsedToken, sent: ParsedSentence) -> bool:
+    if p.lemma == "нет" and (p.pos in ("VERB", "AUX", "PART") or p.rel in ("root", "conj", "parataxis")):
+        return True
+    if not _is_predicate_like(p, sent):
+        return False
+    if p.pos in ("VERB", "AUX") or p.lemma in ACTION_LEMMAS | REFUSAL_ACTION_LEMMAS:
+        return True
+    return False
+
+
 def _find_governing_predicate(tok: ParsedToken, sent: ParsedSentence) -> tuple[ParsedToken | None, str]:
-    """Walk up UD tree (cycle-safe!) to find governing predicate / clause head."""
+    """Walk up UD tree (cycle-safe!) to find governing predicate / clause head within clause boundaries."""
     if _is_predicate_like(tok, sent) and (tok.lemma in ACTION_LEMMAS | REFUSAL_ACTION_LEMMAS or tok.rel in ("root", "conj", "parataxis")):
         return tok, "self"
+
+    # First check direct child/descendant finite predicate in the same local clause segment
+    # (catches Slovnet hanging verb under object/nmod like "услугу по электрике оказываем" or "сантехнику и плитку выполняю").
+    seg_lo, seg_hi = _segment_bounds(tok, sent, split_comma=True)
+    hard_lo, hard_hi = _segment_bounds(tok, sent, split_comma=False)
+
+    # Direct elliptical dash negation right after nominal: "..., электрику — нет"
+    for idx_n in range(tok.idx + 1, min(len(sent.tokens), tok.idx + 4)):
+        cand = sent.tokens[idx_n]
+        if cand.text in (";", ",", ".", ":") or _is_contrastive_conj_token(cand, sent):
+            break
+        if cand.lemma == "нет":
+            # Ensure no other category token lies between tok and cand
+            if not _cat_in_tokens(sent.tokens[tok.idx + 1 : cand.idx]):
+                return cand, "direct_verb_obj"
+
+    # Non-dash segment bounds allow matching "<NP> — <Verb>" (e.g. "сантехнику — делаю") across an internal em-dash
+    clause_lo = seg_lo
+    for i in range(tok.idx - 1, -1, -1):
+        t = sent.tokens[i]
+        if t.text in (";", ":", ",") or _is_contrastive_conj_token(t, sent):
+            clause_lo = i + 1
+            break
+        if i == 0:
+            clause_lo = 0
+    clause_hi = seg_hi
+    for i in range(tok.idx + 1, len(sent.tokens)):
+        t = sent.tokens[i]
+        if t.text in (";", ":", ",") or _is_contrastive_conj_token(t, sent):
+            clause_hi = i - 1
+            break
+        if i == len(sent.tokens) - 1:
+            clause_hi = i
+
+    # Check if Slovnet hung a finite predicate directly below tok (e.g. advmod/conj child verb of noun)
+    best_child_pred: ParsedToken | None = None
+    for ch in sent.children.get(tok.id, ()):
+        if clause_lo <= ch.idx <= clause_hi and ch.pos in ("VERB", "AUX") and _is_predicate_like(ch, sent):
+            if best_child_pred is None or abs(ch.idx - tok.idx) < abs(best_child_pred.idx - tok.idx):
+                best_child_pred = ch
+
     visited = {tok.id}
     cur = tok
     steps = 0
+    crossed_boundary = False
     while cur.head_id and cur.head_id in sent.by_id and cur.head_id not in visited and steps < 12:
         nxt = sent.by_id[cur.head_id]
+        lo_idx, hi_idx = min(cur.idx, nxt.idx), max(cur.idx, nxt.idx)
+        between = sent.tokens[lo_idx + 1 : hi_idx]
+        if any(_is_hard_clause_separator(bt, sent) for bt in between):
+            crossed_boundary = True
+        elif cur.rel in ("conj", "parataxis") and not _is_predicate_like(cur, sent) and any(bt.text == "," for bt in between):
+            crossed_boundary = True
+
+        # If walking up already crossed a boundary (or hits a pred across a boundary) and local segment has a real predicate, prefer local!
+        if crossed_boundary:
+            if best_child_pred is not None:
+                rel_k = "direct_verb_obj" if best_child_pred.idx > tok.idx else "prep_obl_or_nmod"
+                return best_child_pred, rel_k
+            local_preds = [
+                p for p in sent.tokens[clause_lo : clause_hi + 1]
+                if p.id != tok.id and _is_seg_predicate_candidate(p, sent)
+            ]
+            if local_preds:
+                chosen = min(local_preds, key=lambda p: (abs(p.idx - tok.idx), -p.idx))
+                return chosen, "direct_verb_obj"
+
         visited.add(nxt.id)
         steps += 1
         if _is_predicate_like(nxt, sent):
+            # Even when reaching nxt on step 1, if best_child_pred sits inside the post-boundary span while nxt is across a boundary
+            if best_child_pred is not None and not (hard_lo <= nxt.idx <= hard_hi) and (hard_lo <= best_child_pred.idx <= hard_hi):
+                return best_child_pred, "direct_verb_obj"
             rel_kind = "direct_verb_obj" if cur.rel in ("obj", "nsubj", "nsubj:pass") and steps == 1 else "prep_obl_or_nmod"
             return nxt, rel_kind
         cur = nxt
+
+    if best_child_pred is not None:
+        return best_child_pred, "direct_verb_obj"
+    # Fallback within strict local segment if self-loop or broken head prevented walking up
+    local_preds = [
+        p for p in sent.tokens[seg_lo : seg_hi + 1]
+        if p.id != tok.id and _is_seg_predicate_candidate(p, sent)
+    ]
+    if local_preds:
+        chosen = min(local_preds, key=lambda p: (abs(p.idx - tok.idx), -p.idx))
+        return chosen, "prep_obl_or_nmod"
+    # Handle nominal contrast "Делаем не X, а Y" when Slovnet outputs a self-loop on Y
+    if seg_lo > 0 and _is_contrastive_conj_token(sent.tokens[seg_lo - 1], sent):
+        seg_neg = any(_is_neg_particle(t, sent) for t in sent.tokens[seg_lo : seg_hi + 1])
+        if not seg_neg:
+            for p in reversed(sent.tokens[:seg_lo]):
+                if _is_predicate_like(p, sent) and p.lemma in ACTION_LEMMAS:
+                    p_neg, _, _, _ = _detect_predicate_negation(p, sent)
+                    if not p_neg and any(
+                        _is_neg_particle(gk, sent)
+                        for ch in sent.children.get(p.id, ()) if ch.rel in ("obj", "obl")
+                        for gk in sent.children.get(ch.id, ())
+                    ):
+                        return p, "direct_verb_obj"
     return None, "orphan_mention"
+
+
+def _detect_mention_local_negation(
+    mtok: ParsedToken,
+    pred: ParsedToken,
+    sent: ParsedSentence,
+) -> tuple[bool, list[ParsedToken]]:
+    """Detect nominal negation/exclusion directly scoping over `mtok` (e.g. 'а не электрику', 'кроме электрики')."""
+    neg_toks: list[ParsedToken] = []
+    cur: ParsedToken | None = mtok
+    seen: set[str] = set()
+    crossed_conj = False
+    while cur is not None and cur.id != pred.id and cur.id not in seen:
+        seen.add(cur.id)
+        for ch in sent.children.get(cur.id, ()):
+            if not crossed_conj and _is_neg_particle(ch, sent):
+                neg_toks.append(ch)
+            elif ch.rel == "case" and ch.lemma in EXCLUSION_PREP_LEMMAS:
+                neg_toks.append(ch)
+        if cur.head_id in sent.by_id and cur.head_id != pred.id:
+            nxt = sent.by_id[cur.head_id]
+            if not _is_predicate_like(nxt, sent) and cur.rel in ("conj", "nmod", "amod", "appos", "obl", "obj"):
+                # Do not inherit nominal markers across contrastive conjunctions (e.g. "не электрику, а сантехнику")
+                lo_i, hi_i = min(cur.idx, nxt.idx), max(cur.idx, nxt.idx)
+                if any(_is_contrastive_conj_token(t, sent) for t in sent.tokens[lo_i + 1 : hi_i]) or any(
+                    _is_contrastive_conj_token(c, sent) for c in sent.children.get(cur.id, ())
+                ):
+                    break
+                if cur.rel == "conj":
+                    crossed_conj = True
+                cur = nxt
+                continue
+        break
+    if not neg_toks:
+        seg_lo, _ = _segment_bounds(mtok, sent, split_comma=True)
+        for lt in sent.tokens[seg_lo : mtok.idx]:
+            if lt.lemma == "кроме":
+                neg_toks.append(lt)
+                break
+    return len(neg_toks) > 0, neg_toks
+
+
+def _has_contrastive_between(a: ParsedToken, b: ParsedToken, sent: ParsedSentence) -> bool:
+    lo_i, hi_i = min(a.idx, b.idx), max(a.idx, b.idx)
+    if any(_is_contrastive_conj_token(t, sent) for t in sent.tokens[lo_i + 1 : hi_i]):
+        return True
+    later = b if b.idx >= a.idx else a
+    return any(_is_contrastive_conj_token(ch, sent) for ch in sent.children.get(later.id, ()))
+
+
+def _select_clause_predicates(
+    pred: ParsedToken,
+    mtok: ParsedToken,
+    cat_id: int,
+    sent: ParsedSentence,
+) -> list[ParsedToken]:
+    """Select predicates strictly sharing grammatical/anaphoric scope with `mtok` (never leaking across separate clauses)."""
+    candidate_preds: list[ParsedToken] = [pred]
+    seen_ids: set[str] = {pred.id}
+
+    def _add(p: ParsedToken) -> None:
+        if p.id not in seen_ids:
+            seen_ids.add(p.id)
+            candidate_preds.append(p)
+
+    # 1. Governing modal/matrix verb ONLY across genuine verb complements (xcomp/ccomp/csubj), never conj/parataxis
+    if pred.head_id in sent.by_id:
+        parent_p = sent.by_id[pred.head_id]
+        if pred.rel in ("xcomp", "ccomp", "csubj"):
+            if _is_predicate_like(parent_p, sent) and parent_p.lemma not in INQUIRY_LEMMAS | CLIENT_WISH_LEMMAS:
+                if not _has_contrastive_between(parent_p, pred, sent):
+                    _add(parent_p)
+        elif pred.rel == "conj" and parent_p.rel in ("xcomp", "ccomp", "csubj") and parent_p.head_id in sent.by_id:
+            grand_p = sent.by_id[parent_p.head_id]
+            if (
+                _is_predicate_like(grand_p, sent)
+                and grand_p.lemma not in INQUIRY_LEMMAS | CLIENT_WISH_LEMMAS
+                and not _has_contrastive_between(parent_p, pred, sent)
+                and not _clause_has_distinct_target(parent_p, mtok, cat_id, sent)
+            ):
+                _add(grand_p)
+
+    # 2. Coordinated/parataxis sibling predicates sharing the SAME service via ellipsis (no own object/category)
+    for ch in sent.children.get(pred.id, ()):
+        if not ((ch.rel in ("conj", "parataxis") or (ch.rel == "iobj" and ch.pos == "VERB") or ch.lemma == "нет") and _is_predicate_like(ch, sent)):
+            continue
+        if ch.id in seen_ids:
+            continue
+        lo_pc, hi_pc = min(pred.idx, ch.idx), max(pred.idx, ch.idx)
+        if _cat_in_tokens(sent.tokens[lo_pc + 1 : hi_pc], exclude_cat_id=cat_id):
+            continue
+        if _clause_has_distinct_target(ch, mtok, cat_id, sent):
+            continue
+        contrastive = _has_contrastive_between(pred, ch, sent)
+        if contrastive:
+            ch_neg, _, _, _ = _detect_predicate_negation(ch, sent)
+            ch_kids_lems = {k.lemma for k in _subtree_tokens(ch.id, sent, stop_rels={"conj", "parataxis", "ccomp", "advcl"})}
+            has_temporal_or_anaphora = bool(
+                ch_kids_lems & (TEMPORAL_NOW_LEMMAS | TEMPORAL_STOP_WORDS)
+                or any(
+                    (ANAPHORA_NOUN_RE.match(k.lemma) or ANAPHORA_NOUN_RE.match(k.text))
+                    and k.rel in ("obj", "obl", "nsubj")
+                    for k in sent.children.get(ch.id, ())
+                )
+            )
+            if not (ch_neg or ch.lemma == "нет" or has_temporal_or_anaphora):
+                continue
+        _add(ch)
+
+    # 3. Same-sentence anaphoric follow-up predicate ("запрос по электрике устарел: такие работы не принимаем",
+    #    or single-service "не обещаем ..., но эту услугу оказываем"), strictly blocked if another category intervenes.
+    pred_head = sent.by_id.get(pred.head_id) if pred.head_id in sent.by_id else None
+    pred_unresolved = (
+        pred.lemma not in ACTION_LEMMAS | REFUSAL_ACTION_LEMMAS
+        or pred.lemma in INQUIRY_LEMMAS
+        or (pred_head is not None and pred_head.lemma in QUERY_META_LEMMAS)
+    )
+    all_other_cats = _cat_in_tokens(sent.tokens, exclude_cat_id=cat_id)
+    for st_tok in sent.tokens:
+        if st_tok.id in seen_ids or not _is_predicate_like(st_tok, sent):
+            continue
+        has_anaphora_arg = any(
+            (ANAPHORA_NOUN_RE.match(ch.lemma) or ANAPHORA_NOUN_RE.match(ch.text))
+            and ch.rel in ("obj", "obl", "nsubj", "nsubj:pass")
+            for ch in sent.children.get(st_tok.id, ())
+        )
+        is_pure_refusal = st_tok.lemma in REFUSAL_ACTION_LEMMAS and not all_other_cats
+        if not (has_anaphora_arg or is_pure_refusal):
+            continue
+        if _clause_has_distinct_target(st_tok, mtok, cat_id, sent):
+            continue
+        if not pred_unresolved and st_tok.idx < pred.idx and _has_contrastive_between(st_tok, pred, sent):
+            continue
+        if all_other_cats and not pred_unresolved:
+            # Never jump over another category's mention to attach an anaphoric/refusal verb
+            lo_m, hi_m = min(mtok.idx, st_tok.idx), max(mtok.idx, st_tok.idx)
+            if _cat_in_tokens(sent.tokens[lo_m + 1 : hi_m], exclude_cat_id=cat_id):
+                continue
+            # Also require st_tok to come after mtok (forward anaphora) when multiple categories coexist
+            if st_tok.idx < mtok.idx:
+                continue
+        if not pred_unresolved and not has_anaphora_arg:
+            continue
+        _add(st_tok)
+
+    return candidate_preds
 
 
 def _token_matches_category(tok: ParsedToken, cat_id: int) -> bool:
@@ -527,6 +910,67 @@ def _detect_global_restrictions_in_sentence(sent: ParsedSentence) -> tuple[bool,
     return turnkey_only, partial_refusal, traces
 
 
+def _has_partial_or_boilerplate_anaphora_mod(tok: ParsedToken, sent: ParsedSentence) -> bool:
+    """True when an anaphora noun/verb targets partial-scope work ('мелкий ремонт', 'отдельные работы')."""
+    sub = _subtree_tokens(tok.id, sent, stop_rels={"conj", "parataxis", "ccomp", "advcl"})
+    for s in sub:
+        if PARTIAL_MOD_RE.match(s.lemma) or PARTIAL_MOD_RE.match(s.text) or s.lemma == "частичка":
+            return True
+    # Also check immediate linear left modifier if UD attached it differently
+    for idx in range(max(0, tok.idx - 2), tok.idx):
+        lt = sent.tokens[idx]
+        if PARTIAL_MOD_RE.match(lt.lemma) or PARTIAL_MOD_RE.match(lt.text):
+            return True
+    return False
+
+
+def _is_non_execution_clause(
+    cp: ParsedToken,
+    mtok: ParsedToken,
+    parent_head: ParsedToken | None,
+    sent: ParsedSentence,
+) -> bool:
+    """True when clause discusses buying/selling materials, articles/advice, design docs, future plans, or social CTAs rather than executing repair work."""
+    if cp.lemma in NON_EXECUTION_LEMMAS or cp.lemma in ("собираться", "намереваться"):
+        return True
+    mtok_head = sent.by_id.get(mtok.head_id) if mtok.head_id in sent.by_id else None
+    if mtok_head is not None and mtok_head.lemma in DESIGN_DOC_NOUNS and mtok.rel in ("nmod", "appos"):
+        return True
+    if cp.lemma in DESIGN_ONLY_VERBS:
+        objs = [c for c in sent.children.get(cp.id, ()) if c.rel in ("obj", "nsubj:pass", "obl")]
+        if cp.lemma in ("проектировать", "спроектировать", "чертить", "начертить") or any(
+            o.lemma in DESIGN_DOC_NOUNS for o in objs
+        ):
+            return True
+    if parent_head is not None and parent_head.lemma in INFO_META_NOUNS:
+        return True
+    if any(
+        t.lemma in INFO_META_NOUNS and t.rel in ("root", "nsubj", "nsubj:pass", "parataxis", "obl")
+        for t in sent.tokens[: min(len(sent.tokens), cp.idx + 3)]
+    ):
+        return True
+    if cp.lemma in ("ставить", "поставить", "смотреть", "посмотреть"):
+        cp_args = _predicate_local_arg_tokens(cp, sent)
+        if any(a.lemma in CTA_SOCIAL_NOUNS or a.text in ("♥", "♥️", "❤️", "👍", "⭐") for a in cp_args):
+            return True
+    if cp.lemma in ("предлагать", "предложить"):
+        subjs = [c for c in sent.children.get(cp.id, ()) if c.rel in ("nsubj", "nsubj:pass")]
+        if any(s.lemma in RETAIL_SELLER_NOUNS for s in subjs):
+            cp_args = _predicate_local_arg_tokens(cp, sent)
+            if not any(SERVICE_WORK_NOUN_RE.match(a.lemma) or a.lemma in ("монтаж", "установка", "укладка", "покраска", "поклейка") for a in cp_args):
+                return True
+    # "Продаём/предлагаем ... без установки / без монтажа / без укладки"
+    cp_local = _subtree_tokens(cp.id, sent, stop_rels={"conj", "parataxis", "ccomp", "advcl"})
+    for t in cp_local:
+        if t.lemma in ("установка", "монтаж", "укладка"):
+            has_bez = any(c.lemma == "без" for c in sent.children.get(t.id, ())) or (
+                t.idx > 0 and sent.tokens[t.idx - 1].lemma == "без"
+            )
+            if has_bez:
+                return True
+    return False
+
+
 def _analyze_sentence_for_category(
     sent: ParsedSentence,
     cat_id: int,
@@ -535,12 +979,13 @@ def _analyze_sentence_for_category(
     """Analyze a single sentence UD tree for mentions, actions, negations, actors, and temporal markers."""
     mentions = [t for t in sent.tokens if _token_matches_category(t, cat_id)]
     used_anaphora = False
-    if not mentions and allow_anaphora:
+    if not mentions and allow_anaphora and not _cat_in_tokens(sent.tokens, exclude_cat_id=cat_id):
         # Look for anaphoric service object ("эту работу", "эта задача", "такую работу", "такие заказы", "этим")
-        # OR a standalone refusal predicate following a service-mention sentence ("Мы отказались.")
+        # OR a standalone refusal predicate following a service-mention sentence ("Мы отказались."),
+        # NEVER linking partial-scope refusals ("Отдельные мелкие работы не берём", "Не занимаемся мелким ремонтом").
         for t in sent.tokens:
             if ANAPHORA_NOUN_RE.match(t.lemma) or ANAPHORA_NOUN_RE.match(t.text):
-                if NON_SERVICE_NEG_OBJ_RE.match(t.lemma):
+                if NON_SERVICE_NEG_OBJ_RE.match(t.lemma) or _has_partial_or_boilerplate_anaphora_mod(t, sent):
                     continue
                 if t.rel in ("obj", "nsubj", "obl") or any(c.lemma in ("такой", "этот", "данный") for c in sent.children.get(t.id, ())):
                     mentions.append(t)
@@ -549,6 +994,8 @@ def _analyze_sentence_for_category(
         if not mentions:
             for t in sent.tokens:
                 if t.lemma in REFUSAL_ACTION_LEMMAS or (t.lemma in ACTION_LEMMAS and any(_is_neg_particle(c, sent) for c in sent.children.get(t.id, ()))):
+                    if _has_partial_or_boilerplate_anaphora_mod(t, sent):
+                        continue
                     mentions.append(t)
                     used_anaphora = True
                     break
@@ -561,52 +1008,60 @@ def _analyze_sentence_for_category(
     min_dist_an = -1
     min_dist_sn = -1
 
-    # Track clause-level root predicates in case of coordination ("Раньше не делали, теперь выполняем" or "попросили..., но получили отказ: нет")
-    # Collect linked coordinated / parataxis predicates in the same sentence
-    # Also handle anaphoric follow-up sentences where only refusal/offer is present
     seen_preds: set[str] = set()
     for mtok in mentions:
         pred, link_kind = _find_governing_predicate(mtok, sent)
         if pred is None:
-            clause_records.append({
-                "mention": mtok.text,
-                "pred": None,
-                "link_kind": "anaphora_cross_sent" if used_anaphora else "orphan_mention",
-                "polarity": "unknown",
-                "actor": "unknown",
-                "temporal": "unknown",
-                "not_only": False,
-                "double_neg": False,
-                "price_cond": False,
-                "has_neg": False,
-                "dist_sa": -1,
-                "dist_an": -1,
-                "dist_sn": -1,
-            })
+            # Handle positive elliptical current-time focus after an earlier action clause
+            # e.g. "Раньше делал электрику, сейчас только сантехнику" or "Электрику не делаю, только сантехнику"
+            seg_lo, seg_hi = _segment_bounds(mtok, sent, split_comma=True)
+            seg_toks = sent.tokens[seg_lo : seg_hi + 1]
+            seg_lems = {t.lemma for t in seg_toks}
+            has_seg_neg = any(_is_neg_particle(t, sent) or t.lemma in EXCLUSION_PREP_LEMMAS for t in seg_toks)
+            has_now_or_only = bool(seg_lems & TEMPORAL_NOW_LEMMAS or "только" in seg_lems)
+            has_turnkey_or_bad = bool(seg_lems & ({"ключ", "целиком"} | CLIENT_LEMMAS | THIRD_PARTY_LEMMAS))
+            has_prior_action = any(
+                t.idx < seg_lo and (t.lemma in ACTION_LEMMAS or _is_predicate_like(t, sent))
+                for t in sent.tokens
+            )
+            if has_now_or_only and not has_seg_neg and not has_turnkey_or_bad and has_prior_action:
+                clause_records.append({
+                    "mention": mtok.text,
+                    "pred": "elliptical_focus",
+                    "link_kind": "prep_obl_or_nmod",
+                    "polarity": "offered",
+                    "actor": "seller_team",
+                    "temporal": "now" if (seg_lems & TEMPORAL_NOW_LEMMAS) else "unknown",
+                    "not_only": False,
+                    "double_neg": False,
+                    "price_cond": False,
+                    "has_neg": False,
+                    "dist_sa": -1,
+                    "dist_an": -1,
+                    "dist_sn": -1,
+                })
+            else:
+                clause_records.append({
+                    "mention": mtok.text,
+                    "pred": None,
+                    "link_kind": "anaphora_cross_sent" if used_anaphora else "orphan_mention",
+                    "polarity": "unknown",
+                    "actor": "unknown",
+                    "temporal": "unknown",
+                    "not_only": False,
+                    "double_neg": False,
+                    "price_cond": False,
+                    "has_neg": False,
+                    "dist_sa": -1,
+                    "dist_an": -1,
+                    "dist_sn": -1,
+                })
             continue
 
-        candidate_preds = [pred]
-        for ch in sent.children.get(pred.id, ()):
-            if (ch.rel in ("conj", "parataxis") or (ch.rel == "iobj" and ch.pos == "VERB")) and _is_predicate_like(ch, sent):
-                candidate_preds.append(ch)
-        if pred.head_id in sent.by_id and pred.rel in ("xcomp", "ccomp", "advcl", "conj", "csubj"):
-            parent_p = sent.by_id[pred.head_id]
-            if _is_predicate_like(parent_p, sent):
-                if parent_p.id not in [p.id for p in candidate_preds] and parent_p.lemma not in INQUIRY_LEMMAS | CLIENT_WISH_LEMMAS:
-                    candidate_preds.append(parent_p)
-                for ch in sent.children.get(parent_p.id, ()):
-                    if (ch.rel in ("conj", "parataxis") or (ch.rel == "iobj" and ch.pos == "VERB")) and _is_predicate_like(ch, sent) and ch.id not in [p.id for p in candidate_preds]:
-                        candidate_preds.append(ch)
-        # Also include any other clause predicate in the SAME sentence that explicitly governs an anaphoric work/service NP
-        # (handles "запрос ... устарел: ... не принимаем" and "не обещаем ... но по смете эту услугу оказываем")
-        for st_tok in sent.tokens:
-            if _is_predicate_like(st_tok, sent) and st_tok.id not in [p.id for p in candidate_preds]:
-                if st_tok.lemma in REFUSAL_ACTION_LEMMAS or any(
-                    (ANAPHORA_NOUN_RE.match(ch.lemma) or ANAPHORA_NOUN_RE.match(ch.text))
-                    and ch.rel in ("obj", "obl", "nsubj")
-                    for ch in sent.children.get(st_tok.id, ())
-                ):
-                    candidate_preds.append(st_tok)
+        local_nom_neg, local_neg_toks = _detect_mention_local_negation(mtok, pred, sent)
+        has_excl_prep = any(t.lemma in EXCLUSION_PREP_LEMMAS for t in local_neg_toks)
+        has_local_part_neg = any(_is_neg_particle(t, sent) for t in local_neg_toks)
+        candidate_preds = [pred] if (local_nom_neg or has_excl_prep) else _select_clause_predicates(pred, mtok, cat_id, sent)
 
         for cp in candidate_preds:
             if cp.id in seen_preds and len(candidate_preds) > 1:
@@ -617,7 +1072,23 @@ def _analyze_sentence_for_category(
                 continue
 
             has_neg, neg_toks, price_cond, double_neg = _detect_predicate_negation(cp, sent)
-            not_only = _find_not_only_in_clause(cp, sent)
+            if has_local_part_neg and cp.id == pred.id:
+                has_neg = True
+                neg_toks = list(neg_toks) + [t for t in local_neg_toks if t.id not in {x.id for x in neg_toks}]
+                price_cond = False
+                double_neg = False
+            elif has_excl_prep and cp.id == pred.id:
+                if has_neg and "кроме" in {t.lemma for t in local_neg_toks}:
+                    # "Ничего не делаем, кроме электрики" -> exception to negation means offered
+                    has_neg = False
+                    neg_toks = []
+                elif not has_neg:
+                    has_neg = True
+                    neg_toks = list(local_neg_toks)
+                    price_cond = False
+                    double_neg = False
+
+            not_only = _find_not_only_in_clause(cp, sent, mtok=mtok)
             actor = _extract_clause_actor(cp, sent)
             temporal = _extract_clause_temporal(cp, sent, has_neg=has_neg, double_neg=double_neg)
             parent_head = sent.by_id.get(cp.head_id) if cp.head_id in sent.by_id else None
@@ -662,6 +1133,8 @@ def _analyze_sentence_for_category(
             if d_sn >= 0 and (min_dist_sn < 0 or d_sn < min_dist_sn):
                 min_dist_sn = d_sn
 
+            is_non_exec = _is_non_execution_clause(cp, mtok, parent_head, sent)
+
             if is_under_inquiry and not has_neg and actor not in ("third_party", "client"):
                 pol = "unknown"
             elif cp.id != pred.id and cp.lemma in INQUIRY_LEMMAS:
@@ -678,9 +1151,11 @@ def _analyze_sentence_for_category(
                 pol = "negated"
             elif temporal == "past":
                 pol = "past_offer"
+            elif is_non_exec:
+                pol = "non_execution"
             elif not_only:
                 pol = "offered"
-            elif cp.lemma in ACTION_LEMMAS or actor == "seller_team" or link_kind == "direct_verb_obj":
+            elif cp.lemma in ACTION_LEMMAS or actor == "seller_team" or (link_kind == "direct_verb_obj" and cp.pos in ("VERB", "AUX")):
                 pol = "offered"
             else:
                 pol = "unknown"
@@ -896,6 +1371,8 @@ def extract_pair_features(
             c_pol = "conditional"
         elif "offered" in chunk_pols:
             c_pol = "offered"
+        elif "non_execution" in chunk_pols:
+            c_pol = "non_execution"
         else:
             c_pol = "unknown"
 

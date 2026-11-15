@@ -1,0 +1,518 @@
+{
+  "label": "baseline_C_syntax_fixed",
+  "passed": 13,
+  "total": 26,
+  "pass_rate": 0.5,
+  "short_median_ms": 359.7,
+  "long_median_ms": 303.5,
+  "stress_75k_chars": 73188,
+  "stress_75k_pred": [
+    103,
+    104
+  ],
+  "stress_75k_probs": {
+    "102": 0.0075,
+    "103": 0.9986,
+    "104": 0.954,
+    "105": 0.025,
+    "106": 0.0014
+  },
+  "stress_75k_ms": 3843.3,
+  "cases": [
+    {
+      "name": "dup_flood_offer_retained",
+      "group": "A1_dup_flood",
+      "ok": true,
+      "expected": [
+        103,
+        104
+      ],
+      "predicted": [
+        103,
+        104
+      ],
+      "probs": {
+        "102": 0.2121,
+        "103": 0.9975,
+        "104": 0.9968,
+        "105": 0.0024,
+        "106": 0.0025
+      },
+      "ms": 992.2
+    },
+    {
+      "name": "dup_flood_sale_noise",
+      "group": "A1_dup_flood",
+      "ok": false,
+      "expected": [
+        103
+      ],
+      "predicted": [
+        103,
+        105
+      ],
+      "probs": {
+        "102": 0.4887,
+        "103": 0.9954,
+        "104": 0.1157,
+        "105": 0.9752,
+        "106": 0.0434
+      },
+      "ms": 1922.3
+    },
+    {
+      "name": "dup_flood_pure_irrel_neg",
+      "group": "A1_dup_flood",
+      "ok": false,
+      "expected": [],
+      "predicted": [
+        104,
+        105,
+        106
+      ],
+      "probs": {
+        "102": 0.009,
+        "103": 0.0027,
+        "104": 0.9882,
+        "105": 0.9938,
+        "106": 0.9093
+      },
+      "ms": 313.8
+    },
+    {
+      "name": "long_noise_offer_start",
+      "group": "A2_long_dilution",
+      "ok": true,
+      "expected": [
+        102
+      ],
+      "predicted": [
+        102
+      ],
+      "probs": {
+        "102": 0.9953,
+        "103": 0.015,
+        "104": 0.0115,
+        "105": 0.0034,
+        "106": 0.0029
+      },
+      "ms": 303.5
+    },
+    {
+      "name": "long_noise_offer_end",
+      "group": "A2_long_dilution",
+      "ok": true,
+      "expected": [
+        106
+      ],
+      "predicted": [
+        106
+      ],
+      "probs": {
+        "102": 0.0319,
+        "103": 0.0179,
+        "104": 0.0115,
+        "105": 0.0034,
+        "106": 0.9044
+      },
+      "ms": 253.1
+    },
+    {
+      "name": "long_noise_with_local_neg",
+      "group": "A2_long_dilution",
+      "ok": true,
+      "expected": [
+        104
+      ],
+      "predicted": [
+        104
+      ],
+      "probs": {
+        "102": 0.0386,
+        "103": 0.0349,
+        "104": 0.9907,
+        "105": 0.4057,
+        "106": 0.004
+      },
+      "ms": 282.6
+    },
+    {
+      "name": "prompt_inj_override_empty",
+      "group": "A3_prompt_inj",
+      "ok": true,
+      "expected": [],
+      "predicted": [],
+      "probs": {
+        "102": 0.0007,
+        "103": 0.0003,
+        "104": 0.0075,
+        "105": 0.0006,
+        "106": 0.0004
+      },
+      "ms": 925.8
+    },
+    {
+      "name": "prompt_inj_around_real_offer",
+      "group": "A3_prompt_inj",
+      "ok": true,
+      "expected": [
+        102,
+        106
+      ],
+      "predicted": [
+        102,
+        106
+      ],
+      "probs": {
+        "102": 0.9945,
+        "103": 0.0017,
+        "104": 0.0015,
+        "105": 0.0018,
+        "106": 0.8505
+      },
+      "ms": 797.6
+    },
+    {
+      "name": "prompt_inj_fake_services_tags",
+      "group": "A3_prompt_inj",
+      "ok": false,
+      "expected": [],
+      "predicted": [
+        102,
+        103,
+        104,
+        105,
+        106
+      ],
+      "probs": {
+        "102": 0.8453,
+        "103": 0.8027,
+        "104": 0.993,
+        "105": 0.9597,
+        "106": 0.8416
+      },
+      "ms": 619.6
+    },
+    {
+      "name": "html_tags_and_entities_neg",
+      "group": "A4_html_noise",
+      "ok": false,
+      "expected": [
+        104
+      ],
+      "predicted": [
+        104,
+        105
+      ],
+      "probs": {
+        "102": 0.005,
+        "103": 0.0019,
+        "104": 0.9958,
+        "105": 0.9976,
+        "106": 0.0021
+      },
+      "ms": 365.1
+    },
+    {
+      "name": "html_zero_width_offer",
+      "group": "A4_html_noise",
+      "ok": true,
+      "expected": [
+        103,
+        106
+      ],
+      "predicted": [
+        103,
+        106
+      ],
+      "probs": {
+        "102": 0.1067,
+        "103": 0.9925,
+        "104": 0.001,
+        "105": 0.0027,
+        "106": 0.9802
+      },
+      "ms": 368.6
+    },
+    {
+      "name": "homoglyph_offer_and_neg",
+      "group": "A5_homoglyph",
+      "ok": false,
+      "expected": [
+        104
+      ],
+      "predicted": [],
+      "probs": {
+        "102": 0.0005,
+        "103": 0.0001,
+        "104": 0.0002,
+        "105": 0.0013,
+        "106": 0.0001
+      },
+      "ms": 349.0
+    },
+    {
+      "name": "homoglyph_multi_brands",
+      "group": "A5_homoglyph",
+      "ok": false,
+      "expected": [
+        102,
+        105
+      ],
+      "predicted": [],
+      "probs": {
+        "102": 0.0014,
+        "103": 0.0012,
+        "104": 0.0006,
+        "105": 0.456,
+        "106": 0.0002
+      },
+      "ms": 415.2
+    },
+    {
+      "name": "caps_emoji_spacing",
+      "group": "A6_formatting",
+      "ok": true,
+      "expected": [
+        102,
+        106
+      ],
+      "predicted": [
+        102,
+        106
+      ],
+      "probs": {
+        "102": 0.8757,
+        "103": 0.0006,
+        "104": 0.0006,
+        "105": 0.0002,
+        "106": 0.9508
+      },
+      "ms": 402.1
+    },
+    {
+      "name": "article_how_to_choose",
+      "group": "B1_non_exec_info",
+      "ok": false,
+      "expected": [],
+      "predicted": [
+        105
+      ],
+      "probs": {
+        "102": 0.0005,
+        "103": 0.0005,
+        "104": 0.0002,
+        "105": 0.9853,
+        "106": 0.0001
+      },
+      "ms": 346.0
+    },
+    {
+      "name": "article_video_review",
+      "group": "B1_non_exec_info",
+      "ok": false,
+      "expected": [],
+      "predicted": [
+        103
+      ],
+      "probs": {
+        "102": 0.0019,
+        "103": 0.998,
+        "104": 0.2022,
+        "105": 0.0002,
+        "106": 0.0004
+      },
+      "ms": 320.7
+    },
+    {
+      "name": "material_sale_only_no_install",
+      "group": "B2_material_sale",
+      "ok": false,
+      "expected": [],
+      "predicted": [
+        105
+      ],
+      "probs": {
+        "102": 0.0008,
+        "103": 0.001,
+        "104": 0.0007,
+        "105": 0.9868,
+        "106": 0.0004
+      },
+      "ms": 290.2
+    },
+    {
+      "name": "material_delivery_only",
+      "group": "B2_material_sale",
+      "ok": false,
+      "expected": [],
+      "predicted": [
+        102,
+        106
+      ],
+      "probs": {
+        "102": 0.974,
+        "103": 0.0033,
+        "104": 0.001,
+        "105": 0.0004,
+        "106": 0.7389
+      },
+      "ms": 319.9
+    },
+    {
+      "name": "projecting_only_elec",
+      "group": "B3_projecting",
+      "ok": false,
+      "expected": [],
+      "predicted": [
+        105
+      ],
+      "probs": {
+        "102": 0.0003,
+        "103": 0.0003,
+        "104": 0.0004,
+        "105": 0.9072,
+        "106": 0.0002
+      },
+      "ms": 269.9
+    },
+    {
+      "name": "past_and_future_plan_only_now_plumb",
+      "group": "B4_temporal_plan",
+      "ok": false,
+      "expected": [
+        104
+      ],
+      "predicted": [
+        104,
+        106
+      ],
+      "probs": {
+        "102": 0.0143,
+        "103": 0.004,
+        "104": 0.9753,
+        "105": 0.0024,
+        "106": 0.9929
+      },
+      "ms": 497.1
+    },
+    {
+      "name": "client_self_paint_seller_tile",
+      "group": "B5_actor",
+      "ok": true,
+      "expected": [
+        103
+      ],
+      "predicted": [
+        103
+      ],
+      "probs": {
+        "102": 0.0426,
+        "103": 0.9983,
+        "104": 0.0005,
+        "105": 0.0059,
+        "106": 0.0835
+      },
+      "ms": 302.6
+    },
+    {
+      "name": "turnkey_multi_partial_refusal_1",
+      "group": "B6_turnkey_partial",
+      "ok": false,
+      "expected": [
+        102,
+        103,
+        104,
+        105,
+        106
+      ],
+      "predicted": [],
+      "probs": {
+        "102": 0.0386,
+        "103": 0.0166,
+        "104": 0.0159,
+        "105": 0.0162,
+        "106": 0.0066
+      },
+      "ms": 469.5
+    },
+    {
+      "name": "turnkey_multi_partial_refusal_2",
+      "group": "B6_turnkey_partial",
+      "ok": true,
+      "expected": [
+        102,
+        105,
+        106
+      ],
+      "predicted": [
+        102,
+        105,
+        106
+      ],
+      "probs": {
+        "102": 0.982,
+        "103": 0.0034,
+        "104": 0.0021,
+        "105": 0.87,
+        "106": 0.5885
+      },
+      "ms": 402.7
+    },
+    {
+      "name": "clean_multi_offer",
+      "group": "B7_sensitivity",
+      "ok": true,
+      "expected": [
+        105,
+        106
+      ],
+      "predicted": [
+        105,
+        106
+      ],
+      "probs": {
+        "102": 0.0331,
+        "103": 0.0375,
+        "104": 0.0473,
+        "105": 0.9994,
+        "106": 0.993
+      },
+      "ms": 359.7
+    },
+    {
+      "name": "clean_unrelated_service",
+      "group": "B7_sensitivity",
+      "ok": true,
+      "expected": [],
+      "predicted": [],
+      "probs": {
+        "102": 0.0013,
+        "103": 0.0003,
+        "104": 0.0002,
+        "105": 0.0003,
+        "106": 0.0003
+      },
+      "ms": 270.9
+    },
+    {
+      "name": "contra_clause_neg",
+      "group": "B7_sensitivity",
+      "ok": true,
+      "expected": [
+        106
+      ],
+      "predicted": [
+        106
+      ],
+      "probs": {
+        "102": 0.0003,
+        "103": 0.0173,
+        "104": 0.0,
+        "105": 0.0002,
+        "106": 0.529
+      },
+      "ms": 226.4
+    }
+  ]
+}
