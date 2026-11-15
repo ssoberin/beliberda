@@ -6,8 +6,8 @@
   "stored_embedding_dtype": "float16",
   "max_seq_length": 1024,
   "batch_size": 4,
-  "chunk_count": 223,
-  "seconds": 201.94843956100522,
-  "chunk_texts_sha256": "66e4782215812ae751d47fe5c14b00c41a7ab5e55149f15c6c1fafa69ecdfe8c",
-  "embedding_sha256": "eef77b611b5c990613bc5fe9de10636206ad96a1f222ad9cc7a1a54c138e9434"
+  "chunk_count": 1,
+  "seconds": 4.390229298005579,
+  "chunk_texts_sha256": "f648f35fd6aec7c820b4c4837cddacf66c3f5c2cb4162c153f905a2266ba264a",
+  "embedding_sha256": "4b4de548411ddd8a855f5b25c615b5ad228ece42d4e70de236c784f5f031ba00"
 }

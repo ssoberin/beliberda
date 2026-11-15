@@ -19,9 +19,9 @@ def metrics(y,p):
   per[str(c)]={'f1':2*a/max(1,2*a+b+d),'precision':a/max(1,a+b),'recall':a/max(1,a+d),'tp':a,'fp':b,'fn':d,'support':int(y[:,j].sum())}
  empty=y.sum(1)==0
  return {'micro_f1':2*tp/max(1,2*tp+fp+fn),'macro_f1':float(np.mean([r['f1'] for r in per.values()])),'precision':tp/max(1,tp+fp),'recall':tp/max(1,tp+fn),'tp':tp,'fp':fp,'fn':fn,'exact_match':float((y==p).all(1).mean()),'wrong_ads':int((y!=p).any(1).sum()),'fp_on_empty_gold':int(p[empty].sum()),'empty_gold_ads_with_fp':int((p[empty].sum(1)>0).sum()),'fn_on_nonempty_gold':fn,'empty_gold_ads':int(empty.sum()),'per_category':per}
-def transitions(y,a,b):
+def transitions(y,a,b,sources):
  ea=(a!=y).sum(1);eb=(b!=y).sum(1)
- return {**se.error_transition_counts(y,a,b,np.full(len(y),101),IDS),'ads_fully_fixed':int(((ea>0)&(eb==0)).sum()),'ads_newly_wrong':int(((ea==0)&(eb>0)).sum()),'ads_with_fewer_errors':int((eb<ea).sum()),'ads_with_more_errors':int((eb>ea).sum()),'new_erroneous_empty_on_nonempty_gold':int(((a.sum(1)>0)&(b.sum(1)==0)&(y.sum(1)>0)).sum())}
+ return {**se.error_transition_counts(y,a,b,sources,IDS),'ads_fully_fixed':int(((ea>0)&(eb==0)).sum()),'ads_newly_wrong':int(((ea==0)&(eb>0)).sum()),'ads_with_fewer_errors':int((eb<ea).sum()),'ads_with_more_errors':int((eb>ea).sum()),'new_erroneous_empty_on_nonempty_gold':int(((a.sum(1)>0)&(b.sum(1)==0)&(y.sum(1)>0)).sum())}
 def clustered_ci(y,a,b,texts,n_boot=4000):
  groups=collections.defaultdict(list)
  for i,t in enumerate(texts):groups[' '.join(t.casefold().split())].append(i)
@@ -37,7 +37,7 @@ def clustered_ci(y,a,b,texts,n_boot=4000):
  return {'method':'paired bootstrap by normalized exact-description groups','groups':len(stats),'n_boot':n_boot,'ci95_low':float(np.percentile(deltas,2.5)),'ci95_high':float(np.percentile(deltas,97.5)),'fraction_positive':float(np.mean(np.array(deltas)>0))}
 def score(y,pa,pb,rows):
  a=(pa>=.5).astype(np.int8);b=(pb>=.5).astype(np.int8)
- out={'rows':len(y),'A':metrics(y,a),'B':metrics(y,b),'transitions':transitions(y,a,b),'bootstrap_delta_micro_f1':clustered_ci(y,a,b,[r['description'] for r in rows])}
+ out={'rows':len(y),'A':metrics(y,a),'B':metrics(y,b),'transitions':transitions(y,a,b,np.array([int(r['mcId']) for r in rows])),'bootstrap_delta_micro_f1':clustered_ci(y,a,b,[r['description'] for r in rows])}
  out['delta']={k:out['B'][k]-out['A'][k] for k in ['micro_f1','macro_f1','precision','recall','fp','fn','tp','exact_match']}
  return out,a,b
 def main():
@@ -80,6 +80,12 @@ def main():
  name='pub_validation';rows=s['rows'][name];y,pa,pb=matrices[name]
  keep=np.array([i for i,r in enumerate(rows) if y[i].sum()>=2 and re.search(r'под\s+ключ|капитальн\w*\s+ремонт|комплексн\w*\s+ремонт',r['description'],re.I)])
  if len(keep):results['pub_validation_complex_repair']=score(y[keep],pa[keep],pb[keep],[rows[i] for i in keep])[0]
+ # Predefined text-only focus groups in the new holdout, never selection criteria.
+ annotations=json.loads(Path('datasets/v3_tail_services_60/annotation_review.json').read_text());focus={a['item_id']:a['focus'] for a in annotations if a['split']=='test'}
+ yy,paa,pbb=matrices['tail_holdout20'];aa=(paa>=.5).astype(np.int8);bb=(pbb>=.5).astype(np.int8);rr=s['rows']['tail_holdout20'];slices={}
+ for key in sorted(set(focus.values())):
+  ix=np.array([i for i,r in enumerate(rr) if focus[r['item_id']]==key]);slices[key]={'rows':len(ix),'A':metrics(yy[ix],aa[ix]),'B':metrics(yy[ix],bb[ix])}
+ results['tail_holdout20_focus']=slices
  results['provenance']={'threshold':.5,'data_only_single_candidate':True,'training_validation_passed':True,'baseline_sha256':sha(baseline_path),'candidate_sha256':sha(P/'models/catboost_C_syntax_B.cbm'),'known_baseline_f1':{'pub_validation':.956124,'v3_test':.915916,'official_208':.819767}}
  for name,value in results['provenance']['known_baseline_f1'].items():assert abs(results[name]['A']['micro_f1']-value)<1e-6
  (P/'metrics.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n');pd.DataFrame(predrows).to_csv(P/'predictions.csv',index=False);(P/'error_examples.json').write_text(json.dumps(examples,ensure_ascii=False,indent=2)+'\n')
