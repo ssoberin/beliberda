@@ -17,11 +17,10 @@ REQUEST = {'title': 'Услуги мастера', 'description': SOURCE,
 
 
 def model_draft(category=103, **changes):
-    value = {'categoryId': category, 'supported': True, 'title': 'Плиточные работы',
-             'text': 'Укладываем плитку. Работаем только по записи.', 'evidence': ['Укладываем плитку', 'только по записи']}
+    value = {'categoryId': category, 'title': 'Плиточные работы',
+             'text': 'Укладываем плитку. Работаем только по записи.'}
     if category == 104:
-        value.update(title='Замена смесителей', text='Меняем смесители. Работаем только по записи.',
-                     evidence=['меняем смесители', 'только по записи'])
+        value.update(title='Замена смесителей', text='Меняем смесители. Работаем только по записи.')
     return {**value, **changes}
 
 
@@ -46,15 +45,14 @@ def test_frontend_contract_prompt_and_one_batch_request():
         assert payload['model'] == 'test-qwen'
         assert payload['response_format'] == {'type': 'json_object'}
         assert payload['temperature'] == 0
-        assert 'Не выдумывай' in payload['messages'][0]['content']
-        assert len(payload['messages']) == 8
-        assert [m['role'] for m in payload['messages']] == ['system', 'user', 'assistant', 'user', 'assistant', 'user', 'assistant', 'user']
+        assert 'Не добавляй неподтверждённые операции' in payload['messages'][0]['content']
+        assert 'Не оценивай supported' in payload['messages'][0]['content']
+        assert len(payload['messages']) == 6
+        assert [m['role'] for m in payload['messages']] == ['system', 'user', 'assistant', 'user', 'assistant', 'user']
         user = json.loads(payload['messages'][-1]['content'])
         assert user['description'] == SOURCE
         assert [c['id'] for c in user['requested_categories']] == [103, 104]
-        assert user['requested_categories'][0]['name'] == 'Плиточные работы'
-        for category in user['requested_categories']:
-            assert category['description'] and category['examples'] and category['boundaries']
+        assert user['requested_categories'][0] == {'id': 103, 'name': 'Плиточные работы'}
         return httpx.Response(200, json=completion())
     with client_for(remote, qwen_model='test-qwen', qwen_api_key='test-secret') as client:
         response = client.post('/api/generate', json=REQUEST)
@@ -90,7 +88,7 @@ def test_diagnostics_correlate_json_schema_error_without_logging_private_text(ca
     assert SOURCE not in caplog.text
 
 
-def test_diagnostics_for_invalid_json_and_grounding_do_not_log_model_output(caplog):
+def test_diagnostics_for_invalid_json_do_not_log_model_output(caplog):
     private = 'PRIVATE_MODEL_OUTPUT_123456'
     package_logger = logging.getLogger('backend')
     package_logger.addHandler(caplog.handler)
@@ -101,50 +99,31 @@ def test_diagnostics_for_invalid_json_and_grounding_do_not_log_model_output(capl
             response = client.post('/api/generate', json=REQUEST)
         assert response.status_code == 502
         assert 'stage=model_schema' in caplog.text
-        with client_for(lambda r: httpx.Response(200, json=completion([
-                model_draft(evidence=[private]), model_draft(104),
-        ]))) as client:
-            response = client.post('/api/generate', json=REQUEST)
-        assert response.status_code == 200
-        assert [d['categoryId'] for d in response.json()['drafts']] == [103, 104]
-        assert response.json()['warnings'][0]['categoryId'] == 103
-        assert 'Уточните' in response.json()['drafts'][0]['description']
-        assert 'Меняем смесители' in response.json()['drafts'][1]['description']
-        assert private not in response.text
-        assert 'stage=grounding category_id=103 reason=evidence' in caplog.text
     finally:
         package_logger.removeHandler(caplog.handler)
     assert private not in caplog.text
 
 
-def test_evidence_accepts_only_case_and_whitespace_differences():
-    source = 'Штукатурим стены, укладываем плитку.\nРаботаем в Казани.'
-    request = {'description': source, 'categories': [{'id': 103}]}
-    example = model_draft(evidence=['Укладываем плитку', 'Работаем  в Казани.'],
-                          title='Укладка плитки', text='Укладываем плитку.')
-    with client_for(lambda r: httpx.Response(200, json=completion([example]))) as client:
-        response = client.post('/api/generate', json=request)
-        assert response.status_code == 200, response.text
-        assert response.json()['drafts'][0]['categoryId'] == 103
-    for invalid in ['укладываем керамогранит', 'укладываем  плитку бесплатно', 'укладываем плитку, меняем трубы']:
-        example['evidence'] = [invalid]
-        with client_for(lambda r: httpx.Response(200, json=completion([example]))) as client:
-            response = client.post('/api/generate', json=request)
-            assert response.status_code == 200
-            assert response.json()['warnings'][0]['categoryId'] == 103
-            assert 'Уточните' in response.json()['drafts'][0]['description']
+def test_draft_is_not_blocked_by_obsolete_evidence_or_supported_fields():
+    # Old model servers may emit incidental metadata. It is not a decision
+    # signal, and the backend must not replace selected drafts with placeholders.
+    outdated = model_draft(supported=False, evidence=['несовпадающая цитата'])
+    with client_for(lambda r: httpx.Response(200, json=completion([outdated, model_draft(104)]))) as client:
+        response = client.post('/api/generate', json=REQUEST)
+    assert response.status_code == 200
+    assert [d['categoryId'] for d in response.json()['drafts']] == [103, 104]
+    assert response.json()['warnings'] == []
 
 
-@pytest.mark.parametrize('title,text', [(None, None), ('Сантехнические работы', 'Сантехнические работы. [Уточните виды работ.]')])
-def test_every_selected_category_has_a_draft_even_without_source_details(title, text):
-    unsupported = model_draft(104, supported=False, title=title, text=text, evidence=[])
-    with client_for(lambda r: httpx.Response(200, json=completion([model_draft(), unsupported]))) as client:
+def test_generic_service_gets_a_real_draft_without_invented_operations():
+    generic = model_draft(104, title='Сантехнические работы',
+                          text='Выполняем сантехнические работы в составе комплексного ремонта.')
+    with client_for(lambda r: httpx.Response(200, json=completion([model_draft(), generic]))) as client:
         response = client.post('/api/generate', json=REQUEST)
         assert response.status_code == 200
         assert [d['categoryId'] for d in response.json()['drafts']] == [103, 104]
-        assert all(d['title'] and d['description'] for d in response.json()['drafts'])
-        assert response.json()['warnings'][0]['categoryId'] == 104
-        assert response.json()['warnings'][0]['reason'] == 'needs_details'
+        assert response.json()['drafts'][1]['description'] == generic['text']
+        assert response.json()['warnings'] == []
 
 
 @pytest.mark.parametrize('update', [
@@ -173,22 +152,10 @@ def test_untrusted_model_output_is_rejected(drafts):
         assert response.json()['message']
 
 
-@pytest.mark.parametrize('invalid', [
-    model_draft(evidence=['Выдуманная цитата']),
-    model_draft(text='Укладываем плитку за 999 рублей.'),
-    model_draft(text='Гарантия на плитку.'),
-])
-def test_unsafe_single_draft_becomes_explicit_placeholder_without_losing_valid_drafts(invalid):
+@pytest.mark.parametrize('invalid', [model_draft(title=' '), model_draft(text=' '), model_draft(text=None)])
+def test_empty_or_non_text_drafts_are_structurally_invalid(invalid):
     with client_for(lambda r: httpx.Response(200, json=completion([invalid, model_draft(104)]))) as client:
-        response = client.post('/api/generate', json=REQUEST)
-    assert response.status_code == 200
-    body = response.json()
-    assert [d['categoryId'] for d in body['drafts']] == [103, 104]
-    assert 'Уточните' in body['drafts'][0]['description']
-    assert body['drafts'][0]['title'] == 'Плиточные работы'
-    assert body['drafts'][1]['description'] == 'Меняем смесители. Работаем только по записи.'
-    assert body['warnings'][0]['reason'] == 'needs_details'
-    assert body['warnings'][0]['categoryId'] == 103
+        assert client.post('/api/generate', json=REQUEST).status_code == 502
 
 
 @pytest.mark.parametrize('body', [
@@ -306,11 +273,14 @@ def test_few_shots_are_valid_and_preserve_relevant_conditions():
         result = ModelResponse.model_validate_json(FEW_SHOTS[i + 1]['content'])
         assert [d.categoryId for d in result.drafts] == [c['id'] for c in request['requested_categories']]
         assert all(d.title and d.text for d in result.drafts)
-        for draft in result.drafts:
-            assert all(quote in request['description'] for quote in draft.evidence)
+        assert all('Уточните' not in d.text for d in result.drafts)
+        assert all(set(d) == {'categoryId', 'title', 'text'} for d in json.loads(FEW_SHOTS[i + 1]['content'])['drafts'])
+        assert all(set(c) == {'id', 'name'} for c in request['requested_categories'])
+        assert 'Казан' not in FEW_SHOTS[i]['content']
     first = json.loads(FEW_SHOTS[1]['content'])
     assert 'только вместе' in first['drafts'][1]['text']
-    assert all(not d['supported'] for d in json.loads(FEW_SHOTS[3]['content'])['drafts'])
+    second = json.loads(FEW_SHOTS[3]['content'])
+    assert all('в составе комплексного ремонта' in d['text'] for d in second['drafts'])
 
 
 @pytest.mark.parametrize('count,expected_status,expected_budget', [(6500, 200, 1436), (7800, 422, None)])
@@ -320,7 +290,7 @@ def test_actual_token_budget_includes_all_few_shots(count, expected_status, expe
         calls.append(request.url.path)
         body = json.loads(request.content)
         if request.url.path == '/tokenize':
-            assert len(body['messages']) == 8
+            assert len(body['messages']) == 6
             return httpx.Response(200, json={'count': count, 'max_model_len': 8192})
         assert body['max_tokens'] == expected_budget
         return httpx.Response(200, json=completion())

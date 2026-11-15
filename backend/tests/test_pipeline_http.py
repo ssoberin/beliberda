@@ -44,9 +44,8 @@ class FakeQwen(BaseHTTPRequestHandler):
         assert payload['stream'] is False
         chosen = json.loads(payload['messages'][-1]['content'])['requested_categories']
         assert [c['id'] for c in chosen] == [103]
-        answer = {'drafts': [{'categoryId': 103, 'supported': True,
-                              'title': 'Укладка плитки', 'text': 'Укладываем плитку.',
-                              'evidence': ['Укладываем плитку']}]}
+        answer = {'drafts': [{'categoryId': 103,
+                              'title': 'Укладка плитки', 'text': 'Укладываем плитку.'}]}
         self.send_json({'choices': [{'finish_reason': 'stop', 'message': {'content': json.dumps(answer)}}]})
 
     def send_json(self, body):

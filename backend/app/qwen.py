@@ -1,20 +1,18 @@
 """Asynchronous OpenAI-compatible HTTP client with validated model output."""
 import asyncio
 import logging
-import re
 import time
 
 import httpx
 from pydantic import ValidationError
 
 from .config import Settings
-from .catalog import NAMES
 from .errors import BackendError
 from .prompts import messages
-from .schemas import Draft, GenerateRequest, GenerateResponse, GenerationWarning, ModelResponse
+from .schemas import Draft, GenerateRequest, GenerateResponse, ModelResponse
 
 logger = logging.getLogger(__name__)
-SCHEMA_FIELDS = {'drafts', 'categoryId', 'supported', 'title', 'text', 'evidence'}
+SCHEMA_FIELDS = {'drafts', 'categoryId', 'title', 'text'}
 
 
 def validation_issues(error: ValidationError):
@@ -26,30 +24,6 @@ def validation_issues(error: ValidationError):
                             for part in item['loc'])
         issues.append(f'{location}:{item["type"]}')
     return issues
-
-
-def grounded(draft, description: str):
-    # llama.cpp may change capitalization or line breaks in an otherwise
-    # verbatim citation. Require the same words and punctuation in the source;
-    # never treat a paraphrase or an invented operation as evidence.
-    def found(quote):
-        parts = quote.split()
-        if not parts:
-            return False
-        return re.search(r'\s+'.join(map(re.escape, parts)), description, re.IGNORECASE) is not None
-
-    if any(not found(quote) for quote in draft.evidence):
-        raise BackendError(502, 'Qwen вернул черновик без точных подтверждающих цитат. Повторите генерацию.')
-    output = draft.title + '\n' + draft.text
-    # Conservative checks, not a complete semantic hallucination detector.
-    numbers = lambda text: {x.replace(',', '.') for x in re.findall(r'\d+(?:[.,]\d+)?', text)}
-    if not numbers(output) <= numbers(description):
-        raise BackendError(502, 'Qwen добавил числовые сведения, отсутствующие в исходном тексте.')
-    for pattern in (r'\bгаранти\w*', r'\bскидк\w*', r'\bбесплатн\w*', r'\b\d+\s*лет\s*опыта'):
-        if re.search(pattern, output, re.I) and not re.search(pattern, description, re.I):
-            raise BackendError(502, 'Qwen добавил неподтверждённые рекламные условия.')
-    if re.search(r'\b(?:исходн\w* объявлен\w*|из объявления)\b', output, re.I):
-        raise BackendError(502, 'Qwen вернул служебное пояснение вместо самостоятельного объявления.')
 
 
 class QwenClient:
@@ -167,43 +141,8 @@ class QwenClient:
                            request_id, expected, actual)
             raise BackendError(502, 'Ответ Qwen не соответствует выбранным категориям.')
         by_id = {draft.categoryId: draft for draft in result.drafts}
-        drafts, warnings = [], []
-        def placeholder(category):
-            return Draft(categoryId=category, title=NAMES[category],
-                         description=f'{NAMES[category]}. [Уточните, какие работы вы предлагаете, и условия заказа.]')
-
-        for category in expected:
-            draft = by_id[category]
-            if not draft.supported:
-                warnings.append(GenerationWarning(
-                    categoryId=category,
-                    message='Черновик создан по выбранной категории. В исходнике недостаточно сведений об услуге — уточните текст перед публикацией.',
-                ))
-                if draft.title is None and draft.text is None:
-                    # Older/refusing model outputs must not silently remove a
-                    # selected category. Return an explicit editable placeholder.
-                    drafts.append(placeholder(category))
-                    continue
-            try:
-                grounded(draft, request.description)
-            except BackendError as exc:
-                # Do not log the quote, draft, or source text. Only the check type.
-                logger.warning('qwen_rejected request_id=%s stage=grounding category_id=%d reason=%s',
-                               request_id, category, {
-                                   'Qwen вернул черновик без точных подтверждающих цитат. Повторите генерацию.': 'evidence',
-                                   'Qwen добавил числовые сведения, отсутствующие в исходном тексте.': 'numbers',
-                                   'Qwen добавил неподтверждённые рекламные условия.': 'claims',
-                                   'Qwen вернул служебное пояснение вместо самостоятельного объявления.': 'meta_text',
-                               }.get(exc.message, 'other'))
-                if warnings and warnings[-1].categoryId == category:
-                    warnings.pop()
-                warnings.append(GenerationWarning(
-                    categoryId=category,
-                    message='Модель не подтвердила сведения для этой категории исходным текстом. Черновик заменён заготовкой; уточните услугу вручную.',
-                ))
-                drafts.append(placeholder(category))
-                continue
-            drafts.append(Draft(categoryId=category, title=draft.title.strip(), description=draft.text.strip()))
-        logger.info('qwen_success request_id=%s categories=%s warnings=%d elapsed_ms=%d',
-                    request_id, expected, len(warnings), int((time.monotonic() - started) * 1000))
-        return GenerateResponse(drafts=drafts, warnings=warnings)
+        drafts = [Draft(categoryId=category, title=by_id[category].title,
+                        description=by_id[category].text) for category in expected]
+        logger.info('qwen_success request_id=%s categories=%s elapsed_ms=%d',
+                    request_id, expected, int((time.monotonic() - started) * 1000))
+        return GenerateResponse(drafts=drafts)

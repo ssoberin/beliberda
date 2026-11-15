@@ -40,25 +40,12 @@ class GenerateRequest(StrictModel):
 
 
 class ModelDraft(StrictModel):
-    model_config = ConfigDict(extra='forbid', strict=True)
+    # Ignore incidental extra fields from older model outputs; only the three
+    # drafting fields matter. Categories were selected before this API call.
+    model_config = ConfigDict(extra='ignore', strict=True)
     categoryId: CategoryId
-    supported: bool
-    title: Annotated[str, StringConstraints(min_length=1, max_length=50)] | None
-    text: Annotated[str, StringConstraints(min_length=1, max_length=2000)] | None
-    evidence: list[Annotated[str, StringConstraints(min_length=1, max_length=800)]] = Field(max_length=12)
-
-    @model_validator(mode='after')
-    def validate_support(self):
-        if self.supported:
-            if not self.title or not self.title.strip() or not self.text or not self.text.strip() or not self.evidence:
-                raise ValueError('Подтверждённый черновик должен содержать заголовок, текст и цитаты.')
-        elif self.evidence:
-            raise ValueError('Для заготовки без подтверждения evidence должен быть пустым.')
-        elif (self.title is None) != (self.text is None):
-            raise ValueError('Заголовок и текст должны присутствовать вместе.')
-        elif self.title is not None and (not self.title.strip() or not self.text.strip()):
-            raise ValueError('Заголовок и текст заготовки не должны быть пустыми.')
-        return self
+    title: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=50)]
+    text: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=2000)]
 
 
 class ModelResponse(StrictModel):
