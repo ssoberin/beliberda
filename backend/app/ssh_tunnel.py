@@ -7,8 +7,9 @@ import socket
 import time
 
 from .config import Settings
+from .observability import event, failure
 
-LOG = logging.getLogger('uvicorn.error')
+LOG = logging.getLogger('backend.ssh')
 
 
 def ssh_command(settings: Settings):
@@ -47,6 +48,7 @@ class SSHTunnel:
         # command arguments, credentials or contents of keys into logs/API.
         reasons = {
             'connection timed out': 'Сервер не отвечает на SSH-порту (таймаут).',
+            'connection closed': 'Сервер закрыл SSH-соединение до установления туннеля.',
             'connection refused': 'SSH-порт сервера отклонил соединение.',
             'network is unreachable': 'Сетевой маршрут к серверу недоступен.',
             'no route to host': 'Нет сетевого маршрута к серверу.',
@@ -62,10 +64,12 @@ class SSHTunnel:
             for phrase, message in reasons.items():
                 if phrase in text:
                     self.last_error = message
+                    event(LOG, 'ssh_stderr', level=logging.ERROR, reason=message)
                     break
 
     async def _connect(self):
         self._connected = False
+        event(LOG, 'ssh_connect_start', target=self.settings.ssh_target, port=self.settings.ssh_port or 'ssh-config', local_port=self.settings.ssh_local_port)
         with socket.socket() as probe:
             probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             try:
@@ -121,6 +125,7 @@ class SSHTunnel:
             await self.stop()
             raise
         except (OSError, RuntimeError) as exc:
+            failure(LOG, 'ssh_connect_failed', exc)
             self.last_error = str(exc)
             await self._close_process()
             LOG.warning('SSH initial connection failed: %s; reconnect scheduled', self.last_error)
@@ -145,12 +150,14 @@ class SSHTunnel:
                 await self._connect()
                 delay = self.RETRY_DELAY
             except (OSError, RuntimeError) as exc:
+                failure(LOG, 'ssh_reconnect_failed', exc, next_attempt_seconds=min(delay*2, 30))
                 self.last_error = str(exc)
                 await self._close_process()
                 LOG.warning('SSH reconnect failed: %s; next attempt in %.0fs', self.last_error, min(delay * 2, 30))
                 delay = min(delay * 2, 30)
 
     async def stop(self):
+        event(LOG, 'ssh_stop')
         self._closing = True
         if self._monitor:
             self._monitor.cancel()

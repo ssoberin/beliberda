@@ -15,7 +15,7 @@ class Settings:
     timeout_seconds: float = 90
     max_tokens: int = 4096
     max_concurrent_requests: int = 2
-    response_format: str = 'json_object'
+    response_format: str = 'json_schema'
     tokenize_before_generate: bool = True
     ssh_target: str = ''
     ssh_port: int | None = None
@@ -60,7 +60,7 @@ class Settings:
             timeout_seconds=float(os.getenv('QWEN_TIMEOUT_SECONDS', '90')),
             max_tokens=int(os.getenv('QWEN_MAX_TOKENS', '4096')),
             max_concurrent_requests=int(os.getenv('QWEN_MAX_CONCURRENT_REQUESTS', '2')),
-            response_format=os.getenv('QWEN_RESPONSE_FORMAT', 'json_object'),
+            response_format=os.getenv('QWEN_RESPONSE_FORMAT', 'json_schema'),
             tokenize_before_generate=os.getenv('QWEN_TOKENIZE_BEFORE_GENERATE', '1').lower() not in ('0', 'false', 'no', 'off'),
             ssh_target=target, ssh_port=int(os.environ['SSH_PORT']) if os.getenv('SSH_PORT') else None,
             ssh_local_port=local_port, ssh_remote_host=os.getenv('SSH_REMOTE_HOST', '127.0.0.1'),

@@ -9,6 +9,7 @@ import pytest
 
 from backend.app.config import Settings
 from backend.app.main import create_app
+from backend.app.prompts import CONDITION_EXAMPLES, FEW_SHOTS
 from backend.app.ssh_tunnel import SSHTunnel, ssh_command
 from backend.app.titles import repair_title, valid_title
 
@@ -44,12 +45,14 @@ def test_frontend_contract_prompt_and_one_batch_request():
         assert request.headers['authorization'] == 'Bearer test-secret'
         payload = json.loads(request.content)
         assert payload['model'] == 'test-qwen'
-        assert payload['response_format'] == {'type': 'json_object'}
+        assert payload['response_format']['type'] == 'json_schema'
+        assert payload['response_format']['json_schema']['strict'] is True
         assert payload['temperature'] == 0
         assert 'Не добавляй неподтверждённые операции' in payload['messages'][0]['content']
         assert 'Не оценивай supported' in payload['messages'][0]['content']
-        assert len(payload['messages']) == 8
-        assert [m['role'] for m in payload['messages']] == ['system', 'user', 'assistant', 'user', 'assistant', 'user', 'assistant', 'user']
+        assert len(payload['messages']) == len(FEW_SHOTS) + 2
+        assert [m['role'] for m in payload['messages']] == ['system'] + ['user', 'assistant'] * (len(FEW_SHOTS) // 2) + ['user']
+        assert 'верни ровно 2 элементов drafts' in payload['messages'][0]['content']
         user = json.loads(payload['messages'][-1]['content'])
         assert user['description'] == SOURCE
         assert [c['id'] for c in user['requested_categories']] == [103, 104]
@@ -252,17 +255,44 @@ def test_liveness_and_model_readiness_are_different():
         assert client.get('/ready').status_code == 503
 
 
-@pytest.mark.parametrize('mode', ['json_schema', 'none'])
+@pytest.mark.parametrize('mode', ['json_schema', 'json_object', 'none'])
 def test_response_format_modes(mode):
     def remote(request):
         body = json.loads(request.content)
         if mode == 'none': assert 'response_format' not in body
+        elif mode == 'json_object': assert body['response_format'] == {'type': 'json_object'}
         else:
             schema = body['response_format']['json_schema']['schema']
             assert schema['$defs']['ModelDraft']['properties']['categoryId']['enum'] == [103, 104]
         return httpx.Response(200, json=completion())
     with client_for(remote, response_format=mode) as client:
         assert client.post('/api/generate', json=REQUEST).status_code == 200
+
+
+@pytest.mark.parametrize('count', range(1, 7))
+def test_strict_schema_matches_requested_count_and_ids(count):
+    ids = [104, 105, 103, 106, 102, 101][:count]
+    def remote(request):
+        body = json.loads(request.content)
+        contract = body['response_format']['json_schema']
+        assert contract['strict'] is True
+        schema = contract['schema']
+        assert schema['required'] == ['drafts']
+        assert schema['additionalProperties'] is False
+        array = schema['properties']['drafts']
+        assert array['minItems'] == array['maxItems'] == count
+        draft = schema['$defs']['ModelDraft']
+        assert draft['additionalProperties'] is False
+        assert set(draft['required']) == {'categoryId', 'title', 'text'}
+        assert draft['properties']['categoryId'] == {'type': 'integer', 'enum': ids}
+        assert draft['properties']['title']['maxLength'] == 50
+        assert draft['properties']['text']['maxLength'] == 2000
+        # Model order may differ; the backend restores the requested order.
+        return httpx.Response(200, json=completion([model_draft(i) for i in reversed(ids)]))
+    with client_for(remote) as client:
+        result = client.post('/api/generate', json={**REQUEST, 'categories': [{'id':i} for i in ids]})
+        assert result.status_code == 200
+        assert [d['categoryId'] for d in result.json()['drafts']] == ids
 
 
 def test_ssh_arguments_and_configuration_do_not_execute_shell():
@@ -314,10 +344,15 @@ def test_source_category_does_not_filter_explicit_selection():
 
 
 def test_few_shots_are_valid_and_preserve_relevant_conditions():
-    from backend.app.prompts import FEW_SHOTS
     from backend.app.schemas import ModelResponse
+    counts = set()
     for i in range(0, len(FEW_SHOTS), 2):
         request = json.loads(FEW_SHOTS[i]['content'])
+        count = len(request['requested_categories'])
+        counts.add(count)
+        if count == 0:
+            assert json.loads(FEW_SHOTS[i + 1]['content']) == {'drafts': []}
+            continue
         result = ModelResponse.model_validate_json(FEW_SHOTS[i + 1]['content'])
         assert [d.categoryId for d in result.drafts] == [c['id'] for c in request['requested_categories']]
         assert all(d.title and d.text for d in result.drafts)
@@ -325,9 +360,10 @@ def test_few_shots_are_valid_and_preserve_relevant_conditions():
         assert all(set(d) == {'categoryId', 'title', 'text'} for d in json.loads(FEW_SHOTS[i + 1]['content'])['drafts'])
         assert all(set(c) == {'id', 'name'} for c in request['requested_categories'])
         assert 'Казан' not in FEW_SHOTS[i]['content']
-    first = json.loads(FEW_SHOTS[1]['content'])
+    assert counts == set(range(7))
+    first = json.loads(CONDITION_EXAMPLES[1]['content'])
     assert 'только вместе' in first['drafts'][1]['text']
-    second = json.loads(FEW_SHOTS[3]['content'])
+    second = json.loads(CONDITION_EXAMPLES[3]['content'])
     assert all('в составе комплексного ремонта' in d['text'] for d in second['drafts'])
 
 
@@ -338,13 +374,59 @@ def test_actual_token_budget_includes_all_few_shots(count, expected_status, expe
         calls.append(request.url.path)
         body = json.loads(request.content)
         if request.url.path == '/tokenize':
-            assert len(body['messages']) == 8
+            assert len(body['messages']) == len(FEW_SHOTS) + 2
             return httpx.Response(200, json={'count': count, 'max_model_len': 8192})
         assert body['max_tokens'] == expected_budget
         return httpx.Response(200, json=completion())
     with client_for(remote, tokenize_before_generate=True) as client:
         assert client.post('/api/generate', json=REQUEST).status_code == expected_status
     assert calls == (['/tokenize', '/v1/chat/completions'] if expected_status == 200 else ['/tokenize'])
+
+
+@pytest.mark.parametrize('prefix', ['', '/proxy'])
+@pytest.mark.parametrize('token_count,status', [(6500, 200), (7800, 422)])
+def test_llama_cpp_budget_uses_rendered_chat_and_actual_slot_context(prefix, token_count, status):
+    calls = []
+    def remote(request):
+        assert request.url.host == '127.0.0.1'
+        assert request.headers['authorization'] == 'Bearer test-secret'
+        path = request.url.path.removeprefix(prefix)
+        calls.append(path)
+        if path == '/props':
+            return httpx.Response(200, json={'default_generation_settings': {'n_ctx':8192}})
+        body = json.loads(request.content)
+        if path == '/apply-template':
+            assert len(body['messages']) == len(FEW_SHOTS) + 2
+            assert body['add_generation_prompt'] is True
+            return httpx.Response(200, json={'prompt':'rendered-chat-with-examples'})
+        if path == '/tokenize':
+            if 'messages' in body:
+                return httpx.Response(200, json={'tokens':[]})
+            assert body == {'content':'rendered-chat-with-examples', 'add_special':True, 'parse_special':True}
+            return httpx.Response(200, json={'tokens':[1] * token_count})
+        assert path == '/v1/chat/completions'
+        assert body['max_tokens'] == 1436
+        return httpx.Response(200, json=completion())
+    with client_for(remote, qwen_base_url='http://127.0.0.1:8000' + prefix + '/v1',
+                    qwen_api_key='test-secret', tokenize_before_generate=True) as client:
+        assert client.post('/api/generate', json=REQUEST).status_code == status
+    expected = ['/tokenize', '/apply-template', '/tokenize', '/props']
+    assert calls == expected + (['/v1/chat/completions'] if status == 200 else [])
+
+
+@pytest.mark.parametrize('tokens,limit', [([],8192), ([True],8192), ([1],None), ([1],0), ([1],True)])
+def test_invalid_llama_cpp_budget_never_calls_generation(tokens, limit):
+    def remote(request):
+        path = request.url.path
+        if path == '/apply-template':
+            return httpx.Response(200, json={'prompt':'rendered'})
+        if path == '/props':
+            return httpx.Response(200, json={'default_generation_settings':{'n_ctx':limit}})
+        if path == '/tokenize':
+            return httpx.Response(200, json={'tokens':[] if 'messages' in json.loads(request.content) else tokens})
+        raise AssertionError('Invalid token budget must not call generation')
+    with client_for(remote, tokenize_before_generate=True) as client:
+        assert client.post('/api/generate', json=REQUEST).status_code == 502
 
 
 def test_tunnel_reconnects_after_process_exit_and_cleans_up():

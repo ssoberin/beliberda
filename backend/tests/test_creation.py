@@ -3,7 +3,7 @@ from contextlib import contextmanager
 import json
 import threading
 from types import SimpleNamespace
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 from fastapi.testclient import TestClient
 import httpx
@@ -51,8 +51,10 @@ def test_single_and_batch_json_contract_and_no_generation():
 
 
 def test_no_supported_categories_means_empty_drafts_without_qwen():
-    with api(categories=[]) as client:
+    qwen = AsyncMock(side_effect=AssertionError('No categories must never call Qwen'))
+    with api(categories=[], generate=qwen) as client:
         assert client.post('/api/create', json={'description': 'Собираю шкафы.'}).json() == {'drafts': []}
+    qwen.assert_not_awaited()
 
 
 def test_csv_bom_quotes_newlines_and_testcase_roundtrip():

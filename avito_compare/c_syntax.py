@@ -3,9 +3,13 @@ import hashlib
 import inspect
 import json
 import os
+import logging
+import time
 from pathlib import Path
 from threading import RLock
 import numpy as np
+
+LOG = logging.getLogger('backend.model')
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MODEL_DIR = ROOT / 'models/c_syntax'
@@ -23,13 +27,33 @@ def _sha(path):
     with path.open('rb') as source:
         return hashlib.file_digest(source, 'sha256').hexdigest()
 
+def encoder_snapshot(directory, model_id, revision):
+    from huggingface_hub import snapshot_download
+    from huggingface_hub.errors import LocalEntryNotFoundError
+    local_cache = str(Path(directory) / 'encoder_cache')
+    for cache in (local_cache, None):
+        try:
+            path = snapshot_download(model_id, revision=revision, cache_dir=cache, local_files_only=True)
+            LOG.info('encoder_cache_hit model=%s revision=%s cache=%s', model_id, revision, cache or 'huggingface-default')
+            return path
+        except LocalEntryNotFoundError:
+            LOG.info('encoder_cache_miss model=%s cache=%s', model_id, cache or 'huggingface-default')
+    LOG.info('encoder_download_start model=%s revision=%s cache=%s', model_id, revision, local_cache)
+    path = snapshot_download(model_id, revision=revision, cache_dir=local_cache)
+    LOG.info('encoder_download_complete model=%s revision=%s', model_id, revision)
+    return path
+
 class CSyntaxClassifier:
     def __init__(self, directory):
         directory = Path(directory)
+        started = time.monotonic()
+        LOG.info('model_load_start model=C_syntax directory=%s', directory)
         for name, digest in EXPECTED_FILES.items():
             path = directory / name
             if not path.is_file() or _sha(path) != digest:
+                LOG.error('model_hash_failed file=%s', name)
                 raise ValueError(f'Хеш или файл C_syntax не соответствует зафиксированной модели: {name}')
+            LOG.info('model_hash_verified file=%s sha256=%s', name, digest)
         self.manifest = json.loads((directory / 'manifest.json').read_text())
         if tuple(self.manifest['ids']) != IDS or self.manifest['thresholds'] != [.5] * 5:
             raise ValueError('Неверные категории или пороги C_syntax.')
@@ -49,27 +73,27 @@ class CSyntaxClassifier:
         self.directory = directory
         self._encoder = self._analyzer = None
         self._lock = RLock()
+        LOG.info('model_load_complete model=C_syntax heads=%s features=%d elapsed_ms=%d', IDS, len(self.catboost.feature_names_), int((time.monotonic()-started)*1000))
 
     def _encode(self, chunks):
         if self._encoder is None:
             try:
                 import torch
-                from huggingface_hub import snapshot_download
-                from huggingface_hub.errors import LocalEntryNotFoundError
                 from sentence_transformers import SentenceTransformer
                 torch.set_num_threads(min(4, os.cpu_count() or 1))
                 device = 'cuda' if torch.cuda.is_available() else 'cpu'
                 model_id, revision = self.manifest['encoder'], self.manifest['encoder_revision']
-                try:
-                    path = snapshot_download(model_id, revision=revision, local_files_only=True)
-                except LocalEntryNotFoundError:
-                    path = snapshot_download(model_id, revision=revision, cache_dir=str(self.directory / 'encoder_cache'))
+                started = time.monotonic()
+                path = encoder_snapshot(self.directory, model_id, revision)
+                LOG.info('encoder_load_start model=%s device=%s path=%s', model_id, device, path)
                 kw = 'processor_kwargs' if 'processor_kwargs' in inspect.signature(SentenceTransformer.__init__).parameters else 'tokenizer_kwargs'
                 self._encoder = SentenceTransformer(path, device=device, local_files_only=True,
                     model_kwargs={'dtype': torch.float16 if device == 'cuda' else torch.float32},
                     **{kw: {'padding_side': 'left'}})
                 self._encoder.max_seq_length = self.manifest['max_seq_length']
+                LOG.info('encoder_load_complete model=%s device=%s max_seq_length=%d elapsed_ms=%d', model_id, device, self._encoder.max_seq_length, int((time.monotonic()-started)*1000))
             except Exception as exc:
+                LOG.error('encoder_load_failed error_type=%s', type(exc).__name__)
                 raise ClassifierUnavailable('Не удалось загрузить Qwen3-Embedding-0.6B для C_syntax.') from exc
         return np.asarray(self._encoder.encode(chunks, batch_size=4, normalize_embeddings=True,
             convert_to_numpy=True, show_progress_bar=False), dtype=np.float16).astype(np.float32)
@@ -83,7 +107,9 @@ class CSyntaxClassifier:
         results = []
         with self._lock:
             for description in descriptions:
+                started = time.monotonic()
                 chunks = chunk_ad_fixed(description)
+                LOG.info('model_prediction_start description_chars=%d chunks=%d', len(description), len(chunks))
                 unique = list(dict.fromkeys(chunks))
                 vectors = self._encode(unique)
                 if vectors.shape != (len(unique), 1024) or not np.isfinite(vectors).all():
@@ -92,6 +118,7 @@ class CSyntaxClassifier:
                 indices = np.array([positions[text] for text in chunks])
                 raw = vectors @ self.queries.T
                 sims = np.column_stack([raw[:, j*3:(j+1)*3].max(1) for j in range(6)])
+                LOG.info('model_embeddings_complete unique_chunks=%d dimensions=%d', len(unique), vectors.shape[1])
                 features, _ = build_category_features_for_uids(np.array([0]),
                     np.array([0, len(chunks)]), indices, vectors, sims)
                 if self._analyzer is None:
@@ -112,6 +139,8 @@ class CSyntaxClassifier:
                     frame[col] = frame[col].astype(str)
                 results.append(self.catboost.predict_proba(Pool(
                     frame[self.catboost.feature_names_], cat_features=SYNTAX_CAT_FEATURES), thread_count=2)[:, 1])
+                LOG.info('model_prediction_complete probabilities=%s elapsed_ms=%d',
+                         dict(zip(IDS, map(float, results[-1]))), int((time.monotonic()-started)*1000))
         return np.asarray(results)
 
     def warmup(self):

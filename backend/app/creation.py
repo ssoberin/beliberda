@@ -5,11 +5,13 @@ from functools import partial
 import io
 import json
 import logging
+import time
 
 from pydantic import Field, ValidationError
 
 from .classifier import classify
 from .errors import BackendError
+from .observability import event, failure
 from .schemas import Category, ClassificationRequest, GenerateRequest
 
 logger = logging.getLogger(__name__)
@@ -94,6 +96,8 @@ async def creation_events(app, items, generate_text, request_id):
     cross-category details. On a technical model failure, retry categories
     independently to preserve any valid sibling drafts.
     """
+    started = time.monotonic()
+    event(logger, 'batch_start', items=len(items), generate_text=generate_text)
     queue = asyncio.Queue(maxsize=32)
     pending = iter(enumerate(items))
     completed = 0
@@ -102,6 +106,8 @@ async def creation_events(app, items, generate_text, request_id):
 
     async def process(index, item):
         identity = {'index': index, **({'testcase': item.testcase} if item.testcase is not None else {})}
+        item_started = time.monotonic()
+        event(logger, 'creation_item_start', index=index, source_id=item.mcId, manual_categories=item.categories is not None)
         categories = item.categories
         if categories is None:
             model = app.state.classifier
@@ -109,11 +115,13 @@ async def creation_events(app, items, generate_text, request_id):
                 raise BackendError(503, 'Классификатор C_syntax недоступен.')
             values = await app.state.inference.run(classify, model, item.description, item.mcId)
             categories = [Category.model_validate(value) for value in values]
+        event(logger, 'creation_categories_ready', index=index, categories=[c.id for c in categories])
         await queue.put({'type': 'categories', **identity, 'categories': [c.model_dump() for c in categories]})
         parts = {}
         errors = []
 
         async def call_qwen(selected):
+            event(logger, 'creation_generation_start', index=index, categories=[c.id for c in selected])
             tunnel = app.state.tunnel
             if tunnel is not None and not tunnel.alive:
                 raise BackendError(503, 'SSH-туннель отключён и автоматически переподключается.')
@@ -126,6 +134,7 @@ async def creation_events(app, items, generate_text, request_id):
         async def emit_draft(category, draft):
             values = [{'mcId': category.id, 'title': draft.title, 'text': draft.description}]
             parts[category.id] = values
+            event(logger, 'creation_draft_ready', index=index, category_id=category.id)
             await queue.put({'type': 'drafts', **identity, 'drafts': values, 'warnings': []})
 
         async def create_category(category):
@@ -138,8 +147,9 @@ async def creation_events(app, items, generate_text, request_id):
                     result = await call_qwen([category])
                     await emit_draft(category, result.drafts[0])
             except BackendError as exc:
-                errors.append({'mcId': category.id, 'message': exc.message})
-                await queue.put({'type': 'category_error', **identity, 'mcId': category.id, 'message': exc.message})
+                failure(logger, 'creation_category_failed', exc, index=index, category_id=category.id)
+                errors.append({'mcId': category.id, 'message': exc.message, 'code': exc.code, 'requestId': request_id})
+                await queue.put({'type': 'category_error', **identity, 'mcId': category.id, 'message': exc.message, 'code': exc.code, 'requestId': request_id})
 
         if generate_text and len(categories) > 1:
             try:
@@ -147,6 +157,7 @@ async def creation_events(app, items, generate_text, request_id):
                 for category, draft in zip(categories, result.drafts, strict=True):
                     await emit_draft(category, draft)
             except BackendError as exc:
+                failure(logger, 'creation_batch_generation_failed', exc, index=index)
                 logger.warning('creation_batch_retry request_id=%s index=%d status=%d',
                                request_id, index, exc.status_code)
                 tasks = [asyncio.create_task(create_category(category)) for category in categories]
@@ -169,6 +180,7 @@ async def creation_events(app, items, generate_text, request_id):
         result = {**identity, 'drafts': [draft for c in categories for draft in parts.get(c.id, [])]}
         if errors:
             result['errors'] = errors
+        event(logger, 'creation_item_complete', index=index, drafts=len(result['drafts']), errors=len(errors), elapsed_ms=int((time.monotonic()-item_started)*1000))
         return result
 
     async def worker():
@@ -181,29 +193,31 @@ async def creation_events(app, items, generate_text, request_id):
                     failed += 1
             except Exception as exc:
                 failed += 1
-                if not isinstance(exc, BackendError):
-                    logger.error('creation_failed request_id=%s index=%d error_type=%s', request_id, index, type(exc).__name__)
-                result = {**identity, 'drafts': [], 'error': {'message': exc.message if isinstance(exc, BackendError) else 'Не удалось обработать объявление.'}}
+                failure(logger, 'creation_item_failed', exc, index=index)
+                result = {**identity, 'drafts': [], 'error': {'message': exc.message if isinstance(exc, BackendError) else 'Не удалось обработать объявление.', 'code': exc.code if isinstance(exc, BackendError) else 'internal_error', 'requestId': request_id}}
             completed += 1
             await queue.put({'type': 'item_done', **result, 'completed': completed, 'total': len(items)})
 
     workers = [asyncio.create_task(worker()) for _ in range(min(len(items), app.state.creation_workers))]
     async def finish():
         await asyncio.gather(*workers)
+        event(logger, 'batch_complete', completed=completed, failed=failed, elapsed_ms=int((time.monotonic()-started)*1000))
         await queue.put({'type': 'done', 'total': len(items), 'completed': completed, 'failed': failed})
     finisher = asyncio.create_task(finish())
     try:
         yield {'type': 'start', 'total': len(items), 'generateText': generate_text}
         while True:
             try:
-                event = await asyncio.wait_for(queue.get(), timeout=15)
+                payload_event = await asyncio.wait_for(queue.get(), timeout=15)
             except TimeoutError:
                 yield {'type': 'heartbeat'}
                 continue
-            yield event
-            if event['type'] == 'done':
+            yield payload_event
+            if payload_event['type'] == 'done':
                 break
     finally:
+        if not finisher.done():
+            event(logger, 'batch_cancelled', completed=completed, total=len(items))
         finisher.cancel()
         for worker_task in workers:
             worker_task.cancel()

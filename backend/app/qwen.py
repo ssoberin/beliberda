@@ -10,6 +10,7 @@ from pydantic import ValidationError
 from .config import Settings
 from .catalog import NAMES
 from .errors import BackendError
+from .observability import event, failure
 from .prompts import messages
 from .schemas import Draft, GenerateRequest, GenerateResponse, ModelResponse
 from .titles import repair_title
@@ -46,6 +47,16 @@ def parse_drafts(content: str, request_id: str):
     return ModelResponse.model_validate(body)
 
 
+def response_schema(category_ids):
+    """Constrain the output to this request, not the whole category catalog."""
+    schema = ModelResponse.model_json_schema()
+    draft = schema['$defs']['ModelDraft']
+    draft['additionalProperties'] = False
+    draft['properties']['categoryId'] = {'type': 'integer', 'enum': list(category_ids)}
+    schema['properties']['drafts'].update(minItems=len(category_ids), maxItems=len(category_ids))
+    return schema
+
+
 class QwenClient:
     def __init__(self, client: httpx.AsyncClient, settings: Settings):
         self.client = client
@@ -58,32 +69,68 @@ class QwenClient:
             response.raise_for_status()
             body = response.json()
             data = body.get('data') if isinstance(body, dict) else None
-            return isinstance(data, list) and any(isinstance(row, dict) and row.get('id') == self.settings.qwen_model for row in data)
-        except (httpx.HTTPError, ValueError, KeyError, TypeError):
+            ready = isinstance(data, list) and any(isinstance(row, dict) and row.get('id') == self.settings.qwen_model for row in data)
+            event(logger, 'qwen_readiness', ready=ready, model=self.settings.qwen_model, level=logging.DEBUG if ready else logging.WARNING)
+            return ready
+        except (httpx.HTTPError, ValueError, KeyError, TypeError) as error:
+            failure(logger, 'qwen_readiness_failed', error, model=self.settings.qwen_model)
             return False
+
+    def server_url(self, endpoint):
+        # Preserve a reverse-proxy prefix before /v1 and the original origin.
+        base = self.client.base_url
+        path = base.path.rstrip('/')
+        prefix = path[:-3] if path.endswith('/v1') else path
+        return base.copy_with(path=prefix + '/' + endpoint)
+
+    async def llama_token_budget(self, chat_messages):
+        # llama.cpp /tokenize expects rendered content, not chat messages.
+        response = await self.client.post(self.server_url('apply-template'), json={
+            'messages': chat_messages, 'add_generation_prompt': True,
+        })
+        response.raise_for_status()
+        body = response.json()
+        prompt = body.get('prompt') if isinstance(body, dict) else None
+        if not isinstance(prompt, str) or not prompt:
+            raise ValueError('llama.cpp /apply-template: expected nonempty prompt')
+        response = await self.client.post(self.server_url('tokenize'), json={
+            'content': prompt, 'add_special': True, 'parse_special': True,
+        })
+        response.raise_for_status()
+        body = response.json()
+        tokens = body.get('tokens') if isinstance(body, dict) else None
+        if not isinstance(tokens, list) or not tokens or any(type(token) is not int for token in tokens):
+            raise ValueError('llama.cpp /tokenize: expected nonempty token ID list')
+        response = await self.client.get(self.server_url('props'))
+        response.raise_for_status()
+        body = response.json()
+        defaults = body.get('default_generation_settings') if isinstance(body, dict) else None
+        limit = defaults.get('n_ctx') if isinstance(defaults, dict) else None
+        return len(tokens), limit
 
     async def output_budget(self, chat_messages, category_count):
         if not self.settings.tokenize_before_generate:
             return self.settings.max_tokens
-        # /tokenize is a vLLM endpoint outside /v1. Preserve a possible proxy
-        # prefix before /v1, and never send credentials to another origin.
-        base = self.client.base_url
-        path = base.path.rstrip('/')
-        prefix = path[:-3] if path.endswith('/v1') else path
-        response = await self.client.post(base.copy_with(path=prefix + '/tokenize'), json={
+        event(logger, 'qwen_tokenize_start', category_count=category_count)
+        response = await self.client.post(self.server_url('tokenize'), json={
             'model': self.settings.qwen_model, 'messages': chat_messages, 'add_generation_prompt': True,
         })
         response.raise_for_status()
         body = response.json()
         if not isinstance(body, dict): raise ValueError('Expected token budget')
         count, limit = body.get('count'), body.get('max_model_len')
+        if 'count' not in body and isinstance(body.get('tokens'), list):
+            event(logger, 'qwen_tokenize_adapter', server='llama.cpp')
+            count, limit = await self.llama_token_budget(chat_messages)
         if type(count) is not int or type(limit) is not int or count < 0 or limit <= 0:
             raise ValueError('Invalid token budget')
         available = limit - count - 256
         minimum = max(512, 256 * category_count)
         if available < minimum:
             raise BackendError(422, 'Исходный текст вместе с примерами не помещается в контекст Qwen. Сократите описание или выберите меньше категорий.')
-        return min(self.settings.max_tokens, available)
+        budget = min(self.settings.max_tokens, available)
+        event(logger, 'qwen_tokenize_complete', input_tokens=count, context_limit=limit, output_budget=budget)
+        return budget
 
     async def generate(self, request: GenerateRequest, *, request_id: str = '-'):
         started = time.monotonic()
@@ -98,21 +145,24 @@ class QwenClient:
         if self.settings.response_format == 'json_object':
             payload['response_format'] = {'type': 'json_object'}
         elif self.settings.response_format == 'json_schema':
-            schema = ModelResponse.model_json_schema()
-            schema['$defs']['ModelDraft']['properties']['categoryId'] = {
-                'type': 'integer', 'enum': [c.id for c in request.categories],
-            }
             payload['response_format'] = {'type': 'json_schema', 'json_schema': {
-                'name': 'advert_drafts', 'strict': True, 'schema': schema,
+                'name': 'advert_drafts', 'strict': True, 'schema': response_schema(category_ids),
             }}
+        event(logger, 'qwen_output_contract', format=self.settings.response_format,
+              drafts=len(category_ids), category_ids=category_ids)
         try:
             stage = 'token_budget'
             # Includes time waiting for the model concurrency slot.
             async with asyncio.timeout(self.settings.timeout_seconds):
+                wait_started = time.monotonic()
+                event(logger, 'qwen_slot_wait', model=self.settings.qwen_model)
                 async with self.semaphore:
+                    event(logger, 'qwen_slot_acquired', wait_ms=int((time.monotonic()-wait_started)*1000))
                     payload['max_tokens'] = await self.output_budget(payload['messages'], len(request.categories))
                     stage = 'completion_http'
+                    event(logger, 'qwen_http_start', model=self.settings.qwen_model, max_tokens=payload['max_tokens'])
                     response = await self.client.post('chat/completions', json=payload)
+                    event(logger, 'qwen_http_response', status=response.status_code, bytes=len(response.content))
                     response.raise_for_status()
                     stage = 'completion_envelope'
                     body = response.json()

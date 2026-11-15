@@ -24,3 +24,6 @@ venv/
 
 # Editor/OS files
 .DS_Store
+
+# Local backend diagnostics
+backend/logs/
