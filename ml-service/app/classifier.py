@@ -1,20 +1,14 @@
-"""Read the existing TF-IDF artifact stored outside app/ (do not retrain)."""
-import os
+"""Legacy endpoint uses the same default C_syntax as backend/."""
+import sys
 from pathlib import Path
-import joblib
-
-ROOT = Path(__file__).resolve().parent.parent
-MODEL_PATH = Path(os.environ.get("AVITO_MODEL_PATH", str(ROOT / "models/baseline/tfidf_baseline.joblib")))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from avito_compare.c_syntax import load_bundle
 TARGETS = {102, 103, 104, 105, 106}
 
 
 def load_model():
-    if not MODEL_PATH.is_file():
-        raise FileNotFoundError(f"Model not found at {MODEL_PATH}; keep models/ outside app/")
-    # joblib/pickle can execute code. Load only the locally trained trusted artifact.
-    model = joblib.load(MODEL_PATH)
-    if set(map(int, model["ids"])) != TARGETS:
-        raise ValueError("Unexpected classifier target IDs")
+    model = load_bundle()
+    model['pipeline'].warmup()
     return model
 
 

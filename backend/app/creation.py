@@ -87,7 +87,7 @@ def parse_creation(body: bytes, content_type: str, generate_text: bool | None = 
 
 
 async def creation_events(app, items, generate_text, request_id):
-    """Bound item workers; run synchronous TF-IDF in actual backend threads.
+    """Bound item workers; run synchronous C_syntax in actual backend threads.
 
     Qwen HTTP calls stay asynchronous and have a shared concurrency limit.
     Normally one model call writes all categories of an item to avoid mixing
@@ -106,8 +106,8 @@ async def creation_events(app, items, generate_text, request_id):
         if categories is None:
             model = app.state.classifier
             if model is None:
-                raise BackendError(503, 'TF-IDF не настроена: укажите проверенный CLASSIFIER_MODEL_PATH или выберите категории вручную.')
-            values = await loop.run_in_executor(app.state.creation_threads, partial(classify, model, item.description, item.mcId))
+                raise BackendError(503, 'Классификатор C_syntax недоступен.')
+            values = await app.state.inference.run(classify, model, item.description, item.mcId)
             categories = [Category.model_validate(value) for value in values]
         await queue.put({'type': 'categories', **identity, 'categories': [c.model_dump() for c in categories]})
         parts = {}

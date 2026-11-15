@@ -3,6 +3,7 @@ import logging
 from contextlib import asynccontextmanager
 import httpx
 from fastapi import FastAPI, Query, Request
+from fastapi.concurrency import run_in_threadpool
 from .classifier import load_model, classify
 from .generator import generate_draft
 from .schemas import GenerateRequest, GenerateResponse, Draft
@@ -24,7 +25,7 @@ def health(request: Request):
 
 @app.post("/generate", response_model=GenerateResponse)
 async def generate(payload: GenerateRequest, request: Request, generate_text: bool = Query(True)):
-    ids = classify(request.app.state.model, payload.description, payload.mcId)
+    ids = await run_in_threadpool(classify, request.app.state.model, payload.description, payload.mcId)
     drafts = []
     for mid in ids:
         title, text = (None, None)

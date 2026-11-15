@@ -47,7 +47,7 @@ def test_missing_model_never_falls_back_to_keywords():
         assert api.get('/ready').json()['categoryGeneration'] is False
         response = api.post('/api/categories', json=PAYLOAD)
         assert response.status_code == 503
-        assert 'TF-IDF' in response.json()['message']
+        assert 'C_syntax' in response.json()['message']
 
 
 @pytest.mark.parametrize('payload', [
@@ -59,10 +59,10 @@ def test_invalid_category_requests(payload):
         assert api.post('/api/categories', json=payload).status_code == 422
 
 
-def test_classifier_uses_first_6000_characters_and_all_five_thresholds():
+def test_classifier_preserves_long_text_and_all_five_thresholds():
     class Spy:
         def predict_proba(self, texts):
-            assert texts == ['x' * 6000]
+            assert texts == ['x' * 7000]
             return [[.5, .49, .5, .99, .1]]
     assert [c['id'] for c in classify({**MODEL, 'pipeline': Spy()}, 'x' * 7000, 105)] == [102, 104]
 
@@ -76,3 +76,19 @@ def test_untrusted_joblib_is_rejected_before_deserializing(tmp_path):
         load.assert_not_called()
     assert load_classifier(str(path.with_name('missing.joblib'))) is None
     assert len(EXPECTED_SHA256) == 64
+
+
+def test_pipeline_loads_and_warms_once_before_requests():
+    class ResidentPipeline(Pipeline):
+        warmed = 0
+        def warmup(self):
+            self.warmed += 1
+    pipeline = ResidentPipeline()
+    model = {**MODEL, 'pipeline': pipeline}
+    with patch('backend.app.main.load_classifier', return_value=model) as load:
+        with TestClient(create_app(Settings(), transport=httpx.MockTransport(lambda _: httpx.Response(503)))) as api:
+            assert pipeline.warmed == 1
+            for _ in range(2):
+                assert api.post('/api/categories', json=PAYLOAD).status_code == 200
+            load.assert_called_once()
+            assert pipeline.warmed == 1

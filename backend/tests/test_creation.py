@@ -141,7 +141,7 @@ def test_classification_runs_in_backend_thread_and_batch_continues_after_failure
         assert result[0]['error']['message'] == 'Не удалось обработать объявление.'
         assert len(result[1]['drafts']) == 1
         assert threads and all(t != main_thread for t in threads)
-        assert all(t.name.startswith('creation') for t in threading.enumerate() if t.ident in threads)
+        assert all(t.name.startswith('classifier') for t in threading.enumerate() if t.ident in threads)
 
 
 def test_generation_concurrency_is_bounded_across_batch():

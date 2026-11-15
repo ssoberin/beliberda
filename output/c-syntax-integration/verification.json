@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "merged_main": "307c000",
+  "branch": "test-branch",
+  "profile": "original C_syntax public3398+V3clean2921",
+  "startup": "FastAPI lifespan loads and warms one pipeline per application process before serving",
+  "inference_worker_threads": 1,
+  "pending_queue_capacity": 16,
+  "overload_http_status": 503,
+  "cancelled_queued_work_skipped": true,
+  "streaming": "Existing /api/create NDJSON preserved",
+  "per_request_shell_or_subprocess": false,
+  "backend_tests": 89,
+  "frontend_tests": 33,
+  "legacy_tests": 6,
+  "real_qwen_embedding_http_test": true,
+  "live_qwen_7b_generator_tested": false,
+  "generator_in_http_test": "HTTP stub",
+  "frozen_probability_regression": {
+    "inputs": 5,
+    "tolerance": 1e-12
+  },
+  "thresholds": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "syntax_experiment_included": false
+}

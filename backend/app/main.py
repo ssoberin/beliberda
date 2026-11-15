@@ -17,6 +17,7 @@ from .classifier import classify, load_classifier
 from .config import Settings
 from .creation import MAX_BODY_BYTES, creation_events, parse_creation
 from .errors import BackendError
+from .inference import InferenceQueue
 from .qwen import QwenClient
 from .schemas import ClassificationRequest, ClassificationResponse, GenerateRequest, GenerateResponse
 from .ssh_tunnel import SSHTunnel
@@ -40,7 +41,13 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
     @asynccontextmanager
     async def lifespan(app):
         async with AsyncExitStack() as stack:
-            app.state.classifier = await run_in_threadpool(load_classifier, settings.classifier_model_path)
+            executor = stack.enter_context(ThreadPoolExecutor(max_workers=1, thread_name_prefix='classifier'))
+            loop = asyncio.get_running_loop()
+            app.state.classifier = await loop.run_in_executor(executor, load_classifier, settings.classifier_model_path)
+            pipeline = app.state.classifier.get('pipeline') if isinstance(app.state.classifier, dict) else None
+            if pipeline is not None and callable(getattr(pipeline, 'warmup', None)):
+                await loop.run_in_executor(executor, pipeline.warmup)
+            app.state.inference = await stack.enter_async_context(InferenceQueue(executor))
             tunnel = await stack.enter_async_context(SSHTunnel(settings)) if settings.ssh_target else None
             headers = {'Authorization': f'Bearer {settings.qwen_api_key}'} if settings.qwen_api_key else {}
             client = await stack.enter_async_context(httpx.AsyncClient(
@@ -52,9 +59,7 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
             app.state.tunnel = tunnel
             app.state.creation_workers = settings.max_concurrent_requests
             app.state.creation_slots = asyncio.Semaphore(settings.max_concurrent_requests)
-            with ThreadPoolExecutor(max_workers=settings.max_concurrent_requests, thread_name_prefix='creation') as threads:
-                app.state.creation_threads = threads
-                yield
+            yield
 
     app = FastAPI(title='Avito Qwen Draft Backend', version='0.1.0', lifespan=lifespan)
     app.add_middleware(CORSMiddleware, allow_origins=list(settings.cors_origins),
@@ -153,8 +158,8 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
     async def categories(payload: ClassificationRequest, request: Request):
         model = request.app.state.classifier
         if model is None:
-            raise BackendError(503, 'TF-IDF не настроена: укажите проверенный CLASSIFIER_MODEL_PATH.')
-        return {'categories': await run_in_threadpool(classify, model, payload.description, payload.mcId)}
+            raise BackendError(503, 'Классификатор C_syntax недоступен.')
+        return {'categories': await request.app.state.inference.run(classify, model, payload.description, payload.mcId)}
 
     @app.post('/api/generate', response_model=GenerateResponse)
     async def generate(payload: GenerateRequest, request: Request):

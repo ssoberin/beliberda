@@ -1,4 +1,6 @@
-# Install in the persistent /srv/Hakaton/.venv (outside app/).
+# Same C_syntax inference dependencies as the main backend.
+-r ../../backend/requirements.txt
+# Install in the persistent project environment.
 # Model artifact was retrained with scikit-learn 1.9.1 on the user's server.
 scikit-learn==1.9.1
 numpy>=1.26,<3

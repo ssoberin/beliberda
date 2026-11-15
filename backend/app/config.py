@@ -2,6 +2,7 @@
 from dataclasses import dataclass, field
 import os
 import re
+from pathlib import Path
 from urllib.parse import urlsplit
 
 
@@ -46,6 +47,8 @@ class Settings:
 
     @classmethod
     def from_env(cls):
+        from dotenv import load_dotenv
+        load_dotenv(Path(__file__).resolve().parents[1] / '.env', override=False)
         target = os.getenv('SSH_TARGET', '').strip()
         local_port = int(os.getenv('SSH_LOCAL_PORT', '18000'))
         base = f'http://127.0.0.1:{local_port if target else 8000}/v1'

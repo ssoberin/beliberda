@@ -1,7 +1,7 @@
-"""Optional full HTTP contract test: Node proxy -> FastAPI -> frozen TF-IDF / fake Qwen.
+"""Full HTTP contract: Node proxy -> real C_syntax -> fake Qwen generator.
 
-Run with PIPELINE_MODEL_PATH pointing to the trusted baseline and NODE_BIN set to
-Node 22+. This test never calls an external model or publishes an advert.
+Uses the bundled default classifier and cached/pinned Qwen embedding weights.
+The generator is an HTTP stub; no advert is published.
 """
 import json
 import os
@@ -58,7 +58,7 @@ class FakeQwen(BaseHTTPRequestHandler):
 
 
 def wait_for(url, process):
-    for _ in range(100):
+    for _ in range(1200):
         if process.poll() is not None:
             raise AssertionError(f'Server exited with code {process.returncode}: {url}')
         try:
@@ -71,10 +71,10 @@ def wait_for(url, process):
 
 
 def test_form_http_through_classifier_and_generator(tmp_path):
-    model_path = os.getenv('PIPELINE_MODEL_PATH')
+    model_path = os.getenv('PIPELINE_MODEL_PATH', '')
     node = os.getenv('NODE_BIN') or shutil.which('node')
-    if not model_path or not node:
-        pytest.skip('Set PIPELINE_MODEL_PATH and NODE_BIN for the full HTTP test')
+    if not node:
+        pytest.skip('Node22+ is needed for the full HTTP test')
     load_classifier(model_path)  # Reject an unknown pickle before starting services.
     qwen = ThreadingHTTPServer(('127.0.0.1', 0), FakeQwen)
     worker = threading.Thread(target=qwen.serve_forever, daemon=True)
@@ -103,7 +103,7 @@ def test_form_http_through_classifier_and_generator(tmp_path):
                 env={**os.environ, 'API_TARGET': backend_url, 'PORT': str(frontend_port), 'HOST': '127.0.0.1'},
                 stdout=frontend_log, stderr=subprocess.STDOUT))
             wait_for(frontend_url + '/', processes[-1])
-            with httpx.Client(base_url=frontend_url, timeout=10) as browser:
+            with httpx.Client(base_url=frontend_url, timeout=90) as browser:
                 status = browser.get('/api/status')
                 assert status.status_code == 200, status.text
                 assert status.json()['categoryGeneration'] is True
@@ -118,6 +118,11 @@ def test_form_http_through_classifier_and_generator(tmp_path):
                 assert draft.status_code == 200, draft.text
                 assert draft.json() == {'drafts': [{'categoryId': 103, 'title': 'Укладка плитки',
                                                    'description': 'Укладываем плитку.'}], 'warnings': []}
+                auto = browser.post('/api/create?generateText=false', json=payload)
+                assert auto.status_code == 200, auto.text
+                values = auto.json()['drafts']
+                assert 103 in [d['mcId'] for d in values]
+                assert all(d['mcId'] != 101 and d['title'] is None and d['text'] is None for d in values)
         finally:
             backend_log.close()
             frontend_log.close()

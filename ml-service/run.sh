@@ -2,19 +2,18 @@
 set -euo pipefail
 
 SERVICE_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-WORKSPACE_DIR="$(dirname -- "$(dirname -- "$SERVICE_DIR")")"
-PYTHON="${AVITO_PYTHON:-$WORKSPACE_DIR/.venv/bin/python}"
-export AVITO_MODEL_PATH="${AVITO_MODEL_PATH:-$WORKSPACE_DIR/models/baseline/tfidf_baseline.joblib}"
+REPO_DIR="$(dirname -- "$SERVICE_DIR")"
+PYTHON="${AVITO_PYTHON:-python3}"
 
-if [[ ! -x "$PYTHON" ]]; then
+if ! command -v "$PYTHON" >/dev/null; then
   echo "Python environment not found: $PYTHON" >&2
   exit 1
 fi
-if [[ ! -f "$AVITO_MODEL_PATH" ]]; then
-  echo "Model not found: $AVITO_MODEL_PATH" >&2
+if [[ ! -f "$REPO_DIR/models/c_syntax/manifest.json" ]]; then
+  echo "C_syntax bundle not found: $REPO_DIR/models/c_syntax" >&2
   exit 1
 fi
 
-cd -- "$SERVICE_DIR"
+cd -- "$REPO_DIR"
 exec "$PYTHON" -m uvicorn app.main:app \
-  --host "${AVITO_HOST:-127.0.0.1}" --port "${AVITO_PORT:-8001}"
+  --app-dir "$SERVICE_DIR" --host "${AVITO_HOST:-127.0.0.1}" --port "${AVITO_PORT:-8001}"
