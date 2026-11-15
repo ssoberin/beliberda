@@ -1,0 +1,19 @@
+[Unit]
+Description=Avito pipeline: local network frontend
+After=network.target avito-pipeline-backend.service
+Wants=avito-pipeline-backend.service
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/Hakaton/innopolis_2026-integration/frontend
+Environment=API_TARGET=http://127.0.0.1:18001
+Environment=HOST=192.168.1.181
+Environment=PORT=15173
+# Node 25 from the server's existing local installation; Node 22+ is required.
+ExecStart=/home/maaric/.lmstudio/.internal/utils/node scripts/server.mjs
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
