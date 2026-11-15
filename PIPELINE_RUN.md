@@ -32,10 +32,10 @@ Frontend запускается отдельно (Node22+):
 
 ```bash
 cd frontend
-API_TARGET=http://127.0.0.1:18001 PORT=15173 node scripts/server.mjs
+node scripts/server.mjs
 ```
 
-Откройте http://127.0.0.1:15173. Для текстов нужен OpenAI-совместимый Qwen7B API
+Откройте http://127.0.0.1:5173. Для текстов нужен OpenAI-совместимый Qwen7B API
 (по умолчанию127.0.0.1:8000/v1, avito-qwen). Это отдельный уже существующий
 генератор; загрузкаembedding-классификатора не поднимает7Bсервер.
 НастройкиAPI/SSH — backend/.env.example; при обычномuvicorn backend/.env читается автоматически,

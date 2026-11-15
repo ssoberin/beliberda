@@ -14,7 +14,7 @@ function json(response, status, body) {
   response.end(JSON.stringify(body));
 }
 
-export function createFrontendServer({ preview = false, apiTarget = 'http://127.0.0.1:8001', mockApi = false, mockDelay = 500 } = {}) {
+export function createFrontendServer({ preview = false, apiTarget = 'http://127.0.0.1:18001', mockApi = false, mockDelay = 500 } = {}) {
   const root = resolve(projectRoot, preview ? 'dist' : '.');
   return createServer(async (request, response) => {
     try {
@@ -32,7 +32,7 @@ export function createFrontendServer({ preview = false, apiTarget = 'http://127.
           });
         } catch {
           return json(response, 503, { mode: 'backend', ready: false, categoryGeneration: false,
-            message: 'Не удалось подключиться к backend. Проверьте, что он запущен на порту 8001.' });
+            message: 'Не удалось подключиться к backend. Проверьте, что он запущен на порту 18001.' });
         }
       }
       if (apiPaths.has(url.pathname)) {
@@ -134,7 +134,7 @@ export function createFrontendServer({ preview = false, apiTarget = 'http://127.
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
-  const apiTarget = process.env.API_TARGET || 'http://127.0.0.1:8001';
+  const apiTarget = process.env.API_TARGET || 'http://127.0.0.1:18001';
   const mockApi = process.env.MOCK_API === '1';
   if (apiTarget && !/^https?:\/\//.test(apiTarget)) throw new Error('API_TARGET должен быть URL с http:// или https://');
   const server = createFrontendServer({ preview: process.argv.includes('--preview'), apiTarget, mockApi });

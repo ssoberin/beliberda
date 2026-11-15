@@ -14,7 +14,7 @@ HTML, CSS и JavaScript ES modules, Node.js 22+. Установка npm-паке
 
 ```bash
 backend/.venv/bin/python -B -m uvicorn backend.app.main:app \
-  --host 127.0.0.1 --port 8001 --env-file backend/.env
+  --host 127.0.0.1 --port 18001 --env-file backend/.env
 ```
 
 Затем:

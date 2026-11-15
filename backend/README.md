@@ -54,10 +54,10 @@ http://127.0.0.1:18000/v1. Если переопределяете QWEN_BASE_URL
 
 ```bash
 backend/.venv/bin/python -m uvicorn backend.app.main:app \
-  --host 127.0.0.1 --port 8001 --env-file backend/.env
+  --host 127.0.0.1 --port 18001 --env-file backend/.env
 ```
 
-Документация API: http://127.0.0.1:8001/docs.
+Документация API: http://127.0.0.1:18001/docs.
 При автоматическом туннеле используйте один worker: каждый процесс приложения
 пытается занять SSH_LOCAL_PORT. Приложение открывает туннель при старте и закрывает
 его при остановке. При недоступной сети приложение запускается с /health=200,
@@ -227,7 +227,7 @@ cd frontend
 npm run dev
 ```
 
-Frontend по умолчанию проксирует генерацию на http://127.0.0.1:8001.
+Frontend по умолчанию проксирует генерацию на http://127.0.0.1:18001.
 Для другого адреса задайте API_TARGET при запуске frontend.
 Выберите исходную категорию, подберите дополнительные категории с помощью C_syntax
 или выберите их вручную и нажмите «Сгенерировать черновики».
@@ -261,11 +261,11 @@ JSON-объект, JSON-массив, `{"items": [...], "generateText": true}` �
 запятую / точку с запятой, кавычки и многострочные поля.
 
 ```bash
-curl -N http://127.0.0.1:8001/api/create \
+curl -N http://127.0.0.1:18001/api/create \
   -H 'Content-Type: application/json' -H 'Accept: application/x-ndjson' \
   -d '{"description":"Делаем ремонт квартир и меняем смесители.","mcId":101}'
 
-curl -N 'http://127.0.0.1:8001/api/create?generateText=false' \
+curl -N 'http://127.0.0.1:18001/api/create?generateText=false' \
   -H 'Content-Type: text/csv' -H 'Accept: application/x-ndjson' \
   --data-binary @example-input.csv
 ```
