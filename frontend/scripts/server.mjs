@@ -26,11 +26,11 @@ export function createFrontendServer({ preview = false, apiTarget = 'http://127.
           const ready = upstream.ok && body.status === 'ready';
           return json(response, ready ? 200 : 503, {
             mode: 'backend', ready,
-            categoryGeneration: true, model: body.model,
+            categoryGeneration: body.categoryGeneration === true, model: body.model,
             ...(ready ? {} : { message: body.message ?? 'Qwen пока недоступен. Проверьте backend и SSH-туннель.', component: body.component, detail: body.detail }),
           });
         } catch {
-          return json(response, 503, { mode: 'backend', ready: false, categoryGeneration: true,
+          return json(response, 503, { mode: 'backend', ready: false, categoryGeneration: false,
             message: 'Не удалось подключиться к backend. Проверьте, что он запущен на порту 8001.' });
         }
       }
@@ -50,9 +50,8 @@ export function createFrontendServer({ preview = false, apiTarget = 'http://127.
         try { payload = JSON.parse(Buffer.concat(chunks).toString('utf8')); }
         catch { return json(response, 400, { message: 'Ожидается JSON.' }); }
 
-        // Category selection is a local stub until the classifier is connected.
-        // Draft generation still goes to the real backend unless demo is explicit.
-        if (mockApi || url.pathname === '/api/categories') {
+        // Local stubs are available only in explicitly enabled demo mode.
+        if (mockApi) {
           await new Promise(done => setTimeout(done, mockDelay));
           const result = mockResponse(url.pathname, payload);
           return json(response, result.status, result.body);

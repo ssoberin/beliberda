@@ -121,14 +121,19 @@ test('состояние недоступного backend читается кл�
   assert.deepEqual(await getConnectionStatus(), body);
 });
 
-test('генерация и readiness проксируются, категории возвращает локальная заглушка', async t => {
+test('генерация и классификация проксируются в backend без заглушки', async t => {
   const calls = [];
   const result = { drafts: [{ categoryId: 104, title: 'Сантехника', description: 'Меняю трубы' }], warnings: [] };
   const upstream = await start(t, createServer(async (request, response) => {
     calls.push(request.url);
     response.setHeader('Content-Type', 'application/json');
-    if (request.url === '/ready') return response.end(JSON.stringify({ status: 'ready', model: 'avito-qwen' }));
-    for await (const _ of request) { /* Consume the request body. */ }
+    if (request.url === '/ready') return response.end(JSON.stringify({ status: 'ready', model: 'avito-qwen', categoryGeneration: true }));
+    const chunks = [];
+    for await (const chunk of request) chunks.push(chunk);
+    if (request.url === '/api/categories') {
+      assert.equal(JSON.parse(Buffer.concat(chunks)).mcId, 101);
+      return response.end(JSON.stringify({ categories: [{ id: 104, name: 'Сантехника' }] }));
+    }
     response.end(JSON.stringify(result));
   }));
   const base = await start(t, createFrontendServer({ apiTarget: upstream, mockDelay: 0 }));
@@ -139,10 +144,28 @@ test('генерация и readiness проксируются, категори
   assert.equal(status.categoryGeneration, true);
   const generation = await fetch(base + '/api/generate', { method: 'POST', body: JSON.stringify({ description: 'Меняю трубы', categories: [{ id: 104, name: 'Сантехника' }] }) });
   assert.deepEqual(await generation.json(), result);
-  const categories = await fetch(base + '/api/categories', { method: 'POST', body: JSON.stringify({ description: 'Меняю трубы' }) });
+  const categories = await fetch(base + '/api/categories', { method: 'POST', body: JSON.stringify({ description: 'Меняю трубы', mcId: 101 }) });
   assert.equal(categories.status, 200);
   assert.deepEqual((await categories.json()).categories, [{ id: 104, name: 'Сантехника' }]);
-  assert.deepEqual(calls, ['/ready', '/api/generate']);
+  assert.deepEqual(calls, ['/ready', '/api/generate', '/api/categories']);
+});
+
+test('недоступная TF-IDF не подменяется успешной локальной заглушкой', async t => {
+  const upstream = await start(t, createServer((request, response) => {
+    response.setHeader('Content-Type', 'application/json');
+    if (request.url === '/ready') {
+      response.writeHead(503);
+      return response.end(JSON.stringify({ status: 'not_ready', component: 'qwen', categoryGeneration: false, message: 'Qwen недоступен' }));
+    }
+    response.writeHead(503);
+    response.end(JSON.stringify({ message: 'TF-IDF не настроена' }));
+  }));
+  const base = await start(t, createFrontendServer({ apiTarget: upstream }));
+  const status = await (await fetch(base + '/api/status')).json();
+  assert.equal(status.categoryGeneration, false);
+  const categories = await fetch(base + '/api/categories', { method: 'POST', body: JSON.stringify({ description: 'трубы' }) });
+  assert.equal(categories.status, 503);
+  assert.deepEqual(await categories.json(), { message: 'TF-IDF не настроена' });
 });
 
 test('ошибка backend не подменяется успешной генерацией заглушки', async t => {

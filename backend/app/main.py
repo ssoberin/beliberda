@@ -4,12 +4,14 @@ from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.concurrency import run_in_threadpool
 import httpx
 
+from .classifier import classify, load_classifier
 from .config import Settings
 from .errors import BackendError
 from .qwen import QwenClient
-from .schemas import GenerateRequest, GenerateResponse
+from .schemas import ClassificationRequest, ClassificationResponse, GenerateRequest, GenerateResponse
 from .ssh_tunnel import SSHTunnel
 
 
@@ -19,6 +21,7 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
     @asynccontextmanager
     async def lifespan(app):
         async with AsyncExitStack() as stack:
+            app.state.classifier = await run_in_threadpool(load_classifier, settings.classifier_model_path)
             tunnel = await stack.enter_async_context(SSHTunnel(settings)) if settings.ssh_target else None
             headers = {'Authorization': f'Bearer {settings.qwen_api_key}'} if settings.qwen_api_key else {}
             client = await stack.enter_async_context(httpx.AsyncClient(
@@ -51,16 +54,25 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
 
     @app.get('/ready')
     async def ready(request: Request):
+        category_generation = request.app.state.classifier is not None
         tunnel = request.app.state.tunnel
         if tunnel is not None and not tunnel.alive:
             return JSONResponse(status_code=503, content={
                 'status': 'not_ready', 'component': 'ssh',
+                'categoryGeneration': category_generation,
                 'message': 'SSH-туннель отключён. Backend автоматически восстанавливает соединение.',
                 'detail': tunnel.last_error,
             })
         if not await request.app.state.qwen.ready():
-            return JSONResponse(status_code=503, content={'status': 'not_ready', 'component': 'qwen', 'message': 'Соединение с API Qwen недоступно либо нужная модель не загружена.'})
-        return {'status': 'ready', 'model': settings.qwen_model}
+            return JSONResponse(status_code=503, content={'status': 'not_ready', 'component': 'qwen', 'categoryGeneration': category_generation, 'message': 'Соединение с API Qwen недоступно либо нужная модель не загружена.'})
+        return {'status': 'ready', 'model': settings.qwen_model, 'categoryGeneration': category_generation}
+
+    @app.post('/api/categories', response_model=ClassificationResponse)
+    async def categories(payload: ClassificationRequest, request: Request):
+        model = request.app.state.classifier
+        if model is None:
+            raise BackendError(503, 'TF-IDF не настроена: укажите проверенный CLASSIFIER_MODEL_PATH.')
+        return {'categories': await run_in_threadpool(classify, model, payload.description, payload.mcId)}
 
     @app.post('/api/generate', response_model=GenerateResponse)
     async def generate(payload: GenerateRequest, request: Request):

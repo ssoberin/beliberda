@@ -5,6 +5,7 @@ const $ = id => document.getElementById(id);
 const form = $('listing-form');
 const title = $('title');
 const description = $('description');
+const sourceCategory = $('source-category');
 const categoryList = $('category-list');
 const results = $('results');
 let categories = [...CATEGORIES];
@@ -61,9 +62,9 @@ async function checkConnection() {
     retry = !connection.ready;
     categoryGenerationAvailable = connection.categoryGeneration === true;
     buttons.categories.disabled = !categoryGenerationAvailable || Boolean(requests.categories);
-    buttons.categories.title = categoryGenerationAvailable ? 'Тестовый подбор категорий по описанию' : 'Автоподбор категорий пока недоступен';
+    buttons.categories.title = categoryGenerationAvailable ? 'Подбор категорий по описанию с помощью TF-IDF' : 'Автоподбор категорий пока недоступен';
     $('category-hint').textContent = categoryGenerationAvailable
-      ? 'Подбор категорий пока тестовый. Выбор можно изменить вручную.'
+      ? connection.mode === 'demo' ? 'Демонстрационный подбор категорий по ключевым словам.' : 'TF-IDF может ошибаться. Проверьте выбор вручную.'
       : 'Выберите категории вручную. Автоподбор пока недоступен.';
     status.dataset.kind = connection.mode === 'demo' ? 'warning' : connection.ready ? 'ready' : 'error';
     status.textContent = connection.mode === 'demo'
@@ -106,7 +107,7 @@ function renderCategories() {
 }
 
 function sourcePayload() {
-  return { title: title.value.trim(), description: description.value.trim() };
+  return { title: title.value.trim(), description: description.value.trim(), mcId: Number(sourceCategory.value) };
 }
 
 function validateDescription() {
@@ -123,6 +124,13 @@ for (const input of [title, description]) {
     $('description-count').textContent = `${description.value.length.toLocaleString('ru-RU')} / 12 000`;
   });
 }
+
+sourceCategory.addEventListener('change', () => {
+  cancel('categories');
+  invalidateDrafts();
+  selected.clear();
+  renderCategories();
+});
 
 $('clear-title').addEventListener('click', () => {
   title.value = '';
@@ -157,7 +165,7 @@ buttons.categories.addEventListener('click', async () => {
     invalidateDrafts();
     renderCategories();
     message('categories', response.length
-      ? 'Категории выбраны тестовым подбором. При необходимости измените выбор.'
+      ? 'Категории подобраны автоматически. Проверьте и при необходимости измените выбор.'
       : 'Подходящих категорий не найдено. Уточните описание или выберите категории вручную.');
   } catch (error) {
     if (!controller.signal.aborted) message('categories', error.message, true);

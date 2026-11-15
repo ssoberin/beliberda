@@ -7,6 +7,7 @@ from urllib.parse import urlsplit
 
 @dataclass(frozen=True)
 class Settings:
+    classifier_model_path: str = ''
     qwen_base_url: str = 'http://127.0.0.1:8000/v1'
     qwen_model: str = 'avito-qwen'
     qwen_api_key: str = field(default='', repr=False)
@@ -49,6 +50,7 @@ class Settings:
         local_port = int(os.getenv('SSH_LOCAL_PORT', '18000'))
         base = f'http://127.0.0.1:{local_port if target else 8000}/v1'
         return cls(
+            classifier_model_path=os.getenv('CLASSIFIER_MODEL_PATH', ''),
             qwen_base_url=os.getenv('QWEN_BASE_URL', base).rstrip('/'),
             qwen_model=os.getenv('QWEN_MODEL', 'avito-qwen'),
             qwen_api_key=os.getenv('QWEN_API_KEY', ''),
