@@ -1,0 +1,1106 @@
+{
+  "provenance": {
+    "paths": {
+      "public_train": "output/ngram-comparison/splits/train.jsonl",
+      "v3_train": "datasets/own_v3_clean/train.jsonl",
+      "addition60": "datasets/v3_tail_services_60/train_addition.jsonl",
+      "public_calibration": "output/ngram-comparison/splits/calibration.jsonl",
+      "v3_validation": "datasets/own_v3_clean/validation.jsonl",
+      "public_validation": "output/ngram-comparison/splits/validation.jsonl",
+      "v3_test": "datasets/own_v3_clean/test.jsonl",
+      "official208": "datasets/public/public-test-dataset.parquet",
+      "addition_holdout20": "datasets/v3_tail_services_60/test_holdout.jsonl",
+      "public_raw10000": "datasets/public/public-train-annotated.jsonl"
+    },
+    "counts": {
+      "public_train": 3398,
+      "v3_train": 2921,
+      "addition60": 60,
+      "public_calibration": 728,
+      "v3_validation": 600,
+      "public_validation": 729,
+      "v3_test": 600,
+      "addition_holdout20": 20,
+      "public_raw10000": 10000
+    },
+    "train_B": 6379,
+    "train_baseline_without_addition": 6319,
+    "calibration": 1328,
+    "controls": {
+      "public validation": 729,
+      "V3 test": 600,
+      "new holdout20": 20,
+      "official208": 208
+    },
+    "official208_read_via": "DuckDB"
+  },
+  "domains": {
+    "public3398": {
+      "rows": 3398,
+      "empty_gold": 946,
+      "empty_gold_rate": 0.2784,
+      "label_cardinality": {
+        "0": 946,
+        "1": 344,
+        "2": 494,
+        "3": 340,
+        "4": 275,
+        "5": 999
+      },
+      "label_frequency": {
+        "102": 1750,
+        "103": 1620,
+        "104": 1615,
+        "105": 1608,
+        "106": 1854
+      },
+      "combination_frequency": {
+        "[]": 946,
+        "102": 20,
+        "102 + 103": 11,
+        "102 + 103 + 104": 17,
+        "102 + 103 + 104 + 105": 109,
+        "102 + 103 + 104 + 105 + 106": 999,
+        "102 + 103 + 104 + 106": 29,
+        "102 + 103 + 105": 7,
+        "102 + 103 + 105 + 106": 31,
+        "102 + 103 + 106": 108,
+        "102 + 104 + 105": 33,
+        "102 + 104 + 105 + 106": 59,
+        "102 + 104 + 106": 5,
+        "102 + 105": 2,
+        "102 + 105 + 106": 14,
+        "102 + 106": 306,
+        "103": 63,
+        "103 + 104": 42,
+        "103 + 104 + 105": 127,
+        "103 + 104 + 105 + 106": 47,
+        "103 + 104 + 106": 3,
+        "103 + 105": 4,
+        "103 + 105 + 106": 11,
+        "103 + 106": 12,
+        "104": 23,
+        "104 + 105": 104,
+        "104 + 105 + 106": 15,
+        "104 + 106": 3,
+        "105": 36,
+        "105 + 106": 10,
+        "106": 202
+      },
+      "source_mcId_frequency": {
+        "101": 3398
+      },
+      "source_conditional_target_distribution": {
+        "101": {
+          "rows": 3398,
+          "label_cardinality": {
+            "0": 946,
+            "1": 344,
+            "2": 494,
+            "3": 340,
+            "4": 275,
+            "5": 999
+          },
+          "label_frequency": {
+            "102": 1750,
+            "103": 1620,
+            "104": 1615,
+            "105": 1608,
+            "106": 1854
+          },
+          "combination_frequency": {
+            "[]": 946,
+            "102": 20,
+            "102 + 103": 11,
+            "102 + 103 + 104": 17,
+            "102 + 103 + 104 + 105": 109,
+            "102 + 103 + 104 + 105 + 106": 999,
+            "102 + 103 + 104 + 106": 29,
+            "102 + 103 + 105": 7,
+            "102 + 103 + 105 + 106": 31,
+            "102 + 103 + 106": 108,
+            "102 + 104 + 105": 33,
+            "102 + 104 + 105 + 106": 59,
+            "102 + 104 + 106": 5,
+            "102 + 105": 2,
+            "102 + 105 + 106": 14,
+            "102 + 106": 306,
+            "103": 63,
+            "103 + 104": 42,
+            "103 + 104 + 105": 127,
+            "103 + 104 + 105 + 106": 47,
+            "103 + 104 + 106": 3,
+            "103 + 105": 4,
+            "103 + 105 + 106": 11,
+            "103 + 106": 12,
+            "104": 23,
+            "104 + 105": 104,
+            "104 + 105 + 106": 15,
+            "104 + 106": 3,
+            "105": 36,
+            "105 + 106": 10,
+            "106": 202
+          }
+        }
+      },
+      "offered_audit": {
+        "rows_with_offered_field": 0,
+        "offered_includes_source_rows": 0,
+        "offered_additional_cardinality": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        },
+        "offered_equals_found_rows": 0
+      },
+      "length_chars": {
+        "n": 3398,
+        "mean": 1711.21,
+        "median": 1465.0,
+        "p90": 3434.9,
+        "p95": 4953.0,
+        "max": 5536
+      },
+      "length_words": {
+        "n": 3398,
+        "mean": 222.3,
+        "median": 189.0,
+        "p90": 446.3,
+        "p95": 620.0,
+        "max": 781
+      },
+      "fixed_chunks": {
+        "n": 3398,
+        "mean": 23.52,
+        "median": 23.0,
+        "p90": 45.0,
+        "p95": 65.0,
+        "max": 121
+      },
+      "unique_normalized_texts": 3391
+    },
+    "V3clean2921": {
+      "rows": 2921,
+      "empty_gold": 490,
+      "empty_gold_rate": 0.1678,
+      "label_cardinality": {
+        "0": 490,
+        "1": 930,
+        "2": 890,
+        "3": 475,
+        "4": 126,
+        "5": 10
+      },
+      "label_frequency": {
+        "102": 938,
+        "103": 941,
+        "104": 933,
+        "105": 943,
+        "106": 934
+      },
+      "combination_frequency": {
+        "[]": 490,
+        "102": 189,
+        "102 + 103": 83,
+        "102 + 103 + 104": 40,
+        "102 + 103 + 104 + 105": 31,
+        "102 + 103 + 104 + 105 + 106": 10,
+        "102 + 103 + 104 + 106": 21,
+        "102 + 103 + 105": 48,
+        "102 + 103 + 105 + 106": 30,
+        "102 + 103 + 106": 45,
+        "102 + 104": 89,
+        "102 + 104 + 105": 51,
+        "102 + 104 + 105 + 106": 20,
+        "102 + 104 + 106": 47,
+        "102 + 105": 88,
+        "102 + 105 + 106": 47,
+        "102 + 106": 99,
+        "103": 188,
+        "103 + 104": 90,
+        "103 + 104 + 105": 48,
+        "103 + 104 + 105 + 106": 24,
+        "103 + 104 + 106": 40,
+        "103 + 105": 92,
+        "103 + 105 + 106": 57,
+        "103 + 106": 94,
+        "104": 185,
+        "104 + 105": 81,
+        "104 + 105 + 106": 52,
+        "104 + 106": 104,
+        "105": 194,
+        "105 + 106": 70,
+        "106": 174
+      },
+      "source_mcId_frequency": {
+        "101": 486,
+        "102": 484,
+        "105": 485,
+        "103": 484,
+        "104": 491,
+        "106": 491
+      },
+      "source_conditional_target_distribution": {
+        "101": {
+          "rows": 486,
+          "label_cardinality": {
+            "0": 60,
+            "1": 130,
+            "2": 140,
+            "3": 110,
+            "4": 36,
+            "5": 10
+          },
+          "label_frequency": {
+            "102": 199,
+            "103": 188,
+            "104": 188,
+            "105": 183,
+            "106": 176
+          },
+          "combination_frequency": {
+            "[]": 60,
+            "102": 25,
+            "102 + 103": 24,
+            "102 + 103 + 104": 13,
+            "102 + 103 + 104 + 105": 10,
+            "102 + 103 + 104 + 105 + 106": 10,
+            "102 + 103 + 104 + 106": 6,
+            "102 + 103 + 105": 14,
+            "102 + 103 + 105 + 106": 9,
+            "102 + 103 + 106": 9,
+            "102 + 104": 14,
+            "102 + 104 + 105": 14,
+            "102 + 104 + 105 + 106": 5,
+            "102 + 104 + 106": 11,
+            "102 + 105": 14,
+            "102 + 105 + 106": 12,
+            "102 + 106": 9,
+            "103": 22,
+            "103 + 104": 13,
+            "103 + 104 + 105": 10,
+            "103 + 104 + 105 + 106": 6,
+            "103 + 104 + 106": 8,
+            "103 + 105": 10,
+            "103 + 105 + 106": 10,
+            "103 + 106": 14,
+            "104": 28,
+            "104 + 105": 16,
+            "104 + 105 + 106": 9,
+            "104 + 106": 15,
+            "105": 23,
+            "105 + 106": 11,
+            "106": 32
+          }
+        },
+        "102": {
+          "rows": 484,
+          "label_cardinality": {
+            "0": 88,
+            "1": 161,
+            "2": 138,
+            "3": 79,
+            "4": 18,
+            "5": 0
+          },
+          "label_frequency": {
+            "102": 0,
+            "103": 197,
+            "104": 184,
+            "105": 189,
+            "106": 176
+          },
+          "combination_frequency": {
+            "[]": 88,
+            "103": 46,
+            "103 + 104": 24,
+            "103 + 104 + 105": 16,
+            "103 + 104 + 105 + 106": 18,
+            "103 + 104 + 106": 18,
+            "103 + 105": 30,
+            "103 + 105 + 106": 22,
+            "103 + 106": 23,
+            "104": 42,
+            "104 + 105": 19,
+            "104 + 105 + 106": 23,
+            "104 + 106": 24,
+            "105": 43,
+            "105 + 106": 18,
+            "106": 30
+          }
+        },
+        "103": {
+          "rows": 484,
+          "label_cardinality": {
+            "0": 84,
+            "1": 159,
+            "2": 157,
+            "3": 69,
+            "4": 15,
+            "5": 0
+          },
+          "label_frequency": {
+            "102": 182,
+            "103": 0,
+            "104": 187,
+            "105": 183,
+            "106": 188
+          },
+          "combination_frequency": {
+            "[]": 84,
+            "102": 39,
+            "102 + 104": 21,
+            "102 + 104 + 105": 16,
+            "102 + 104 + 105 + 106": 15,
+            "102 + 104 + 106": 15,
+            "102 + 105": 22,
+            "102 + 105 + 106": 18,
+            "102 + 106": 36,
+            "104": 41,
+            "104 + 105": 24,
+            "104 + 105 + 106": 20,
+            "104 + 106": 35,
+            "105": 49,
+            "105 + 106": 19,
+            "106": 30
+          }
+        },
+        "104": {
+          "rows": 491,
+          "label_cardinality": {
+            "0": 86,
+            "1": 160,
+            "2": 145,
+            "3": 79,
+            "4": 21,
+            "5": 0
+          },
+          "label_frequency": {
+            "102": 192,
+            "103": 188,
+            "104": 0,
+            "105": 192,
+            "106": 199
+          },
+          "combination_frequency": {
+            "[]": 86,
+            "102": 39,
+            "102 + 103": 19,
+            "102 + 103 + 105": 22,
+            "102 + 103 + 105 + 106": 21,
+            "102 + 103 + 106": 15,
+            "102 + 105": 28,
+            "102 + 105 + 106": 17,
+            "102 + 106": 31,
+            "103": 41,
+            "103 + 105": 22,
+            "103 + 105 + 106": 25,
+            "103 + 106": 23,
+            "105": 35,
+            "105 + 106": 22,
+            "106": 45
+          }
+        },
+        "105": {
+          "rows": 485,
+          "label_cardinality": {
+            "0": 89,
+            "1": 156,
+            "2": 159,
+            "3": 66,
+            "4": 15,
+            "5": 0
+          },
+          "label_frequency": {
+            "102": 176,
+            "103": 183,
+            "104": 178,
+            "105": 0,
+            "106": 195
+          },
+          "combination_frequency": {
+            "[]": 89,
+            "102": 44,
+            "102 + 103": 20,
+            "102 + 103 + 104": 10,
+            "102 + 103 + 104 + 106": 15,
+            "102 + 103 + 106": 21,
+            "102 + 104": 22,
+            "102 + 104 + 106": 21,
+            "102 + 106": 23,
+            "103": 39,
+            "103 + 104": 30,
+            "103 + 104 + 106": 14,
+            "103 + 106": 34,
+            "104": 36,
+            "104 + 106": 30,
+            "106": 37
+          }
+        },
+        "106": {
+          "rows": 491,
+          "label_cardinality": {
+            "0": 83,
+            "1": 164,
+            "2": 151,
+            "3": 72,
+            "4": 21,
+            "5": 0
+          },
+          "label_frequency": {
+            "102": 189,
+            "103": 185,
+            "104": 196,
+            "105": 196,
+            "106": 0
+          },
+          "combination_frequency": {
+            "[]": 83,
+            "102": 42,
+            "102 + 103": 20,
+            "102 + 103 + 104": 17,
+            "102 + 103 + 104 + 105": 21,
+            "102 + 103 + 105": 12,
+            "102 + 104": 32,
+            "102 + 104 + 105": 21,
+            "102 + 105": 24,
+            "103": 40,
+            "103 + 104": 23,
+            "103 + 104 + 105": 22,
+            "103 + 105": 30,
+            "104": 38,
+            "104 + 105": 22,
+            "105": 44
+          }
+        }
+      },
+      "offered_audit": {
+        "rows_with_offered_field": 2921,
+        "offered_includes_source_rows": 2045,
+        "offered_additional_cardinality": {
+          "0": 198,
+          "1": 652,
+          "2": 924,
+          "3": 759,
+          "4": 320,
+          "5": 68
+        },
+        "offered_equals_found_rows": 1213
+      },
+      "length_chars": {
+        "n": 2921,
+        "mean": 1010.23,
+        "median": 644.0,
+        "p90": 2516.0,
+        "p95": 3005.0,
+        "max": 3498
+      },
+      "length_words": {
+        "n": 2921,
+        "mean": 129.92,
+        "median": 85.0,
+        "p90": 319.0,
+        "p95": 381.0,
+        "max": 451
+      },
+      "fixed_chunks": {
+        "n": 2921,
+        "mean": 6.67,
+        "median": 6.0,
+        "p90": 14.0,
+        "p95": 17.0,
+        "max": 24
+      },
+      "unique_normalized_texts": 2916
+    },
+    "addition60": {
+      "rows": 60,
+      "empty_gold": 10,
+      "empty_gold_rate": 0.1667,
+      "label_cardinality": {
+        "0": 10,
+        "1": 50,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      },
+      "label_frequency": {
+        "102": 10,
+        "103": 10,
+        "104": 10,
+        "105": 10,
+        "106": 10
+      },
+      "combination_frequency": {
+        "[]": 10,
+        "102": 10,
+        "103": 10,
+        "104": 10,
+        "105": 10,
+        "106": 10
+      },
+      "source_mcId_frequency": {
+        "101": 60
+      },
+      "source_conditional_target_distribution": {
+        "101": {
+          "rows": 60,
+          "label_cardinality": {
+            "0": 10,
+            "1": 50,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          },
+          "label_frequency": {
+            "102": 10,
+            "103": 10,
+            "104": 10,
+            "105": 10,
+            "106": 10
+          },
+          "combination_frequency": {
+            "[]": 10,
+            "102": 10,
+            "103": 10,
+            "104": 10,
+            "105": 10,
+            "106": 10
+          }
+        }
+      },
+      "offered_audit": {
+        "rows_with_offered_field": 60,
+        "offered_includes_source_rows": 0,
+        "offered_additional_cardinality": {
+          "0": 10,
+          "1": 50,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        },
+        "offered_equals_found_rows": 60
+      },
+      "length_chars": {
+        "n": 60,
+        "mean": 489.12,
+        "median": 324.0,
+        "p90": 1291.9,
+        "p95": 1348.5,
+        "max": 1436
+      },
+      "length_words": {
+        "n": 60,
+        "mean": 65.47,
+        "median": 44.0,
+        "p90": 176.1,
+        "p95": 180.25,
+        "max": 198
+      },
+      "fixed_chunks": {
+        "n": 60,
+        "mean": 2.85,
+        "median": 2.0,
+        "p90": 7.0,
+        "p95": 8.0,
+        "max": 9
+      },
+      "unique_normalized_texts": 60
+    }
+  },
+  "baseline_without_addition": {
+    "rows": 6319,
+    "empty_gold": 1436,
+    "empty_gold_rate": 0.2273,
+    "label_cardinality": {
+      "0": 1436,
+      "1": 1274,
+      "2": 1384,
+      "3": 815,
+      "4": 401,
+      "5": 1009
+    },
+    "label_frequency": {
+      "102": 2688,
+      "103": 2561,
+      "104": 2548,
+      "105": 2551,
+      "106": 2788
+    },
+    "length_chars": {
+      "n": 6319,
+      "mean": 1387.17,
+      "median": 1202.0,
+      "p90": 2913.2,
+      "p95": 3658.0,
+      "max": 5536
+    },
+    "length_words": {
+      "n": 6319,
+      "mean": 179.6,
+      "median": 156.0,
+      "p90": 381.0,
+      "p95": 469.2,
+      "max": 781
+    },
+    "fixed_chunks": {
+      "n": 6319,
+      "mean": 15.73,
+      "median": 10.0,
+      "p90": 37.0,
+      "p95": 47.0,
+      "max": 121
+    }
+  },
+  "calibration_and_control_gold": {
+    "calibration": {
+      "rows": 1328,
+      "empty_gold": 302,
+      "empty_gold_rate": 0.2274,
+      "label_cardinality": {
+        "0": 302,
+        "1": 264,
+        "2": 257,
+        "3": 179,
+        "4": 98,
+        "5": 228
+      },
+      "label_frequency": {
+        "102": 568,
+        "103": 586,
+        "104": 550,
+        "105": 545,
+        "106": 598
+      },
+      "length_chars": {
+        "n": 1328,
+        "mean": 1420.5,
+        "median": 1173.5,
+        "p90": 2994.0,
+        "p95": 3964.35,
+        "max": 5483
+      },
+      "length_words": {
+        "n": 1328,
+        "mean": 184.45,
+        "median": 155.0,
+        "p90": 389.3,
+        "p95": 508.25,
+        "max": 717
+      },
+      "fixed_chunks": {
+        "n": 1328,
+        "mean": 16.27,
+        "median": 10.0,
+        "p90": 41.0,
+        "p95": 52.0,
+        "max": 120
+      }
+    },
+    "public validation": {
+      "rows": 729,
+      "empty_gold": 203,
+      "empty_gold_rate": 0.2785,
+      "label_cardinality": {
+        "0": 203,
+        "1": 71,
+        "2": 95,
+        "3": 82,
+        "4": 65,
+        "5": 213
+      },
+      "label_frequency": {
+        "102": 371,
+        "103": 354,
+        "104": 353,
+        "105": 349,
+        "106": 405
+      },
+      "length_chars": {
+        "n": 729,
+        "mean": 1697.93,
+        "median": 1468.0,
+        "p90": 3462.4,
+        "p95": 4949.6,
+        "max": 5564
+      },
+      "length_words": {
+        "n": 729,
+        "mean": 220.13,
+        "median": 189.0,
+        "p90": 457.2,
+        "p95": 620.0,
+        "max": 761
+      },
+      "fixed_chunks": {
+        "n": 729,
+        "mean": 23.4,
+        "median": 22.0,
+        "p90": 45.0,
+        "p95": 65.0,
+        "max": 128
+      }
+    },
+    "V3 test": {
+      "rows": 600,
+      "empty_gold": 98,
+      "empty_gold_rate": 0.1633,
+      "label_cardinality": {
+        "0": 98,
+        "1": 186,
+        "2": 178,
+        "3": 102,
+        "4": 33,
+        "5": 3
+      },
+      "label_frequency": {
+        "102": 198,
+        "103": 199,
+        "104": 199,
+        "105": 199,
+        "106": 200
+      },
+      "length_chars": {
+        "n": 600,
+        "mean": 1045.14,
+        "median": 650.5,
+        "p90": 2606.8,
+        "p95": 3013.15,
+        "max": 3497
+      },
+      "length_words": {
+        "n": 600,
+        "mean": 135.32,
+        "median": 87.5,
+        "p90": 325.8,
+        "p95": 389.05,
+        "max": 454
+      },
+      "fixed_chunks": {
+        "n": 600,
+        "mean": 6.78,
+        "median": 6.0,
+        "p90": 15.0,
+        "p95": 17.0,
+        "max": 24
+      }
+    },
+    "new holdout20": {
+      "rows": 20,
+      "empty_gold": 4,
+      "empty_gold_rate": 0.2,
+      "label_cardinality": {
+        "0": 4,
+        "1": 15,
+        "2": 1,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      },
+      "label_frequency": {
+        "102": 3,
+        "103": 3,
+        "104": 4,
+        "105": 4,
+        "106": 3
+      },
+      "length_chars": {
+        "n": 20,
+        "mean": 492.7,
+        "median": 274.0,
+        "p90": 1154.8,
+        "p95": 1162.2,
+        "max": 1166
+      },
+      "length_words": {
+        "n": 20,
+        "mean": 65.35,
+        "median": 37.0,
+        "p90": 151.2,
+        "p95": 153.3,
+        "max": 159
+      },
+      "fixed_chunks": {
+        "n": 20,
+        "mean": 2.6,
+        "median": 2.0,
+        "p90": 5.0,
+        "p95": 5.05,
+        "max": 6
+      }
+    },
+    "official208": {
+      "rows": 208,
+      "empty_gold": 106,
+      "empty_gold_rate": 0.5096,
+      "label_cardinality": {
+        "0": 106,
+        "1": 19,
+        "2": 31,
+        "3": 13,
+        "4": 20,
+        "5": 19
+      },
+      "label_frequency": {
+        "102": 62,
+        "103": 36,
+        "104": 65,
+        "105": 74,
+        "106": 58
+      },
+      "length_chars": {
+        "n": 208,
+        "mean": 1626.71,
+        "median": 1343.0,
+        "p90": 3180.3,
+        "p95": 3875.55,
+        "max": 4480
+      },
+      "length_words": {
+        "n": 208,
+        "mean": 207.77,
+        "median": 177.0,
+        "p90": 417.0,
+        "p95": 475.1,
+        "max": 548
+      },
+      "fixed_chunks": {
+        "n": 208,
+        "mean": 18.77,
+        "median": 15.5,
+        "p90": 37.0,
+        "p95": 44.0,
+        "max": 77
+      }
+    }
+  },
+  "combined": {
+    "rows": 6379,
+    "label_frequency": {
+      "102": 2698,
+      "103": 2571,
+      "104": 2558,
+      "105": 2561,
+      "106": 2798
+    },
+    "label_cardinality": {
+      "0": 1446,
+      "1": 1324,
+      "2": 1384,
+      "3": 815,
+      "4": 401,
+      "5": 1009
+    },
+    "combination_frequency": {
+      "[]": 1446,
+      "102": 219,
+      "102 + 103": 94,
+      "102 + 103 + 104": 57,
+      "102 + 103 + 104 + 105": 140,
+      "102 + 103 + 104 + 105 + 106": 1009,
+      "102 + 103 + 104 + 106": 50,
+      "102 + 103 + 105": 55,
+      "102 + 103 + 105 + 106": 61,
+      "102 + 103 + 106": 153,
+      "102 + 104": 89,
+      "102 + 104 + 105": 84,
+      "102 + 104 + 105 + 106": 79,
+      "102 + 104 + 106": 52,
+      "102 + 105": 90,
+      "102 + 105 + 106": 61,
+      "102 + 106": 405,
+      "103": 261,
+      "103 + 104": 132,
+      "103 + 104 + 105": 175,
+      "103 + 104 + 105 + 106": 71,
+      "103 + 104 + 106": 43,
+      "103 + 105": 96,
+      "103 + 105 + 106": 68,
+      "103 + 106": 106,
+      "104": 218,
+      "104 + 105": 185,
+      "104 + 105 + 106": 67,
+      "104 + 106": 107,
+      "105": 240,
+      "105 + 106": 80,
+      "106": 386
+    },
+    "exact_punctuation_insensitive_unique_nonempty": 6367,
+    "exact_punctuation_insensitive_duplicate_excess": 12,
+    "exact_punctuation_insensitive_conflicting_groups": 3,
+    "exact_whitespace_only_unique_nonempty": 6379,
+    "exact_whitespace_only_duplicate_excess": 0,
+    "exact_whitespace_only_conflicting_groups": 0,
+    "near_similarity_threshold": 0.85,
+    "near_edges_ge_threshold": 21056,
+    "near_components_gt1": 224,
+    "near_components_rows": 1060,
+    "near_component_count_histogram": {
+      "2": 123,
+      "3": 40,
+      "4": 20,
+      "5": 10,
+      "6": 10,
+      "7": 3,
+      "8": 2,
+      "9": 3,
+      "10": 1,
+      "11": 1,
+      "12": 3,
+      "14": 1,
+      "18": 1,
+      "25": 1,
+      "28": 1,
+      "33": 1,
+      "36": 1,
+      "40": 1,
+      "189": 1
+    },
+    "near_group_approx_independent_rows": 5543,
+    "unique_normalized_texts_by_domain": {
+      "public3398": 3391,
+      "V3clean2921": 2916,
+      "addition60": 60
+    }
+  },
+  "cross_split_exact_punctuation_insensitive": {
+    "train x calibration": {
+      "unique_texts": 4,
+      "rows_a": 6,
+      "rows_b": 4
+    },
+    "train x public validation": {
+      "unique_texts": 1,
+      "rows_a": 1,
+      "rows_b": 2
+    },
+    "train x official208": {
+      "unique_texts": 10,
+      "rows_a": 12,
+      "rows_b": 21
+    },
+    "calibration x public validation": {
+      "unique_texts": 1,
+      "rows_a": 1,
+      "rows_b": 1
+    },
+    "calibration x official208": {
+      "unique_texts": 3,
+      "rows_a": 3,
+      "rows_b": 5
+    }
+  },
+  "cross_split_exact_whitespace_only": {
+    "train x official208": {
+      "unique_texts": 10,
+      "rows_a": 10,
+      "rows_b": 20
+    },
+    "calibration x official208": {
+      "unique_texts": 3,
+      "rows_a": 3,
+      "rows_b": 4
+    }
+  },
+  "cross_split_near_train_tfidf": {
+    "calibration": {
+      "rows": 1328,
+      "rows_max_cosine_ge_0_85": 193,
+      "rows_max_cosine_ge_0_95": 157,
+      "max_cosine": 1.0,
+      "median_nearest_cosine": 0.2499
+    },
+    "public validation": {
+      "rows": 729,
+      "rows_max_cosine_ge_0_85": 194,
+      "rows_max_cosine_ge_0_95": 148,
+      "max_cosine": 1.0,
+      "median_nearest_cosine": 0.6167
+    },
+    "V3 test": {
+      "rows": 600,
+      "rows_max_cosine_ge_0_85": 0,
+      "rows_max_cosine_ge_0_95": 0,
+      "max_cosine": 0.7154,
+      "median_nearest_cosine": 0.1601
+    },
+    "new holdout20": {
+      "rows": 20,
+      "rows_max_cosine_ge_0_85": 0,
+      "rows_max_cosine_ge_0_95": 0,
+      "max_cosine": 0.3321,
+      "median_nearest_cosine": 0.1736
+    },
+    "official208": {
+      "rows": 208,
+      "rows_max_cosine_ge_0_85": 31,
+      "rows_max_cosine_ge_0_95": 29,
+      "max_cosine": 1.0,
+      "median_nearest_cosine": 0.3146
+    }
+  },
+  "heuristic_flags": {
+    "public3398": {
+      "question_mark": 1148,
+      "negation_word": 2275,
+      "third_party_word": 2361,
+      "project_material_word": 2394,
+      "seo_marker": 42,
+      "material_sale_or_catalog": 513,
+      "project_only_or_design": 995,
+      "explicit_other_specialist": 2,
+      "service_tail_marker": 418
+    },
+    "V3clean2921": {
+      "question_mark": 300,
+      "negation_word": 2786,
+      "third_party_word": 1825,
+      "project_material_word": 2201,
+      "seo_marker": 0,
+      "material_sale_or_catalog": 370,
+      "project_only_or_design": 389,
+      "explicit_other_specialist": 0,
+      "service_tail_marker": 792
+    },
+    "addition60": {
+      "question_mark": 6,
+      "negation_word": 29,
+      "third_party_word": 28,
+      "project_material_word": 43,
+      "seo_marker": 5,
+      "material_sale_or_catalog": 8,
+      "project_only_or_design": 5,
+      "explicit_other_specialist": 1,
+      "service_tail_marker": 23
+    }
+  },
+  "method": {
+    "gold": "found_microcategories when present, otherwise public labels or addition gold; only additional IDs 102-106 retained; offered_microcategories reported separately and never used as gold",
+    "source_category": "use explicit source_mcId, else V3 mcId; public source101 is assigned by documented convention because source is absent from those records",
+    "official208_gold": "categories strings mapped to 102-106 by official category names",
+    "normalization": "Unicode casefold; replace every run of non-word characters with one space; description only",
+    "near_duplicate": "word TF-IDF unigram+bigrams, min_df=2, max_features=30000, sklearn default token pattern and default sublinear_tf=False; cosine >= .85 connected components; used only for approximate lexical/template families, not semantic identity",
+    "cross_split_near": "same train-fitted TF-IDF space; each held-out row compared to train in blocks; counts rows whose maximum train cosine meets thresholds",
+    "chunker": "avito_compare/scripts/fixed_chunker.py::chunk_ad_fixed defaults (target_chars=300,max_chars=420)",
+    "heuristics": "regex counts describe presence of lexical cues only; false positives and false negatives expected; no detector is treated as a gold label",
+    "no_classifier_training": true
+  },
+  "public_raw_reconstruction": {
+    "rows": 10000,
+    "unique_punctuation_insensitive": 4841,
+    "unique_whitespace_only": 4855,
+    "unique_punctuation_insensitive_found_in_public_partitions": 4841,
+    "raw_rows_punctuation_insensitive_matching_public_partitions": 10000,
+    "unique_whitespace_only_found_in_public_partitions": 4855,
+    "raw_rows_whitespace_only_matching_public_partitions": 10000,
+    "note": "Raw 10k is a provenance comparator and is not added to training."
+  },
+  "official_description_duplicate_groups": 27,
+  "official_description_duplicate_rows_in_groups": 97
+}

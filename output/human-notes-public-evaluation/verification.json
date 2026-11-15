@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "fresh_catboost_inference": true,
+  "same_predictions_as_frozen_full_pipeline": true,
+  "all_139_descriptions_match_original_by_normalized_text_and_fixed_chunker": true,
+  "canonical_original_input_texts_used": true,
+  "all_208_indices_covered_once": true,
+  "model_training": false,
+  "threshold_tuning": false,
+  "human_labels_used_for_selection_or_training": false,
+  "notes_not_passed_to_model": true,
+  "main_metric_resolved_human_ads": 37,
+  "source_file_sha256": "1c84624256f2cc44e76b342ffbd242fbeec0c31024d37dd146fe42d852f6b0e3"
+}

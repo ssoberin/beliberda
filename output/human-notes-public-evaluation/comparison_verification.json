@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "human_rows": 37,
+  "all_inputs": 139,
+  "original_rows_covered": 208,
+  "model_and_threshold_changes": false,
+  "metrics_independently_recounted": true,
+  "tfidf_compared_on_identical_labels_and_inputs": true,
+  "uncertainty_comparisons": {
+    "adaptive_0_3__per_category": {
+      "delta_micro_f1_tfidf_minus_model": 0.013793103448275779,
+      "ci95_low": -0.02999711037703015,
+      "ci95_high": 0.06935444415707558,
+      "n_boot": 5000,
+      "rows": 37,
+      "method": "paired bootstrap by unique ad; small nonrandom already-known public subset"
+    },
+    "adaptive_1_0__fixed": {
+      "delta_micro_f1_tfidf_minus_model": 0.027586206896551668,
+      "ci95_low": -0.03167320289400381,
+      "ci95_high": 0.10101235368853562,
+      "n_boot": 5000,
+      "rows": 37,
+      "method": "paired bootstrap by unique ad; small nonrandom already-known public subset"
+    },
+    "C_syntax_plus60_fixed_05": {
+      "delta_micro_f1_tfidf_minus_model": 0.03372697213037312,
+      "ci95_low": -0.02625223578334637,
+      "ci95_high": 0.11203230340482201,
+      "n_boot": 5000,
+      "rows": 37,
+      "method": "paired bootstrap by unique ad; small nonrandom already-known public subset"
+    },
+    "C_syntax_baseline__fixed": {
+      "delta_micro_f1_tfidf_minus_model": 0.026178747361013333,
+      "ci95_low": -0.02985411957398825,
+      "ci95_high": 0.09974014935361865,
+      "n_boot": 5000,
+      "rows": 37,
+      "method": "paired bootstrap by unique ad; small nonrandom already-known public subset"
+    }
+  }
+}

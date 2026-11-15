@@ -1,0 +1,58 @@
+{
+  "model": "tfidf_sgd_only",
+  "training": "Same public3398 + V3clean2921; no extra60",
+  "thresholds": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "model_sha256": "57eccb8582492299ebc00cfcc6331170a477b8fffe3f82febd554f724df33030",
+  "human_resolved37": {
+    "rows": 37,
+    "micro_f1": 0.9241379310344827,
+    "precision": 0.881578947368421,
+    "recall": 0.9710144927536232,
+    "tp": 67,
+    "fp": 9,
+    "fn": 2,
+    "exact_match": 0.8378378378378378,
+    "fully_correct_ads": 31,
+    "empty_gold_ads": 17,
+    "empty_gold_ads_with_fp": 2,
+    "fp_on_empty_gold": 7,
+    "per_category": {
+      "102": {
+        "tp": 15,
+        "fp": 1,
+        "fn": 1,
+        "f1": 0.9375
+      },
+      "103": {
+        "tp": 10,
+        "fp": 2,
+        "fn": 0,
+        "f1": 0.9090909090909091
+      },
+      "104": {
+        "tp": 14,
+        "fp": 3,
+        "fn": 0,
+        "f1": 0.9032258064516129
+      },
+      "105": {
+        "tp": 15,
+        "fp": 2,
+        "fn": 1,
+        "f1": 0.9090909090909091
+      },
+      "106": {
+        "tp": 13,
+        "fp": 1,
+        "fn": 0,
+        "f1": 0.9629629629629629
+      }
+    }
+  }
+}

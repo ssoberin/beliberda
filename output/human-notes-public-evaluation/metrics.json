@@ -1,0 +1,418 @@
+{
+  "adaptive_0_3__per_category": {
+    "label": "Лучший по прежнему calibration: depth6 + TF-IDF",
+    "thresholds": [
+      0.6,
+      0.525,
+      0.375,
+      0.375,
+      0.25
+    ],
+    "model_sha256": "41209c9069a39413c7e75467b688490b728983f1a31ff415a77a84187054c5a5",
+    "max_abs_difference_from_saved_probabilities": 0.0,
+    "human_resolved37": {
+      "rows": 37,
+      "micro_f1": 0.9103448275862069,
+      "precision": 0.868421052631579,
+      "recall": 0.9565217391304348,
+      "tp": 66,
+      "fp": 10,
+      "fn": 3,
+      "exact_match": 0.8108108108108109,
+      "fully_correct_ads": 30,
+      "empty_gold_ads": 17,
+      "empty_gold_ads_with_fp": 3,
+      "fp_on_empty_gold": 8,
+      "per_category": {
+        "102": {
+          "tp": 14,
+          "fp": 1,
+          "fn": 2,
+          "f1": 0.9032258064516129
+        },
+        "103": {
+          "tp": 10,
+          "fp": 1,
+          "fn": 0,
+          "f1": 0.9523809523809523
+        },
+        "104": {
+          "tp": 13,
+          "fp": 2,
+          "fn": 1,
+          "f1": 0.896551724137931
+        },
+        "105": {
+          "tp": 16,
+          "fp": 3,
+          "fn": 0,
+          "f1": 0.9142857142857143
+        },
+        "106": {
+          "tp": 13,
+          "fp": 3,
+          "fn": 0,
+          "f1": 0.896551724137931
+        }
+      }
+    },
+    "original_gold_same37": {
+      "rows": 37,
+      "micro_f1": 0.71875,
+      "precision": 0.6052631578947368,
+      "recall": 0.8846153846153846,
+      "tp": 46,
+      "fp": 30,
+      "fn": 6,
+      "exact_match": 0.5675675675675675,
+      "fully_correct_ads": 21,
+      "empty_gold_ads": 19,
+      "empty_gold_ads_with_fp": 6,
+      "fp_on_empty_gold": 23,
+      "per_category": {
+        "102": {
+          "tp": 9,
+          "fp": 6,
+          "fn": 3,
+          "f1": 0.6666666666666666
+        },
+        "103": {
+          "tp": 4,
+          "fp": 7,
+          "fn": 2,
+          "f1": 0.47058823529411764
+        },
+        "104": {
+          "tp": 9,
+          "fp": 6,
+          "fn": 1,
+          "f1": 0.72
+        },
+        "105": {
+          "tp": 13,
+          "fp": 6,
+          "fn": 0,
+          "f1": 0.8125
+        },
+        "106": {
+          "tp": 11,
+          "fp": 5,
+          "fn": 0,
+          "f1": 0.8148148148148148
+        }
+      }
+    }
+  },
+  "adaptive_1_0__fixed": {
+    "label": "Лучший по calibration при0.5: depth8",
+    "thresholds": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "model_sha256": "6c0840a8dc57824bd00312bd0e598b3b83956c7a60fbdb7d2589eba3116722b6",
+    "max_abs_difference_from_saved_probabilities": 0.0,
+    "human_resolved37": {
+      "rows": 37,
+      "micro_f1": 0.896551724137931,
+      "precision": 0.8552631578947368,
+      "recall": 0.9420289855072463,
+      "tp": 65,
+      "fp": 11,
+      "fn": 4,
+      "exact_match": 0.7027027027027027,
+      "fully_correct_ads": 26,
+      "empty_gold_ads": 17,
+      "empty_gold_ads_with_fp": 6,
+      "fp_on_empty_gold": 9,
+      "per_category": {
+        "102": {
+          "tp": 14,
+          "fp": 2,
+          "fn": 2,
+          "f1": 0.875
+        },
+        "103": {
+          "tp": 10,
+          "fp": 3,
+          "fn": 0,
+          "f1": 0.8695652173913043
+        },
+        "104": {
+          "tp": 13,
+          "fp": 1,
+          "fn": 1,
+          "f1": 0.9285714285714286
+        },
+        "105": {
+          "tp": 16,
+          "fp": 3,
+          "fn": 0,
+          "f1": 0.9142857142857143
+        },
+        "106": {
+          "tp": 12,
+          "fp": 2,
+          "fn": 1,
+          "f1": 0.8888888888888888
+        }
+      }
+    },
+    "original_gold_same37": {
+      "rows": 37,
+      "micro_f1": 0.703125,
+      "precision": 0.5921052631578947,
+      "recall": 0.8653846153846154,
+      "tp": 45,
+      "fp": 31,
+      "fn": 7,
+      "exact_match": 0.5675675675675675,
+      "fully_correct_ads": 21,
+      "empty_gold_ads": 19,
+      "empty_gold_ads_with_fp": 8,
+      "fp_on_empty_gold": 25,
+      "per_category": {
+        "102": {
+          "tp": 9,
+          "fp": 7,
+          "fn": 3,
+          "f1": 0.6428571428571429
+        },
+        "103": {
+          "tp": 5,
+          "fp": 8,
+          "fn": 1,
+          "f1": 0.5263157894736842
+        },
+        "104": {
+          "tp": 8,
+          "fp": 6,
+          "fn": 2,
+          "f1": 0.6666666666666666
+        },
+        "105": {
+          "tp": 13,
+          "fp": 6,
+          "fn": 0,
+          "f1": 0.8125
+        },
+        "106": {
+          "tp": 10,
+          "fp": 4,
+          "fn": 1,
+          "f1": 0.8
+        }
+      }
+    }
+  },
+  "C_syntax_plus60_fixed_05": {
+    "label": "C_syntax +60",
+    "thresholds": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "model_sha256": "6eb1b7e1dc705e8122f2aed2d0f832e9bd4cc4e64d89535f93d27cbbe2e3f0bd",
+    "max_abs_difference_from_saved_probabilities": 0.0,
+    "human_resolved37": {
+      "rows": 37,
+      "micro_f1": 0.8904109589041096,
+      "precision": 0.8441558441558441,
+      "recall": 0.9420289855072463,
+      "tp": 65,
+      "fp": 12,
+      "fn": 4,
+      "exact_match": 0.7297297297297297,
+      "fully_correct_ads": 27,
+      "empty_gold_ads": 17,
+      "empty_gold_ads_with_fp": 6,
+      "fp_on_empty_gold": 10,
+      "per_category": {
+        "102": {
+          "tp": 13,
+          "fp": 2,
+          "fn": 3,
+          "f1": 0.8387096774193549
+        },
+        "103": {
+          "tp": 10,
+          "fp": 3,
+          "fn": 0,
+          "f1": 0.8695652173913043
+        },
+        "104": {
+          "tp": 13,
+          "fp": 2,
+          "fn": 1,
+          "f1": 0.896551724137931
+        },
+        "105": {
+          "tp": 16,
+          "fp": 3,
+          "fn": 0,
+          "f1": 0.9142857142857143
+        },
+        "106": {
+          "tp": 13,
+          "fp": 2,
+          "fn": 0,
+          "f1": 0.9285714285714286
+        }
+      }
+    },
+    "original_gold_same37": {
+      "rows": 37,
+      "micro_f1": 0.6976744186046512,
+      "precision": 0.5844155844155844,
+      "recall": 0.8653846153846154,
+      "tp": 45,
+      "fp": 32,
+      "fn": 7,
+      "exact_match": 0.5675675675675675,
+      "fully_correct_ads": 21,
+      "empty_gold_ads": 19,
+      "empty_gold_ads_with_fp": 8,
+      "fp_on_empty_gold": 26,
+      "per_category": {
+        "102": {
+          "tp": 8,
+          "fp": 7,
+          "fn": 4,
+          "f1": 0.5925925925925926
+        },
+        "103": {
+          "tp": 5,
+          "fp": 8,
+          "fn": 1,
+          "f1": 0.5263157894736842
+        },
+        "104": {
+          "tp": 9,
+          "fp": 6,
+          "fn": 1,
+          "f1": 0.72
+        },
+        "105": {
+          "tp": 13,
+          "fp": 6,
+          "fn": 0,
+          "f1": 0.8125
+        },
+        "106": {
+          "tp": 10,
+          "fp": 5,
+          "fn": 1,
+          "f1": 0.7692307692307693
+        }
+      }
+    }
+  },
+  "C_syntax_baseline__fixed": {
+    "label": "Исходная C_syntax",
+    "thresholds": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "model_sha256": "3b7dbea4b3fe6ba6c61b2499dd82911e904282217a7281d8cc1c22b19b399ca9",
+    "max_abs_difference_from_saved_probabilities": 0.0,
+    "human_resolved37": {
+      "rows": 37,
+      "micro_f1": 0.8979591836734694,
+      "precision": 0.8461538461538461,
+      "recall": 0.9565217391304348,
+      "tp": 66,
+      "fp": 12,
+      "fn": 3,
+      "exact_match": 0.7027027027027027,
+      "fully_correct_ads": 26,
+      "empty_gold_ads": 17,
+      "empty_gold_ads_with_fp": 6,
+      "fp_on_empty_gold": 9,
+      "per_category": {
+        "102": {
+          "tp": 14,
+          "fp": 3,
+          "fn": 2,
+          "f1": 0.8484848484848485
+        },
+        "103": {
+          "tp": 10,
+          "fp": 3,
+          "fn": 0,
+          "f1": 0.8695652173913043
+        },
+        "104": {
+          "tp": 13,
+          "fp": 1,
+          "fn": 1,
+          "f1": 0.9285714285714286
+        },
+        "105": {
+          "tp": 16,
+          "fp": 3,
+          "fn": 0,
+          "f1": 0.9142857142857143
+        },
+        "106": {
+          "tp": 13,
+          "fp": 2,
+          "fn": 0,
+          "f1": 0.9285714285714286
+        }
+      }
+    },
+    "original_gold_same37": {
+      "rows": 37,
+      "micro_f1": 0.6923076923076923,
+      "precision": 0.5769230769230769,
+      "recall": 0.8653846153846154,
+      "tp": 45,
+      "fp": 33,
+      "fn": 7,
+      "exact_match": 0.5405405405405406,
+      "fully_correct_ads": 20,
+      "empty_gold_ads": 19,
+      "empty_gold_ads_with_fp": 8,
+      "fp_on_empty_gold": 26,
+      "per_category": {
+        "102": {
+          "tp": 9,
+          "fp": 8,
+          "fn": 3,
+          "f1": 0.6206896551724138
+        },
+        "103": {
+          "tp": 5,
+          "fp": 8,
+          "fn": 1,
+          "f1": 0.5263157894736842
+        },
+        "104": {
+          "tp": 8,
+          "fp": 6,
+          "fn": 2,
+          "f1": 0.6666666666666666
+        },
+        "105": {
+          "tp": 13,
+          "fp": 6,
+          "fn": 0,
+          "f1": 0.8125
+        },
+        "106": {
+          "tp": 10,
+          "fp": 5,
+          "fn": 1,
+          "f1": 0.7692307692307693
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "source_file": "/home/user/Downloads/Telegram Desktop/public_test_139_unique_with_notes.md",
+  "project_copy": "datasets/public_review_139/public_test_139_unique_with_notes.md",
+  "source_sha256": "1c84624256f2cc44e76b342ffbd242fbeec0c31024d37dd146fe42d852f6b0e3",
+  "items": 139,
+  "resolved": 37,
+  "ambiguous": [
+    19
+  ],
+  "without_human": 101,
+  "exact_text_matches": 136,
+  "chunker_matches": 139,
+  "frozen_models_planned": [
+    "C_syntax_baseline__fixed",
+    "C_syntax_plus60_fixed_05",
+    "adaptive_0_3__per_category",
+    "adaptive_1_0__fixed"
+  ],
+  "model_selection": "Primary pre-existing calibration-selected adaptive_0_3; other models fixed references; never select or tune using new human labels",
+  "scoring_inputs": "Canonical original descriptions matched by explicit source row indices. Markdown is a transcript; raw character-length differences are not silently treated as newly inferred inputs."
+}

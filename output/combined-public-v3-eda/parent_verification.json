@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "combined_train_rows": 6379,
+  "combined_empty_additional_gold": 1446,
+  "v3_gold_source_consistency": true,
+  "v3_found_cardinality_independently_recounted": true,
+  "source_counts_independently_recounted": {
+    "101": 486,
+    "102": 484,
+    "105": 485,
+    "103": 484,
+    "104": 491,
+    "106": 491
+  },
+  "no_classifier_training": true,
+  "punctuation_only_conflicting_description_groups": 3,
+  "all_three_have_different_source_categories": true
+}
