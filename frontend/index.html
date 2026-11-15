@@ -5,92 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="description" content="Подберите категории и подготовьте объявления о своих услугах." />
-    <title>Новое объявление — Авито</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Новое объявление</title>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="/src/styles.css" />
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <header class="header page-width">
-      <a class="logo" href="/" aria-label="Авито — на главную">
-        <svg viewBox="0 0 34 34" width="34" height="34" aria-hidden="true">
-          <circle cx="10" cy="22" r="9" fill="#04e061" />
-          <circle cx="23" cy="10" r="8" fill="#00aaff" />
-          <circle cx="26" cy="25" r="5.5" fill="#ff4053" />
-          <circle cx="12" cy="6" r="3.5" fill="#965eeb" />
-        </svg>
-        <span>Авито</span>
-      </a>
-      <span class="header-caption">Помощник для ваших объявлений</span>
-    </header>
-
     <main class="page-width">
       <div class="content">
         <div class="page-heading">
           <h1>Новое объявление</h1>
-          <p class="muted">Предложение услуг</p>
         </div>
 
         <form id="listing-form">
-          <h2>Подробности</h2>
           <div class="connection-panel">
             <p class="hint" id="connection-status" role="status">Проверяем подключение к генерации…</p>
             <button class="text-button" id="check-connection" type="button">Проверить подключение</button>
           </div>
+          <div class="field import-panel">
+            <div class="upload-zone" id="upload-zone">
+              <input class="upload-input" id="batch-file" type="file" accept=".json,.csv,.txt,application/json,text/csv,text/plain" aria-describedby="upload-drop-hint batch-hint upload-message" />
+              <label class="button button-primary upload-select" for="batch-file">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 17H6a4 4 0 0 1-.7-7.94 6.5 6.5 0 0 1 12.52-1.34A4.7 4.7 0 0 1 18 17h-1M12 21V11m0 0-3.5 3.5M12 11l3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Загрузить файл</span>
+              </label>
+              <p class="upload-drop-hint" id="upload-drop-hint">Или перетащите JSON или CSV сюда</p>
+              <p class="hint" id="batch-hint">Один файл — до 100 объявлений, до 5 МБ</p>
+            </div>
+            <p class="message" id="upload-message" role="status" hidden></p>
+            <button class="text-button" type="button" id="clear-file" hidden>Убрать файл и ввести описание вручную</button>
+          </div>
           <div class="field">
             <label for="title">Название объявления</label>
             <div class="input-wrap">
-              <input id="title" name="title" maxlength="100" placeholder="Например, ремонт квартир под ключ" aria-describedby="title-hint" autocomplete="off" />
+              <input id="title" name="title" maxlength="100" autocomplete="off" />
               <button class="clear-button" id="clear-title" type="button" aria-label="Очистить название" hidden>×</button>
             </div>
-            <p class="hint" id="title-hint">Коротко расскажите, какую услугу вы предлагаете</p>
           </div>
-
           <div class="field">
-            <label for="description">Описание услуг <span class="required">*</span></label>
-            <textarea id="description" name="description" rows="5" maxlength="12000" required placeholder="Расскажите, что вы умеете. Например: укладываю плитку, устанавливаю сантехнику и меняю розетки." aria-describedby="description-hint description-count"></textarea>
+            <label for="description">Описание услуги <span class="required">*</span></label>
+            <textarea id="description" name="description" rows="7" required aria-describedby="description-count"></textarea>
             <div class="field-meta">
-            <p class="hint" id="description-hint">Вставьте исходное объявление — по нему составим черновики для выбранных категорий</p>
-              <span class="hint counter" id="description-count">0 / 12 000</span>
+              <span class="hint counter" id="description-count">0 символов</span>
             </div>
           </div>
-
-          <div class="field">
-            <label for="source-category">Категория исходного объявления</label>
-            <select id="source-category" name="mcId">
-              <option value="101">Ремонт под ключ</option>
-              <option value="102">Штукатурные работы</option>
-              <option value="103">Плиточные работы</option>
-              <option value="104">Сантехника</option>
-              <option value="105">Электрика</option>
-              <option value="106">Поклейка обоев и малярные работы</option>
-            </select>
-            <p class="hint">Автоподбор не предложит повторно исходную категорию.</p>
-          </div>
-
-          <section class="categories-section" aria-labelledby="categories-heading">
-            <div class="section-heading">
-              <h3 id="categories-heading">Категории</h3>
-              <button class="button button-small button-ai" id="generate-categories" type="button" title="Подбор категорий по описанию с помощью TF-IDF">
-                <svg class="sparkle" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
-                <span>Сгенерировать категории</span>
-              </button>
-            </div>
-            <p class="hint category-hint" id="category-hint">Подбор категорий с помощью TF-IDF может ошибаться. Проверьте и измените выбор вручную.</p>
-            <div class="category-list" id="category-list" role="group" aria-label="Выбор категорий"></div>
-            <div class="selection-summary">
-              <span class="hint" id="selection-count" aria-live="polite">Категории пока не выбраны</span>
-              <button class="text-button" id="reset-categories" type="button" hidden>Сбросить выбор</button>
-            </div>
-            <p class="message" id="categories-message" role="status" hidden></p>
-          </section>
-
           <div class="generate-section">
             <button class="button button-primary" id="generate-listings" type="submit">
               <svg class="sparkle" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
-              <span>Сгенерировать черновики</span>
+              <span>Создать</span>
             </button>
-            <p class="hint">Подготовим черновик для каждой категории. Если сведений недостаточно, отметим, что нужно дополнить.</p>
+            <section class="creation-progress" id="creation-progress-panel" aria-label="Процесс создания" hidden>
+              <div class="creation-progress-heading">
+                <strong id="creation-stage">Определяем услуги</strong>
+                <span class="hint" id="creation-elapsed">0 с</span>
+              </div>
+              <progress id="creation-progress" max="1" aria-label="Прогресс создания"></progress>
+              <ol class="creation-steps" aria-label="Этапы создания">
+                <li id="creation-step-0">Определение услуг</li>
+                <li id="creation-step-1">Создание объявлений</li>
+                <li id="creation-step-2">Завершение</li>
+              </ol>
+              <p class="hint" id="creation-count" role="status">Отправляем запрос…</p>
+            </section>
             <p class="message" id="generate-message" role="status" hidden></p>
             <div class="message" id="generation-warnings" data-kind="warning" role="status" hidden></div>
           </div>
@@ -102,9 +80,12 @@
             <span class="result-count" id="result-count"></span>
           </div>
           <p class="muted results-hint">Проверьте и отредактируйте тексты перед публикацией.</p>
+          <div class="export-actions">
+            <button class="text-button" type="button" id="download-json">Скачать JSON</button>
+            <button class="text-button" type="button" id="download-csv">Скачать CSV</button>
+          </div>
           <div id="draft-list"></div>
         </section>
-        <footer>Хорошее объявление начинается с деталей</footer>
       </div>
     </main>
   </body>

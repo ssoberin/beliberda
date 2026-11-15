@@ -1,11 +1,12 @@
 import { createServer } from 'node:http';
+import { once } from 'node:events';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolve, sep } from 'node:path';
-import { mockResponse } from './mock-api.mjs';
+import { mockCreation, mockResponse } from './mock-api.mjs';
 
 const projectRoot = fileURLToPath(new URL('../', import.meta.url));
-const apiPaths = new Set(['/api/categories', '/api/generate']);
+const apiPaths = new Set(['/api/create', '/api/categories', '/api/generate']);
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml' };
 
 function json(response, status, body) {
@@ -43,31 +44,74 @@ export function createFrontendServer({ preview = false, apiTarget = 'http://127.
         let bytes = 0;
         for await (const chunk of request) {
           bytes += chunk.length;
-          if (bytes > 131072) return json(response, 413, { message: 'Слишком большой запрос.' });
+          if (bytes > 5 * 1024 * 1024) return json(response, 413, { message: 'Слишком большой запрос.' });
           chunks.push(chunk);
         }
-        let payload;
-        try { payload = JSON.parse(Buffer.concat(chunks).toString('utf8')); }
-        catch { return json(response, 400, { message: 'Ожидается JSON.' }); }
-
-        // Local stubs are available only in explicitly enabled demo mode.
+        const body = Buffer.concat(chunks);
+        const contentType = request.headers['content-type'] || 'application/json';
+        const accept = request.headers.accept || 'application/json';
         if (mockApi) {
+          if (url.pathname === '/api/create') {
+            const result = mockCreation(body.toString('utf8'), contentType, url.searchParams.get('generateText'), mockDelay);
+            if (result.status !== 200) return json(response, result.status, result.body);
+            if (!accept.includes('application/x-ndjson')) {
+              const results = [];
+              for await (const event of result.events) {
+                if (event.type === 'item_done') {
+                  const { type, completed, total, ...item } = event;
+                  results.push(item);
+                }
+              }
+              return json(response, 200, result.batch ? { results } : { drafts: results[0].drafts });
+            }
+            response.writeHead(200, { 'Content-Type': 'application/x-ndjson; charset=utf-8', 'Cache-Control': 'no-cache, no-transform', 'X-Accel-Buffering': 'no' });
+            response.flushHeaders();
+            for await (const event of result.events) {
+              if (response.destroyed) break;
+              if (!response.write(JSON.stringify(event) + '\n')) await once(response, 'drain');
+            }
+            return response.end();
+          }
+          let payload;
+          try { payload = JSON.parse(body.toString('utf8')); }
+          catch { return json(response, 400, { message: 'Ожидается JSON.' }); }
           await new Promise(done => setTimeout(done, mockDelay));
           const result = mockResponse(url.pathname, payload);
           return json(response, result.status, result.body);
         }
+        const abort = new AbortController();
+        let idleTimer;
+        const resetTimer = () => {
+          clearTimeout(idleTimer);
+          idleTimer = setTimeout(() => abort.abort(), 120_000);
+        };
+        const disconnected = () => { if (!response.writableEnded) abort.abort(); };
+        response.on('close', disconnected);
+        resetTimer();
         try {
           const upstream = await fetch(new URL(url.pathname + url.search, apiTarget), {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify(payload),
-            signal: AbortSignal.timeout(110_000),
+            method: 'POST', headers: { 'Content-Type': contentType, Accept: accept }, body, signal: abort.signal,
           });
-          const body = await upstream.text();
-          response.writeHead(upstream.status, { 'Content-Type': upstream.headers.get('content-type') ?? 'application/json', 'Cache-Control': 'no-store' });
-          return response.end(body);
+          response.writeHead(upstream.status, {
+            'Content-Type': upstream.headers.get('content-type') ?? 'application/json',
+            'Cache-Control': 'no-cache, no-transform', 'X-Accel-Buffering': 'no',
+            ...(upstream.headers.has('x-request-id') ? { 'X-Request-ID': upstream.headers.get('x-request-id') } : {}),
+          });
+          response.flushHeaders();
+          // Forward every chunk as it arrives; never buffer the entire batch.
+          if (upstream.body) {
+            for await (const chunk of upstream.body) {
+              resetTimer();
+              if (!response.write(chunk)) await once(response, 'drain', { signal: abort.signal });
+            }
+          }
+          return response.end();
         } catch {
-          return json(response, 502, { message: 'API недоступен. Повторите попытку позже.' });
+          if (response.headersSent) return response.destroy();
+          if (!response.destroyed) return json(response, 502, { message: 'API недоступен. Повторите попытку позже.' });
+        } finally {
+          clearTimeout(idleTimer);
+          response.off('close', disconnected);
         }
       }
       if (!['GET', 'HEAD'].includes(request.method)) return json(response, 405, { message: 'Метод не поддерживается.' });

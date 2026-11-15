@@ -1,4 +1,7 @@
 from contextlib import AsyncExitStack, asynccontextmanager
+from concurrent.futures import ThreadPoolExecutor
+import asyncio
+import json
 import logging
 import time
 from uuid import uuid4
@@ -6,12 +9,13 @@ from uuid import uuid4
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from fastapi.concurrency import run_in_threadpool
 import httpx
 
 from .classifier import classify, load_classifier
 from .config import Settings
+from .creation import MAX_BODY_BYTES, creation_events, parse_creation
 from .errors import BackendError
 from .qwen import QwenClient
 from .schemas import ClassificationRequest, ClassificationResponse, GenerateRequest, GenerateResponse
@@ -46,7 +50,11 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
             ))
             app.state.qwen = QwenClient(client, settings)
             app.state.tunnel = tunnel
-            yield
+            app.state.creation_workers = settings.max_concurrent_requests
+            app.state.creation_slots = asyncio.Semaphore(settings.max_concurrent_requests)
+            with ThreadPoolExecutor(max_workers=settings.max_concurrent_requests, thread_name_prefix='creation') as threads:
+                app.state.creation_threads = threads
+                yield
 
     app = FastAPI(title='Avito Qwen Draft Backend', version='0.1.0', lifespan=lifespan)
     app.add_middleware(CORSMiddleware, allow_origins=list(settings.cors_origins),
@@ -62,11 +70,11 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
         except Exception as exc:
             logger.error('api_unhandled request_id=%s path=%s error_type=%s',
                          request.state.request_id,
-                         request.url.path if request.url.path in ('/api/generate', '/api/categories') else '<other>',
+                         request.url.path if request.url.path in ('/api/create', '/api/generate', '/api/categories') else '<other>',
                          type(exc).__name__)
             raise
         response.headers['X-Request-ID'] = request.state.request_id
-        if request.url.path in ('/api/generate', '/api/categories'):
+        if request.url.path in ('/api/create', '/api/generate', '/api/categories'):
             logger.info('api_complete request_id=%s path=%s status=%s elapsed_ms=%d',
                         request.state.request_id, request.url.path, response.status_code,
                         int((time.monotonic() - started) * 1000))
@@ -105,6 +113,41 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
         if not await request.app.state.qwen.ready():
             return JSONResponse(status_code=503, content={'status': 'not_ready', 'component': 'qwen', 'categoryGeneration': category_generation, 'message': 'Соединение с API Qwen недоступно либо нужная модель не загружена.'})
         return {'status': 'ready', 'model': settings.qwen_model, 'categoryGeneration': category_generation}
+
+    @app.post('/api/create')
+    async def create(request: Request, generateText: bool | None = None):
+        chunks = []
+        size = 0
+        async for chunk in request.stream():
+            size += len(chunk)
+            if size > MAX_BODY_BYTES:
+                raise BackendError(413, 'Максимальный размер запроса — 5 МБ.')
+            chunks.append(chunk)
+        items, batch, generate_text = await run_in_threadpool(
+            parse_creation, b''.join(chunks), request.headers.get('content-type', ''), generateText,
+        )
+        events = creation_events(request.app, items, generate_text, request.state.request_id)
+        if 'application/x-ndjson' in request.headers.get('accept', ''):
+            async def stream():
+                try:
+                    async for event in events:
+                        yield json.dumps(event, ensure_ascii=False) + '\n'
+                finally:
+                    await events.aclose()
+            return StreamingResponse(stream(), media_type='application/x-ndjson', headers={
+                'Cache-Control': 'no-cache, no-transform', 'X-Accel-Buffering': 'no',
+            })
+        results = []
+        async for event in events:
+            if event['type'] == 'item_done':
+                results.append({k: v for k, v in event.items() if k not in ('type', 'completed', 'total')})
+        results.sort(key=lambda item: item['index'])
+        if batch:
+            return {'results': results}
+        result = {k: v for k, v in results[0].items() if k not in ('index', 'testcase')}
+        if 'error' in result:
+            return JSONResponse(status_code=503, content={**result, 'message': result['error']['message']})
+        return result
 
     @app.post('/api/categories', response_model=ClassificationResponse)
     async def categories(payload: ClassificationRequest, request: Request):

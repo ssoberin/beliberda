@@ -1,279 +1,394 @@
+import { CreationProgress } from './progress.js';
+import { prepareSubmission } from './submission.js';
 import { CATEGORIES } from './catalog.js';
-import { generateCategories, generateListings, getConnectionStatus } from './api.js';
+import { createListings, getConnectionStatus } from './api.js';
 
 const $ = id => document.getElementById(id);
 const form = $('listing-form');
-const title = $('title');
 const description = $('description');
-const sourceCategory = $('source-category');
-const categoryList = $('category-list');
-const results = $('results');
-let categories = [...CATEGORIES];
-let selected = new Set();
-const requests = { categories: null, generate: null };
-const buttons = { categories: $('generate-categories'), generate: $('generate-listings') };
-const labels = { categories: 'Сгенерировать категории', generate: 'Сгенерировать черновики' };
-let categoryGenerationAvailable = true;
-let connectionRetry = null;
+const button = $('generate-listings');
+const groups = new Map();
+let controller = null;
+let fileRead = 0;
+let fileLoading = false;
+let sourceFilename = '';
+let connectionRetry;
 let checkingConnection = false;
+let batchRequest = false;
+let draftCount = 0;
+let progressState = null;
+let progressTimer = null;
+let progressStarted = 0;
 
-function message(kind, text = '', error = false) {
-  const element = $(kind === 'categories' ? 'categories-message' : 'generate-message');
-  element.textContent = text;
-  element.dataset.kind = error ? 'error' : 'info';
-  element.hidden = !text;
+function message(text = '', error = false) {
+  $('generate-message').textContent = text;
+  $('generate-message').dataset.kind = error ? 'error' : 'info';
+  $('generate-message').hidden = !text;
 }
 
-function busy(kind, active) {
-  buttons[kind].disabled = active || (kind === 'categories' && !categoryGenerationAvailable);
-  buttons[kind].setAttribute('aria-busy', String(active));
-  buttons[kind].querySelector('span').textContent = active
-    ? (kind === 'categories' ? 'Подбираем категории…' : 'Готовим объявления…')
-    : labels[kind];
+function busy(active) {
+  button.disabled = active || fileLoading;
+  $('upload-zone').setAttribute('aria-busy', String(fileLoading));
+  $('upload-message').classList.toggle('is-loading', fileLoading);
+  button.setAttribute('aria-busy', String(active));
+  button.querySelector('span').textContent = active ? 'Создаём…' : 'Создать';
 }
 
-function cancel(kind) {
-  requests[kind]?.abort();
-  requests[kind] = null;
-  busy(kind, false);
-  message(kind);
+function stopProgressTimer() {
+  clearInterval(progressTimer);
+  progressTimer = null;
 }
 
-function invalidateDrafts() {
-  cancel('generate');
-  results.hidden = true;
+function renderProgress() {
+  if (!progressState) return;
+  const state = progressState.snapshot();
+  const bar = $('creation-progress');
+  bar.max = state.max;
+  if (state.indeterminate) bar.removeAttribute('value');
+  else bar.value = state.value;
+  $('creation-stage').textContent = state.title;
+  $('creation-count').textContent = state.count;
+  $('creation-progress-panel').dataset.state = state.error ? 'error' : 'active';
+  for (let step = 0; step < 3; step++) {
+    const done = (progressState.finished && !state.error) || step < state.stage;
+    $('creation-step-' + step).dataset.state = done ? 'complete' : step === state.stage ? 'active' : 'pending';
+  }
+}
+
+function startProgress() {
+  stopProgressTimer();
+  progressState = new CreationProgress();
+  progressStarted = performance.now();
+  $('creation-elapsed').textContent = '0 с';
+  $('creation-progress-panel').hidden = false;
+  renderProgress();
+  progressTimer = setInterval(() => {
+    $('creation-elapsed').textContent = `${Math.floor((performance.now() - progressStarted) / 1000)} с`;
+  }, 1000);
+}
+
+function invalidate() {
+  stopProgressTimer();
+  progressState = null;
+  $('creation-progress-panel').hidden = true;
+  controller?.abort();
+  controller = null;
+  busy(false);
+  groups.clear();
+  draftCount = 0;
+  $('results').hidden = true;
   $('draft-list').replaceChildren();
-  $('generation-warnings').hidden = true;
   $('generation-warnings').replaceChildren();
+  $('generation-warnings').hidden = true;
+  message();
 }
 
 async function checkConnection() {
   if (checkingConnection) return;
   checkingConnection = true;
   clearTimeout(connectionRetry);
-  connectionRetry = null;
-  let retry = false;
-  const button = $('check-connection');
   const status = $('connection-status');
-  button.disabled = true;
-  status.textContent = 'Проверяем подключение к генерации…';
+  $('check-connection').disabled = true;
+  let retry = false;
   try {
     const connection = await getConnectionStatus(AbortSignal.timeout(10_000));
-    retry = !connection.ready;
-    categoryGenerationAvailable = connection.categoryGeneration === true;
-    buttons.categories.disabled = !categoryGenerationAvailable || Boolean(requests.categories);
-    buttons.categories.title = categoryGenerationAvailable ? 'Подбор категорий по описанию с помощью TF-IDF' : 'Автоподбор категорий пока недоступен';
-    $('category-hint').textContent = categoryGenerationAvailable
-      ? connection.mode === 'demo' ? 'Демонстрационный подбор категорий по ключевым словам.' : 'TF-IDF может ошибаться. Проверьте выбор вручную.'
-      : 'Выберите категории вручную. Автоподбор пока недоступен.';
-    status.dataset.kind = connection.mode === 'demo' ? 'warning' : connection.ready ? 'ready' : 'error';
+    retry = !connection.ready || !connection.categoryGeneration;
+    status.dataset.kind = connection.mode === 'demo' ? 'warning' : connection.ready && connection.categoryGeneration ? 'ready' : 'error';
     status.textContent = connection.mode === 'demo'
       ? 'Демонстрационный режим: черновики тестовые, Qwen не используется.'
-      : connection.ready ? `Qwen подключён${connection.model ? `: ${connection.model}` : ''}`
-        : [connection.message || 'Генерация пока недоступна. Проверьте подключение.', connection.detail].filter(Boolean).join(' ');
+      : connection.ready ? (connection.categoryGeneration
+        ? 'Обработка объявлений доступна.' : 'Автоматическое определение категорий пока недоступно.')
+        : [connection.message || 'Генерация пока недоступна.', connection.detail].filter(Boolean).join(' ');
   } catch {
     retry = true;
     status.dataset.kind = 'error';
     status.textContent = 'Не удалось проверить подключение. Повторите проверку.';
   } finally {
     checkingConnection = false;
-    button.disabled = false;
+    $('check-connection').disabled = false;
     if (retry) connectionRetry = setTimeout(checkConnection, 5_000);
   }
 }
-
 $('check-connection').addEventListener('click', checkConnection);
 
-function renderCategories() {
-  categoryList.replaceChildren(...categories.map(category => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'category-chip';
-    button.textContent = category.name;
-    button.setAttribute('aria-pressed', String(selected.has(String(category.id))));
-    button.addEventListener('click', () => {
-      cancel('categories');
-      invalidateDrafts();
-      const id = String(category.id);
-      if (selected.has(id)) selected.delete(id);
-      else selected.add(id);
-      renderCategories();
-      categoryList.children[categories.indexOf(category)]?.focus();
-    });
-    return button;
-  }));
-  $('selection-count').textContent = selected.size ? `Выбрано категорий: ${selected.size}` : 'Категории пока не выбраны';
-  $('reset-categories').hidden = selected.size === 0;
+function updateDescriptionCount() {
+  $('description-count').textContent = `${description.value.length.toLocaleString('ru-RU')} символов`;
 }
-
-function sourcePayload() {
-  return { title: title.value.trim(), description: description.value.trim(), mcId: Number(sourceCategory.value) };
-}
-
-function validateDescription() {
-  description.setCustomValidity(description.value.trim() ? '' : 'Расскажите об услугах, которые вы предлагаете.');
-  return description.reportValidity();
-}
-
-for (const input of [title, description]) {
+for (const input of [$('title'), description]) {
   input.addEventListener('input', () => {
-    cancel('categories');
-    invalidateDrafts();
+    if (input === description) {
+      fileRead += 1;
+      fileLoading = false;
+      sourceFilename = '';
+      $('upload-message').hidden = true;
+    }
+    invalidate();
     description.setCustomValidity('');
-    $('clear-title').hidden = !title.value;
-    $('description-count').textContent = `${description.value.length.toLocaleString('ru-RU')} / 12 000`;
+    $('clear-title').hidden = !$('title').value;
+    updateDescriptionCount();
   });
 }
-
-sourceCategory.addEventListener('change', () => {
-  cancel('categories');
-  invalidateDrafts();
-  selected.clear();
-  renderCategories();
-});
-
 $('clear-title').addEventListener('click', () => {
-  title.value = '';
-  title.dispatchEvent(new Event('input'));
-  title.focus();
+  $('title').value = '';
+  $('title').dispatchEvent(new Event('input'));
+  $('title').focus();
 });
-
-$('reset-categories').addEventListener('click', () => {
-  cancel('categories');
-  invalidateDrafts();
-  selected.clear();
-  renderCategories();
-  categoryList.querySelector('button')?.focus();
+$('clear-file').addEventListener('click', () => {
+  fileRead += 1;
+  fileLoading = false;
+  sourceFilename = '';
+  $('batch-file').value = '';
+  description.value = '';
+  description.setCustomValidity('');
+  updateDescriptionCount();
+  $('upload-message').hidden = true;
+  $('clear-file').hidden = true;
+  invalidate();
+  description.focus();
 });
-
-buttons.categories.addEventListener('click', async () => {
-  if (!categoryGenerationAvailable) return;
-  if (!validateDescription()) return;
-  cancel('categories');
-  cancel('generate');
-  const controller = new AbortController();
-  requests.categories = controller;
-  busy('categories', true);
-  message('categories', 'Подбираем категории по вашему описанию…');
+async function loadFile(file) {
+  if (!file) return;
+  const revision = ++fileRead;
+  fileLoading = true;
+  invalidate();
+  sourceFilename = '';
+  description.value = '';
+  description.setCustomValidity('');
+  updateDescriptionCount();
+  $('clear-file').hidden = false;
+  const status = $('upload-message');
+  status.textContent = `Читаем ${file.name}…`;
+  status.dataset.kind = 'info';
+  status.hidden = false;
   try {
-    const response = await generateCategories(sourcePayload(), controller.signal);
-    if (controller.signal.aborted) return;
-    const merged = new Map(CATEGORIES.map(category => [String(category.id), category]));
-    response.forEach(category => merged.set(String(category.id), category));
-    categories = [...merged.values()];
-    selected = new Set(response.map(category => String(category.id)));
-    invalidateDrafts();
-    renderCategories();
-    message('categories', response.length
-      ? 'Категории подобраны автоматически. Проверьте и при необходимости измените выбор.'
-      : 'Подходящих категорий не найдено. Уточните описание или выберите категории вручную.');
+    if (file.size > 5 * 1024 * 1024) throw new Error('Максимальный размер файла — 5 МБ.');
+    if (!/\.(json|csv|txt)$/i.test(file.name)) throw new Error('Выберите файл .json, .csv или .txt.');
+    const text = new TextDecoder('utf-8', { fatal: true }).decode(await file.arrayBuffer());
+    if (revision !== fileRead) return;
+    description.value = text;
+    sourceFilename = file.name;
+    updateDescriptionCount();
+    status.textContent = `Загружен ${file.name}. Нажмите «Создать», чтобы обработать объявления.`;
   } catch (error) {
-    if (!controller.signal.aborted) message('categories', error.message, true);
+    if (revision !== fileRead) return;
+    status.textContent = error instanceof TypeError ? 'Файл должен быть в кодировке UTF-8.' : error.message;
+    status.dataset.kind = 'error';
   } finally {
-    if (requests.categories === controller) {
-      requests.categories = null;
-      busy('categories', false);
-    }
+    if (revision === fileRead) { fileLoading = false; busy(false); }
   }
+}
+$('batch-file').addEventListener('change', () => loadFile($('batch-file').files[0]));
+
+const uploadZone = $('upload-zone');
+let dragDepth = 0;
+const isFileDrag = event => Array.from(event.dataTransfer?.types ?? []).includes('Files');
+uploadZone.addEventListener('dragenter', event => {
+  if (!isFileDrag(event)) return;
+  event.preventDefault();
+  dragDepth += 1;
+  uploadZone.classList.add('is-dragging');
+});
+uploadZone.addEventListener('dragover', event => {
+  if (!isFileDrag(event)) return;
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'copy';
+});
+uploadZone.addEventListener('dragleave', () => {
+  dragDepth = Math.max(0, dragDepth - 1);
+  if (!dragDepth) uploadZone.classList.remove('is-dragging');
+});
+uploadZone.addEventListener('drop', event => {
+  event.preventDefault();
+  dragDepth = 0;
+  uploadZone.classList.remove('is-dragging');
+  const files = event.dataTransfer?.files;
+  if (!files?.length) return;
+  if (files.length !== 1) {
+    const status = $('upload-message');
+    status.textContent = 'Перетащите один файл JSON, CSV или TXT. Внутри JSON/CSV может быть до 100 объявлений.';
+    status.dataset.kind = 'error';
+    status.hidden = false;
+    return;
+  }
+  loadFile(files[0]);
 });
 
-function renderDrafts(drafts, chosen, warnings = []) {
-  const elements = drafts.map((draft, index) => {
-    const card = document.createElement('article');
-    card.className = 'draft';
-    const category = document.createElement('p');
-    category.className = 'draft-category';
-    category.textContent = chosen.find(item => String(item.id) === String(draft.categoryId))?.name ?? `Категория ${draft.categoryId}`;
-    const warning = warnings.find(item => String(item.categoryId) === String(draft.categoryId));
-    const review = document.createElement('p');
-    review.className = 'hint draft-review';
-    review.textContent = warning ? 'Заготовка: уточните сведения об услуге перед публикацией.' : '';
-    review.hidden = !warning;
+function groupFor(event) {
+  let group = groups.get(event.index);
+  if (group) return group;
+  const section = document.createElement('section');
+  section.className = 'result-item';
+  const heading = document.createElement('h3');
+  heading.textContent = event.testcase ?? `Объявление ${event.index + 1}`;
+  const status = document.createElement('p');
+  status.className = 'hint item-status';
+  status.setAttribute('role', 'status');
+  const cards = document.createElement('div');
+  section.append(heading, status, cards);
+  const following = [...groups.entries()].sort((a, b) => a[0] - b[0]).find(([index]) => index > event.index);
+  $('draft-list').insertBefore(section, following?.[1].section ?? null);
+  group = { section, status, cards, drafts: [], testcase: event.testcase, index: event.index, result: null };
+  groups.set(event.index, group);
+  $('results').hidden = false;
+  return group;
+}
+
+function appendDraft(group, draft) {
+  const card = document.createElement('article');
+  card.className = 'draft';
+  const category = document.createElement('p');
+  category.className = 'draft-category';
+  category.textContent = CATEGORIES.find(c => c.id === draft.mcId)?.name ?? `Категория ${draft.mcId}`;
+  card.append(category);
+  const entry = { ...draft };
+  if (draft.title === null && draft.text === null) {
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Категория подобрана. Генерация заголовка и текста отключена.';
+    card.append(hint);
+  } else {
     const titleLabel = document.createElement('label');
-    titleLabel.htmlFor = `draft-title-${index}`;
+    titleLabel.htmlFor = `draft-title-${group.index}-${draft.mcId}`;
     titleLabel.textContent = 'Название объявления';
-    const draftTitle = document.createElement('input');
-    draftTitle.id = titleLabel.htmlFor;
-    draftTitle.value = draft.title;
+    const input = document.createElement('input');
+    input.id = titleLabel.htmlFor;
+    input.value = draft.title ?? '';
     const textLabel = document.createElement('label');
-    textLabel.htmlFor = `draft-description-${index}`;
+    textLabel.htmlFor = `draft-text-${group.index}-${draft.mcId}`;
     textLabel.textContent = 'Описание';
-    const draftText = document.createElement('textarea');
-    draftText.id = textLabel.htmlFor;
-    draftText.value = draft.description;
-    draftText.rows = 6;
+    const textarea = document.createElement('textarea');
+    textarea.id = textLabel.htmlFor;
+    textarea.rows = 6;
+    textarea.value = draft.text ?? '';
     const copy = document.createElement('button');
-    copy.className = 'button button-small copy-button';
     copy.type = 'button';
+    copy.className = 'button button-small copy-button';
     copy.textContent = 'Скопировать текст';
     const status = document.createElement('span');
     status.className = 'hint copy-status';
     status.setAttribute('role', 'status');
     copy.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(`${draftTitle.value}\n\n${draftText.value}`);
+        await navigator.clipboard.writeText(`${input.value}\n\n${textarea.value}`);
         status.textContent = 'Скопировано';
-      } catch {
-        status.textContent = 'Выделите текст и скопируйте вручную';
-      }
+      } catch { status.textContent = 'Выделите текст и скопируйте вручную'; }
     });
-    draftTitle.addEventListener('input', () => { status.textContent = ''; });
-    draftText.addEventListener('input', () => { status.textContent = ''; });
-    card.append(category, review, titleLabel, draftTitle, textLabel, draftText, copy, status);
-    return card;
-  });
-  $('draft-list').replaceChildren(...elements);
-  $('result-count').textContent = String(drafts.length);
-  results.hidden = drafts.length === 0;
-  if (drafts.length) {
-    $('results-heading').focus({ preventScroll: true });
-    results.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+    input.addEventListener('input', () => { entry.title = input.value; status.textContent = ''; });
+    textarea.addEventListener('input', () => { entry.text = textarea.value; status.textContent = ''; });
+    card.append(titleLabel, input, textLabel, textarea, copy, status);
+  }
+  group.drafts.push(entry);
+  group.cards.append(card);
+  draftCount += 1;
+  $('result-count').textContent = String(draftCount);
+}
+
+function warning(text) {
+  const line = document.createElement('p');
+  line.textContent = text;
+  $('generation-warnings').append(line);
+  $('generation-warnings').hidden = false;
+}
+
+function handleEvent(event) {
+  progressState?.update(event);
+  renderProgress();
+  if (event.type === 'done') stopProgressTimer();
+  if (event.type === 'start') {
+    message(`Обрабатываем объявлений: ${event.total}. Ответы появятся по мере готовности.`);
+    return;
+  }
+  if (event.type === 'heartbeat') return;
+  if (event.type === 'done') {
+    message(`Обработано: ${event.completed} из ${event.total}. Черновиков: ${draftCount}.${event.failed ? ` С ошибками: ${event.failed}.` : ''}`, event.failed > 0);
+    return;
+  }
+  const group = groupFor(event);
+  if (event.type === 'categories') {
+    group.status.textContent = event.categories.length
+      ? `Категории: ${event.categories.map(c => c.name).join(', ')}. Готовим результат…`
+      : 'Оснований для дополнительных объявлений не найдено.';
+  } else if (event.type === 'drafts') {
+    event.drafts.forEach(draft => appendDraft(group, draft));
+    event.warnings?.forEach(w => warning(`${group.testcase ?? `Объявление ${group.index + 1}`}: ${w.message}`));
+  } else if (event.type === 'category_error') {
+    warning(`${group.testcase ?? `Объявление ${group.index + 1}`}, категория ${event.mcId}: ${event.message}`);
+  } else if (event.type === 'item_done') {
+    group.result = event;
+    group.status.textContent = event.error?.message ?? (event.errors?.length
+      ? `Готово частично. Черновиков: ${group.drafts.length}. Ошибок: ${event.errors.length}.`
+      : group.drafts.length ? `Готово. Черновиков: ${group.drafts.length}.` : 'Оснований для дополнительных объявлений не найдено.');
+    if (event.error || event.errors?.length) group.status.dataset.kind = 'error';
+    message(`Обработано: ${event.completed} из ${event.total}. Получено черновиков: ${draftCount}.`);
   }
 }
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
-  if (!validateDescription()) return;
-  if (requests.categories) {
-    message('generate', 'Дождитесь подбора категорий или выберите их вручную.', true);
-    return;
-  }
-  if (!selected.size) {
-    message('generate', 'Выберите хотя бы одну категорию или сгенерируйте их по описанию.', true);
-    categoryList.querySelector('button')?.focus();
-    return;
-  }
-  cancel('generate');
-  const controller = new AbortController();
-  requests.generate = controller;
-  const chosen = categories.filter(category => selected.has(String(category.id)));
-  busy('generate', true);
-  message('generate', 'Готовим черновики объявлений…');
-  $('generation-warnings').hidden = true;
+  if (fileLoading) return;
+  let submission;
   try {
-    const { drafts, warnings } = await generateListings({ ...sourcePayload(), categories: chosen }, controller.signal);
-    if (controller.signal.aborted) return;
-    renderDrafts(drafts, chosen, warnings);
-    const warningBox = $('generation-warnings');
-    const warningLines = warnings.map(warning => {
-      const line = document.createElement('p');
-      const category = chosen.find(item => String(item.id) === String(warning.categoryId));
-      line.textContent = `${category?.name ?? `Категория ${warning.categoryId}`}: ${warning.message}`;
-      return line;
-    });
-    warningBox.replaceChildren(...warningLines);
-    warningBox.hidden = warnings.length === 0;
-    message('generate', drafts.length ? `Создано черновиков: ${drafts.length} из ${chosen.length}.` : 'Сервер не вернул объявления. Попробуйте уточнить описание.');
+    submission = prepareSubmission(description.value, $('title').value, sourceFilename);
   } catch (error) {
-    if (!controller.signal.aborted) message('generate', error.message, true);
-    if (!controller.signal.aborted) checkConnection();
-  } finally {
-    if (requests.generate === controller) {
-      requests.generate = null;
-      busy('generate', false);
+    message(error.message, true);
+    return;
+  }
+  const { payload, contentType, batch } = submission;
+  batchRequest = batch;
+  invalidate();
+  $('result-count').textContent = '0';
+  const request = new AbortController();
+  controller = request;
+  busy(true);
+  startProgress();
+  message('Начинаем обработку…');
+  try {
+    await createListings(payload, {
+      signal: request.signal, contentType, generateText: true,
+      onEvent: event => { if (controller === request && !request.signal.aborted) handleEvent(event); },
+    });
+  } catch (error) {
+    if (!request.signal.aborted) {
+      progressState.interrupted = true;
+      renderProgress();
+      message(error.message, true);
+      checkConnection();
     }
+  } finally {
+    if (controller === request) { stopProgressTimer(); controller = null; busy(false); }
   }
 });
 
-renderCategories();
+function exportResults() {
+  return [...groups.values()].sort((a, b) => a.index - b.index).map(group => ({
+    index: group.index, ...(group.testcase !== undefined ? { testcase: group.testcase } : {}), drafts: group.drafts,
+    ...(group.result?.error ? { error: group.result.error } : {}),
+    ...(group.result?.errors ? { errors: group.result.errors } : {}),
+    ...(!group.result ? { incomplete: true } : {}),
+  }));
+}
+function download(content, type, name) {
+  const url = URL.createObjectURL(new Blob([content], { type }));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = name;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+$('download-json').addEventListener('click', () => {
+  const items = exportResults();
+  const body = !batchRequest && items.length === 1 ? (({ index, ...rest }) => rest)(items[0]) : { results: items };
+  download(JSON.stringify(body, null, 2), 'application/json;charset=utf-8', 'drafts.json');
+});
+$('download-csv').addEventListener('click', () => {
+  const cell = value => `"${String(value).replaceAll('"', '""')}"`;
+  const items = exportResults();
+  const hasErrors = items.some(item => item.incomplete || item.error || item.errors);
+  const rows = items.map(item => [item.testcase ?? `case-${String(item.index + 1).padStart(3, '0')}`,
+    JSON.stringify(item.drafts.map(d => d.mcId)), JSON.stringify(item.drafts.map(d => d.text)),
+    ...(hasErrors ? [JSON.stringify(item.error ?? item.errors ?? (item.incomplete ? { message: 'Обработка не завершена' } : null))] : []),
+  ].map(cell).join(','));
+  download('\uFEFFtestcase,microcats,descriptions' + (hasErrors ? ',error' : '') + '\r\n' + rows.join('\r\n') + '\r\n', 'text/csv;charset=utf-8', 'drafts.csv');
+});
+
 checkConnection();

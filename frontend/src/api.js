@@ -73,3 +73,78 @@ export async function getConnectionStatus(signal) {
   }
   return body;
 }
+
+// One route for manual entries, JSON batches and raw UTF-8 CSV uploads.
+export async function createListings(payload, { signal, onEvent, contentType = 'application/json', generateText = true } = {}) {
+  const idle = new AbortController();
+  let timer;
+  let reader;
+  const resetTimer = () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => idle.abort(), 120_000);
+  };
+  resetTimer();
+  try {
+    const response = await fetch(`/api/create?generateText=${generateText}`, {
+      method: 'POST',
+      headers: { 'Content-Type': contentType, Accept: 'application/x-ndjson' },
+      body: typeof payload === 'string' ? payload : JSON.stringify(payload),
+      signal: signal ? AbortSignal.any([signal, idle.signal]) : idle.signal,
+    });
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}));
+      throw new Error(body.message || `Ошибка сервера (${response.status}).`);
+    }
+    if (!response.headers.get('content-type')?.includes('application/x-ndjson') || !response.body) {
+      throw new Error('Сервер не поддерживает потоковую выдачу результатов.');
+    }
+    reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let finished = false;
+    let started = false;
+    const emit = line => {
+      if (!line.trim()) return;
+      let event;
+      try { event = JSON.parse(line); } catch { throw new Error('Сервер вернул повреждённый поток JSON.'); }
+      if (!['start', 'categories', 'drafts', 'category_error', 'item_done', 'done', 'heartbeat'].includes(event?.type)
+        || finished || (!started && event.type !== 'start')) {
+        throw new Error('Сервер вернул некорректное событие.');
+      }
+      if (event.type === 'start') started = true;
+      if (['drafts', 'item_done'].includes(event.type) && (!Array.isArray(event.drafts)
+        || event.drafts.some(d => !d || !Number.isInteger(d.mcId)
+          || !(d.title === null || typeof d.title === 'string')
+          || !(d.text === null || typeof d.text === 'string')))) {
+        throw new Error('Сервер вернул некорректные черновики.');
+      }
+      if (event.type === 'done') finished = true;
+      onEvent?.(event);
+    };
+    while (true) {
+      const { value, done } = await reader.read();
+      signal?.throwIfAborted();
+      resetTimer();
+      buffer += decoder.decode(value, { stream: !done });
+      let end;
+      while ((end = buffer.indexOf('\n')) !== -1) {
+        emit(buffer.slice(0, end));
+        buffer = buffer.slice(end + 1);
+      }
+      if (done) break;
+    }
+    if (buffer.trim()) emit(buffer);
+    if (!finished) throw new Error('Соединение прервано. Уже полученные результаты сохранены; обработка завершена не полностью.');
+  } catch (error) {
+    if (signal?.aborted) throw error;
+    if (idle.signal.aborted) throw new Error('Сервер долго не отвечает. Полученные результаты сохранены.');
+    if (error instanceof TypeError) throw new Error('Не удалось связаться с сервером. Полученные результаты сохранены.');
+    throw error;
+  } finally {
+    clearTimeout(timer);
+    if (reader) {
+      await reader.cancel().catch(() => {});
+      reader.releaseLock();
+    }
+  }
+}
