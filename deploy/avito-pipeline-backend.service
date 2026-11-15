@@ -1,0 +1,18 @@
+[Unit]
+Description=Avito pipeline: TF-IDF classification and Qwen draft backend
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/Hakaton/innopolis_2026-integration
+Environment=CLASSIFIER_MODEL_PATH=/srv/Hakaton/models/baseline/tfidf_baseline.joblib
+Environment=QWEN_BASE_URL=http://127.0.0.1:8000/v1
+Environment=QWEN_MODEL=avito-qwen
+Environment=QWEN_TOKENIZE_BEFORE_GENERATE=0
+ExecStart=/srv/Hakaton/.venv/bin/python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 18001
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
