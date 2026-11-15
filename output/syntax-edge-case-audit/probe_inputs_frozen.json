@@ -1,0 +1,269 @@
+{
+  "rows": [
+    {
+      "id": "partial_ellipsis",
+      "description": "Плитку на пол не укладываем, только на стены.",
+      "mcId": 101,
+      "expert_expected": [
+        103
+      ],
+      "role": "new_manual_probe_not_official_gold"
+    },
+    {
+      "id": "partial_explicit",
+      "description": "Мы не укладываем напольную плитку, но укладываем плитку на стены.",
+      "mcId": 101,
+      "expert_expected": [
+        103
+      ],
+      "role": "new_manual_probe_not_official_gold"
+    },
+    {
+      "id": "floor_refusal_only",
+      "description": "Плитку на пол не укладываем.",
+      "mcId": 101,
+      "expert_expected": [],
+      "role": "new_manual_probe_not_official_gold"
+    },
+    {
+      "id": "different_categories_one_sentence",
+      "description": "Мы укладываем плитку, но не устанавливаем раковины.",
+      "mcId": 101,
+      "expert_expected": [
+        103
+      ],
+      "role": "new_manual_probe_not_official_gold"
+    },
+    {
+      "id": "different_categories_separate_sentences",
+      "description": "Мы укладываем плитку. Раковины не устанавливаем.",
+      "mcId": 101,
+      "expert_expected": [
+        103
+      ],
+      "role": "new_manual_probe_not_official_gold"
+    },
+    {
+      "id": "ctx20-test-001-a",
+      "description": "Объект: небольшой салон, нужно обновить зону у входа.\nПорядок: сначала осмотрим покрытие, потом подтвердим состав заказа.\nНаше предложение: укладка мозаики на входной участок. По износостойкости она может быть удобнее краски. Покраску не выполняем.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        103
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "comparison"
+    },
+    {
+      "id": "ctx20-test-001-b",
+      "description": "Объект: небольшой салон, нужно обновить зону у входа.\nПорядок: сначала осмотрим покрытие, потом подтвердим состав заказа.\nНаше предложение: покраска входной стены. По цене она может быть удобнее облицовки мозаикой. Мозаику не укладываем.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        106
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "comparison"
+    },
+    {
+      "id": "ctx20-test-002-a",
+      "description": "Участок: старая ниша за кухонным пеналом.\nПодготовка: хозяин убирает пенал и обеспечивает свободный подход.\nДелаем: оштукатуривание ниши. В отличие от тонкого шпаклёвочного слоя, штукатуркой исправим глубокие неровности. Шпаклёвку под финиш не предлагаем.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        102
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "comparison"
+    },
+    {
+      "id": "ctx20-test-002-b",
+      "description": "Участок: старая ниша за кухонным пеналом.\nПодготовка: хозяин убирает пенал и обеспечивает свободный подход.\nДелаем: шпаклёвку ниши под обои. В отличие от штукатурного слоя, она не исправит глубокие неровности. Оштукатуривание не предлагаем.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        106
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "comparison"
+    },
+    {
+      "id": "ctx20-test-003-a",
+      "description": "Задача: вода капает из соединения под кухонной мойкой.\nДоступ: освободите тумбу и покажите соединение на фото.\nБерём: ремонт протекающего соединения сифона. Не берём: замену стояка. Отказ от стояка не относится к заявленному ремонту сифона.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        104
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "partial_refusal"
+    },
+    {
+      "id": "ctx20-test-003-b",
+      "description": "Задача: вода капает из соединения под кухонной мойкой.\nДоступ: освободите тумбу и покажите соединение на фото.\nБерём: сборку мебельной тумбы из готовых деталей. Не берём: ремонт сифона и замену стояка, водяные соединения не трогаем.",
+      "mcId": 101,
+      "official_dataset_gold": [],
+      "role": "existing_separate_context_test20",
+      "topic": "partial_refusal"
+    },
+    {
+      "id": "ctx20-test-004-a",
+      "description": "Объект: небольшая переговорная, нужен свет над столом.\nДо визита: подготовьте светильник и обеспечьте доступ к месту монтажа.\nВыполняем: монтаж и подключение светильника к готовому выводу. Не выполняем: замену всей проводки помещения.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        105
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "partial_refusal"
+    },
+    {
+      "id": "ctx20-test-004-b",
+      "description": "Объект: небольшая переговорная, нужен свет над столом.\nДо визита: подготовьте светильник и обеспечьте доступ к месту монтажа.\nВыполняем: только сборку стола. Не выполняем: монтаж светильника, его подключение и замену проводки.",
+      "mcId": 101,
+      "official_dataset_gold": [],
+      "role": "existing_separate_context_test20",
+      "topic": "partial_refusal"
+    },
+    {
+      "id": "ctx20-test-005-a",
+      "description": "Объект: отдельный кабинет после перепланировки.\nОрганизация: каждому исполнителю выделяется свой участок и отдельный расчёт.\nНаш участок: штукатурка перегородки. Электрические точки переносит компания, которую собственник пригласил независимо от нас.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        102
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "actor"
+    },
+    {
+      "id": "ctx20-test-005-b",
+      "description": "Объект: отдельный кабинет после перепланировки.\nОрганизация: каждому исполнителю выделяется свой участок и отдельный расчёт.\nНаш участок: перенос электрических точек. Перегородку штукатурит компания, которую собственник пригласил независимо от нас.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        105
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "actor"
+    },
+    {
+      "id": "ctx20-test-006-a",
+      "description": "Объект: прачечная в частном доме.\nНужны: подготовленный доступ к прибору и возможность показать существующие подключения.\nНаша фирма подключает стиральную машину к водоснабжению и сливу. Линию электропитания делает чужая фирма по договору владельца.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        104
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "actor"
+    },
+    {
+      "id": "ctx20-test-006-b",
+      "description": "Объект: прачечная в частном доме.\nНужны: подготовленный доступ к прибору и возможность показать существующие подключения.\nНаша фирма монтирует линию электропитания для стиральной машины. К водоснабжению и сливу её подключает чужая фирма по договору владельца.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        105
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "actor"
+    },
+    {
+      "id": "ctx20-test-007-a",
+      "description": "Запрос: обновление швов между плитками и окраска двери.\nОтвет мастера по пунктам:\nШвы — принимаю заказ, старую затирку удалю и новую нанесу. Дверь — не крашу, малярные работы не беру.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        103
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "status_binding"
+    },
+    {
+      "id": "ctx20-test-007-b",
+      "description": "Запрос: обновление швов между плитками и окраска двери.\nОтвет мастера по пунктам:\nДверь — принимаю заказ, подготовлю и покрашу. Швы — не обновляю, плиточные работы не беру.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        106
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "status_binding"
+    },
+    {
+      "id": "ctx20-test-008-a",
+      "description": "Владелец перечислил две задачи: сначала устранить течь смесителя, затем перенести выключатель.\nМоё подтверждение касается только одной позиции:\nПервую беру, вторую отклоняю. То есть течь смесителя устраню, выключатель переносить не буду.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        104
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "status_binding"
+    },
+    {
+      "id": "ctx20-test-008-b",
+      "description": "Владелец перечислил две задачи: сначала устранить течь смесителя, затем перенести выключатель.\nМоё подтверждение касается только одной позиции:\nВторую беру, первую отклоняю. То есть выключатель перенесу, течь смесителя устранять не буду.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        105
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "status_binding"
+    },
+    {
+      "id": "ctx20-test-009-a",
+      "description": "Актуальный перечень для небольших заказов.\nСтарые сообщения могли содержать другой ответ, поэтому ниже текущий статус:\nПоклейку обоев снова принимаю. Раньше отказывал из-за загрузки, но сейчас свободен и выполняю эту работу.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        106
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "time_condition"
+    },
+    {
+      "id": "ctx20-test-009-b",
+      "description": "Актуальный перечень для небольших заказов.\nСтарые сообщения могли содержать другой ответ, поэтому ниже текущий статус:\nПоклейку обоев больше не принимаю. Раньше выполнял эту работу, но сейчас предложение закрыто.",
+      "mcId": 101,
+      "official_dataset_gold": [],
+      "role": "existing_separate_context_test20",
+      "topic": "time_condition"
+    },
+    {
+      "id": "ctx20-test-010-a",
+      "description": "Объект: цокольная комната.\nПеред приездом: согласуйте освещение, свободный проход и возможность показать стену целиком.\nУслуга: штукатурка стен. Принимаю заказ при готовом доступе; если помещение пока закрыто, согласуем другую дату, от самой услуги не отказываюсь.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        102
+      ],
+      "role": "existing_separate_context_test20",
+      "topic": "time_condition"
+    },
+    {
+      "id": "ctx20-test-010-b",
+      "description": "Объект: цокольная комната.\nПеред приездом: согласуйте освещение, свободный проход и возможность показать стену целиком.\nШтукатурку стен не предлагаю даже при готовом доступе. Дату на эту работу не назначаю, заказ надо передать другому мастеру.",
+      "mcId": 101,
+      "official_dataset_gold": [],
+      "role": "existing_separate_context_test20",
+      "topic": "time_condition"
+    },
+    {
+      "id": "known_v3_96",
+      "description": "• Принимаем заявки на подключение раковины.\n• Отказываемся выполнять укладку керамогронита.",
+      "mcId": 105,
+      "official_dataset_gold": [
+        104
+      ],
+      "role": "existing_main_test_reproduction",
+      "row_idx": 96
+    },
+    {
+      "id": "known_v3_42",
+      "description": "Принимаем заявки на полный ремонт дома, сборку электрощита. Отказываемся выполнять штукатурное выравнивание.",
+      "mcId": 101,
+      "official_dataset_gold": [
+        105
+      ],
+      "role": "existing_main_test_reproduction",
+      "row_idx": 42
+    }
+  ],
+  "sha256": {
+    "datasets/own_v3_clean/test.jsonl": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7",
+    "datasets/context_pairs_100/test_20.jsonl": "8a24e7527a44471f9cac32ec5c154f7f15652b8c807339785e4734f0d9139494",
+    "/home/user/hackaton/innopolis_2026/output/syntax-aware-experiment/models/catboost_C_syntax.cbm": "3b7dbea4b3fe6ba6c61b2499dd82911e904282217a7281d8cc1c22b19b399ca9",
+    "/home/user/hackaton/innopolis_2026/output/syntax-aware-experiment/models/sgd_full_heads.joblib": "49d95c79e2633d4ba2fc95593e04e8acc4ce0845549a7dcf7348f73af007c45f",
+    "avito_compare/scripts/syntax_features.py": "95f89fc0b1a29989e0c7b3f4ecf5a137dff1bc98fb626e647beb4e3cc1a6e456"
+  },
+  "encoder_snapshot": "/home/user/.cache/huggingface/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "threshold": 0.5,
+  "no_training": true
+}

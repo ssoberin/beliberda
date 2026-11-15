@@ -1,0 +1,15 @@
+Frozen probe inputs 27 chunks 31 new 28
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 55/310 [00:00<00:00, 522.40it/s]Loading weights:  35%|███▍      | 108/310 [00:00<00:00, 449.11it/s]Loading weights:  50%|████▉     | 154/310 [00:00<00:00, 304.72it/s]Loading weights:  61%|██████    | 189/310 [00:00<00:00, 274.72it/s]Loading weights:  71%|███████   | 219/310 [00:00<00:00, 269.75it/s]Loading weights:  80%|████████  | 248/310 [00:00<00:00, 261.48it/s]Loading weights:  89%|████████▊ | 275/310 [00:00<00:00, 254.90it/s]Loading weights:  97%|█████████▋| 301/310 [00:01<00:00, 254.25it/s]Loading weights: 100%|██████████| 310/310 [00:01<00:00, 290.53it/s]
+Offline CPU embedding seconds 24.138
+partial_ellipsis prediction [] expected [103] score103 0.041287
+partial_explicit prediction [103] expected [103] score103 0.958811
+floor_refusal_only prediction [] expected [] score103 0.028091
+different_categories_one_sentence prediction [103] expected [103] score103 0.627163
+different_categories_separate_sentences prediction [103] expected [103] score103 0.93203
+ctx20-test-003-a prediction [104] expected [104] score103 0.001328
+ctx20-test-003-b prediction [] expected [] score103 0.002138
+ctx20-test-004-a prediction [105] expected [105] score103 0.001244
+ctx20-test-004-b prediction [105] expected [] score103 0.001642
+known_v3_96 prediction [104] expected [104] score103 0.034176
+known_v3_42 prediction [102, 105] expected [105] score103 0.00602
+Reproduction {'known_v3_96': {'max_abs_probability_difference': 0.0, 'prediction_identical': True}, 'known_v3_42': {'max_abs_probability_difference': 0.0, 'prediction_identical': True}}

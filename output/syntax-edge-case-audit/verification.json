@@ -1,0 +1,17 @@
+{
+  "artifact_consistency_passed": true,
+  "protected_hashes_checked": 10,
+  "predictions_checked": 31,
+  "identical_cached_control_predictions": 2,
+  "known_failed_manual_semantic_probes": [
+    "partial_ellipsis"
+  ],
+  "known_public_refusal_failure": {
+    "row_idx": 1060,
+    "false_positive_categories": [
+      104,
+      105
+    ]
+  },
+  "note": "Passing artifact checks does not mean the model passes all semantic cases."
+}

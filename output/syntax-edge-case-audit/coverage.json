@@ -1,0 +1,54 @@
+{
+  "main_test_definition": "V3 clean test600 and public parquet208, unchanged",
+  "same_category_status_coverage": {
+    "train": {
+      "rows": 2921,
+      "same_category_both_evidence_statuses": 0,
+      "matches": []
+    },
+    "validation": {
+      "rows": 600,
+      "same_category_both_evidence_statuses": 0,
+      "matches": []
+    },
+    "test": {
+      "rows": 600,
+      "same_category_both_evidence_statuses": 0,
+      "matches": []
+    }
+  },
+  "exact_partial_phrase_matches": {
+    "public_test": [],
+    "v3_test": []
+  },
+  "public_partial_floor_wall_analogue": "No analogue found by targeted text search and inspection; not an exhaustive semantic proof for all possible paraphrases",
+  "mixed_different_target_categories": {
+    "rows": 252,
+    "exact_correct": 161,
+    "exact_wrong": 91,
+    "missing_positive_ads": 31,
+    "predicted_negative_ads": 67,
+    "positive_negative_evidence_in_same_segmented_sentence": 0,
+    "note": "Evidence selects a broad slice; separate sentences can still share a chunk. Sentence separation does not guarantee isolation of grammatical features."
+  },
+  "feature_probes": {
+    "rows": 13,
+    "failed_ids": [
+      "partial_ellipsis",
+      "other_service",
+      "other_service_next_sentence"
+    ]
+  },
+  "separate_context20_partial_rows": 4,
+  "sha256": {
+    "datasets/own_v3_clean/train.jsonl": "8ed3c4c7f2bc04425343caeb649909f173eaf01383d9b27f2d6a74eccd5c1875",
+    "datasets/own_v3_clean/validation.jsonl": "876cbc10ff4d05450b35a01df4627f0b61b6dae7e809bfaa6a46160d80bab15d",
+    "datasets/own_v3_clean/test.jsonl": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7",
+    "datasets/public/public-test-dataset.parquet": "65b5a45a98b577d853a928932bbbdf8bd9bdeb469ded3016faace4d11f3eabaa",
+    "datasets/context_pairs_100/test_20.jsonl": "8a24e7527a44471f9cac32ec5c154f7f15652b8c807339785e4734f0d9139494",
+    "avito_compare/scripts/syntax_features.py": "95f89fc0b1a29989e0c7b3f4ecf5a137dff1bc98fb626e647beb4e3cc1a6e456",
+    "/home/user/hackaton/innopolis_2026/output/catboost-optimization/final_predictions.csv": "4f01783371fff1f544121d359c92b1307af61a29abee950fb97b2e6b1ecc8b0a"
+  },
+  "no_training": true,
+  "no_gold_changes": true
+}

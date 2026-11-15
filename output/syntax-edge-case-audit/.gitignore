@@ -1,0 +1,5 @@
+# Regenerable broad search results and local embedding cache.
+public_train_search.json
+public_train_target_candidates.json
+new_chunk_embeddings.npz
+__pycache__/

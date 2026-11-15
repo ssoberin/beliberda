@@ -1,0 +1,17 @@
+{
+  "train": {
+    "rows": 10000,
+    "unique_descriptions": 4866,
+    "broad_search_candidates": 3068
+  },
+  "test": {
+    "rows": 208,
+    "unique_descriptions": 139,
+    "broad_search_candidates": 60
+  },
+  "sha256": {
+    "datasets/public/public-train-annotated.jsonl": "b7118d68086624fbeab43839f22a635d4e325e4ee339f22d4aa0ad3c2e986615",
+    "datasets/public/public-test-dataset.parquet": "65b5a45a98b577d853a928932bbbdf8bd9bdeb469ded3016faace4d11f3eabaa"
+  },
+  "limitations": "Lexical retrieval plus expert review; absence of an exact analogue does not prove absence of all semantic paraphrases."
+}

@@ -1,0 +1,6 @@
+Frozen probe inputs 4 chunks 61 new 0
+public_train_1128 prediction [104, 105, 106] expected [102, 104, 105, 106] score103 0.080938
+public_train_7250 prediction [102, 103, 104, 105, 106] expected [102, 103, 104, 105, 106] score103 0.861041
+public_train_6401 prediction [104, 105] expected [104, 105] score103 0.047607
+public_train_1060 prediction [102, 103, 104, 105, 106] expected [102, 103, 106] score103 0.993416
+Reproduction {}
