@@ -1,0 +1,773 @@
+[
+  {
+    "review_id": 1,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Реконструкция и строительство без конкретных услуг 102–106."
+  },
+  {
+    "review_id": 2,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Подъем дома, венцы и фундамент; выравнивание здания не штукатурка."
+  },
+  {
+    "review_id": 3,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий комплекс ремонта без названных целевых операций."
+  },
+  {
+    "review_id": 4,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Деревянные конструкции, обшивка и проемы без целевых услуг."
+  },
+  {
+    "review_id": 5,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общее обещание работы, конкретные услуги не указаны."
+  },
+  {
+    "review_id": 6,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт новостройки, без перечня целевых работ."
+  },
+  {
+    "review_id": 7,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Отделка парной без материала и конкретных целевых операций; плитку автоматически не выводим."
+  },
+  {
+    "review_id": 8,
+    "group": "D",
+    "offered": [],
+    "uncertain": [
+      102,
+      103,
+      104,
+      105,
+      106
+    ],
+    "gold_error_assessment": "probable",
+    "rationale": "Своя команда электриков/сантехников/плиточников/штукатуров/маляров и весь цикл ремонта: предложение вероятно, но операционного списка нет."
+  },
+  {
+    "review_id": 9,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт, контакты дизайнера; конкретных услуг 102–106 нет."
+  },
+  {
+    "review_id": 10,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт вторичного жилья без конкретных операций."
+  },
+  {
+    "review_id": 11,
+    "group": "B",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Дом, фундамент, дерево; отопление упомянуто только как экономия расходов вследствие утепления."
+  },
+  {
+    "review_id": 12,
+    "group": "B",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Электрика указана в техническом проекте; плитка в общей фразе о ремонте. Монтаж отдельно не заявлен."
+  },
+  {
+    "review_id": 13,
+    "group": "C",
+    "offered": [
+      104,
+      105
+    ],
+    "uncertain": [
+      102
+    ],
+    "gold_error_assessment": "confirmed",
+    "rationale": "В списке своих работ полная замена инженерных сетей: электрика, отопление, водоснабжение, канализация. Выравнивание стен без технологии спорно для 102."
+  },
+  {
+    "review_id": 14,
+    "group": "C",
+    "offered": [
+      103,
+      105,
+      106
+    ],
+    "uncertain": [
+      102,
+      104
+    ],
+    "gold_error_assessment": "confirmed",
+    "rationale": "В отделку прямо входят покраска, обои, плитка, электрика. Штукатурка названа как материал; сантехника в SEO-хвосте."
+  },
+  {
+    "review_id": 15,
+    "group": "C",
+    "offered": [
+      102,
+      104,
+      105,
+      106
+    ],
+    "uncertain": [],
+    "gold_error_assessment": "confirmed",
+    "rationale": "Собственный список Что мы делаем явно содержит штукатурку, малярку, электрику и сантехнику."
+  },
+  {
+    "review_id": 16,
+    "group": "C",
+    "offered": [
+      103,
+      104,
+      106
+    ],
+    "uncertain": [
+      102,
+      105
+    ],
+    "gold_error_assessment": "confirmed",
+    "rationale": "Текущий список предлагает плитку, покраску/обои, сантехнику. Часть электрики и штукатурки перечислена в выполненном проекте, текущие формулировки шире."
+  },
+  {
+    "review_id": 17,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Благоустройство дачного участка без конкретных целевых услуг."
+  },
+  {
+    "review_id": 18,
+    "group": "C",
+    "offered": [
+      102,
+      103,
+      104,
+      105,
+      106
+    ],
+    "uncertain": [],
+    "gold_error_assessment": "confirmed",
+    "rationale": "Список Что мы делаем явно содержит все пять категорий."
+  },
+  {
+    "review_id": 19,
+    "group": "C",
+    "offered": [
+      103,
+      104,
+      105
+    ],
+    "uncertain": [
+      102
+    ],
+    "gold_error_assessment": "confirmed",
+    "rationale": "Берем на себя: сантехника/электрика/плиточные работы/освещение. Выравнивание стен не уточняет технологию."
+  },
+  {
+    "review_id": 20,
+    "group": "B",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Мраморные поверхности названы характеристикой объекта/материала, укладка плитки или камня не предложена."
+  },
+  {
+    "review_id": 21,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Дом выравнивают подъемом, меняют венцы и фундамент; не штукатурка."
+  },
+  {
+    "review_id": 22,
+    "group": "C",
+    "offered": [
+      102,
+      103,
+      104,
+      105,
+      106
+    ],
+    "uncertain": [],
+    "gold_error_assessment": "confirmed",
+    "rationale": "Явный список Наши услуги содержит штукатурку, малярку, плитку, монтаж сантехники, трубы и проводку."
+  },
+  {
+    "review_id": 23,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Замена опор деревянного дома без целевых услуг."
+  },
+  {
+    "review_id": 24,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общее предложение внутренних строительных работ."
+  },
+  {
+    "review_id": 25,
+    "group": "D",
+    "offered": [],
+    "uncertain": [
+      103,
+      104
+    ],
+    "gold_error_assessment": "disputed",
+    "rationale": "Санузел под ключ среди ГВЛ/потолков/дверей, но сантехнические и плиточные операции не названы."
+  },
+  {
+    "review_id": 26,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Перегородки без штукатурки, электрики и прочих целевых услуг."
+  },
+  {
+    "review_id": 27,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт кухни, конкретные целевые операции не указаны."
+  },
+  {
+    "review_id": 28,
+    "group": "C",
+    "offered": [
+      104,
+      105
+    ],
+    "uncertain": [
+      102,
+      106
+    ],
+    "gold_error_assessment": "confirmed",
+    "rationale": "Явно названы сантехнические и электромонтажные работы; подготовка основания не уточнена."
+  },
+  {
+    "review_id": 29,
+    "group": "C",
+    "offered": [
+      102,
+      106
+    ],
+    "uncertain": [],
+    "gold_error_assessment": "confirmed",
+    "rationale": "В своем списке явные штукатурка, шпаклевка, покраска и обои."
+  },
+  {
+    "review_id": 30,
+    "group": "C",
+    "offered": [
+      103,
+      104,
+      105
+    ],
+    "uncertain": [],
+    "gold_error_assessment": "confirmed",
+    "rationale": "ЧТО ВЫПОЛНЯЕМ: электрика/сантехника/плиточные работы; пустой gold противоречит списку."
+  },
+  {
+    "review_id": 31,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая отделка мансарды, конкретные целевые операции не названы."
+  },
+  {
+    "review_id": 32,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт со скандинавским стилем; цвета/дерево/минимализм не доказывают малярку."
+  },
+  {
+    "review_id": 33,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Бессодержательное описание роаи; извлечь услугу нельзя."
+  },
+  {
+    "review_id": 34,
+    "group": "B",
+    "offered": [],
+    "uncertain": [
+      105
+    ],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Текстильные стены и потолки без мокрых процессов; штукатурка отрицается. Упоминание аккуратных розеток не является явным предложением электромонтажа."
+  },
+  {
+    "review_id": 35,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Только общая фраза ремонта квартир/домов под ключ."
+  },
+  {
+    "review_id": 36,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Много общего текста о ремонте под ключ, но после заголовка полного цикла нет списка конкретных целевых работ."
+  },
+  {
+    "review_id": 37,
+    "group": "D",
+    "offered": [],
+    "uncertain": [
+      104,
+      105
+    ],
+    "gold_error_assessment": "probable",
+    "rationale": "Планирование мебели для правильного монтажа электрики/сантехники в контексте своей команды полного ремонта. Предложение вероятно, но субъект монтажа не указан прямо."
+  },
+  {
+    "review_id": 38,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Только Звоните пишите."
+  },
+  {
+    "review_id": 39,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Только Ремонт и дизайн."
+  },
+  {
+    "review_id": 40,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Бессодержательный набор букв."
+  },
+  {
+    "review_id": 41,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Деревянная обшивка бань и парных не относится к пяти целевым категориям."
+  },
+  {
+    "review_id": 42,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт без конкретных операций."
+  },
+  {
+    "review_id": 43,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Бессодержательный набор букв."
+  },
+  {
+    "review_id": 44,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая фраза ремонт под ключ."
+  },
+  {
+    "review_id": 45,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая фраза комплексного ремонта от черновой до чистовой без названных услуг."
+  },
+  {
+    "review_id": 46,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт, техпроект без названных целевых работ."
+  },
+  {
+    "review_id": 47,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Подъем и выравнивание дома, венцы и фундамент — конструктивные работы, не штукатурка."
+  },
+  {
+    "review_id": 48,
+    "group": "D",
+    "offered": [],
+    "uncertain": [
+      103,
+      105
+    ],
+    "gold_error_assessment": "probable",
+    "rationale": "Проводка и плитка названы текущими этапами своей команды в обещании фотоотчета. Вероятное предложение, но не прямой список услуг. Шпатель относится к прошлому."
+  },
+  {
+    "review_id": 49,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт помещений без конкретных работ."
+  },
+  {
+    "review_id": 50,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Деревянная обшивка без целевых операций."
+  },
+  {
+    "review_id": 51,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт и хозяйственные постройки."
+  },
+  {
+    "review_id": 52,
+    "group": "C",
+    "offered": [
+      104,
+      105
+    ],
+    "uncertain": [
+      102,
+      103
+    ],
+    "gold_error_assessment": "confirmed",
+    "rationale": "В работу входит замена электрики и разводка сантехники. Выравнивание без технологии, плитка только в технадзоре."
+  },
+  {
+    "review_id": 53,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт White Box/под ключ и технадзор, без целевых операций."
+  },
+  {
+    "review_id": 54,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Различные работы по договоренности без названных услуг."
+  },
+  {
+    "review_id": 55,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая внутренняя отделка без целевых операций."
+  },
+  {
+    "review_id": 56,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая отделка и функции представителя заказчика, нет конкретных работ 102–106."
+  },
+  {
+    "review_id": 57,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Капремонт деревянного дома без конкретных целевых операций."
+  },
+  {
+    "review_id": 58,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Основание деревянного дома без целевых операций."
+  },
+  {
+    "review_id": 59,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая отделка мансарды без названных целевых операций."
+  },
+  {
+    "review_id": 60,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт от демонтажа до чистовой отделки без конкретных целевых операций."
+  },
+  {
+    "review_id": 61,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт комнаты без целевых операций."
+  },
+  {
+    "review_id": 62,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт кухни без целевых операций."
+  },
+  {
+    "review_id": 63,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт прихожей без целевых операций."
+  },
+  {
+    "review_id": 64,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт кухни без целевых операций."
+  },
+  {
+    "review_id": 65,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий капремонт деревянного дома без целевых операций."
+  },
+  {
+    "review_id": 66,
+    "group": "C",
+    "offered": [
+      104,
+      105
+    ],
+    "uncertain": [],
+    "gold_error_assessment": "confirmed",
+    "rationale": "Мы берем на себя весь цикл, включая монтаж сантехники и электрики: явное предложение своих работ."
+  },
+  {
+    "review_id": 67,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Гипсокартонные перегородки не означают штукатурку или малярку."
+  },
+  {
+    "review_id": 68,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Все виды работ без именования целевых услуг; исключены только двери/натяжные потолки."
+  },
+  {
+    "review_id": 69,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Деревянная обшивка без целевых операций."
+  },
+  {
+    "review_id": 70,
+    "group": "B",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Структурная реконструкция дома. Отопление в контексте экономии от утепления, инженерия названа обобщенно; целевые операции не предложены."
+  },
+  {
+    "review_id": 71,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая внутренняя отделка дачи без конкретных операций."
+  },
+  {
+    "review_id": 72,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Только цена договорная, услуги не названы."
+  },
+  {
+    "review_id": 73,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Капремонт деревянного дома без конкретных операций."
+  },
+  {
+    "review_id": 74,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Реставрация дома без конкретных целевых операций."
+  },
+  {
+    "review_id": 75,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт под ключ; конкретный список после Полного цикла отсутствует."
+  },
+  {
+    "review_id": 76,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Бессодержательный набор букв."
+  },
+  {
+    "review_id": 77,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт, косметический/капитальный, без конкретных целевых услуг."
+  },
+  {
+    "review_id": 78,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт и подготовка квартиры к сдаче, без целевых операций."
+  },
+  {
+    "review_id": 79,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая отделка комнаты под ключ, без целевых операций."
+  },
+  {
+    "review_id": 80,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общая фраза ремонта под ключ."
+  },
+  {
+    "review_id": 81,
+    "group": "D",
+    "offered": [],
+    "uncertain": [
+      106
+    ],
+    "gold_error_assessment": "probable",
+    "rationale": "В характеристиках услуги прямо написана поклейка обоев; вероятно предложение, но статус характеристик/примера не разъяснен."
+  },
+  {
+    "review_id": 82,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общий ремонт без конкретных целевых операций."
+  },
+  {
+    "review_id": 83,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Просевший дом, конкретные целевые операции не названы."
+  },
+  {
+    "review_id": 84,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Общие строительные работы любой сложности без конкретных услуг."
+  },
+  {
+    "review_id": 85,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Комплексный ремонт с организацией процесса; конкретные работы 102–106 не названы."
+  },
+  {
+    "review_id": 86,
+    "group": "A",
+    "offered": [],
+    "uncertain": [],
+    "gold_error_assessment": "no_evidence",
+    "rationale": "Усиление основания дома не относится к 102–106."
+  }
+]

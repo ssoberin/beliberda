@@ -1,0 +1,16 @@
+{
+  "source_data_docs_weights_and_saved_predictions_unchanged": true,
+  "empty_gold_rows_reviewed": 106,
+  "unique_empty_descriptions_reviewed": 86,
+  "formal_fp_pairs_reviewed": 111,
+  "high_score_fp_pairs_reviewed": 78,
+  "duplicate_groups_same_saved_scores": 26,
+  "report_complete_json_inputs": 20,
+  "independent_micro_f1_ceiling_certificate_residual": -5.684341886080802e-14,
+  "minimum_binary_label_errors": 48,
+  "minimum_exact_match_errors": 22,
+  "original_readme_source101_statement_confirmed": true,
+  "readme_only_paths_changed": true,
+  "no_estimator_fit": true,
+  "no_gold_edits": true
+}

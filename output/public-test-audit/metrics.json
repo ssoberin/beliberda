@@ -1,0 +1,428 @@
+{
+  "datasets": {
+    "public_raw_10000": {
+      "rows": 10000,
+      "unique_descriptions": 4855,
+      "excess_duplicates": 5145,
+      "rows_in_duplicate_groups": 5559,
+      "conflict_groups": 0,
+      "conflict_rows": 0,
+      "empty_gold": 2909,
+      "cardinality": {
+        "0": 2909,
+        "1": 957,
+        "2": 1084,
+        "3": 1316,
+        "4": 561,
+        "5": 3173
+      },
+      "category_counts": {
+        "102": 5484,
+        "103": 5073,
+        "104": 4582,
+        "105": 4562,
+        "106": 5481
+      },
+      "length_chars": {
+        "p10": 434.9000000000001,
+        "p25": 1384.75,
+        "p50": 2196.0,
+        "p75": 3214.0,
+        "p90": 4458.0,
+        "p95": 4960.0,
+        "p99": 5438.0,
+        "min": 1,
+        "max": 5564
+      },
+      "descriptions_under20": 98,
+      "item_id_present": 10000,
+      "unique_item_ids": 10000,
+      "item_id_direct_overlap_check_possible": true,
+      "bound": {
+        "minimum_binary_errors": 0,
+        "minimum_exact_errors": 0,
+        "maximum_micro_f1": 1.0,
+        "oracle_tp": 25182,
+        "oracle_fp": 0,
+        "oracle_fn": 0
+      }
+    },
+    "public_train_3398": {
+      "rows": 3398,
+      "unique_descriptions": 3398,
+      "excess_duplicates": 0,
+      "rows_in_duplicate_groups": 0,
+      "conflict_groups": 0,
+      "conflict_rows": 0,
+      "empty_gold": 946,
+      "cardinality": {
+        "0": 946,
+        "1": 344,
+        "2": 494,
+        "3": 340,
+        "4": 275,
+        "5": 999
+      },
+      "category_counts": {
+        "102": 1750,
+        "103": 1620,
+        "104": 1615,
+        "105": 1608,
+        "106": 1854
+      },
+      "length_chars": {
+        "p10": 114.70000000000005,
+        "p25": 771.0,
+        "p50": 1465.0,
+        "p75": 2345.0,
+        "p90": 3434.9000000000005,
+        "p95": 4953.0,
+        "p99": 5064.0,
+        "min": 1,
+        "max": 5536
+      },
+      "descriptions_under20": 56,
+      "item_id_present": 0,
+      "unique_item_ids": 0,
+      "item_id_direct_overlap_check_possible": false,
+      "bound": {
+        "minimum_binary_errors": 0,
+        "minimum_exact_errors": 0,
+        "maximum_micro_f1": 1.0,
+        "oracle_tp": 8447,
+        "oracle_fp": 0,
+        "oracle_fn": 0
+      }
+    },
+    "public_calibration_728": {
+      "rows": 728,
+      "unique_descriptions": 728,
+      "excess_duplicates": 0,
+      "rows_in_duplicate_groups": 0,
+      "conflict_groups": 0,
+      "conflict_rows": 0,
+      "empty_gold": 204,
+      "cardinality": {
+        "0": 204,
+        "1": 78,
+        "2": 79,
+        "3": 77,
+        "4": 65,
+        "5": 225
+      },
+      "category_counts": {
+        "102": 369,
+        "103": 387,
+        "104": 351,
+        "105": 346,
+        "106": 399
+      },
+      "length_chars": {
+        "p10": 114.4,
+        "p25": 723.75,
+        "p50": 1479.0,
+        "p75": 2454.25,
+        "p90": 3595.100000000008,
+        "p95": 4950.0,
+        "p99": 4959.73,
+        "min": 7,
+        "max": 5483
+      },
+      "descriptions_under20": 12,
+      "item_id_present": 0,
+      "unique_item_ids": 0,
+      "item_id_direct_overlap_check_possible": false,
+      "bound": {
+        "minimum_binary_errors": 0,
+        "minimum_exact_errors": 0,
+        "maximum_micro_f1": 1.0,
+        "oracle_tp": 1852,
+        "oracle_fp": 0,
+        "oracle_fn": 0
+      }
+    },
+    "public_validation_729": {
+      "rows": 729,
+      "unique_descriptions": 729,
+      "excess_duplicates": 0,
+      "rows_in_duplicate_groups": 0,
+      "conflict_groups": 0,
+      "conflict_rows": 0,
+      "empty_gold": 203,
+      "cardinality": {
+        "0": 203,
+        "1": 71,
+        "2": 95,
+        "3": 82,
+        "4": 65,
+        "5": 213
+      },
+      "category_counts": {
+        "102": 371,
+        "103": 354,
+        "104": 353,
+        "105": 349,
+        "106": 405
+      },
+      "length_chars": {
+        "p10": 99.8,
+        "p25": 746.0,
+        "p50": 1468.0,
+        "p75": 2251.0,
+        "p90": 3462.4,
+        "p95": 4949.6,
+        "p99": 4960.0,
+        "min": 1,
+        "max": 5564
+      },
+      "descriptions_under20": 11,
+      "item_id_present": 0,
+      "unique_item_ids": 0,
+      "item_id_direct_overlap_check_possible": false,
+      "bound": {
+        "minimum_binary_errors": 0,
+        "minimum_exact_errors": 0,
+        "maximum_micro_f1": 1.0,
+        "oracle_tp": 1832,
+        "oracle_fp": 0,
+        "oracle_fn": 0
+      }
+    },
+    "public_test_208": {
+      "rows": 208,
+      "unique_descriptions": 139,
+      "excess_duplicates": 69,
+      "rows_in_duplicate_groups": 95,
+      "conflict_groups": 13,
+      "conflict_rows": 56,
+      "empty_gold": 106,
+      "cardinality": {
+        "0": 106,
+        "1": 19,
+        "2": 31,
+        "3": 13,
+        "4": 20,
+        "5": 19
+      },
+      "category_counts": {
+        "102": 62,
+        "103": 36,
+        "104": 65,
+        "105": 74,
+        "106": 58
+      },
+      "length_chars": {
+        "p10": 91.90000000000008,
+        "p25": 575.0,
+        "p50": 1343.0,
+        "p75": 2808.25,
+        "p90": 3180.3,
+        "p95": 3875.5499999999997,
+        "p99": 4225.0,
+        "min": 4,
+        "max": 4480
+      },
+      "descriptions_under20": 7,
+      "item_id_present": 0,
+      "unique_item_ids": 0,
+      "item_id_direct_overlap_check_possible": false,
+      "bound": {
+        "minimum_binary_errors": 48,
+        "minimum_exact_errors": 22,
+        "maximum_micro_f1": 0.9242902208201893,
+        "oracle_tp": 293,
+        "oracle_fp": 46,
+        "oracle_fn": 2
+      }
+    }
+  },
+  "conflict_types": {
+    "empty_vs_multiple_categories": 5,
+    "nonempty_subset_difference": 7,
+    "empty_vs_one_category": 1
+  },
+  "variable_source_compatible_groups": 8,
+  "variable_source_incompatible_groups": 5,
+  "empty_review": {
+    "A": {
+      "rows": 73,
+      "unique_descriptions": 64
+    },
+    "B": {
+      "rows": 12,
+      "unique_descriptions": 5
+    },
+    "C": {
+      "rows": 16,
+      "unique_descriptions": 12
+    },
+    "D": {
+      "rows": 5,
+      "unique_descriptions": 5
+    }
+  },
+  "empty_error_assessments": {
+    "no_evidence": 85,
+    "probable": 4,
+    "confirmed": 16,
+    "disputed": 1
+  },
+  "fp_review": {
+    "all": {
+      "ambiguous": 33,
+      "model_error": 17,
+      "supported_service_missing_in_gold": 61
+    },
+    "over_0_9": {
+      "ambiguous": 21,
+      "supported_service_missing_in_gold": 51,
+      "model_error": 6
+    },
+    "by_category": {
+      "102": {
+        "model_error": 14,
+        "ambiguous": 19,
+        "supported_service_missing_in_gold": 8
+      },
+      "103": {
+        "supported_service_missing_in_gold": 12,
+        "ambiguous": 2,
+        "model_error": 2
+      },
+      "104": {
+        "ambiguous": 4,
+        "supported_service_missing_in_gold": 14
+      },
+      "105": {
+        "ambiguous": 8,
+        "model_error": 1,
+        "supported_service_missing_in_gold": 13
+      },
+      "106": {
+        "supported_service_missing_in_gold": 14
+      }
+    },
+    "unique_text_category_pairs": {
+      "ambiguous": 22,
+      "model_error": 10,
+      "supported_service_missing_in_gold": 43
+    }
+  },
+  "confirmed_missing_rows_in_reviewed_subset": 26,
+  "confirmed_missing_label_pairs_in_reviewed_subset": 62,
+  "semantic_reviewed_test_rows": 161,
+  "near_duplicates": {
+    "public_test_208__public_raw_10000": {
+      "exact_rows": 24,
+      "exact_unique_descriptions": 13,
+      "nonexact_near_rows": {
+        "0.8": 21,
+        "0.85": 14,
+        "0.9": 11,
+        "0.95": 7,
+        "0.98": 4
+      },
+      "cosine_percentiles": {
+        "10": 0.24744266271591187,
+        "50": 0.39569416642189026,
+        "90": 0.9999988675117493,
+        "95": 1.0
+      },
+      "similarity_scope": "existing 18k word(1,3)+28k char_wb(3,5) TF-IDF, fitted previously on original public+V3 train; no fit in audit; cosine is a candidate signal, not semantic identity"
+    },
+    "public_test_208__public_train_3398": {
+      "exact_rows": 20,
+      "exact_unique_descriptions": 10,
+      "nonexact_near_rows": {
+        "0.8": 12,
+        "0.85": 12,
+        "0.9": 12,
+        "0.95": 9,
+        "0.98": 5
+      },
+      "cosine_percentiles": {
+        "10": 0.24637359380722046,
+        "50": 0.3907390236854553,
+        "90": 0.9962373375892639,
+        "95": 0.9999999403953552
+      },
+      "similarity_scope": "existing 18k word(1,3)+28k char_wb(3,5) TF-IDF, fitted previously on original public+V3 train; no fit in audit; cosine is a candidate signal, not semantic identity"
+    },
+    "public_test_208__public_validation_729": {
+      "exact_rows": 0,
+      "exact_unique_descriptions": 0,
+      "nonexact_near_rows": {
+        "0.8": 12,
+        "0.85": 5,
+        "0.9": 3,
+        "0.95": 2,
+        "0.98": 0
+      },
+      "cosine_percentiles": {
+        "10": 0.220788836479187,
+        "50": 0.29459822177886963,
+        "90": 0.610824704170227,
+        "95": 0.8299671411514282
+      },
+      "similarity_scope": "existing 18k word(1,3)+28k char_wb(3,5) TF-IDF, fitted previously on original public+V3 train; no fit in audit; cosine is a candidate signal, not semantic identity"
+    },
+    "public_validation_729__public_train_3398": {
+      "exact_rows": 0,
+      "exact_unique_descriptions": 0,
+      "nonexact_near_rows": {
+        "0.8": 302,
+        "0.85": 230,
+        "0.9": 183,
+        "0.95": 152,
+        "0.98": 122
+      },
+      "cosine_percentiles": {
+        "10": 0.2594150900840759,
+        "50": 0.6583583950996399,
+        "90": 0.9954249858856201,
+        "95": 0.9980400204658508
+      },
+      "similarity_scope": "existing 18k word(1,3)+28k char_wb(3,5) TF-IDF, fitted previously on original public+V3 train; no fit in audit; cosine is a candidate signal, not semantic identity"
+    },
+    "public_calibration_728__public_train_3398": {
+      "exact_rows": 0,
+      "exact_unique_descriptions": 0,
+      "nonexact_near_rows": {
+        "0.8": 292,
+        "0.85": 239,
+        "0.9": 188,
+        "0.95": 155,
+        "0.98": 141
+      },
+      "cosine_percentiles": {
+        "10": 0.2514680027961731,
+        "50": 0.6270372867584229,
+        "90": 0.9971069097518921,
+        "95": 0.9980100989341736
+      },
+      "similarity_scope": "existing 18k word(1,3)+28k char_wb(3,5) TF-IDF, fitted previously on original public+V3 train; no fit in audit; cosine is a candidate signal, not semantic identity"
+    }
+  },
+  "text_markers": {
+    "public_raw_10000": {
+      "common_template_phrase": 0,
+      "explicit_service_headers": 2312
+    },
+    "public_train_3398": {
+      "common_template_phrase": 0,
+      "explicit_service_headers": 535
+    },
+    "public_calibration_728": {
+      "common_template_phrase": 0,
+      "explicit_service_headers": 115
+    },
+    "public_validation_729": {
+      "common_template_phrase": 0,
+      "explicit_service_headers": 111
+    },
+    "public_test_208": {
+      "common_template_phrase": 29,
+      "explicit_service_headers": 60
+    }
+  }
+}

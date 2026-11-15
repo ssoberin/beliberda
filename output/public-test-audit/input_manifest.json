@@ -1,0 +1,21 @@
+{
+  "sha256": {
+    "datasets/public/public-train-annotated.jsonl": "b7118d68086624fbeab43839f22a635d4e325e4ee339f22d4aa0ad3c2e986615",
+    "output/ngram-comparison/splits/train.jsonl": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+    "output/ngram-comparison/splits/calibration.jsonl": "25bae3f27df0e6f12a2e3c5fa5c35892e34a88b665346ce89ff6a19b9bcf4f64",
+    "output/ngram-comparison/splits/validation.jsonl": "50840acafcc773b697f58be8416068daccd78dcb8c45146c092c745ef34d9bfd",
+    "datasets/public/public-test-dataset.parquet": "65b5a45a98b577d853a928932bbbdf8bd9bdeb469ded3016faace4d11f3eabaa",
+    "mvp/innoglobalhack_avito/innoglobalhack_avito/README-files.txt": "20a10b5823be4cc661746273a3ddf75c0c29641535c203c7a768a48adc3f61db",
+    "mvp/innoglobalhack_avito/innoglobalhack_avito/Innoglobalhack-Avito_2026.md": "9590af02cfb37e0f68fb489ac258a0d0166be4300e2654b78fd651a8d69e0737",
+    "mvp/innoglobalhack_avito/innoglobalhack_avito/microcategories-guide.md": "eea9c18c3d88b9c588cfabafdf8e2d05a425619ff4965b0c58adc4c5b6f29bea",
+    "mvp/innoglobalhack_avito/innoglobalhack_avito/hackathon-evaluation.md": "1a1007a8411c910d676d3d5fc95adad6b37769b195c839b02d6ca02541edfd23",
+    "output/syntax-aware-experiment/models/catboost_C_syntax.cbm": "3b7dbea4b3fe6ba6c61b2499dd82911e904282217a7281d8cc1c22b19b399ca9",
+    "output/syntax-aware-experiment/models/tfidf_baseline.joblib": "57eccb8582492299ebc00cfcc6331170a477b8fffe3f82febd554f724df33030",
+    "output/catboost-optimization/final_predictions.csv": "4f01783371fff1f544121d359c92b1307af61a29abee950fb97b2e6b1ecc8b0a"
+  },
+  "no_model_fit": true,
+  "no_new_predictions": true,
+  "gold_changed": false,
+  "vectorizer_fit_in_audit": false,
+  "baseline_threshold": 0.5
+}
