@@ -15,6 +15,16 @@ class Category(StrictModel):
     name: str | None = Field(default=None, max_length=200)
 
 
+class ClassificationRequest(StrictModel):
+    title: str = Field(default='', max_length=100)
+    description: Description
+    mcId: CategoryId = 101
+
+
+class ClassificationResponse(StrictModel):
+    categories: list[Category]
+
+
 class GenerateRequest(StrictModel):
     title: str = Field(default='', max_length=100)
     description: Description

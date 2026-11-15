@@ -55,15 +55,28 @@
             </div>
           </div>
 
+          <div class="field">
+            <label for="source-category">Категория исходного объявления</label>
+            <select id="source-category" name="mcId">
+              <option value="101">Ремонт под ключ</option>
+              <option value="102">Штукатурные работы</option>
+              <option value="103">Плиточные работы</option>
+              <option value="104">Сантехника</option>
+              <option value="105">Электрика</option>
+              <option value="106">Поклейка обоев и малярные работы</option>
+            </select>
+            <p class="hint">Автоподбор не предложит повторно исходную категорию.</p>
+          </div>
+
           <section class="categories-section" aria-labelledby="categories-heading">
             <div class="section-heading">
               <h3 id="categories-heading">Категории</h3>
-              <button class="button button-small button-ai" id="generate-categories" type="button" title="Тестовый подбор категорий по описанию">
+              <button class="button button-small button-ai" id="generate-categories" type="button" title="Подбор категорий по описанию с помощью TF-IDF">
                 <svg class="sparkle" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
                 <span>Сгенерировать категории</span>
               </button>
             </div>
-            <p class="hint category-hint" id="category-hint">Подбор категорий пока тестовый. Выбор можно изменить вручную.</p>
+            <p class="hint category-hint" id="category-hint">Подбор категорий с помощью TF-IDF может ошибаться. Проверьте и измените выбор вручную.</p>
             <div class="category-list" id="category-list" role="group" aria-label="Выбор категорий"></div>
             <div class="selection-summary">
               <span class="hint" id="selection-count" aria-live="polite">Категории пока не выбраны</span>
