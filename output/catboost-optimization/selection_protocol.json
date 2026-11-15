@@ -1,0 +1,22 @@
+{
+  "selection_inputs": [
+    "train6319",
+    "calibration1328"
+  ],
+  "no_test_inputs": true,
+  "score": ".65*public_calibration_F1+.35*v3_calibration_F1",
+  "threshold_grid": [
+    0.25,
+    0.75,
+    0.025
+  ],
+  "stages": "34 initial parameter/data/ablation specs, then 12 adaptive calibration-only combinations; no test scoring before finalists freeze.",
+  "finalist_slots": [
+    "balanced calibration score",
+    "public calibration champion with v3 floor",
+    "low-FP candidate without added TF-IDF and with recall floors",
+    "best fixed0.5 candidate; distinct trained experiments per slot"
+  ],
+  "floors": "public calibration F1>=baseline-.003; v3 calibration F1>=baseline-.005 where feasible",
+  "no_auto_promotion": true
+}

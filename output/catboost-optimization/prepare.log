@@ -1,0 +1,8 @@
+Original groups {'n_ads': 6319, 'n_components': 5484, 'multi_item_groups': 223, 'max_group_size': 189, 'sim_threshold': 0.85}
+Original Qwen OOF restored
+TF-IDF OOF fold 1
+TF-IDF OOF fold 2
+TF-IDF OOF fold 3
+TF-IDF OOF fold 4
+TF-IDF OOF fold 5
+Prepared original train/cal and separate frozen eval cache.
