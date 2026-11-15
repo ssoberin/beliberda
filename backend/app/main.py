@@ -1,4 +1,7 @@
 from contextlib import AsyncExitStack, asynccontextmanager
+import logging
+import time
+from uuid import uuid4
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -13,6 +16,18 @@ from .errors import BackendError
 from .qwen import QwenClient
 from .schemas import ClassificationRequest, ClassificationResponse, GenerateRequest, GenerateResponse
 from .ssh_tunnel import SSHTunnel
+
+# Uvicorn configures its own loggers, not the application package. Keep
+# diagnostics on a dedicated handler without enabling INFO logs for httpx or
+# other libraries that might expose URLs or headers.
+package_logger = logging.getLogger('backend')
+if not package_logger.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter('%(levelname)s %(name)s %(message)s'))
+    package_logger.addHandler(handler)
+package_logger.setLevel(logging.INFO)
+package_logger.propagate = False
+logger = logging.getLogger(__name__)
 
 
 def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTransport | None = None):
@@ -37,9 +52,33 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
     app.add_middleware(CORSMiddleware, allow_origins=list(settings.cors_origins),
                        allow_methods=['GET', 'POST'], allow_headers=['Content-Type'], allow_credentials=False)
 
+    @app.middleware('http')
+    async def request_id(request: Request, call_next):
+        # Generated server-side: never trust a client-supplied correlation ID.
+        request.state.request_id = uuid4().hex
+        started = time.monotonic()
+        try:
+            response = await call_next(request)
+        except Exception as exc:
+            logger.error('api_unhandled request_id=%s path=%s error_type=%s',
+                         request.state.request_id,
+                         request.url.path if request.url.path in ('/api/generate', '/api/categories') else '<other>',
+                         type(exc).__name__)
+            raise
+        response.headers['X-Request-ID'] = request.state.request_id
+        if request.url.path in ('/api/generate', '/api/categories'):
+            logger.info('api_complete request_id=%s path=%s status=%s elapsed_ms=%d',
+                        request.state.request_id, request.url.path, response.status_code,
+                        int((time.monotonic() - started) * 1000))
+        return response
+
     @app.exception_handler(BackendError)
-    async def backend_error(_request, error):
-        return JSONResponse(status_code=error.status_code, content={'message': error.message})
+    async def backend_error(request, error):
+        request_id = request.state.request_id
+        return JSONResponse(status_code=error.status_code, content={
+            'message': f'{error.message} (код запроса: {request_id})',
+            'requestId': request_id,
+        })
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(_request, error):
@@ -79,7 +118,7 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
         tunnel = request.app.state.tunnel
         if tunnel is not None and not tunnel.alive:
             raise BackendError(503, 'SSH-туннель отключён и автоматически переподключается. Повторите генерацию после восстановления подключения.')
-        return await request.app.state.qwen.generate(payload)
+        return await request.app.state.qwen.generate(payload, request_id=request.state.request_id)
 
     return app
 
