@@ -1,0 +1,186 @@
+{
+  "model": "C_syntax baseline, frozen weights",
+  "model_file": "output/syntax-aware-experiment/models/catboost_C_syntax.cbm",
+  "model_sha256": "3b7dbea4b3fe6ba6c61b2499dd82911e904282217a7281d8cc1c22b19b399ca9",
+  "threshold": 0.5,
+  "source_mcId_note": "101 supplied by README assumption; absent from parquet",
+  "output_note": "Classification category IDs from saved predictions; generated draft text is not evaluated here. title is not an input.",
+  "identical_description_groups_checked": 26,
+  "groups_with_different_saved_outputs": 0,
+  "maximum_saved_score_difference": 0,
+  "cases": [
+    {
+      "input_file": "output/public-test-quality-audit/examples/duplicate_15_29.json",
+      "kind": "contradictory_gold",
+      "explanation": "Одинаковый фактический вход и одинаковый ответ модели; метки теста различаются.",
+      "answers": [
+        {
+          "public_test_row_zero_based": 15,
+          "test_gold": [
+            102,
+            104,
+            105,
+            106
+          ],
+          "predicted_category_ids": [
+            102,
+            104,
+            105,
+            106
+          ],
+          "scores": {
+            "102": 0.9931282308326572,
+            "103": 0.040958983521996666,
+            "104": 0.8981426287036162,
+            "105": 0.9787323649664208,
+            "106": 0.9853983248077544
+          }
+        },
+        {
+          "public_test_row_zero_based": 29,
+          "test_gold": [],
+          "predicted_category_ids": [
+            102,
+            104,
+            105,
+            106
+          ],
+          "scores": {
+            "102": 0.9931282308326572,
+            "103": 0.040958983521996666,
+            "104": 0.8981426287036162,
+            "105": 0.9787323649664208,
+            "106": 0.9853983248077544
+          }
+        }
+      ]
+    },
+    {
+      "input_file": "output/public-test-quality-audit/examples/false_positive_4.json",
+      "kind": "supported_model_error",
+      "explanation": "Лишняя 102: штукатурка не предлагается; ГКЛ и вагонка не доказывают штукатурные работы.",
+      "answers": [
+        {
+          "public_test_row_zero_based": 4,
+          "test_gold": [
+            104,
+            105,
+            106
+          ],
+          "predicted_category_ids": [
+            102,
+            104,
+            105,
+            106
+          ],
+          "scores": {
+            "102": 0.550497726623533,
+            "103": 0.09188300493367563,
+            "104": 0.9965945751337206,
+            "105": 0.9967097826289705,
+            "106": 0.9915390724128738
+          }
+        }
+      ]
+    },
+    {
+      "input_file": "output/public-test-quality-audit/examples/false_positive_2.json",
+      "kind": "supported_model_error",
+      "explanation": "Лишняя 102: выравнивание деревянного дома и замена венцов — не штукатурка.",
+      "answers": [
+        {
+          "public_test_row_zero_based": 2,
+          "test_gold": [],
+          "predicted_category_ids": [
+            102
+          ],
+          "scores": {
+            "102": 0.879751342316777,
+            "103": 0.006127093243919807,
+            "104": 0.1312225703009688,
+            "105": 0.016163893994651034,
+            "106": 0.0018413846884244047
+          }
+        }
+      ]
+    },
+    {
+      "input_file": "output/public-test-quality-audit/examples/false_negative_18.json",
+      "kind": "supported_model_error_and_gold_issue",
+      "explanation": "Пропущены явно предложенные 102/103/104. Предсказанная 106 имеет смысловую опору, хотя отсутствует в gold.",
+      "answers": [
+        {
+          "public_test_row_zero_based": 18,
+          "test_gold": [
+            102,
+            103,
+            104,
+            105
+          ],
+          "predicted_category_ids": [
+            105,
+            106
+          ],
+          "scores": {
+            "102": 0.3324475479806545,
+            "103": 0.1366506551016368,
+            "104": 0.22941949959563993,
+            "105": 0.5982552777147767,
+            "106": 0.6923013619028696
+          }
+        }
+      ]
+    },
+    {
+      "input_file": "output/public-test-quality-audit/examples/false_negative_130.json",
+      "kind": "supported_model_error",
+      "explanation": "Пропущена 106: прямо предложены малярные работы и замена обоев. Дополнительная 102 по выравниванию стен спорна.",
+      "answers": [
+        {
+          "public_test_row_zero_based": 130,
+          "test_gold": [
+            103,
+            104,
+            105,
+            106
+          ],
+          "predicted_category_ids": [
+            102,
+            103,
+            104,
+            105
+          ],
+          "scores": {
+            "102": 0.8019993534044436,
+            "103": 0.9511798733936178,
+            "104": 0.9934635837579469,
+            "105": 0.996340603659457,
+            "106": 0.2831205782875722
+          }
+        }
+      ]
+    },
+    {
+      "input_file": "output/public-test-quality-audit/examples/questionable_gold_136.json",
+      "kind": "supported_gold_issue",
+      "explanation": "Собственный текущий список включает монтаж сантехники и электрики; gold=[] не согласуется с текстом при source=101.",
+      "answers": [
+        {
+          "public_test_row_zero_based": 136,
+          "test_gold": [],
+          "predicted_category_ids": [
+            104,
+            105
+          ],
+          "scores": {
+            "102": 0.0044255554473751485,
+            "103": 0.012292823184242394,
+            "104": 0.9581914599787508,
+            "105": 0.9394895278646253,
+            "106": 0.014903312558321986
+          }
+        }
+      ]
+    }
+  ]
+}
