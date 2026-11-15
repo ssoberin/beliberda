@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 from unittest.mock import AsyncMock, patch
 
 from fastapi.testclient import TestClient
@@ -64,6 +65,51 @@ def test_frontend_contract_prompt_and_one_batch_request():
         ]
         assert response.json()['warnings'] == []
         assert len(calls) == 1
+
+
+def test_diagnostics_correlate_json_schema_error_without_logging_private_text(caplog):
+    private = 'PRIVATE_AD_TEXT_987654'
+    bad = {'choices': [{'finish_reason': 'stop', 'message': {
+        'content': json.dumps({'drafts': [
+            {**model_draft(), 'title': private * 4}, model_draft(104),
+        ]})}}]}
+    package_logger = logging.getLogger('backend')
+    package_logger.addHandler(caplog.handler)
+    try:
+        with client_for(lambda r: httpx.Response(200, json=bad)) as client:
+            response = client.post('/api/generate', json={**REQUEST, 'description': SOURCE + private})
+    finally:
+        package_logger.removeHandler(caplog.handler)
+    assert response.status_code == 502
+    request_id = response.headers['X-Request-ID']
+    assert response.json()['requestId'] == request_id
+    assert request_id in response.json()['message']
+    assert any('stage=model_schema' in record.message and 'drafts.0.title:string_too_long' in record.message
+               and request_id in record.message for record in caplog.records)
+    assert private not in caplog.text
+    assert SOURCE not in caplog.text
+
+
+def test_diagnostics_for_invalid_json_and_grounding_do_not_log_model_output(caplog):
+    private = 'PRIVATE_MODEL_OUTPUT_123456'
+    package_logger = logging.getLogger('backend')
+    package_logger.addHandler(caplog.handler)
+    try:
+        with client_for(lambda r: httpx.Response(200, json={
+                'choices': [{'finish_reason': 'stop', 'message': {'content': private + '{'}}],
+        })) as client:
+            response = client.post('/api/generate', json=REQUEST)
+        assert response.status_code == 502
+        assert 'stage=model_schema' in caplog.text
+        with client_for(lambda r: httpx.Response(200, json=completion([
+                model_draft(evidence=[private]), model_draft(104),
+        ]))) as client:
+            response = client.post('/api/generate', json=REQUEST)
+        assert response.status_code == 502
+        assert 'stage=grounding category_id=103 reason=evidence' in caplog.text
+    finally:
+        package_logger.removeHandler(caplog.handler)
+    assert private not in caplog.text
 
 
 def test_evidence_accepts_only_case_and_whitespace_differences():
