@@ -1,7 +1,7 @@
 """Unified single/batch input and incremental creation pipeline."""
 import asyncio
 import csv
-from functools import partial
+from dataclasses import dataclass
 import io
 import json
 import logging
@@ -16,7 +16,7 @@ from .schemas import Category, ClassificationRequest, GenerateRequest
 
 logger = logging.getLogger(__name__)
 MAX_BODY_BYTES = 5 * 1024 * 1024
-MAX_ITEMS = 100
+MAX_ITEMS = 300
 
 
 class CreateItem(ClassificationRequest):
@@ -24,14 +24,51 @@ class CreateItem(ClassificationRequest):
     categories: list[Category] | None = Field(default=None, min_length=1, max_length=6)
 
 
-def parse_creation(body: bytes, content_type: str, generate_text: bool | None = None):
-    """Validate the whole input before committing streaming response headers."""
+@dataclass
+class InvalidCreateItem:
+    error: BackendError
+    testcase: str | None = None
+
+
+def csv_delimiter(source):
+    for delimiter in (',', ';'):
+        try:
+            header = next(csv.reader(io.StringIO(source, newline=''), delimiter=delimiter, strict=True), [])
+        except csv.Error:
+            continue
+        if 'description' in header:
+            return delimiter
+    return None
+
+
+def invalid_item(index, value, message):
+    testcase = value.get('testcase') if isinstance(value, dict) else None
+    return InvalidCreateItem(
+        BackendError(422, f'Объявление {index + 1}: {message}'),
+        testcase if isinstance(testcase, str) and len(testcase) <= 200 else None,
+    )
+
+
+def parse_creation(body: bytes, content_type: str, generate_text: bool | None = None,
+                   *, default_title='', allow_invalid_records=False):
+    """Parse and normalize records on the backend, including uploaded input."""
     if len(body) > MAX_BODY_BYTES:
         raise BackendError(413, 'Максимальный размер запроса — 5 МБ.')
     try:
         source = body.decode('utf-8-sig')
-        if content_type.split(';')[0].strip().lower() in ('text/csv', 'application/csv'):
-            delimiter = ';' if ';' in source.partition('\n')[0] else ','
+        if not isinstance(default_title, str) or len(default_title.strip()) > 100:
+            raise ValueError('Название объявления должно быть строкой не длиннее 100 символов.')
+        default_title = default_title.strip()
+        kind = content_type.split(';')[0].strip().lower()
+        if kind in ('auto', 'text/plain'):
+            if source.lstrip().startswith(('{', '[')):
+                kind = 'application/json'
+            elif csv_delimiter(source):
+                kind = 'text/csv'
+            else:
+                kind = 'text/plain'
+        if kind in ('text/csv', 'application/csv'):
+            delimiter = csv_delimiter(source) or ','
             reader = csv.DictReader(io.StringIO(source, newline=''), delimiter=delimiter, strict=True)
             if reader.fieldnames and len(set(reader.fieldnames)) != len(reader.fieldnames):
                 raise ValueError('В CSV повторяются названия столбцов.')
@@ -40,19 +77,19 @@ def parse_creation(body: bytes, content_type: str, generate_text: bool | None = 
             values = []
             for row in reader:
                 if None in row or any(value is None for value in row.values()):
+                    if allow_invalid_records:
+                        values.append(invalid_item(len(values), row, 'число полей CSV не совпадает с заголовком.'))
+                        if len(values) > MAX_ITEMS:
+                            raise ValueError(f'В одном запросе допускается до {MAX_ITEMS} объявлений.')
+                        continue
                     raise ValueError('Число полей CSV не совпадает с заголовком.')
                 value = {key: value for key, value in row.items() if value != ''}
-                if 'mcId' in value:
-                    try:
-                        value['mcId'] = int(value['mcId'])
-                    except ValueError as exc:
-                        raise ValueError('mcId в CSV должен быть числом от 101 до 106.') from exc
                 values.append(value)
                 if len(values) > MAX_ITEMS:
-                    raise ValueError('В одном запросе допускается до 100 объявлений.')
+                    raise ValueError(f'В одном запросе допускается до {MAX_ITEMS} объявлений.')
             batch = True
             mode = True
-        elif content_type.split(';')[0].strip().lower() == 'application/json':
+        elif kind == 'application/json':
             payload = json.loads(source)
             mode = True
             if isinstance(payload, dict) and 'items' in payload:
@@ -67,20 +104,35 @@ def parse_creation(body: bytes, content_type: str, generate_text: bool | None = 
                 values, batch = [payload], False
             else:
                 raise ValueError('Ожидается объект объявления, массив или объект с items.')
+        elif kind == 'text/plain':
+            values, batch, mode = [{'description': source}], False, True
         else:
-            raise BackendError(415, 'Используйте application/json или text/csv (UTF-8).')
+            raise BackendError(415, 'Используйте JSON, CSV или обычный текст в UTF-8.')
         if not isinstance(mode, bool):
             raise ValueError('generateText должен быть boolean.')
         if not isinstance(values, list) or not 1 <= len(values) <= MAX_ITEMS:
-            raise ValueError('Передайте от 1 до 100 объявлений.')
+            raise ValueError(f'Передайте от 1 до {MAX_ITEMS} объявлений.')
         items = []
         for index, value in enumerate(values):
+            if isinstance(value, InvalidCreateItem):
+                items.append(value)
+                continue
             try:
+                if isinstance(value, dict):
+                    value = dict(value)
+                    if kind in ('text/csv', 'application/csv') and 'mcId' in value:
+                        value['mcId'] = int(value['mcId'])
+                    title = value.get('title', '')
+                    if default_title and isinstance(title, str) and not title.strip():
+                        value['title'] = default_title
                 item = CreateItem.model_validate(value)
                 if item.categories and len({c.id for c in item.categories}) != len(item.categories):
                     raise ValueError('Категории не должны повторяться.')
                 items.append(item)
             except (ValidationError, ValueError) as exc:
+                if allow_invalid_records:
+                    items.append(invalid_item(index, value, 'проверьте description, title, mcId и категории.'))
+                    continue
                 raise ValueError(f'Объявление {index + 1}: проверьте description, mcId и остальные поля.') from exc
         return items, batch, mode if generate_text is None else generate_text
     except (ValueError, UnicodeError, csv.Error) as exc:
@@ -88,7 +140,7 @@ def parse_creation(body: bytes, content_type: str, generate_text: bool | None = 
         raise BackendError(422, message) from exc
 
 
-async def creation_events(app, items, generate_text, request_id):
+async def creation_events(app, items, generate_text, request_id, *, batch=False):
     """Bound item workers; run synchronous C_syntax in actual backend threads.
 
     Qwen HTTP calls stay asynchronous and have a shared concurrency limit.
@@ -102,9 +154,11 @@ async def creation_events(app, items, generate_text, request_id):
     pending = iter(enumerate(items))
     completed = 0
     failed = 0
-    loop = asyncio.get_running_loop()
+    classified = {}
 
     async def process(index, item):
+        if isinstance(item, InvalidCreateItem):
+            raise item.error
         identity = {'index': index, **({'testcase': item.testcase} if item.testcase is not None else {})}
         item_started = time.monotonic()
         event(logger, 'creation_item_start', index=index, source_id=item.mcId, manual_categories=item.categories is not None)
@@ -116,6 +170,7 @@ async def creation_events(app, items, generate_text, request_id):
             values = await app.state.inference.run(classify, model, item.description, item.mcId)
             categories = [Category.model_validate(value) for value in values]
         event(logger, 'creation_categories_ready', index=index, categories=[c.id for c in categories])
+        classified[index] = [c.id for c in categories]
         await queue.put({'type': 'categories', **identity, 'categories': [c.model_dump() for c in categories]})
         parts = {}
         errors = []
@@ -177,7 +232,8 @@ async def creation_events(app, items, generate_text, request_id):
                     task.cancel()
                 if tasks:
                     await asyncio.gather(*tasks, return_exceptions=True)
-        result = {**identity, 'drafts': [draft for c in categories for draft in parts.get(c.id, [])]}
+        result = {**identity, 'microcats':[c.id for c in categories],
+                  'drafts': [draft for c in categories for draft in parts.get(c.id, [])]}
         if errors:
             result['errors'] = errors
         event(logger, 'creation_item_complete', index=index, drafts=len(result['drafts']), errors=len(errors), elapsed_ms=int((time.monotonic()-item_started)*1000))
@@ -194,7 +250,7 @@ async def creation_events(app, items, generate_text, request_id):
             except Exception as exc:
                 failed += 1
                 failure(logger, 'creation_item_failed', exc, index=index)
-                result = {**identity, 'drafts': [], 'error': {'message': exc.message if isinstance(exc, BackendError) else 'Не удалось обработать объявление.', 'code': exc.code if isinstance(exc, BackendError) else 'internal_error', 'requestId': request_id}}
+                result = {**identity, 'microcats':classified.get(index), 'drafts': [], 'error': {'message': exc.message if isinstance(exc, BackendError) else 'Не удалось обработать объявление.', 'code': exc.code if isinstance(exc, BackendError) else 'internal_error', 'requestId': request_id}}
             completed += 1
             await queue.put({'type': 'item_done', **result, 'completed': completed, 'total': len(items)})
 
@@ -205,7 +261,7 @@ async def creation_events(app, items, generate_text, request_id):
         await queue.put({'type': 'done', 'total': len(items), 'completed': completed, 'failed': failed})
     finisher = asyncio.create_task(finish())
     try:
-        yield {'type': 'start', 'total': len(items), 'generateText': generate_text}
+        yield {'type': 'start', 'total': len(items), 'generateText': generate_text, 'batch': batch}
         while True:
             try:
                 payload_event = await asyncio.wait_for(queue.get(), timeout=15)

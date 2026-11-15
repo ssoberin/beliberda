@@ -2,51 +2,33 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { prepareSubmission } from '../src/submission.js';
 
-test('единое описание: обычный текст передаётся вместе с названием как title', () => {
-  assert.deepEqual(prepareSubmission('  Меняем смесители.  ', '  Сантехник  '), {
-    payload: { title: 'Сантехник', description: 'Меняем смесители.', mcId: 101 },
-    contentType: 'application/json', batch: false,
-  });
-  assert.equal(prepareSubmission('{Название услуги}', '', 'description.txt').payload.description, '{Название услуги}');
-});
-
-test('JSON распознаётся автоматически: название дополняет записи и сохраняет собственные title', () => {
-  const item = prepareSubmission('{"description":"Трубы"}', 'Мастер');
-  assert.deepEqual(item.payload, { description: 'Трубы', title: 'Мастер' });
-  assert.equal(item.batch, false);
-  const batch = prepareSubmission('[{"description":"Трубы"},{"description":"Плитка","title":"Плиточник"}]', 'Мастер');
-  assert.equal(batch.batch, true);
-  assert.deepEqual(batch.payload.map(row => row.title), ['Мастер', 'Плиточник']);
-  const wrapped = prepareSubmission('{"items":[{"description":"Трубы"}],"generateText":false}', 'Мастер');
-  assert.equal(wrapped.payload.items[0].title, 'Мастер');
-  assert.equal(wrapped.payload.generateText, false);
-});
-
-test('CSV распознаётся по заголовку: BOM, кавычки, запятая и точка с запятой', () => {
-  for (const csv of [
+test('введённый текст, JSON и CSV уходят без разбора и изменения содержимого', () => {
+  for (const source of [
+    '  Меняем смесители.  ',
+    '[{"description":"Трубы"},{"description":"Плитка","title":"Плиточник"}]',
     '\uFEFFtestcase,description\r\ncase-001,"Меняем трубы, сифоны."',
-    'testcase;description\ncase-001;Меняем трубы.',
-    '"testcase","description"\n"case-001","Трубы"',
+    '{"description":}',
   ]) {
-    const result = prepareSubmission(csv);
-    assert.equal(result.contentType, 'text/csv');
-    assert.equal(result.batch, true);
+    const { payload } = prepareSubmission(source, ' Общее название ');
+    assert.ok(payload instanceof FormData);
+    assert.equal(payload.get('text'), source);
+    assert.equal(payload.get('title'), ' Общее название ');
+    assert.equal(payload.has('file'), false);
   }
 });
 
-test('название из формы дополняет CSV и mcId остаётся числом', () => {
-  const result = prepareSubmission('testcase,description,title,mcId\ncase-001,"Меняем трубы, сифоны.",,104\ncase-002,Плитка,Плиточник,103', 'Мастер');
-  assert.equal(result.contentType, 'application/json');
-  assert.equal(result.batch, true);
-  assert.deepEqual(result.payload, [
-    { testcase: 'case-001', description: 'Меняем трубы, сифоны.', title: 'Мастер', mcId: 104 },
-    { testcase: 'case-002', description: 'Плитка', title: 'Плиточник', mcId: 103 },
-  ]);
+test('исходный файл передаётся как File, браузер не читает его содержимое', () => {
+  const file = new File(['invalid JSON checked by backend'], 'input.json', { type: 'application/octet-stream' });
+  file.text = file.arrayBuffer = file.stream = () => assert.fail('Браузер не должен читать файл');
+  const { payload } = prepareSubmission('не используется при выбранном файле', 'Мастер', file);
+  assert.equal(payload.get('file'), file);
+  assert.equal(payload.get('file').name, 'input.json');
+  assert.equal(payload.get('title'), 'Мастер');
+  assert.equal(payload.has('text'), false);
 });
 
-test('ошибочный JSON и пустой либо слишком длинный текст не отправляются как описание', () => {
-  assert.throws(() => prepareSubmission('{"description":}'), /Проверьте JSON/);
-  assert.throws(() => prepareSubmission('не JSON', '', 'input.json'), /Проверьте JSON/);
+test('пустая форма без файла отклоняется, пустой файл проверит бэкенд', () => {
   assert.throws(() => prepareSubmission('   '), /Введите описание/);
-  assert.throws(() => prepareSubmission('x'.repeat(12001)), /12 000/);
+  const file = new File([], 'empty.csv');
+  assert.equal(prepareSubmission('', '', file).payload.get('file'), file);
 });

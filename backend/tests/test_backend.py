@@ -132,7 +132,7 @@ def test_generic_service_gets_a_real_draft_without_invented_operations():
 
 
 @pytest.mark.parametrize('update', [
-    {'description': '   '}, {'description': 'x' * 12001}, {'categories': []},
+    {'description': '   '}, {'description': 'x' * 100001}, {'categories': []},
     {'categories': [{'id': 999}]}, {'categories': [{'id': 103}, {'id': 103}]},
     {'unexpected': True},
 ])

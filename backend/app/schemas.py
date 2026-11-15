@@ -2,7 +2,8 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
 CategoryId = Literal[101, 102, 103, 104, 105, 106]
-Description = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=12000)]
+MAX_DESCRIPTION_CHARS = 100000
+Description = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=MAX_DESCRIPTION_CHARS)]
 
 
 class StrictModel(BaseModel):

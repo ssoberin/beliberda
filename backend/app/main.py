@@ -10,18 +10,18 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 from starlette.exceptions import HTTPException
-from fastapi.concurrency import run_in_threadpool
 import httpx
 
 from .classifier import classify, load_classifier
 from .config import Settings
-from .creation import MAX_BODY_BYTES, creation_events, parse_creation
+from .creation import creation_events
 from .errors import BackendError
 from .inference import InferenceQueue
 from .observability import configure_logging, event, failure, RequestLoggingMiddleware
 from .qwen import QwenClient
 from .schemas import ClassificationRequest, ClassificationResponse, GenerateRequest, GenerateResponse
 from .ssh_tunnel import SSHTunnel
+from .uploads import read_creation_request
 
 logger = logging.getLogger(__name__)
 
@@ -136,19 +136,10 @@ def create_app(settings: Settings | None = None, *, transport: httpx.AsyncBaseTr
 
     @app.post('/api/create')
     async def create(request: Request, generateText: bool | None = None):
-        chunks = []
-        size = 0
-        async for chunk in request.stream():
-            size += len(chunk)
-            if size > MAX_BODY_BYTES:
-                raise BackendError(413, 'Максимальный размер запроса — 5 МБ.')
-            chunks.append(chunk)
-        items, batch, generate_text = await run_in_threadpool(
-            parse_creation, b''.join(chunks), request.headers.get('content-type', ''), generateText,
-        )
+        items, batch, generate_text, size = await read_creation_request(request, generateText)
         event(logger, 'creation_input_parsed', content_type=request.headers.get('content-type', '').partition(';')[0],
               bytes=size, items=len(items), batch=batch, generate_text=generate_text)
-        events = creation_events(request.app, items, generate_text, request.state.request_id)
+        events = creation_events(request.app, items, generate_text, request.state.request_id, batch=batch)
         if 'application/x-ndjson' in request.headers.get('accept', ''):
             async def stream():
                 try:

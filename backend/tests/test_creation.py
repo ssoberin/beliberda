@@ -39,6 +39,7 @@ async def generate(payload, **_):
 def test_single_and_batch_json_contract_and_no_generation():
     with api(generate=generate) as client:
         assert client.post('/api/create', json={'description': SOURCE, 'mcId': 101}).json() == {
+            'microcats':[104],
             'drafts': [{'mcId': 104, 'title': 'Услуги', 'text': SOURCE}],
         }
         result = client.post('/api/create', json={'items': [
@@ -53,7 +54,7 @@ def test_single_and_batch_json_contract_and_no_generation():
 def test_no_supported_categories_means_empty_drafts_without_qwen():
     qwen = AsyncMock(side_effect=AssertionError('No categories must never call Qwen'))
     with api(categories=[], generate=qwen) as client:
-        assert client.post('/api/create', json={'description': 'Собираю шкафы.'}).json() == {'drafts': []}
+        assert client.post('/api/create', json={'description': 'Собираю шкафы.'}).json() == {'microcats':[], 'drafts': []}
     qwen.assert_not_awaited()
 
 
@@ -76,8 +77,8 @@ def test_csv_bom_quotes_newlines_and_testcase_roundtrip():
     ('testcase,description\ncase-001,"незакрыто', 'text/csv', 422),
     ('testcase,description\ncase-001,текст,лишнее', 'text/csv', 422),
     ('testcase,description\ncase-001', 'text/csv', 422),
-    ('text', 'text/plain', 415),
-    (json.dumps([{'description': 'x'}] * 101), 'application/json', 422),
+    ('text', 'text/html', 415),
+    (json.dumps([{'description': 'x'}] * 301), 'application/json', 422),
     ('x' * (5 * 1024 * 1024 + 1), 'text/csv', 413),
 ])
 def test_validation_finishes_before_stream_headers(body, kind, status):
@@ -196,5 +197,21 @@ def test_one_category_failure_preserves_sibling_draft_and_other_items():
             {'description': SOURCE, 'categories': [{'id': 104}]},
         ]).json()['results']
         assert [d['mcId'] for d in result[0]['drafts']] == [104]
+        assert result[0]['microcats'] == [103,104]
         assert result[0]['errors'][0]['mcId'] == 103
         assert [d['mcId'] for d in result[1]['drafts']] == [104]
+
+
+def test_all_generation_failures_keep_classification_and_unknown_is_null():
+    from backend.app.errors import BackendError
+    async def fail(*_, **__):
+        raise BackendError(504, 'Qwen timeout')
+    with api(generate=fail) as client:
+        result = client.post('/api/create', json={'description':SOURCE}).json()
+        assert result['microcats'] == [104]
+        assert result['drafts'] == []
+        assert result['errors'][0]['mcId'] == 104
+    with api() as client, patch('backend.app.creation.classify', side_effect=RuntimeError('unavailable')):
+        result = client.post('/api/create', json={'description':SOURCE}).json()
+        assert result['microcats'] is None
+        assert result['error']['code'] == 'internal_error'

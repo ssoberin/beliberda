@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { once } from 'node:events';
 import { createServer } from 'node:http';
 import { createListings } from '../src/api.js';
+import { prepareSubmission } from '../src/submission.js';
 import { createFrontendServer } from '../scripts/server.mjs';
 
 const draft = { mcId: 104, title: 'Сантехника 🔧', text: 'Меняем трубы.' };
@@ -107,4 +108,80 @@ test('HTTP: JSON, CSV, пустой результат и режим без те
   assert.deepEqual(items[0].drafts, [{ mcId: 104, title: null, text: null }]);
   assert.deepEqual(items[1].drafts, []);
   assert.equal((await post({ description: ' ' })).status, 422);
+});
+
+test('multipart: файл уходит без чтения и ручного Content-Type, поток сохраняется', async t => {
+  const file = new File(['\uFEFFdescription\r\n"Меняем трубы, сифоны."\r\n'], 'original.csv', { type: 'text/csv' });
+  const { payload } = prepareSubmission('', 'Общее название', file);
+  let expectedBytes, expectedType;
+  let release;
+  const gate = new Promise(resolve => { release = resolve; });
+  const upstream = await start(t, createServer(async (req, res) => {
+    const chunks = [];
+    for await (const chunk of req) chunks.push(chunk);
+    assert.equal(req.headers['content-type'], expectedType);
+    const bytes = Buffer.concat(chunks);
+    assert.deepEqual(bytes, expectedBytes);
+    const form = await new Request('http://localhost', {
+      method: 'POST', headers: { 'Content-Type':req.headers['content-type'] }, body:bytes,
+    }).formData();
+    assert.equal(form.get('file').name, 'original.csv');
+    assert.equal(form.get('title'), 'Общее название');
+    assert.deepEqual(await form.get('file').arrayBuffer(), await file.arrayBuffer());
+    res.writeHead(200, { 'Content-Type':'application/x-ndjson' });
+    res.write(events.slice(0,2).map(e => JSON.stringify(e)).join('\n') + '\n');
+    await gate;
+    res.end(events.slice(2).map(e => JSON.stringify(e)).join('\n') + '\n');
+  }));
+  const proxy = await start(t, createFrontendServer({ apiTarget:upstream }));
+  const realFetch = globalThis.fetch;
+  t.mock.method(globalThis, 'fetch', async (url, options) => {
+    if (typeof url !== 'string' || !url.startsWith('/')) return realFetch(url, options);
+    assert.equal(options.body, payload);
+    assert.equal(Object.hasOwn(options.headers, 'Content-Type'), false);
+    const request = new Request(proxy + url, options);
+    expectedType = request.headers.get('content-type');
+    expectedBytes = Buffer.from(await request.clone().arrayBuffer());
+    return realFetch(request);
+  });
+  const received = [];
+  try {
+    await createListings(payload, { onEvent:event => {
+      received.push(event);
+      if (event.type === 'drafts') release();
+    } });
+  } finally { release(); }
+  assert.deepEqual(received, events);
+});
+
+test('деморежим принимает новый транспорт файла и вставленного текста', async t => {
+  const base = await start(t, createFrontendServer({ mockApi:true, mockDelay:0 }));
+  for (const payload of [
+    prepareSubmission('Меняем трубы.').payload,
+    prepareSubmission('', '', new File(['[{"description":"Меняем трубы."}]'], 'input.json')).payload,
+  ]) {
+    const result = await fetch(base + '/api/create', {
+      method:'POST', body:payload, headers:{ Accept:'application/x-ndjson' },
+    });
+    assert.equal(result.status,200);
+    const received = (await result.text()).trim().split('\n').map(line => JSON.parse(line));
+    assert.equal(received[0].total,1);
+    assert.equal(received.at(-1).failed,0);
+  }
+});
+
+test('загрузка принимает до 300 объявлений включительно и сообщает лимит для 301', async t => {
+  const base = await start(t, createFrontendServer({ mockApi:true, mockDelay:0 }));
+  for (const count of [300,301]) {
+    const file = new File([JSON.stringify(Array.from({ length:count }, () => ({ description:'Собираем мебель.' })))], 'input.json');
+    const result = await fetch(base + '/api/create', {
+      method:'POST', body:prepareSubmission('', '', file).payload, headers:{ Accept:'application/x-ndjson' },
+    });
+    assert.equal(result.status,count === 300 ? 200 : 422);
+    if (count === 300) {
+      const events = (await result.text()).trim().split('\n').map(line => JSON.parse(line));
+      assert.equal(events[0].total,300);
+      assert.deepEqual(events.at(-1),{ type:'done', total:300, completed:300, failed:0 });
+    } else assert.match((await result.json()).message,/300/);
+  }
 });

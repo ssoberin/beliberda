@@ -12,9 +12,9 @@ const patterns = new Map([
 // Только демонстрационная логика: здесь нет обращения к ML-сервису.
 export function mockResponse(path, payload) {
   if (!payload || typeof payload.description !== 'string' || !payload.description.trim()
-    || payload.description.length > 12000
+    || payload.description.length > 100000
     || (payload.title !== undefined && (typeof payload.title !== 'string' || payload.title.length > 100))) {
-    return { status: 400, body: { message: 'Укажите описание услуг (от 1 до 12 000 символов) и название до 100 символов.' } };
+    return { status: 400, body: { message: 'Укажите описание услуг (от 1 до 100 000 символов) и название до 100 символов.' } };
   }
   if (path === '/api/categories') {
     const text = `${payload.title ?? ''}\n${payload.description}`;
@@ -74,8 +74,33 @@ function csvItems(source) {
   });
 }
 
-export function mockCreation(source, contentType, generateText, delay) {
+export async function mockCreation(source, contentType, generateText, delay) {
   try {
+    let title = '';
+    if (/^multipart\/form-data(?:;|$)/i.test(contentType)) {
+      // Only this explicit demo simulates backend parsing. The real proxy sends
+      // the original multipart bytes unchanged to FastAPI.
+      const form = await new Request('http://localhost/api/create', {
+        method: 'POST', headers: { 'Content-Type': contentType }, body: source,
+      }).formData();
+      if (form.has('file') === form.has('text')) throw new Error('Передайте один файл или текст.');
+      title = form.get('title') ?? '';
+      const file = form.get('file');
+      if (file) {
+        if (!(file instanceof File)) throw new Error('Поле file должно содержать файл.');
+        contentType = /\.json$/i.test(file.name) ? 'application/json' : /\.csv$/i.test(file.name) ? 'text/csv' : 'text/plain';
+        source = await file.text();
+      } else {
+        source = form.get('text');
+        contentType = 'text/plain';
+      }
+    } else source = source.toString('utf8');
+    if (typeof source !== 'string' || typeof title !== 'string') throw new Error('Ожидается текст.');
+    if (contentType === 'text/plain') {
+      if (/^[\s\uFEFF]*[\[{]/.test(source)) contentType = 'application/json';
+      else if (/(?:^|[,;])\s*"?description"?\s*(?=[,;]|$)/.test(source.replace(/^\uFEFF/, '').split(/[\r\n]/, 1)[0])) contentType = 'text/csv';
+      else { source = JSON.stringify({ description: source }); contentType = 'application/json'; }
+    }
     const csv = /^(text|application)\/csv(?:;|$)/i.test(contentType);
     if (!csv && !/^application\/json(?:;|$)/i.test(contentType)) throw new Error('Используйте JSON или CSV.');
     const payload = csv ? csvItems(source) : JSON.parse(source.replace(/^\uFEFF/, ''));
@@ -87,10 +112,13 @@ export function mockCreation(source, contentType, generateText, delay) {
       if (!['true', 'false'].includes(generateText)) throw new Error('generateText должен быть boolean.');
       mode = generateText === 'true';
     }
-    if (!Array.isArray(items) || !items.length || items.length > 100) throw new Error('Передайте от 1 до 100 объявлений.');
+    if (!Array.isArray(items) || !items.length || items.length > 300) throw new Error('Передайте от 1 до 300 объявлений.');
+    for (const item of items) {
+      if (item && typeof item === 'object' && !item.title && title) item.title = title;
+    }
     for (const item of items) {
       if (!item || Object.keys(item).some(key => !['title', 'description', 'mcId', 'categories', 'testcase', 'generateText'].includes(key))
-        || typeof item.description !== 'string' || !item.description.trim() || item.description.length > 12000
+        || typeof item.description !== 'string' || !item.description.trim() || item.description.length > 100000
         || !CATEGORIES.some(c => c.id === Number(item.mcId ?? 101))
         || (item.title !== undefined && (typeof item.title !== 'string' || item.title.length > 100))
         || (item.testcase !== undefined && (typeof item.testcase !== 'string' || item.testcase.length > 200))
@@ -101,7 +129,7 @@ export function mockCreation(source, contentType, generateText, delay) {
       }
     }
     async function* events() {
-      yield { type: 'start', total: items.length, generateText: mode };
+      yield { type: 'start', total: items.length, generateText: mode, batch };
       for (const [index, item] of items.entries()) {
         const identity = { index, ...(item.testcase !== undefined ? { testcase: item.testcase } : {}) };
         const categories = item.categories ?? mockResponse('/api/categories', item).body.categories.filter(c => c.id !== Number(item.mcId ?? 101));

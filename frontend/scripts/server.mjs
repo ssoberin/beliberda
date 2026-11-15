@@ -44,7 +44,8 @@ export function createFrontendServer({ preview = false, apiTarget = 'http://127.
         let bytes = 0;
         for await (const chunk of request) {
           bytes += chunk.length;
-          if (bytes > 5 * 1024 * 1024) return json(response, 413, { message: 'Слишком большой запрос.' });
+          const limit = 5 * 1024 * 1024 + (/^multipart\/form-data(?:;|$)/i.test(request.headers['content-type'] ?? '') ? 64 * 1024 : 0);
+          if (bytes > limit) return json(response, 413, { message: 'Слишком большой запрос.' });
           chunks.push(chunk);
         }
         const body = Buffer.concat(chunks);
@@ -52,7 +53,7 @@ export function createFrontendServer({ preview = false, apiTarget = 'http://127.
         const accept = request.headers.accept || 'application/json';
         if (mockApi) {
           if (url.pathname === '/api/create') {
-            const result = mockCreation(body.toString('utf8'), contentType, url.searchParams.get('generateText'), mockDelay);
+            const result = await mockCreation(body, contentType, url.searchParams.get('generateText'), mockDelay);
             if (result.status !== 200) return json(response, result.status, result.body);
             if (!accept.includes('application/x-ndjson')) {
               const results = [];

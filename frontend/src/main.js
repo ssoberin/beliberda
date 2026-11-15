@@ -2,6 +2,7 @@ import { CreationProgress } from './progress.js';
 import { prepareSubmission } from './submission.js';
 import { CATEGORIES } from './catalog.js';
 import { createListings, getConnectionStatus } from './api.js';
+import { resultsCsv } from './export.js';
 
 const $ = id => document.getElementById(id);
 const form = $('listing-form');
@@ -9,9 +10,7 @@ const description = $('description');
 const button = $('generate-listings');
 const groups = new Map();
 let controller = null;
-let fileRead = 0;
-let fileLoading = false;
-let sourceFilename = '';
+let sourceFile = null;
 let connectionRetry;
 let checkingConnection = false;
 let batchRequest = false;
@@ -27,9 +26,8 @@ function message(text = '', error = false) {
 }
 
 function busy(active) {
-  button.disabled = active || fileLoading;
-  $('upload-zone').setAttribute('aria-busy', String(fileLoading));
-  $('upload-message').classList.toggle('is-loading', fileLoading);
+  button.disabled = active;
+  $('upload-zone').setAttribute('aria-busy', String(active));
   button.setAttribute('aria-busy', String(active));
   button.querySelector('span').textContent = active ? 'Создаём…' : 'Создать';
 }
@@ -117,9 +115,9 @@ function updateDescriptionCount() {
 for (const input of [$('title'), description]) {
   input.addEventListener('input', () => {
     if (input === description) {
-      fileRead += 1;
-      fileLoading = false;
-      sourceFilename = '';
+      sourceFile = null;
+      $('batch-file').value = '';
+      $('clear-file').hidden = true;
       $('upload-message').hidden = true;
     }
     invalidate();
@@ -134,11 +132,9 @@ $('clear-title').addEventListener('click', () => {
   $('title').focus();
 });
 $('clear-file').addEventListener('click', () => {
-  fileRead += 1;
-  fileLoading = false;
-  sourceFilename = '';
+  sourceFile = null;
   $('batch-file').value = '';
-  description.value = '';
+  description.disabled = false;
   description.setCustomValidity('');
   updateDescriptionCount();
   $('upload-message').hidden = true;
@@ -146,36 +142,19 @@ $('clear-file').addEventListener('click', () => {
   invalidate();
   description.focus();
 });
-async function loadFile(file) {
+function loadFile(file) {
   if (!file) return;
-  const revision = ++fileRead;
-  fileLoading = true;
   invalidate();
-  sourceFilename = '';
+  sourceFile = file;
   description.value = '';
+  description.disabled = true;
   description.setCustomValidity('');
   updateDescriptionCount();
   $('clear-file').hidden = false;
   const status = $('upload-message');
-  status.textContent = `Читаем ${file.name}…`;
+  status.textContent = `Выбран ${file.name}. Нажмите «Создать», чтобы загрузить и обработать файл.`;
   status.dataset.kind = 'info';
   status.hidden = false;
-  try {
-    if (file.size > 5 * 1024 * 1024) throw new Error('Максимальный размер файла — 5 МБ.');
-    if (!/\.(json|csv|txt)$/i.test(file.name)) throw new Error('Выберите файл .json, .csv или .txt.');
-    const text = new TextDecoder('utf-8', { fatal: true }).decode(await file.arrayBuffer());
-    if (revision !== fileRead) return;
-    description.value = text;
-    sourceFilename = file.name;
-    updateDescriptionCount();
-    status.textContent = `Загружен ${file.name}. Нажмите «Создать», чтобы обработать объявления.`;
-  } catch (error) {
-    if (revision !== fileRead) return;
-    status.textContent = error instanceof TypeError ? 'Файл должен быть в кодировке UTF-8.' : error.message;
-    status.dataset.kind = 'error';
-  } finally {
-    if (revision === fileRead) { fileLoading = false; busy(false); }
-  }
 }
 $('batch-file').addEventListener('change', () => loadFile($('batch-file').files[0]));
 
@@ -205,7 +184,7 @@ uploadZone.addEventListener('drop', event => {
   if (!files?.length) return;
   if (files.length !== 1) {
     const status = $('upload-message');
-    status.textContent = 'Перетащите один файл JSON, CSV или TXT. Внутри JSON/CSV может быть до 100 объявлений.';
+    status.textContent = 'Перетащите один файл JSON, CSV или TXT. Внутри JSON/CSV может быть до 300 объявлений.';
     status.dataset.kind = 'error';
     status.hidden = false;
     return;
@@ -227,7 +206,7 @@ function groupFor(event) {
   section.append(heading, status, cards);
   const following = [...groups.entries()].sort((a, b) => a[0] - b[0]).find(([index]) => index > event.index);
   $('draft-list').insertBefore(section, following?.[1].section ?? null);
-  group = { section, status, cards, drafts: [], testcase: event.testcase, index: event.index, result: null };
+  group = { section, status, cards, microcats:null, drafts: [], testcase: event.testcase, index: event.index, result: null };
   groups.set(event.index, group);
   $('results').hidden = false;
   return group;
@@ -295,6 +274,7 @@ function handleEvent(event) {
   renderProgress();
   if (event.type === 'done') stopProgressTimer();
   if (event.type === 'start') {
+    batchRequest = event.batch ?? event.total > 1;
     message(`Обрабатываем объявлений: ${event.total}. Ответы появятся по мере готовности.`);
     return;
   }
@@ -305,6 +285,7 @@ function handleEvent(event) {
   }
   const group = groupFor(event);
   if (event.type === 'categories') {
+    group.microcats = event.categories.map(category => category.id);
     group.status.textContent = event.categories.length
       ? `Категории: ${event.categories.map(c => c.name).join(', ')}. Готовим результат…`
       : 'Оснований для дополнительных объявлений не найдено.';
@@ -314,6 +295,7 @@ function handleEvent(event) {
   } else if (event.type === 'category_error') {
     warning(`${group.testcase ?? `Объявление ${group.index + 1}`}, категория ${event.mcId}: ${event.message}`);
   } else if (event.type === 'item_done') {
+    if (Array.isArray(event.microcats)) group.microcats = event.microcats;
     group.result = event;
     group.status.textContent = event.error?.message ?? (event.errors?.length
       ? `Готово частично. Черновиков: ${group.drafts.length}. Ошибок: ${event.errors.length}.`
@@ -325,16 +307,15 @@ function handleEvent(event) {
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
-  if (fileLoading) return;
   let submission;
   try {
-    submission = prepareSubmission(description.value, $('title').value, sourceFilename);
+    submission = prepareSubmission(description.value, $('title').value, sourceFile);
   } catch (error) {
     message(error.message, true);
     return;
   }
-  const { payload, contentType, batch } = submission;
-  batchRequest = batch;
+  const { payload } = submission;
+  batchRequest = false;
   invalidate();
   $('result-count').textContent = '0';
   const request = new AbortController();
@@ -344,7 +325,7 @@ form.addEventListener('submit', async event => {
   message('Начинаем обработку…');
   try {
     await createListings(payload, {
-      signal: request.signal, contentType, generateText: true,
+      signal: request.signal, generateText: true,
       onEvent: event => { if (controller === request && !request.signal.aborted) handleEvent(event); },
     });
   } catch (error) {
@@ -361,7 +342,8 @@ form.addEventListener('submit', async event => {
 
 function exportResults() {
   return [...groups.values()].sort((a, b) => a.index - b.index).map(group => ({
-    index: group.index, ...(group.testcase !== undefined ? { testcase: group.testcase } : {}), drafts: group.drafts,
+    index: group.index, ...(group.testcase !== undefined ? { testcase: group.testcase } : {}),
+    microcats:group.microcats, drafts: group.drafts,
     ...(group.result?.error ? { error: group.result.error } : {}),
     ...(group.result?.errors ? { errors: group.result.errors } : {}),
     ...(!group.result ? { incomplete: true } : {}),
@@ -381,14 +363,7 @@ $('download-json').addEventListener('click', () => {
   download(JSON.stringify(body, null, 2), 'application/json;charset=utf-8', 'drafts.json');
 });
 $('download-csv').addEventListener('click', () => {
-  const cell = value => `"${String(value).replaceAll('"', '""')}"`;
-  const items = exportResults();
-  const hasErrors = items.some(item => item.incomplete || item.error || item.errors);
-  const rows = items.map(item => [item.testcase ?? `case-${String(item.index + 1).padStart(3, '0')}`,
-    JSON.stringify(item.drafts.map(d => d.mcId)), JSON.stringify(item.drafts.map(d => d.text)),
-    ...(hasErrors ? [JSON.stringify(item.error ?? item.errors ?? (item.incomplete ? { message: 'Обработка не завершена' } : null))] : []),
-  ].map(cell).join(','));
-  download('\uFEFFtestcase,microcats,descriptions' + (hasErrors ? ',error' : '') + '\r\n' + rows.join('\r\n') + '\r\n', 'text/csv;charset=utf-8', 'drafts.csv');
+  download(resultsCsv(exportResults()), 'text/csv;charset=utf-8', 'drafts.csv');
 });
 
 checkConnection();

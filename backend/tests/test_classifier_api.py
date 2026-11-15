@@ -51,7 +51,7 @@ def test_missing_model_never_falls_back_to_keywords():
 
 
 @pytest.mark.parametrize('payload', [
-    {'description': ' '}, {'description': 'x' * 12001},
+    {'description': ' '}, {'description': 'x' * 100001},
     {'description': 'текст', 'mcId': 999}, {'description': 'текст', 'unexpected': 1},
 ])
 def test_invalid_category_requests(payload):
@@ -62,9 +62,9 @@ def test_invalid_category_requests(payload):
 def test_classifier_preserves_long_text_and_all_five_thresholds():
     class Spy:
         def predict_proba(self, texts):
-            assert texts == ['x' * 7000]
+            assert texts == ['x' * 70000]
             return [[.5, .49, .5, .99, .1]]
-    assert [c['id'] for c in classify({**MODEL, 'pipeline': Spy()}, 'x' * 7000, 105)] == [102, 104]
+    assert [c['id'] for c in classify({**MODEL, 'pipeline': Spy()}, 'x' * 70000, 105)] == [102, 104]
 
 
 def test_untrusted_joblib_is_rejected_before_deserializing(tmp_path):

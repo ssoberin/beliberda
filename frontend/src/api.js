@@ -74,7 +74,7 @@ export async function getConnectionStatus(signal) {
   return body;
 }
 
-// One route for manual entries, JSON batches and raw UTF-8 CSV uploads.
+// FormData preserves original files. The browser supplies the multipart boundary.
 export async function createListings(payload, { signal, onEvent, contentType = 'application/json', generateText = true } = {}) {
   const idle = new AbortController();
   let timer;
@@ -85,10 +85,11 @@ export async function createListings(payload, { signal, onEvent, contentType = '
   };
   resetTimer();
   try {
+    const multipart = payload instanceof FormData;
     const response = await fetch(`/api/create?generateText=${generateText}`, {
       method: 'POST',
-      headers: { 'Content-Type': contentType, Accept: 'application/x-ndjson' },
-      body: typeof payload === 'string' ? payload : JSON.stringify(payload),
+      headers: { ...(!multipart ? { 'Content-Type': contentType } : {}), Accept: 'application/x-ndjson' },
+      body: multipart || typeof payload === 'string' ? payload : JSON.stringify(payload),
       signal: signal ? AbortSignal.any([signal, idle.signal]) : idle.signal,
     });
     if (!response.ok) {

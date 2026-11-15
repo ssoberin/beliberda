@@ -9,6 +9,7 @@ from pydantic import ValidationError
 
 from .config import Settings
 from .catalog import NAMES
+from .context import extraction_schema, extraction_messages, parse_selection, source_units, source_windows
 from .errors import BackendError
 from .observability import event, failure
 from .prompts import messages
@@ -127,10 +128,58 @@ class QwenClient:
         available = limit - count - 256
         minimum = max(512, 256 * category_count)
         if available < minimum:
-            raise BackendError(422, 'Исходный текст вместе с примерами не помещается в контекст Qwen. Сократите описание или выберите меньше категорий.')
+            raise BackendError(422, 'Исходный текст вместе с примерами не помещается в контекст Qwen.', code='context_limit')
         budget = min(self.settings.max_tokens, available)
         event(logger, 'qwen_tokenize_complete', input_tokens=count, context_limit=limit, output_budget=budget)
         return budget
+
+    async def compact_source(self, source, category_ids):
+        windows = list(source_windows(source))
+        quotes = []
+        event(logger, 'qwen_context_start', source_chars=len(source), windows=len(windows))
+        for index, window in enumerate(windows):
+            units = source_units(window)
+            chat = extraction_messages(units, category_ids)
+            budget = min(2048, await self.output_budget(chat, 1))
+            payload = {'model':self.settings.qwen_model, 'messages':chat, 'temperature':0,
+                       'max_tokens':budget, 'stream':False}
+            if self.settings.response_format == 'json_schema':
+                payload['response_format'] = {'type':'json_schema', 'json_schema':{
+                    'name':'source_selection', 'strict':True, 'schema':extraction_schema(len(units)),
+                }}
+            elif self.settings.response_format == 'json_object':
+                payload['response_format'] = {'type':'json_object'}
+            response = await self.client.post('chat/completions', json=payload)
+            response.raise_for_status()
+            body = response.json()
+            completion = body['choices'][0]
+            if completion.get('finish_reason') != 'stop':
+                raise BackendError(502, 'Qwen не завершил извлечение фактов из длинного описания.', code='context_extraction_failed')
+            extracted = parse_selection(completion['message']['content'], units)
+            for quote in extracted:
+                if quote not in quotes:
+                    quotes.append(quote)
+            event(logger, 'qwen_context_window_complete', window=index+1, total=len(windows), quotes=len(extracted))
+        compact = '\n\n'.join(quotes)
+        if not compact:
+            raise BackendError(422, 'В длинном описании не удалось выделить факты для выбранных услуг.', code='context_no_facts')
+        if len(compact) >= len(source):
+            raise BackendError(422, 'Не удалось сократить контекст без потери исходных фактов.', code='context_limit')
+        event(logger, 'qwen_context_complete', source_chars=len(source), selected_chars=len(compact), quotes=len(quotes))
+        return compact
+
+    async def generation_budget(self, request, chat):
+        """Keep normal input intact; read all windows when context is too small."""
+        source = request.description
+        for attempt in range(4):
+            try:
+                return chat, await self.output_budget(chat, len(request.categories))
+            except BackendError as error:
+                if error.code != 'context_limit' or attempt == 3 or len(source) <= 6000:
+                    raise
+                source = await self.compact_source(source, [c.id for c in request.categories])
+                chat = messages(request.model_copy(update={'description':source}))
+                chat[0]['content'] += '\nОписание содержит дословные фрагменты полного исходника. Сохраняй подтверждённые ограничения и условия заказа.'
 
     async def generate(self, request: GenerateRequest, *, request_id: str = '-'):
         started = time.monotonic()
@@ -158,7 +207,8 @@ class QwenClient:
                 event(logger, 'qwen_slot_wait', model=self.settings.qwen_model)
                 async with self.semaphore:
                     event(logger, 'qwen_slot_acquired', wait_ms=int((time.monotonic()-wait_started)*1000))
-                    payload['max_tokens'] = await self.output_budget(payload['messages'], len(request.categories))
+                    stage = 'context_preparation'
+                    payload['messages'], payload['max_tokens'] = await self.generation_budget(request, payload['messages'])
                     stage = 'completion_http'
                     event(logger, 'qwen_http_start', model=self.settings.qwen_model, max_tokens=payload['max_tokens'])
                     response = await self.client.post('chat/completions', json=payload)
