@@ -1,5 +1,6 @@
 """Asynchronous OpenAI-compatible HTTP client with validated model output."""
 import asyncio
+import json
 import logging
 import time
 
@@ -24,6 +25,23 @@ def validation_issues(error: ValidationError):
                             for part in item['loc'])
         issues.append(f'{location}:{item["type"]}')
     return issues
+
+
+def parse_drafts(content: str, request_id: str):
+    """Repair only oversized titles; keep strict validation for every other field."""
+    body = json.loads(content)
+    if isinstance(body, dict) and isinstance(body.get('drafts'), list):
+        for draft in body['drafts']:
+            if not isinstance(draft, dict) or not isinstance(draft.get('title'), str):
+                continue
+            title = draft['title'].strip()
+            if len(title) > 50:
+                prefix = title[:50]
+                shortened = prefix.rsplit(' ', 1)[0] if ' ' in prefix else prefix
+                draft['title'] = shortened or prefix
+                logger.info('qwen_title_shortened request_id=%s category_id=%s original_chars=%d',
+                            request_id, draft.get('categoryId') if type(draft.get('categoryId')) is int else '-', len(title))
+    return ModelResponse.model_validate(body)
 
 
 class QwenClient:
@@ -111,7 +129,7 @@ class QwenClient:
                         raise ValueError('Expected text completion')
                     stage = 'model_schema'
                     try:
-                        result = ModelResponse.model_validate_json(content)
+                        result = parse_drafts(content, request_id)
                     except ValidationError as exc:
                         logger.warning('qwen_rejected request_id=%s stage=model_schema issues=%s output_chars=%d',
                                        request_id, validation_issues(exc), len(content))

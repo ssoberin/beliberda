@@ -78,11 +78,12 @@ def test_diagnostics_correlate_json_schema_error_without_logging_private_text(ca
             response = client.post('/api/generate', json={**REQUEST, 'description': SOURCE + private})
     finally:
         package_logger.removeHandler(caplog.handler)
-    assert response.status_code == 502
+    assert response.status_code == 200
     request_id = response.headers['X-Request-ID']
-    assert response.json()['requestId'] == request_id
-    assert request_id in response.json()['message']
-    assert any('stage=model_schema' in record.message and 'drafts.0.title:string_too_long' in record.message
+    assert len(response.json()['drafts'][0]['title']) <= 50
+    assert response.json()['drafts'][0]['description'] == model_draft()['text']
+    assert response.json()['drafts'][1]['title'] == model_draft(104)['title']
+    assert any('qwen_title_shortened' in record.message
                and request_id in record.message for record in caplog.records)
     assert private not in caplog.text
     assert SOURCE not in caplog.text
@@ -143,7 +144,6 @@ def test_invalid_requests_do_not_call_remote(update):
     [model_draft(), model_draft()],
     [model_draft()],
     [model_draft(), model_draft(105)],
-    [model_draft(title='x' * 51), model_draft(104)],
 ])
 def test_untrusted_model_output_is_rejected(drafts):
     with client_for(lambda r: httpx.Response(200, json=completion(drafts))) as client:
@@ -156,6 +156,21 @@ def test_untrusted_model_output_is_rejected(drafts):
 def test_empty_or_non_text_drafts_are_structurally_invalid(invalid):
     with client_for(lambda r: httpx.Response(200, json=completion([invalid, model_draft(104)]))) as client:
         assert client.post('/api/generate', json=REQUEST).status_code == 502
+
+
+def test_oversized_title_preserves_other_drafts_and_full_text():
+    long_title = 'Реконструкция деревянных домов и замена старых венцов под ключ'
+    valid = model_draft(104)
+    with client_for(lambda r: httpx.Response(200, json=completion([
+            model_draft(title=long_title), valid,
+    ]))) as client:
+        response = client.post('/api/generate', json=REQUEST)
+    assert response.status_code == 200
+    drafts = response.json()['drafts']
+    assert drafts[0]['title'] == 'Реконструкция деревянных домов и замена старых'
+    assert drafts[0]['description'] == model_draft()['text']
+    assert drafts[1] == {'categoryId': 104, 'title': valid['title'], 'description': valid['text']}
+    assert response.json()['warnings'] == []
 
 
 @pytest.mark.parametrize('body', [
