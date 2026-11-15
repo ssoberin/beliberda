@@ -1,9 +1,11 @@
 {
-  "stage": "inputs_fixed_before_training_and_final_scoring",
+  "stage": "corrected_inputs_fixed_before_training_and_final_scoring",
+  "supersedes_initial_inputs_commit": "0703f0e",
+  "reason": "Pre-score quality clarification, no model predictions used",
   "files": {
-    "datasets/v3_tail_services_60/train_addition.jsonl": "12130cebea368cab00c98451543427c071b4d58b0151208873be450fc34c715c",
+    "datasets/v3_tail_services_60/train_addition.jsonl": "3e1400cb566e0ecc8931b108a52bf733e0450deca097d281800ed4eacd6991b3",
     "datasets/v3_tail_services_60/test_holdout.jsonl": "3ad0221e50d63abd218d0db2a92ee4f9546711e521e2a536a3209171d33d95c6",
-    "datasets/v3_tail_services_60/annotation_review.json": "ca57e2f039083c9d452d37226fe6f92332807a91840d07f4d8da1bcd535cfd94",
-    "output/tail-services-v3-experiment/config.json": "38b12ff2805f2a9104f328950e194cfae883d2df63ae68aca1ae37c0a9a47b97"
+    "datasets/v3_tail_services_60/annotation_review.json": "60ae25951d23c51c054ea2af872fff0a109da2f0d54aca463146b16939120e60",
+    "output/tail-services-v3-experiment/config.json": "35594733b488f3f41252d9dc2a6486ff620c4bdb3176138a377de02204460d0b"
   }
 }

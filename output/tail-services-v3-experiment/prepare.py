@@ -27,6 +27,12 @@ print('delta keys',delta.files,flush=True)
 arr=delta['embs'] if 'embs' in delta else delta['chunk_emb']
 for i,t in enumerate(delta_texts):
  if t in needed and t not in lookup:lookup[t]=arr[i]
+# Reuse unchanged locally encoded chunks after the documented pre-score annotation correction.
+prior=P/'quality_correction'
+if (prior/'delta_checkpoint.npz').exists():
+ previous=json.loads((prior/'delta_chunks.json').read_text());values=np.load(prior/'delta_checkpoint.npz')['embs']
+ for t,v in zip(previous,values):
+  if t in needed and t not in lookup:lookup[t]=v
 new=sorted(needed-lookup.keys());(P/'cache/delta_chunks.json').write_text(json.dumps(new,ensure_ascii=False))
 # Save only required embeddings and rows; no existing cache is overwritten.
 import pickle

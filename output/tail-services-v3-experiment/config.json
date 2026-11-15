@@ -112,10 +112,10 @@
   "calibration_use": "CatBoost early stopping only",
   "forbidden_dataset": "public_synthetic_300",
   "oof": "Recompute all OOF with existing nested StratifiedGroupKFold protocol; never reuse old OOF values",
-  "dataset_sha256": "12130cebea368cab00c98451543427c071b4d58b0151208873be450fc34c715c",
+  "dataset_sha256": "3e1400cb566e0ecc8931b108a52bf733e0450deca097d281800ed4eacd6991b3",
   "baseline_model_sha256": "3b7dbea4b3fe6ba6c61b2499dd82911e904282217a7281d8cc1c22b19b399ca9",
   "baseline_heads_sha256": "49d95c79e2633d4ba2fc95593e04e8acc4ce0845549a7dcf7348f73af007c45f",
-  "encoder_missing_chunks": 223,
+  "encoder_missing_chunks": 1,
   "new_holdout_sha256": "3ad0221e50d63abd218d0db2a92ee4f9546711e521e2a536a3209171d33d95c6",
   "encoder_execution": {
     "device": "cpu",
@@ -139,5 +139,6 @@
   "new_holdout_ads": 20,
   "existing_tests_unchanged": true,
   "model_promotion": "never automatic",
-  "fixed_plan": "one data-only A/B; no threshold or hyperparameter optimization; no edits after final evaluation"
+  "fixed_plan": "one data-only scored A/B; pre-score annotation clarification documented; no threshold or hyperparameter optimization; no edits after final evaluation",
+  "quality_correction": "tail60-train-040: replace ambiguous decorative plaster with explicit painting before any test scoring; interrupted OOF discarded and fully recomputed"
 }

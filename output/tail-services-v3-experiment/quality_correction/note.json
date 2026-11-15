@@ -1,0 +1,6 @@
+{
+  "reason": "Ambiguous decorative plaster annotation replaced by explicit wall painting, checked against primary category guide. No test score or model prediction read.",
+  "row_id": "tail60-train-040",
+  "first_training": "Interrupted OOF before full-head/CatBoost fit and before any final evaluation",
+  "counts_and_gold_unchanged": true
+}
