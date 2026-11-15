@@ -66,6 +66,21 @@ def test_frontend_contract_prompt_and_one_batch_request():
         assert len(calls) == 1
 
 
+def test_evidence_accepts_only_case_and_whitespace_differences():
+    source = 'Штукатурим стены, укладываем плитку.\nРаботаем в Казани.'
+    request = {'description': source, 'categories': [{'id': 103}]}
+    example = model_draft(evidence=['Укладываем плитку', 'Работаем  в Казани.'],
+                          title='Укладка плитки', text='Укладываем плитку.')
+    with client_for(lambda r: httpx.Response(200, json=completion([example]))) as client:
+        response = client.post('/api/generate', json=request)
+        assert response.status_code == 200, response.text
+        assert response.json()['drafts'][0]['categoryId'] == 103
+    for invalid in ['укладываем керамогранит', 'укладываем  плитку бесплатно', 'укладываем плитку, меняем трубы']:
+        example['evidence'] = [invalid]
+        with client_for(lambda r: httpx.Response(200, json=completion([example]))) as client:
+            assert client.post('/api/generate', json=request).status_code == 502
+
+
 @pytest.mark.parametrize('title,text', [(None, None), ('Сантехнические работы', 'Сантехнические работы. [Уточните виды работ.]')])
 def test_every_selected_category_has_a_draft_even_without_source_details(title, text):
     unsupported = model_draft(104, supported=False, title=title, text=text, evidence=[])

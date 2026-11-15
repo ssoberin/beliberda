@@ -13,7 +13,16 @@ from .schemas import Draft, GenerateRequest, GenerateResponse, GenerationWarning
 
 
 def grounded(draft, description: str):
-    if any(not quote.strip() or quote not in description for quote in draft.evidence):
+    # llama.cpp may change capitalization or line breaks in an otherwise
+    # verbatim citation. Require the same words and punctuation in the source;
+    # never treat a paraphrase or an invented operation as evidence.
+    def found(quote):
+        parts = quote.split()
+        if not parts:
+            return False
+        return re.search(r'\s+'.join(map(re.escape, parts)), description, re.IGNORECASE) is not None
+
+    if any(not found(quote) for quote in draft.evidence):
         raise BackendError(502, 'Qwen вернул черновик без точных подтверждающих цитат. Повторите генерацию.')
     output = draft.title + '\n' + draft.text
     # Conservative checks, not a complete semantic hallucination detector.
