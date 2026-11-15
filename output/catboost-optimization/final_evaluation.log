@@ -1,0 +1,6 @@
+C_syntax_baseline__fixed {'pub_validation': 0.956124, 'public_complex_multiservice': 0.977054, 'v3_test': 0.915916, 'official_208': 0.819767, 'public_test_clean': 0.81268}
+adaptive_0_3__per_category {'pub_validation': 0.961869, 'public_complex_multiservice': 0.981145, 'v3_test': 0.918946, 'official_208': 0.827786, 'public_test_clean': 0.824207}
+adaptive_0_2__per_category {'pub_validation': 0.959893, 'public_complex_multiservice': 0.980185, 'v3_test': 0.913767, 'official_208': 0.830189, 'public_test_clean': 0.828986}
+l2_20__global {'pub_validation': 0.952843, 'public_complex_multiservice': 0.975008, 'v3_test': 0.917918, 'official_208': 0.818049, 'public_test_clean': 0.809249}
+adaptive_1_0__fixed {'pub_validation': 0.956732, 'public_complex_multiservice': 0.978398, 'v3_test': 0.926829, 'official_208': 0.820961, 'public_test_clean': 0.815029}
+Final scoring complete. No new optimization after viewing these metrics.

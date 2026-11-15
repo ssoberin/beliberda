@@ -1,0 +1,242 @@
+[
+  {
+    "feature": "p_sgd",
+    "mean_shap_on_fp": 1.582995305872652,
+    "mean_absolute_shap_on_fp": 1.947942913954573,
+    "mean_shap_on_tp": 2.5066207952444546
+  },
+  {
+    "feature": "syn_service_mentioned_ad",
+    "mean_shap_on_fp": 1.2487437103880872,
+    "mean_absolute_shap_on_fp": 1.267284163499303,
+    "mean_shap_on_tp": 1.1987854127914834
+  },
+  {
+    "feature": "syn_service_mentioned_top3",
+    "mean_shap_on_fp": 0.5743581197824968,
+    "mean_absolute_shap_on_fp": 0.5956484956068971,
+    "mean_shap_on_tp": 0.560195837059345
+  },
+  {
+    "feature": "ad_char_len",
+    "mean_shap_on_fp": -0.2412702398662669,
+    "mean_absolute_shap_on_fp": 0.35698581810753777,
+    "mean_shap_on_tp": -0.317596976202093
+  },
+  {
+    "feature": "n_chunks",
+    "mean_shap_on_fp": 0.12016797738396369,
+    "mean_absolute_shap_on_fp": 0.2421917408180246,
+    "mean_shap_on_tp": 0.09546212267024094
+  },
+  {
+    "feature": "cat_id",
+    "mean_shap_on_fp": 0.12062352516430679,
+    "mean_absolute_shap_on_fp": 0.1566832191864649,
+    "mean_shap_on_tp": 0.11331738167385516
+  },
+  {
+    "feature": "sim_margin_01",
+    "mean_shap_on_fp": -0.06273807177702151,
+    "mean_absolute_shap_on_fp": 0.15256109454728042,
+    "mean_shap_on_tp": -0.05397795246896202
+  },
+  {
+    "feature": "service_link_status",
+    "mean_shap_on_fp": 0.10777622414555647,
+    "mean_absolute_shap_on_fp": 0.12954223293627273,
+    "mean_shap_on_tp": 0.12284096654609102
+  },
+  {
+    "feature": "syn_net_polarity_score",
+    "mean_shap_on_fp": 0.11393176123474981,
+    "mean_absolute_shap_on_fp": 0.12888391183232778,
+    "mean_shap_on_tp": 0.1203240945162291
+  },
+  {
+    "feature": "syn_min_dist_service_neg",
+    "mean_shap_on_fp": 0.062308447472945595,
+    "mean_absolute_shap_on_fp": 0.1282896486696067,
+    "mean_shap_on_tp": 0.0883526129389936
+  },
+  {
+    "feature": "syn_top_neg_sim",
+    "mean_shap_on_fp": 0.10847377865860608,
+    "mean_absolute_shap_on_fp": 0.12579062358922247,
+    "mean_shap_on_tp": 0.10246450895733386
+  },
+  {
+    "feature": "sim_mean",
+    "mean_shap_on_fp": 0.07353754488873579,
+    "mean_absolute_shap_on_fp": 0.0986947571976637,
+    "mean_shap_on_tp": 0.07235973382212026
+  },
+  {
+    "feature": "syn_n_offered_clauses_top3",
+    "mean_shap_on_fp": -0.01866314218599197,
+    "mean_absolute_shap_on_fp": 0.08756044839322642,
+    "mean_shap_on_tp": -0.015565630236941677
+  },
+  {
+    "feature": "syn_min_dist_service_action",
+    "mean_shap_on_fp": 0.026449390009238887,
+    "mean_absolute_shap_on_fp": 0.06819068998083104,
+    "mean_shap_on_tp": 0.008325998377526353
+  },
+  {
+    "feature": "sim_slot0",
+    "mean_shap_on_fp": 0.04646253796690355,
+    "mean_absolute_shap_on_fp": 0.06673779437342463,
+    "mean_shap_on_tp": 0.06487365062675683
+  },
+  {
+    "feature": "syn_top_offer_sim",
+    "mean_shap_on_fp": -0.012559100725526231,
+    "mean_absolute_shap_on_fp": 0.06650370732426147,
+    "mean_shap_on_tp": -0.0051837142444990545
+  },
+  {
+    "feature": "sim_slot2",
+    "mean_shap_on_fp": 0.016149917231301342,
+    "mean_absolute_shap_on_fp": 0.06358196112308163,
+    "mean_shap_on_tp": 0.03144826299646703
+  },
+  {
+    "feature": "syn_global_partial_refusal",
+    "mean_shap_on_fp": -0.01796214666740245,
+    "mean_absolute_shap_on_fp": 0.061257708101159256,
+    "mean_shap_on_tp": -0.002246856580330532
+  },
+  {
+    "feature": "best_chunk_polarity",
+    "mean_shap_on_fp": 0.03586245114848486,
+    "mean_absolute_shap_on_fp": 0.05536992854813485,
+    "mean_shap_on_tp": 0.025064209933483527
+  },
+  {
+    "feature": "sim_slot1",
+    "mean_shap_on_fp": 0.03602476368396234,
+    "mean_absolute_shap_on_fp": 0.05184837986897858,
+    "mean_shap_on_tp": 0.04561993544660028
+  },
+  {
+    "feature": "sim_max",
+    "mean_shap_on_fp": 0.03311586856610051,
+    "mean_absolute_shap_on_fp": 0.05157747365333751,
+    "mean_shap_on_tp": 0.042816003105607514
+  },
+  {
+    "feature": "syn_global_outside_top3",
+    "mean_shap_on_fp": 0.0022094292596692225,
+    "mean_absolute_shap_on_fp": 0.0488559691616488,
+    "mean_shap_on_tp": 0.010901359132687449
+  },
+  {
+    "feature": "dominant_subject",
+    "mean_shap_on_fp": -0.03029080135521756,
+    "mean_absolute_shap_on_fp": 0.04710680642701905,
+    "mean_shap_on_tp": -0.03640064913780565
+  },
+  {
+    "feature": "temporal_state",
+    "mean_shap_on_fp": 0.0014506731360712406,
+    "mean_absolute_shap_on_fp": 0.04515441602092096,
+    "mean_shap_on_tp": 0.006375291524611637
+  },
+  {
+    "feature": "syn_global_turnkey_only",
+    "mean_shap_on_fp": 0.04241811703746982,
+    "mean_absolute_shap_on_fp": 0.04241811703746982,
+    "mean_shap_on_tp": 0.04382594121576038
+  },
+  {
+    "feature": "syn_affirmative_offer",
+    "mean_shap_on_fp": 0.0014269308245065109,
+    "mean_absolute_shap_on_fp": 0.03840444890026968,
+    "mean_shap_on_tp": -0.00311923346576685
+  },
+  {
+    "feature": "syn_min_dist_action_neg",
+    "mean_shap_on_fp": 0.018182838192215608,
+    "mean_absolute_shap_on_fp": 0.02014514084055263,
+    "mean_shap_on_tp": 0.0006362397474191103
+  },
+  {
+    "feature": "syn_has_conflicting_claims",
+    "mean_shap_on_fp": -0.0016162251362918116,
+    "mean_absolute_shap_on_fp": 0.01703573684779118,
+    "mean_shap_on_tp": -0.006597515350661539
+  },
+  {
+    "feature": "syn_seller_actor",
+    "mean_shap_on_fp": -0.007075397752690313,
+    "mean_absolute_shap_on_fp": 0.010986554641705061,
+    "mean_shap_on_tp": -0.008338084380460482
+  },
+  {
+    "feature": "syn_n_negated_clauses_top3",
+    "mean_shap_on_fp": 0.0008502172653903556,
+    "mean_absolute_shap_on_fp": 0.009899212927956216,
+    "mean_shap_on_tp": 0.0042296627724223
+  },
+  {
+    "feature": "syn_has_neg_on_action",
+    "mean_shap_on_fp": 0.00425137277751885,
+    "mean_absolute_shap_on_fp": 0.006819411899635974,
+    "mean_shap_on_tp": 0.0058844808154159154
+  },
+  {
+    "feature": "syn_price_condition_only",
+    "mean_shap_on_fp": -0.004426969218100794,
+    "mean_absolute_shap_on_fp": 0.004426969218100794,
+    "mean_shap_on_tp": -0.0046078497309661745
+  },
+  {
+    "feature": "syn_temporal_resumed",
+    "mean_shap_on_fp": -0.002866315698931776,
+    "mean_absolute_shap_on_fp": 0.002866315698931776,
+    "mean_shap_on_tp": -0.002681107094792409
+  },
+  {
+    "feature": "syn_action_linked",
+    "mean_shap_on_fp": 0.0005050336087683707,
+    "mean_absolute_shap_on_fp": 0.002420762783903116,
+    "mean_shap_on_tp": 0.00014207121467577736
+  },
+  {
+    "feature": "n_padded_slots",
+    "mean_shap_on_fp": -0.0009216065254373191,
+    "mean_absolute_shap_on_fp": 0.0013719902423871544,
+    "mean_shap_on_tp": -0.0010704557932399734
+  },
+  {
+    "feature": "syn_has_not_only",
+    "mean_shap_on_fp": 0.0011326222697771577,
+    "mean_absolute_shap_on_fp": 0.001370643406215755,
+    "mean_shap_on_tp": -0.00011310176795555243
+  },
+  {
+    "feature": "syn_temporal_stopped",
+    "mean_shap_on_fp": 0.00130921049423075,
+    "mean_absolute_shap_on_fp": 0.001321366699063258,
+    "mean_shap_on_tp": 0.001355577793332451
+  },
+  {
+    "feature": "syn_third_party_actor",
+    "mean_shap_on_fp": -0.0004068902546360977,
+    "mean_absolute_shap_on_fp": 0.000811189648864018,
+    "mean_shap_on_tp": -0.00036170378220140033
+  },
+  {
+    "feature": "syn_n_third_party_clauses_top3",
+    "mean_shap_on_fp": 0.00010680503969772318,
+    "mean_absolute_shap_on_fp": 0.00021593463077199592,
+    "mean_shap_on_tp": 6.84683284829951e-05
+  },
+  {
+    "feature": "syn_double_neg_cancel",
+    "mean_shap_on_fp": 0.0,
+    "mean_absolute_shap_on_fp": 0.0,
+    "mean_shap_on_tp": 0.0
+  }
+]

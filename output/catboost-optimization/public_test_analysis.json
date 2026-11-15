@@ -1,0 +1,186 @@
+{
+  "test208_source": "mcId absent, assumed101 throughout, not inferred from labels",
+  "clean_policy": {
+    "policy": "Exclude every row in normalized-description groups with conflicting gold; no label edits, no train-overlap removal in this clean definition. Same fixed list for every model.",
+    "excluded_row_indices_zero_based": [
+      0,
+      13,
+      15,
+      16,
+      28,
+      29,
+      33,
+      35,
+      36,
+      40,
+      43,
+      45,
+      46,
+      47,
+      54,
+      57,
+      58,
+      60,
+      66,
+      69,
+      70,
+      71,
+      85,
+      92,
+      94,
+      98,
+      106,
+      107,
+      116,
+      118,
+      124,
+      129,
+      135,
+      143,
+      145,
+      151,
+      152,
+      155,
+      156,
+      158,
+      160,
+      161,
+      162,
+      167,
+      169,
+      171,
+      177,
+      178,
+      192,
+      194,
+      198,
+      200,
+      202,
+      203,
+      205,
+      207
+    ],
+    "remaining": 152,
+    "conflicting_groups": 13
+  },
+  "train_overlap_rows": [
+    9,
+    19,
+    45,
+    61,
+    64,
+    76,
+    77,
+    78,
+    83,
+    107,
+    128,
+    141,
+    146,
+    153,
+    173,
+    178,
+    186,
+    190,
+    197,
+    202
+  ],
+  "train_overlap_count": 20,
+  "baseline_subsets": {
+    "conflicting_rows": {
+      "rows": 56,
+      "tp": 141,
+      "fp": 57,
+      "fn": 2,
+      "f1": 0.8269794721407625
+    },
+    "nonconflicting_rows": {
+      "rows": 152,
+      "tp": 141,
+      "fp": 54,
+      "fn": 11,
+      "f1": 0.8126801152737753
+    },
+    "train_overlap": {
+      "rows": 20,
+      "tp": 27,
+      "fp": 5,
+      "fn": 0,
+      "f1": 0.9152542372881356
+    },
+    "no_train_overlap": {
+      "rows": 188,
+      "tp": 255,
+      "fp": 106,
+      "fn": 13,
+      "f1": 0.8108108108108109
+    }
+  },
+  "baseline_false_positive_features": {
+    "cat_id": {
+      "102": 41,
+      "105": 22,
+      "104": 18,
+      "103": 16,
+      "106": 14
+    },
+    "best_chunk_polarity": {
+      "unknown": 80,
+      "offered": 30,
+      "negated": 1
+    },
+    "dominant_subject": {
+      "unknown": 93,
+      "seller_team": 18
+    },
+    "service_link_status": {
+      "orphan_mention": 74,
+      "prep_obl_or_nmod": 33,
+      "not_found": 2,
+      "direct_verb_obj": 2
+    },
+    "syn_affirmative_offer": {
+      "0": 81,
+      "1": 30
+    },
+    "syn_global_turnkey_only": {
+      "0": 111
+    },
+    "syn_global_partial_refusal": {
+      "0": 109,
+      "1": 2
+    },
+    "syn_has_neg_on_action": {
+      "0": 105,
+      "1": 6
+    }
+  },
+  "baseline_fp_sgd_probability": {
+    "median": 0.8886506445563357,
+    "p90": 0.9996241084464692
+  },
+  "domain_differences": {
+    "pub_validation": {
+      "rows": 729,
+      "micro_f1": 0.956124,
+      "micro_precision": 0.943176,
+      "micro_recall": 0.969432,
+      "fp": 107,
+      "fn": 56,
+      "empty_gold": 203,
+      "fp_on_empty_gold": 56,
+      "fpr": 0.059018
+    },
+    "official_208": {
+      "rows": 208,
+      "micro_f1": 0.819767,
+      "micro_precision": 0.717557,
+      "micro_recall": 0.955932,
+      "fp": 111,
+      "fn": 13,
+      "empty_gold": 106,
+      "fp_on_empty_gold": 82,
+      "fpr": 0.148993
+    }
+  }
+}

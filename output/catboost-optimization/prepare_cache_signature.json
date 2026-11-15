@@ -1,0 +1,8 @@
+{
+  "datasets/own_v3_clean/train.jsonl": "8ed3c4c7f2bc04425343caeb649909f173eaf01383d9b27f2d6a74eccd5c1875",
+  "output/ngram-comparison/splits/train.jsonl": "906c10a6ed5106922e9d186bad81fe2f8ed29138e810933f3c4de108206bd4d8",
+  "output/cat-aware-v2/cache/chunks_embeddings.npz": "8d2878934870305a14b574ed8a7b46af4c40ff7d6b74794a824c5b1ec66a9504",
+  "avito_compare/scripts/run_syntax_experiment.py": "0e4e9768072237e233dfb928105f505ad38e82ad36fc90ae5eefb412bb5be684",
+  "avito_compare/scripts/qwen3_v3_experiment.py": "9a1cf89977a7ef47bb63593f9911d67f3d8010c52b253da1f413b544bacebbbe",
+  "avito_compare/scripts/qwen3_embedding_experiment.py": "925a86682003144dafda20de4208d6ea81ad69183d6af022142bbc22abd5b8f2"
+}

@@ -1,0 +1,16 @@
+{
+  "texts": 728,
+  "domain": "public calibration",
+  "warm_runs": 3,
+  "batch_seconds": [
+    0.9035550820044591,
+    0.8721328390020062,
+    0.8213143940010923
+  ],
+  "median_batch_seconds": 0.8721328390020062,
+  "median_ms_per_ad_amortized": 1.1979846689587998,
+  "model_bytes": 2902204,
+  "word_features": 18000,
+  "char_features": 28000,
+  "scope": "TF-IDF transform plus 5 SGD heads only; batch average, not end-to-end or single-request latency"
+}

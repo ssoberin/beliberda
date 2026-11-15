@@ -1,0 +1,18 @@
+{
+  "baseline_calibration_probability_reproduction_max_difference": 0.0,
+  "original_train_ads": 6319,
+  "original_calibration_ads": 1328,
+  "source_files_unchanged": true,
+  "finalist_weights_match_pre_evaluation_freeze": true,
+  "search_reads_only_train_and_calibration": true,
+  "new_200_negatives_used": false,
+  "colab_used": false,
+  "experiments": 45,
+  "baseline_replaced": false,
+  "clean_rows": 152,
+  "clean_excluded": 56,
+  "csv_json_metric_comparisons_passed": 20,
+  "tfidf_oof_no_group_overlap": true,
+  "tfidf_each_train_row_has_one_oof_prediction": true,
+  "executed_notebook_no_errors": true
+}

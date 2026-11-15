@@ -16,6 +16,12 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def save(name,x):
  with (P/'cache'/name).open('wb') as f:pickle.dump(x,f)
 def main():
+ signature_paths=[Path('datasets/own_v3_clean/train.jsonl'),Path('output/ngram-comparison/splits/train.jsonl'),Path('output/cat-aware-v2/cache/chunks_embeddings.npz'),Path('avito_compare/scripts/run_syntax_experiment.py'),Path('avito_compare/scripts/qwen3_v3_experiment.py'),Path('avito_compare/scripts/qwen3_embedding_experiment.py')]
+ signature={str(p):sha(p) for p in signature_paths}
+ signature_file=P/'cache/prepare_signature.json'
+ if signature_file.exists():assert json.loads(signature_file.read_text())==signature,'Cache source mismatch; use a fresh output directory'
+ elif (P/'cache/original_oof.npz').exists():raise RuntimeError('Unverified OOF cache: provenance manifest required')
+ else:signature_file.write_text(json.dumps(signature,indent=2))
  chunks,emb,query=reconstruct_v2_chunk_map();emb=emb.astype(np.float32)
  z=np.load('output/cat-aware-v2/cache/chunks_embeddings.npz');off=z['ad_chunk_offsets'];ix=z['ad_chunk_indices']
  raw=emb@query.T;sims=np.column_stack([raw[:,j*3:(j+1)*3].max(1) for j in range(6)])
