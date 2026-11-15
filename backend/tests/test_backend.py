@@ -191,6 +191,27 @@ def test_unsafe_single_draft_becomes_explicit_placeholder_without_losing_valid_d
     assert body['warnings'][0]['categoryId'] == 103
 
 
+def test_bad_citation_is_regenerated_for_its_category_only():
+    calls = []
+    def remote(request):
+        payload = json.loads(request.content)
+        ids = [row['id'] for row in json.loads(payload['messages'][-1]['content'])['requested_categories']]
+        calls.append(ids)
+        if ids == [103, 104]:
+            return httpx.Response(200, json=completion([
+                model_draft(evidence=['Укладываем плиточные работы']), model_draft(104),
+            ]))
+        assert ids == [103]
+        return httpx.Response(200, json=completion([model_draft()]))
+    with client_for(remote) as client:
+        response = client.post('/api/generate', json=REQUEST)
+    assert response.status_code == 200, response.text
+    assert calls == [[103, 104], [103]]
+    assert [d['categoryId'] for d in response.json()['drafts']] == [103, 104]
+    assert response.json()['drafts'][0]['description'] == 'Укладываем плитку. Работаем только по записи.'
+    assert response.json()['warnings'] == []
+
+
 @pytest.mark.parametrize('body', [
     {'choices': []}, {'unexpected': True},
     {'choices': [None]}, {'choices': [{'finish_reason': 'stop', 'message': None}]},

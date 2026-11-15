@@ -91,11 +91,11 @@ class QwenClient:
             raise BackendError(422, 'Исходный текст вместе с примерами не помещается в контекст Qwen. Сократите описание или выберите меньше категорий.')
         return min(self.settings.max_tokens, available)
 
-    async def generate(self, request: GenerateRequest, *, request_id: str = '-'):
+    async def generate(self, request: GenerateRequest, *, request_id: str = '-', allow_retry: bool = True):
         started = time.monotonic()
         category_ids = [c.id for c in request.categories]
-        logger.info('qwen_start request_id=%s categories=%s description_chars=%d',
-                    request_id, category_ids, len(request.description))
+        logger.info('qwen_start request_id=%s attempt=%s categories=%s description_chars=%d',
+                    request_id, 'initial' if allow_retry else 'focused', category_ids, len(request.description))
         payload = {
             'model': self.settings.qwen_model, 'messages': messages(request),
             'temperature': 0, 'max_tokens': self.settings.max_tokens,
@@ -195,6 +195,31 @@ class QwenClient:
                                    'Qwen добавил неподтверждённые рекламные условия.': 'claims',
                                    'Qwen вернул служебное пояснение вместо самостоятельного объявления.': 'meta_text',
                                }.get(exc.message, 'other'))
+                # A multi-category response may botch a citation even when the
+                # service is genuinely offered. Retry ONLY this category once;
+                # never expose the failed draft or skip normal validation.
+                if allow_retry:
+                    remaining = self.settings.timeout_seconds - (time.monotonic() - started)
+                    if remaining > 1:
+                        focused = request.model_copy(update={
+                            'categories': [next(c for c in request.categories if c.id == category)],
+                        })
+                        try:
+                            repaired = await asyncio.wait_for(
+                                self.generate(focused, request_id=request_id, allow_retry=False),
+                                timeout=remaining,
+                            )
+                        except (BackendError, TimeoutError) as retry_error:
+                            logger.warning('qwen_retry_failed request_id=%s category_id=%d reason=%s',
+                                           request_id, category, type(retry_error).__name__)
+                        else:
+                            logger.info('qwen_retry_complete request_id=%s category_id=%d warnings=%d',
+                                        request_id, category, len(repaired.warnings))
+                            if warnings and warnings[-1].categoryId == category:
+                                warnings.pop()
+                            warnings.extend(repaired.warnings)
+                            drafts.extend(repaired.drafts)
+                            continue
                 if warnings and warnings[-1].categoryId == category:
                     warnings.pop()
                 warnings.append(GenerationWarning(
