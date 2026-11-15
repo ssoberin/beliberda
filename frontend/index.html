@@ -33,6 +33,10 @@
 
         <form id="listing-form">
           <h2>Подробности</h2>
+          <div class="connection-panel">
+            <p class="hint" id="connection-status" role="status">Проверяем подключение к генерации…</p>
+            <button class="text-button" id="check-connection" type="button">Проверить подключение</button>
+          </div>
           <div class="field">
             <label for="title">Название объявления</label>
             <div class="input-wrap">
@@ -46,7 +50,7 @@
             <label for="description">Описание услуг <span class="required">*</span></label>
             <textarea id="description" name="description" rows="5" maxlength="12000" required placeholder="Расскажите, что вы умеете. Например: укладываю плитку, устанавливаю сантехнику и меняю розетки." aria-describedby="description-hint description-count"></textarea>
             <div class="field-meta">
-              <p class="hint" id="description-hint">По этому описанию подберём категории и составим объявления</p>
+            <p class="hint" id="description-hint">Вставьте исходное объявление — по нему составим черновики для выбранных категорий</p>
               <span class="hint counter" id="description-count">0 / 12 000</span>
             </div>
           </div>
@@ -54,12 +58,12 @@
           <section class="categories-section" aria-labelledby="categories-heading">
             <div class="section-heading">
               <h3 id="categories-heading">Категории</h3>
-              <button class="button button-small button-ai" id="generate-categories" type="button">
+              <button class="button button-small button-ai" id="generate-categories" type="button" title="Тестовый подбор категорий по описанию">
                 <svg class="sparkle" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
                 <span>Сгенерировать категории</span>
               </button>
             </div>
-            <p class="hint category-hint">Выберите подходящие или подберите автоматически по описанию</p>
+            <p class="hint category-hint" id="category-hint">Подбор категорий пока тестовый. Выбор можно изменить вручную.</p>
             <div class="category-list" id="category-list" role="group" aria-label="Выбор категорий"></div>
             <div class="selection-summary">
               <span class="hint" id="selection-count" aria-live="polite">Категории пока не выбраны</span>
@@ -71,10 +75,11 @@
           <div class="generate-section">
             <button class="button button-primary" id="generate-listings" type="submit">
               <svg class="sparkle" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
-              <span>Сгенерировать объявления</span>
+              <span>Сгенерировать черновики</span>
             </button>
-            <p class="hint">Подготовим отдельный черновик для каждой выбранной категории</p>
+            <p class="hint">Подготовим черновик для каждой категории. Если сведений недостаточно, отметим, что нужно дополнить.</p>
             <p class="message" id="generate-message" role="status" hidden></p>
+            <div class="message" id="generation-warnings" data-kind="warning" role="status" hidden></div>
           </div>
         </form>
 

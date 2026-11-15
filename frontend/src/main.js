@@ -1,5 +1,5 @@
 import { CATEGORIES } from './catalog.js';
-import { generateCategories, generateListings } from './api.js';
+import { generateCategories, generateListings, getConnectionStatus } from './api.js';
 
 const $ = id => document.getElementById(id);
 const form = $('listing-form');
@@ -11,7 +11,10 @@ let categories = [...CATEGORIES];
 let selected = new Set();
 const requests = { categories: null, generate: null };
 const buttons = { categories: $('generate-categories'), generate: $('generate-listings') };
-const labels = { categories: 'Сгенерировать категории', generate: 'Сгенерировать объявления' };
+const labels = { categories: 'Сгенерировать категории', generate: 'Сгенерировать черновики' };
+let categoryGenerationAvailable = true;
+let connectionRetry = null;
+let checkingConnection = false;
 
 function message(kind, text = '', error = false) {
   const element = $(kind === 'categories' ? 'categories-message' : 'generate-message');
@@ -21,7 +24,7 @@ function message(kind, text = '', error = false) {
 }
 
 function busy(kind, active) {
-  buttons[kind].disabled = active;
+  buttons[kind].disabled = active || (kind === 'categories' && !categoryGenerationAvailable);
   buttons[kind].setAttribute('aria-busy', String(active));
   buttons[kind].querySelector('span').textContent = active
     ? (kind === 'categories' ? 'Подбираем категории…' : 'Готовим объявления…')
@@ -39,7 +42,46 @@ function invalidateDrafts() {
   cancel('generate');
   results.hidden = true;
   $('draft-list').replaceChildren();
+  $('generation-warnings').hidden = true;
+  $('generation-warnings').replaceChildren();
 }
+
+async function checkConnection() {
+  if (checkingConnection) return;
+  checkingConnection = true;
+  clearTimeout(connectionRetry);
+  connectionRetry = null;
+  let retry = false;
+  const button = $('check-connection');
+  const status = $('connection-status');
+  button.disabled = true;
+  status.textContent = 'Проверяем подключение к генерации…';
+  try {
+    const connection = await getConnectionStatus(AbortSignal.timeout(10_000));
+    retry = !connection.ready;
+    categoryGenerationAvailable = connection.categoryGeneration === true;
+    buttons.categories.disabled = !categoryGenerationAvailable || Boolean(requests.categories);
+    buttons.categories.title = categoryGenerationAvailable ? 'Тестовый подбор категорий по описанию' : 'Автоподбор категорий пока недоступен';
+    $('category-hint').textContent = categoryGenerationAvailable
+      ? 'Подбор категорий пока тестовый. Выбор можно изменить вручную.'
+      : 'Выберите категории вручную. Автоподбор пока недоступен.';
+    status.dataset.kind = connection.mode === 'demo' ? 'warning' : connection.ready ? 'ready' : 'error';
+    status.textContent = connection.mode === 'demo'
+      ? 'Демонстрационный режим: черновики тестовые, Qwen не используется.'
+      : connection.ready ? `Qwen подключён${connection.model ? `: ${connection.model}` : ''}`
+        : [connection.message || 'Генерация пока недоступна. Проверьте подключение.', connection.detail].filter(Boolean).join(' ');
+  } catch {
+    retry = true;
+    status.dataset.kind = 'error';
+    status.textContent = 'Не удалось проверить подключение. Повторите проверку.';
+  } finally {
+    checkingConnection = false;
+    button.disabled = false;
+    if (retry) connectionRetry = setTimeout(checkConnection, 5_000);
+  }
+}
+
+$('check-connection').addEventListener('click', checkConnection);
 
 function renderCategories() {
   categoryList.replaceChildren(...categories.map(category => {
@@ -97,6 +139,7 @@ $('reset-categories').addEventListener('click', () => {
 });
 
 buttons.categories.addEventListener('click', async () => {
+  if (!categoryGenerationAvailable) return;
   if (!validateDescription()) return;
   cancel('categories');
   cancel('generate');
@@ -114,7 +157,7 @@ buttons.categories.addEventListener('click', async () => {
     invalidateDrafts();
     renderCategories();
     message('categories', response.length
-      ? 'Категории выбраны автоматически. При необходимости измените выбор.'
+      ? 'Категории выбраны тестовым подбором. При необходимости измените выбор.'
       : 'Подходящих категорий не найдено. Уточните описание или выберите категории вручную.');
   } catch (error) {
     if (!controller.signal.aborted) message('categories', error.message, true);
@@ -126,13 +169,18 @@ buttons.categories.addEventListener('click', async () => {
   }
 });
 
-function renderDrafts(drafts, chosen) {
+function renderDrafts(drafts, chosen, warnings = []) {
   const elements = drafts.map((draft, index) => {
     const card = document.createElement('article');
     card.className = 'draft';
     const category = document.createElement('p');
     category.className = 'draft-category';
     category.textContent = chosen.find(item => String(item.id) === String(draft.categoryId))?.name ?? `Категория ${draft.categoryId}`;
+    const warning = warnings.find(item => String(item.categoryId) === String(draft.categoryId));
+    const review = document.createElement('p');
+    review.className = 'hint draft-review';
+    review.textContent = warning ? 'Заготовка: уточните сведения об услуге перед публикацией.' : '';
+    review.hidden = !warning;
     const titleLabel = document.createElement('label');
     titleLabel.htmlFor = `draft-title-${index}`;
     titleLabel.textContent = 'Название объявления';
@@ -163,7 +211,7 @@ function renderDrafts(drafts, chosen) {
     });
     draftTitle.addEventListener('input', () => { status.textContent = ''; });
     draftText.addEventListener('input', () => { status.textContent = ''; });
-    card.append(category, titleLabel, draftTitle, textLabel, draftText, copy, status);
+    card.append(category, review, titleLabel, draftTitle, textLabel, draftText, copy, status);
     return card;
   });
   $('draft-list').replaceChildren(...elements);
@@ -193,13 +241,24 @@ form.addEventListener('submit', async event => {
   const chosen = categories.filter(category => selected.has(String(category.id)));
   busy('generate', true);
   message('generate', 'Готовим черновики объявлений…');
+  $('generation-warnings').hidden = true;
   try {
-    const drafts = await generateListings({ ...sourcePayload(), categories: chosen }, controller.signal);
+    const { drafts, warnings } = await generateListings({ ...sourcePayload(), categories: chosen }, controller.signal);
     if (controller.signal.aborted) return;
-    renderDrafts(drafts, chosen);
-    message('generate', drafts.length ? '' : 'Сервер не вернул объявления. Попробуйте уточнить описание.');
+    renderDrafts(drafts, chosen, warnings);
+    const warningBox = $('generation-warnings');
+    const warningLines = warnings.map(warning => {
+      const line = document.createElement('p');
+      const category = chosen.find(item => String(item.id) === String(warning.categoryId));
+      line.textContent = `${category?.name ?? `Категория ${warning.categoryId}`}: ${warning.message}`;
+      return line;
+    });
+    warningBox.replaceChildren(...warningLines);
+    warningBox.hidden = warnings.length === 0;
+    message('generate', drafts.length ? `Создано черновиков: ${drafts.length} из ${chosen.length}.` : 'Сервер не вернул объявления. Попробуйте уточнить описание.');
   } catch (error) {
     if (!controller.signal.aborted) message('generate', error.message, true);
+    if (!controller.signal.aborted) checkConnection();
   } finally {
     if (requests.generate === controller) {
       requests.generate = null;
@@ -209,3 +268,4 @@ form.addEventListener('submit', async event => {
 });
 
 renderCategories();
+checkConnection();
