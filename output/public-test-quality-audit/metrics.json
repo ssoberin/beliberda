@@ -1,0 +1,170 @@
+{
+  "source": "datasets/public/public-test-dataset.parquet",
+  "sha256": "65b5a45a98b577d853a928932bbbdf8bd9bdeb469ded3016faace4d11f3eabaa",
+  "rows": 208,
+  "schema": [
+    [
+      "title",
+      "VARCHAR",
+      "YES",
+      null,
+      null,
+      null
+    ],
+    [
+      "description",
+      "VARCHAR",
+      "YES",
+      null,
+      null,
+      null
+    ],
+    [
+      "categories",
+      "VARCHAR[]",
+      "YES",
+      null,
+      null,
+      null
+    ]
+  ],
+  "null_fields": 0,
+  "unknown_categories": 0,
+  "duplicate_labels_within_row": 0,
+  "empty_description": 0,
+  "empty_gold": 106,
+  "gold_label_total": 295,
+  "cardinality": {
+    "4": 20,
+    "0": 106,
+    "5": 19,
+    "3": 13,
+    "1": 19,
+    "2": 31
+  },
+  "groups": {
+    "raw_description": {
+      "unique": 139,
+      "duplicate_groups": 26,
+      "rows_in_duplicate_groups": 95,
+      "excess_duplicate_rows": 69,
+      "conflicting_groups": 13,
+      "conflicting_rows": 56,
+      "minimum_unavoidable_binary_label_errors": 48,
+      "minimum_unavoidable_exact_match_errors": 22,
+      "maximum_possible_micro_f1_same_key_same_prediction": 0.9242902208201893
+    },
+    "normalized_description": {
+      "unique": 139,
+      "duplicate_groups": 26,
+      "rows_in_duplicate_groups": 95,
+      "excess_duplicate_rows": 69,
+      "conflicting_groups": 13,
+      "conflicting_rows": 56,
+      "minimum_unavoidable_binary_label_errors": 48,
+      "minimum_unavoidable_exact_match_errors": 22,
+      "maximum_possible_micro_f1_same_key_same_prediction": 0.9242902208201893
+    },
+    "raw_title_description": {
+      "unique": 140,
+      "duplicate_groups": 25,
+      "rows_in_duplicate_groups": 93,
+      "excess_duplicate_rows": 68,
+      "conflicting_groups": 13,
+      "conflicting_rows": 56,
+      "minimum_unavoidable_binary_label_errors": 48,
+      "minimum_unavoidable_exact_match_errors": 22,
+      "maximum_possible_micro_f1_same_key_same_prediction": 0.9242902208201893
+    },
+    "normalized_title_description": {
+      "unique": 140,
+      "duplicate_groups": 25,
+      "rows_in_duplicate_groups": 93,
+      "excess_duplicate_rows": 68,
+      "conflicting_groups": 13,
+      "conflicting_rows": 56,
+      "minimum_unavoidable_binary_label_errors": 48,
+      "minimum_unavoidable_exact_match_errors": 22,
+      "maximum_possible_micro_f1_same_key_same_prediction": 0.9242902208201893
+    }
+  },
+  "overlaps": {
+    "public_raw_10000": {
+      "rows": 24,
+      "unique_descriptions": 13,
+      "row_ids": [
+        1,
+        9,
+        19,
+        45,
+        61,
+        64,
+        67,
+        76,
+        77,
+        78,
+        83,
+        87,
+        105,
+        107,
+        128,
+        141,
+        146,
+        153,
+        173,
+        178,
+        186,
+        190,
+        197,
+        202
+      ]
+    },
+    "actual_pub_train_3398": {
+      "rows": 20,
+      "unique_descriptions": 10,
+      "row_ids": [
+        9,
+        19,
+        45,
+        61,
+        64,
+        76,
+        77,
+        78,
+        83,
+        107,
+        128,
+        141,
+        146,
+        153,
+        173,
+        178,
+        186,
+        190,
+        197,
+        202
+      ]
+    },
+    "public_calibration_728": {
+      "rows": 4,
+      "unique_descriptions": 3,
+      "row_ids": [
+        1,
+        67,
+        87,
+        105
+      ]
+    },
+    "public_validation_729": {
+      "rows": 0,
+      "unique_descriptions": 0,
+      "row_ids": []
+    },
+    "v3_train_2921": {
+      "rows": 0,
+      "unique_descriptions": 0,
+      "row_ids": []
+    }
+  },
+  "bound_scope": "Label-consistency audit only: same observed input, same deterministic prediction. Optimistic oracle bound using gold; not model performance, not a suggested predictor. source_mcId=101 is assumed from README and missing from parquet."
+}

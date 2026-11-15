@@ -1,0 +1,11 @@
+{
+  "source_and_baseline_inputs_unchanged": true,
+  "raw_title_description_conflicts_match": true,
+  "upper_bound_independent_check": {
+    "tp": 293,
+    "fp": 46,
+    "fn": 2,
+    "micro_f1": 0.9242902208201893
+  },
+  "no_training_or_threshold_selection": true
+}
