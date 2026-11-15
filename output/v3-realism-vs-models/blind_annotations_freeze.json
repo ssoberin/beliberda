@@ -1,0 +1,10 @@
+{
+  "sha256": "b0d7604000af0cb55d89a2882e3a6941a212e244d36ed56d770136d462d54b73",
+  "frozen_before_joining_predictions": true,
+  "sample_count": 60,
+  "counts": {
+    "P": 31,
+    "R": 17,
+    "A": 12
+  }
+}

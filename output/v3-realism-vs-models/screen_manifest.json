@@ -1,0 +1,8 @@
+{
+  "pattern_source_sha256": "35e109b1e9fbaafb5d1d627f0c67fcca78bca84f569cc0ca8557c584cb77a2cb",
+  "no_model_predictions_loaded": true,
+  "no_training": true,
+  "no_dataset_edits": true,
+  "sample_seed": 42,
+  "sample_size": 60
+}

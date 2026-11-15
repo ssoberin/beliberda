@@ -1,0 +1,15 @@
+{
+  "method": "Reuse historical text-pattern screen from prior analysis, before this model comparison; flags are expert review candidates, not proven unrealistic records.",
+  "thresholds": {
+    "broad_repeat": 3,
+    "extreme_repeat": 5
+  },
+  "manual_sample": "60 uniform random test rows without replacement, np.random.default_rng(42), annotated from full description without scores/gold.",
+  "manual_criteria": {
+    "R": "Natural service offers, ordinary refusals/conditions; no logical tutorial or repeated elaborate status framing.",
+    "P": "Hard but plausible: isolated FAQ, own team, past change, historical SEO mention; readable commercial purpose.",
+    "A": "Artificial: repeated elaborate actor/negation/status clarification, logical self-explanations, contrived repeated question-answer constructions or excessive meta discussion."
+  },
+  "no_training": true,
+  "no_gold_changes": true
+}
