@@ -1,0 +1,128 @@
+{
+  "46k": {
+    "public_validation_729": {
+      "micro_f1": 0.0,
+      "macro_f1": 0.0,
+      "micro_precision": 0.0,
+      "micro_recall": 0.0,
+      "fp": 0,
+      "fn": 0
+    },
+    "v3_test_600": {
+      "micro_f1": 0.0,
+      "macro_f1": 0.0,
+      "micro_precision": 0.0,
+      "micro_recall": 0.0,
+      "fp": 0,
+      "fn": 0
+    },
+    "v3_challenge_144": {
+      "micro_f1": 0.0,
+      "macro_f1": 0.0,
+      "micro_precision": 0.0,
+      "micro_recall": 0.0,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_control_20": {
+      "micro_f1": 0.0,
+      "macro_f1": 0.0,
+      "micro_precision": 0.0,
+      "micro_recall": 0.0,
+      "fp": 0,
+      "fn": 0
+    },
+    "official_public_test_208": {
+      "micro_f1": 0.0,
+      "macro_f1": 0.0,
+      "micro_precision": 0.0,
+      "micro_recall": 0.0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "60k": {
+    "public_validation_729": {
+      "micro_f1": 0.0006554558075523298,
+      "macro_f1": 0.0005971134028379677,
+      "micro_precision": 0.002998049395824154,
+      "micro_recall": -0.0016375545851528006,
+      "fp": -6,
+      "fn": 3
+    },
+    "v3_test_600": {
+      "micro_f1": 0.0008560110203492677,
+      "macro_f1": 0.001195035897098684,
+      "micro_precision": 0.00024131137115968038,
+      "micro_recall": 0.0010050251256281673,
+      "fp": 0,
+      "fn": -1
+    },
+    "v3_challenge_144": {
+      "micro_f1": -0.019969278033794113,
+      "macro_f1": -0.02051282051282055,
+      "micro_precision": -0.008522727272727293,
+      "micro_recall": -0.033333333333333326,
+      "fp": 0,
+      "fn": 5
+    },
+    "new_control_20": {
+      "micro_f1": -0.012903225806451646,
+      "macro_f1": 0.0,
+      "micro_precision": -0.028571428571428525,
+      "micro_recall": 0.0,
+      "fp": 1,
+      "fn": 0
+    },
+    "official_public_test_208": {
+      "micro_f1": -0.004682491553322343,
+      "macro_f1": -0.00436906661349723,
+      "micro_precision": -0.003321158008658065,
+      "micro_recall": -0.006779661016949157,
+      "fp": 1,
+      "fn": 2
+    }
+  },
+  "100k": {
+    "public_validation_729": {
+      "micro_f1": -0.00010548363572715491,
+      "macro_f1": -0.00020610558189615436,
+      "micro_precision": -0.0024208506613635494,
+      "micro_recall": 0.0021834061135370675,
+      "fp": 5,
+      "fn": -4
+    },
+    "v3_test_600": {
+      "micro_f1": 0.00010113492346930375,
+      "macro_f1": -0.001109597116611738,
+      "micro_precision": -0.00524201381166467,
+      "micro_recall": 0.0020100502512563345,
+      "fp": 4,
+      "fn": -2
+    },
+    "v3_challenge_144": {
+      "micro_f1": -0.0078064012490242085,
+      "macro_f1": -0.008391608391608352,
+      "micro_precision": 0.014662756598240456,
+      "micro_recall": -0.033333333333333326,
+      "fp": -5,
+      "fn": 5
+    },
+    "new_control_20": {
+      "micro_f1": 0.0,
+      "macro_f1": 0.0,
+      "micro_precision": 0.0,
+      "micro_recall": 0.0,
+      "fp": 0,
+      "fn": 0
+    },
+    "official_public_test_208": {
+      "micro_f1": 0.0003724633958387402,
+      "macro_f1": -5.6558150004937247e-05,
+      "micro_precision": -0.005287569573283912,
+      "micro_recall": 0.01016949152542379,
+      "fp": 4,
+      "fn": -3
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "train_size": 6498,
+  "calibration_size": 728,
+  "validation_size": 1329,
+  "thresholds": {
+    "102": 0.45,
+    "103": 0.45,
+    "104": 0.45,
+    "105": 0.475,
+    "106": 0.45
+  },
+  "validation_default_0_5": {
+    "micro_f1": 0.83253,
+    "micro_precision": 0.92334,
+    "micro_recall": 0.75798,
+    "by_category_f1": {
+      "102": 0.85924,
+      "103": 0.81913,
+      "104": 0.8,
+      "105": 0.83186,
+      "106": 0.84779
+    },
+    "actual_positives": {
+      "102": 654,
+      "103": 627,
+      "104": 621,
+      "105": 623,
+      "106": 669
+    },
+    "predicted_positives": {
+      "102": 575,
+      "103": 523,
+      "104": 464,
+      "105": 507,
+      "106": 553
+    }
+  },
+  "validation_calibrated": {
+    "micro_f1": 0.84315,
+    "micro_precision": 0.91157,
+    "micro_recall": 0.78428,
+    "by_category_f1": {
+      "102": 0.87143,
+      "103": 0.83051,
+      "104": 0.81047,
+      "105": 0.83927,
+      "106": 0.85921
+    },
+    "actual_positives": {
+      "102": 654,
+      "103": 627,
+      "104": 621,
+      "105": 623,
+      "106": 669
+    },
+    "predicted_positives": {
+      "102": 606,
+      "103": 553,
+      "104": 487,
+      "105": 528,
+      "106": 574
+    }
+  },
+  "note": "Weak GPT-generated labels. This is not a manually verified gold result."
+}
+{
+  "word_ngram_range": [
+    1,
+    3
+  ],
+  "char_analyzer": "char_wb",
+  "max_features": {
+    "word": 24000,
+    "char": 36000
+  },
+  "sublinear_tf": true,
+  "exclude_source_category": true,
+  "thresholds": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "micro_f1": 0.8437559762860968,
+  "macro_f1": 0.8430819419024562,
+  "micro_precision": 0.9184013322231473,
+  "micro_recall": 0.7803325079589671,
+  "fit_wall_seconds": 8.541988466000475,
+  "fit_cpu_seconds": 8.540149643,
+  "fit_peak_process_rss_mib": 606.25,
+  "dimensions": {
+    "word": 24000,
+    "char": 36000,
+    "total": 60000
+  },
+  "artifact_bytes": 3808042,
+  "confusion_counts": {
+    "tp": 2206,
+    "fp": 196,
+    "fn": 621,
+    "tn": 3622
+  },
+  "confusion_counts_by_category": {
+    "tp": {
+      "102": 473,
+      "103": 427,
+      "104": 403,
+      "105": 427,
+      "106": 476
+    },
+    "fp": {
+      "102": 47,
+      "103": 49,
+      "104": 29,
+      "105": 37,
+      "106": 34
+    },
+    "fn": {
+      "102": 96,
+      "103": 126,
+      "104": 149,
+      "105": 121,
+      "106": 129
+    },
+    "tn": {
+      "102": 713,
+      "103": 727,
+      "104": 748,
+      "105": 744,
+      "106": 690
+    }
+  },
+  "f1_by_category": {
+    "102": 0.8686868686868687,
+    "103": 0.8299319727891157,
+    "104": 0.8191056910569106,
+    "105": 0.8438735177865613,
+    "106": 0.8538116591928251
+  },
+  "split_sha256": {
+    "train": "235de02b2be6c730386e38ee20aa58323f0ea8b7b0be5cd7686d5ea827322215",
+    "calibration": "576ff030556037918cf3046eeb97f36cef12ec4b8969926e98a4f3f022a217e9",
+    "validation": "b7cc524dc74fcefc32fd21b39bc2653b8f8900b432578b590d9d378217edf90c"
+  },
+  "normalized_effective_split_intersections": 0,
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "estimator_parameters": {
+    "alpha": 0.0001,
+    "average": false,
+    "class_weight": null,
+    "early_stopping": false,
+    "epsilon": 0.1,
+    "eta0": 0.01,
+    "fit_intercept": true,
+    "l1_ratio": 0.15,
+    "learning_rate": "optimal",
+    "loss": "log_loss",
+    "max_iter": 1000,
+    "n_iter_no_change": 5,
+    "n_jobs": null,
+    "penalty": "l2",
+    "power_t": 0.5,
+    "random_state": 42,
+    "shuffle": true,
+    "tol": 0.001,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "vectorizer_parameters": {
+    "word": {
+      "analyzer": "word",
+      "binary": false,
+      "decode_error": "strict",
+      "dtype": "<class 'numpy.float32'>",
+      "encoding": "utf-8",
+      "input": "content",
+      "lowercase": true,
+      "max_df": 1.0,
+      "max_features": 24000,
+      "min_df": 2,
+      "ngram_range": [
+        1,
+        3
+      ],
+      "norm": "l2",
+      "preprocessor": null,
+      "smooth_idf": true,
+      "stop_words": null,
+      "strip_accents": null,
+      "sublinear_tf": true,
+      "token_pattern": "(?u)\\b\\w\\w+\\b",
+      "tokenizer": null,
+      "use_idf": true,
+      "vocabulary": null
+    },
+    "char": {
+      "analyzer": "char_wb",
+      "binary": false,
+      "decode_error": "strict",
+      "dtype": "<class 'numpy.float32'>",
+      "encoding": "utf-8",
+      "input": "content",
+      "lowercase": true,
+      "max_df": 1.0,
+      "max_features": 36000,
+      "min_df": 3,
+      "ngram_range": [
+        3,
+        5
+      ],
+      "norm": "l2",
+      "preprocessor": null,
+      "smooth_idf": true,
+      "stop_words": null,
+      "strip_accents": null,
+      "sublinear_tf": true,
+      "token_pattern": "(?u)\\b\\w\\w+\\b",
+      "tokenizer": null,
+      "use_idf": true,
+      "vocabulary": null
+    }
+  },
+  "note": "Fixed-threshold validation on weak labels. Near-duplicate templates may remain. Fit time includes vectorization and five classifiers, excludes threshold search and serialization."
+}

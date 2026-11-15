@@ -1,0 +1,143 @@
+{
+  "method": "Text-based expert heuristics, no predictions used; structural checks do not establish full semantic consistency. >=3 repeated constructions and explicit logical self-explanations trigger rewrite review, not automatic deletion. Stale-tag cases separate.",
+  "sha256": {
+    "/tmp/innopolis-dataset-v3-review/datasets/own_v3/train.jsonl": "b5a439f4e679dd2d05a3ef93daa2e29a4fa919be264746f001e8473137057640",
+    "/tmp/innopolis-dataset-v3-review/datasets/own_v3/validation.jsonl": "876cbc10ff4d05450b35a01df4627f0b61b6dae7e809bfaa6a46160d80bab15d",
+    "/tmp/innopolis-dataset-v3-review/datasets/own_v3/test.jsonl": "884f65ba6d795d161f569fa31e1251a9aa7973b3c5e9737680b0848cba6913a7",
+    "/tmp/innopolis-dataset-v3-review/datasets/own_v3/challenge.jsonl": "566258947d5a552e8902026e43e63c3c1d1c91ffffff8a712355f1e3067b3f16",
+    "datasets/own_v3_revision3/replacements_250.jsonl": "a2dfbb08baf73034e0952f0fd837c851b4da7155f216d74a5fc26bf560a62ec7",
+    "datasets/own_v3_revision3/train.jsonl": "3a40c07bacddc87bc719cf0c046924d3831d0b633cbcfc4a635c05765c59951f"
+  },
+  "sets": {
+    "train": {
+      "rows": 3000,
+      "unique_descriptions": 3000,
+      "tiers": {
+        "rewrite_candidate": 472,
+        "no_high_priority_flag": 2236,
+        "review_stale_tag": 292
+      },
+      "reasons": {
+        "repeated_price_ge3": 133,
+        "repeated_team_ge3": 112,
+        "repeated_offer_correction_ge3": 111,
+        "explicit_stale_tags": 371,
+        "repeated_faq_ge3": 116
+      },
+      "conflicting_same_text_same_source_groups": 0,
+      "by_generator_construction": {
+        "price": 317,
+        "team": 292,
+        "past": 277,
+        "direct": 833,
+        "condition": 585,
+        "faq": 335,
+        "not_only": 361
+      }
+    },
+    "validation": {
+      "rows": 600,
+      "unique_descriptions": 600,
+      "tiers": {
+        "no_high_priority_flag": 450,
+        "rewrite_candidate": 93,
+        "review_stale_tag": 57
+      },
+      "reasons": {
+        "repeated_faq_ge3": 18,
+        "explicit_stale_tags": 68,
+        "repeated_price_ge3": 39,
+        "repeated_offer_correction_ge3": 20,
+        "repeated_team_ge3": 16
+      },
+      "conflicting_same_text_same_source_groups": 0,
+      "by_generator_construction": {
+        "direct": 172,
+        "faq": 55,
+        "not_only": 80,
+        "condition": 112,
+        "price": 76,
+        "past": 49,
+        "team": 56
+      }
+    },
+    "test": {
+      "rows": 600,
+      "unique_descriptions": 600,
+      "tiers": {
+        "no_high_priority_flag": 442,
+        "rewrite_candidate": 109,
+        "review_stale_tag": 49
+      },
+      "reasons": {
+        "repeated_offer_correction_ge3": 28,
+        "meta_explanation_of_negation": 43,
+        "repeated_price_ge3": 27,
+        "explicit_stale_tags": 60,
+        "repeated_faq_ge3": 19,
+        "repeated_team_ge3": 19
+      },
+      "conflicting_same_text_same_source_groups": 0,
+      "by_generator_construction": {
+        "faq": 51,
+        "past": 63,
+        "price": 52,
+        "direct": 171,
+        "condition": 130,
+        "not_only": 84,
+        "team": 49
+      }
+    },
+    "challenge": {
+      "rows": 144,
+      "unique_descriptions": 24,
+      "tiers": {
+        "no_high_priority_flag": 144
+      },
+      "reasons": {},
+      "conflicting_same_text_same_source_groups": 0,
+      "by_generator_construction": {
+        "not_available": 144
+      }
+    },
+    "revision3_new250": {
+      "rows": 250,
+      "unique_descriptions": 250,
+      "tiers": {
+        "no_high_priority_flag": 250
+      },
+      "reasons": {},
+      "conflicting_same_text_same_source_groups": 0,
+      "by_generator_construction": {
+        "not_available": 250
+      }
+    },
+    "revision3_train": {
+      "rows": 3000,
+      "unique_descriptions": 3000,
+      "tiers": {
+        "rewrite_candidate": 472,
+        "no_high_priority_flag": 2264,
+        "review_stale_tag": 264
+      },
+      "reasons": {
+        "repeated_price_ge3": 133,
+        "repeated_team_ge3": 112,
+        "repeated_offer_correction_ge3": 111,
+        "explicit_stale_tags": 343,
+        "repeated_faq_ge3": 116
+      },
+      "conflicting_same_text_same_source_groups": 0,
+      "by_generator_construction": {
+        "price": 286,
+        "not_available": 250,
+        "team": 248,
+        "past": 255,
+        "direct": 747,
+        "condition": 551,
+        "faq": 307,
+        "not_only": 356
+      }
+    }
+  }
+}

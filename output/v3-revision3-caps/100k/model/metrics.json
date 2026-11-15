@@ -1,0 +1,65 @@
+{
+  "train_size": 6498,
+  "calibration_size": 728,
+  "validation_size": 1329,
+  "thresholds": {
+    "102": 0.425,
+    "103": 0.45,
+    "104": 0.45,
+    "105": 0.575,
+    "106": 0.45
+  },
+  "validation_default_0_5": {
+    "micro_f1": 0.83219,
+    "micro_precision": 0.91837,
+    "micro_recall": 0.7608,
+    "by_category_f1": {
+      "102": 0.85878,
+      "103": 0.80977,
+      "104": 0.79406,
+      "105": 0.85349,
+      "106": 0.83977
+    },
+    "actual_positives": {
+      "102": 654,
+      "103": 627,
+      "104": 621,
+      "105": 623,
+      "106": 669
+    },
+    "predicted_positives": {
+      "102": 571,
+      "103": 519,
+      "104": 457,
+      "105": 551,
+      "106": 548
+    }
+  },
+  "validation_calibrated": {
+    "micro_f1": 0.83512,
+    "micro_precision": 0.91243,
+    "micro_recall": 0.76988,
+    "by_category_f1": {
+      "102": 0.87244,
+      "103": 0.82192,
+      "104": 0.80362,
+      "105": 0.81695,
+      "106": 0.85368
+    },
+    "actual_positives": {
+      "102": 654,
+      "103": 627,
+      "104": 621,
+      "105": 623,
+      "106": 669
+    },
+    "predicted_positives": {
+      "102": 616,
+      "103": 541,
+      "104": 484,
+      "105": 486,
+      "106": 568
+    }
+  },
+  "note": "Weak GPT-generated labels. This is not a manually verified gold result."
+}

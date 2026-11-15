@@ -1,0 +1,184 @@
+{
+  "public_validation_729": {
+    "micro_f1": {
+      "absolute": -0.0026641028981666537,
+      "relative_percent": -0.2851057487511682
+    },
+    "macro_f1": {
+      "absolute": -0.002694251515201307,
+      "relative_percent": -0.2883121253595948
+    },
+    "micro_precision": {
+      "absolute": 0.00015956761391622276,
+      "relative_percent": 0.017057871242038315
+    },
+    "micro_recall": {
+      "absolute": -0.00545851528384278,
+      "relative_percent": -0.5847953216374253
+    },
+    "fp": {
+      "absolute": -1,
+      "relative_percent": -0.847457627118644
+    },
+    "fn": {
+      "absolute": 10,
+      "relative_percent": 8.19672131147541
+    }
+  },
+  "v3_validation": {
+    "micro_f1": {
+      "absolute": -0.02919054484557726,
+      "relative_percent": -4.58217000621144
+    },
+    "macro_f1": {
+      "absolute": -0.03224971910107488,
+      "relative_percent": -5.112912583353471
+    },
+    "micro_precision": {
+      "absolute": 0.001765366714812977,
+      "relative_percent": 0.2091387286900246
+    },
+    "micro_recall": {
+      "absolute": -0.03718592964824119,
+      "relative_percent": -7.269155206286834
+    },
+    "fp": {
+      "absolute": -8,
+      "relative_percent": -8.51063829787234
+    },
+    "fn": {
+      "absolute": 37,
+      "relative_percent": 7.613168724279835
+    }
+  },
+  "v3_test": {
+    "micro_f1": {
+      "absolute": -0.042019693153194315,
+      "relative_percent": -6.162888329135166
+    },
+    "macro_f1": {
+      "absolute": -0.042861564285815335,
+      "relative_percent": -6.315203603772903
+    },
+    "micro_precision": {
+      "absolute": 0.014711267096928382,
+      "relative_percent": 1.7472855832667569
+    },
+    "micro_recall": {
+      "absolute": -0.062311557788944816,
+      "relative_percent": -10.877192982456156
+    },
+    "fp": {
+      "absolute": -22,
+      "relative_percent": -20.560747663551403
+    },
+    "fn": {
+      "absolute": 62,
+      "relative_percent": 14.588235294117647
+    }
+  },
+  "v3_challenge": {
+    "micro_f1": {
+      "absolute": 0.02344322344322336,
+      "relative_percent": 3.1746031746031633
+    },
+    "macro_f1": {
+      "absolute": 0.020454545454545392,
+      "relative_percent": 2.7436879543500265
+    },
+    "micro_precision": {
+      "absolute": 0.04155844155844157,
+      "relative_percent": 6.060606060606062
+    },
+    "micro_recall": {
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "fp": {
+      "absolute": -10,
+      "relative_percent": -18.181818181818183
+    },
+    "fn": {
+      "absolute": 0,
+      "relative_percent": 0.0
+    }
+  },
+  "new_control_20": {
+    "micro_f1": {
+      "absolute": -0.057142857142857106,
+      "relative_percent": -12.499999999999993
+    },
+    "macro_f1": {
+      "absolute": -0.053968253968254,
+      "relative_percent": -13.127413127413135
+    },
+    "micro_precision": {
+      "absolute": 0.007518796992481203,
+      "relative_percent": 1.7857142857142858
+    },
+    "micro_recall": {
+      "absolute": -0.125,
+      "relative_percent": -25.0
+    },
+    "fp": {
+      "absolute": -3,
+      "relative_percent": -27.272727272727273
+    },
+    "fn": {
+      "absolute": 2,
+      "relative_percent": 25.0
+    }
+  },
+  "official_public_test_208": {
+    "micro_f1": {
+      "absolute": -0.0017318821801848294,
+      "relative_percent": -0.21060924369747658
+    },
+    "macro_f1": {
+      "absolute": -0.0017984147847587284,
+      "relative_percent": -0.2217767517057254
+    },
+    "micro_precision": {
+      "absolute": -0.000713276360944759,
+      "relative_percent": -0.09833024118738463
+    },
+    "micro_recall": {
+      "absolute": -0.003389830508474634,
+      "relative_percent": -0.3571428571428632
+    },
+    "fp": {
+      "absolute": 0,
+      "relative_percent": 0.0
+    },
+    "fn": {
+      "absolute": 1,
+      "relative_percent": 6.666666666666667
+    }
+  },
+  "official_clean_unique_114": {
+    "micro_f1": {
+      "absolute": -0.005327808198904882,
+      "relative_percent": -0.697404106935302
+    },
+    "macro_f1": {
+      "absolute": -0.0056460692877635665,
+      "relative_percent": -0.7395808709280036
+    },
+    "micro_precision": {
+      "absolute": -0.0024866990515844956,
+      "relative_percent": -0.3688137919203971
+    },
+    "micro_recall": {
+      "absolute": -0.00990099009900991,
+      "relative_percent": -1.1235955056179785
+    },
+    "fp": {
+      "absolute": 0,
+      "relative_percent": 0.0
+    },
+    "fn": {
+      "absolute": 1,
+      "relative_percent": 8.333333333333334
+    }
+  }
+}

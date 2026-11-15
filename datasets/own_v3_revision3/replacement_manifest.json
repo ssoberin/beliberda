@@ -1,0 +1,4852 @@
+[
+  {
+    "old_item_id": "own-v3-train-1437",
+    "new_item_id": "own-v3-r3-001-1",
+    "train_index": 1436,
+    "group_id": "own-v3-r3-scene-001",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 80,
+    "new_characters": 272,
+    "old_basic_score": [
+      0,
+      0,
+      80,
+      "own-v3-train-1437"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0028",
+    "new_item_id": "own-v3-r3-001-2",
+    "train_index": 27,
+    "group_id": "own-v3-r3-scene-001",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 80,
+    "new_characters": 290,
+    "old_basic_score": [
+      0,
+      0,
+      80,
+      "own-v3-train-0028"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2757",
+    "new_item_id": "own-v3-r3-001-3",
+    "train_index": 2756,
+    "group_id": "own-v3-r3-scene-001",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 82,
+    "new_characters": 275,
+    "old_basic_score": [
+      0,
+      0,
+      82,
+      "own-v3-train-2757"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0948",
+    "new_item_id": "own-v3-r3-001-4",
+    "train_index": 947,
+    "group_id": "own-v3-r3-scene-001",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 80,
+    "new_characters": 278,
+    "old_basic_score": [
+      0,
+      0,
+      80,
+      "own-v3-train-0948"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0966",
+    "new_item_id": "own-v3-r3-001-5",
+    "train_index": 965,
+    "group_id": "own-v3-r3-scene-001",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 99,
+    "new_characters": 273,
+    "old_basic_score": [
+      0,
+      0,
+      99,
+      "own-v3-train-0966"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1421",
+    "new_item_id": "own-v3-r3-002-1",
+    "train_index": 1420,
+    "group_id": "own-v3-r3-scene-002",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 86,
+    "new_characters": 285,
+    "old_basic_score": [
+      0,
+      0,
+      86,
+      "own-v3-train-1421"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2643",
+    "new_item_id": "own-v3-r3-002-2",
+    "train_index": 2642,
+    "group_id": "own-v3-r3-scene-002",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 80,
+    "new_characters": 296,
+    "old_basic_score": [
+      0,
+      0,
+      80,
+      "own-v3-train-2643"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2813",
+    "new_item_id": "own-v3-r3-002-3",
+    "train_index": 2812,
+    "group_id": "own-v3-r3-scene-002",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 108,
+    "new_characters": 269,
+    "old_basic_score": [
+      0,
+      0,
+      108,
+      "own-v3-train-2813"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1653",
+    "new_item_id": "own-v3-r3-002-4",
+    "train_index": 1652,
+    "group_id": "own-v3-r3-scene-002",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 81,
+    "new_characters": 319,
+    "old_basic_score": [
+      0,
+      0,
+      81,
+      "own-v3-train-1653"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2862",
+    "new_item_id": "own-v3-r3-002-5",
+    "train_index": 2861,
+    "group_id": "own-v3-r3-scene-002",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 403,
+    "new_characters": 297,
+    "old_basic_score": [
+      0,
+      1,
+      403,
+      "own-v3-train-2862"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1967",
+    "new_item_id": "own-v3-r3-003-1",
+    "train_index": 1966,
+    "group_id": "own-v3-r3-scene-003",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 81,
+    "new_characters": 251,
+    "old_basic_score": [
+      0,
+      0,
+      81,
+      "own-v3-train-1967"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2704",
+    "new_item_id": "own-v3-r3-003-2",
+    "train_index": 2703,
+    "group_id": "own-v3-r3-scene-003",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 82,
+    "new_characters": 286,
+    "old_basic_score": [
+      0,
+      0,
+      82,
+      "own-v3-train-2704"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1116",
+    "new_item_id": "own-v3-r3-003-3",
+    "train_index": 1115,
+    "group_id": "own-v3-r3-scene-003",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 82,
+    "new_characters": 289,
+    "old_basic_score": [
+      0,
+      0,
+      82,
+      "own-v3-train-1116"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1117",
+    "new_item_id": "own-v3-r3-003-4",
+    "train_index": 1116,
+    "group_id": "own-v3-r3-scene-003",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 83,
+    "new_characters": 270,
+    "old_basic_score": [
+      0,
+      0,
+      83,
+      "own-v3-train-1117"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2177",
+    "new_item_id": "own-v3-r3-003-5",
+    "train_index": 2176,
+    "group_id": "own-v3-r3-scene-003",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 87,
+    "new_characters": 286,
+    "old_basic_score": [
+      0,
+      0,
+      87,
+      "own-v3-train-2177"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0633",
+    "new_item_id": "own-v3-r3-004-1",
+    "train_index": 632,
+    "group_id": "own-v3-r3-scene-004",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 82,
+    "new_characters": 258,
+    "old_basic_score": [
+      0,
+      0,
+      82,
+      "own-v3-train-0633"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1174",
+    "new_item_id": "own-v3-r3-004-2",
+    "train_index": 1173,
+    "group_id": "own-v3-r3-scene-004",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 84,
+    "new_characters": 273,
+    "old_basic_score": [
+      0,
+      0,
+      84,
+      "own-v3-train-1174"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0886",
+    "new_item_id": "own-v3-r3-004-3",
+    "train_index": 885,
+    "group_id": "own-v3-r3-scene-004",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 87,
+    "new_characters": 283,
+    "old_basic_score": [
+      0,
+      0,
+      87,
+      "own-v3-train-0886"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2927",
+    "new_item_id": "own-v3-r3-004-4",
+    "train_index": 2926,
+    "group_id": "own-v3-r3-scene-004",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 88,
+    "new_characters": 282,
+    "old_basic_score": [
+      0,
+      0,
+      88,
+      "own-v3-train-2927"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2537",
+    "new_item_id": "own-v3-r3-004-5",
+    "train_index": 2536,
+    "group_id": "own-v3-r3-scene-004",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 88,
+    "new_characters": 283,
+    "old_basic_score": [
+      0,
+      0,
+      88,
+      "own-v3-train-2537"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2145",
+    "new_item_id": "own-v3-r3-005-1",
+    "train_index": 2144,
+    "group_id": "own-v3-r3-scene-005",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 84,
+    "new_characters": 271,
+    "old_basic_score": [
+      0,
+      0,
+      84,
+      "own-v3-train-2145"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0262",
+    "new_item_id": "own-v3-r3-005-2",
+    "train_index": 261,
+    "group_id": "own-v3-r3-scene-005",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 92,
+    "new_characters": 283,
+    "old_basic_score": [
+      0,
+      0,
+      92,
+      "own-v3-train-0262"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2696",
+    "new_item_id": "own-v3-r3-005-3",
+    "train_index": 2695,
+    "group_id": "own-v3-r3-scene-005",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 89,
+    "new_characters": 281,
+    "old_basic_score": [
+      0,
+      0,
+      89,
+      "own-v3-train-2696"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2254",
+    "new_item_id": "own-v3-r3-005-4",
+    "train_index": 2253,
+    "group_id": "own-v3-r3-scene-005",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 94,
+    "new_characters": 272,
+    "old_basic_score": [
+      0,
+      0,
+      94,
+      "own-v3-train-2254"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1934",
+    "new_item_id": "own-v3-r3-005-5",
+    "train_index": 1933,
+    "group_id": "own-v3-r3-scene-005",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 90,
+    "new_characters": 303,
+    "old_basic_score": [
+      0,
+      0,
+      90,
+      "own-v3-train-1934"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1659",
+    "new_item_id": "own-v3-r3-006-1",
+    "train_index": 1658,
+    "group_id": "own-v3-r3-scene-006",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 102,
+    "new_characters": 284,
+    "old_basic_score": [
+      0,
+      0,
+      102,
+      "own-v3-train-1659"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0831",
+    "new_item_id": "own-v3-r3-006-2",
+    "train_index": 830,
+    "group_id": "own-v3-r3-scene-006",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 95,
+    "new_characters": 302,
+    "old_basic_score": [
+      0,
+      0,
+      95,
+      "own-v3-train-0831"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2985",
+    "new_item_id": "own-v3-r3-006-3",
+    "train_index": 2984,
+    "group_id": "own-v3-r3-scene-006",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 105,
+    "new_characters": 308,
+    "old_basic_score": [
+      0,
+      0,
+      105,
+      "own-v3-train-2985"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1640",
+    "new_item_id": "own-v3-r3-006-4",
+    "train_index": 1639,
+    "group_id": "own-v3-r3-scene-006",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 97,
+    "new_characters": 293,
+    "old_basic_score": [
+      0,
+      0,
+      97,
+      "own-v3-train-1640"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0499",
+    "new_item_id": "own-v3-r3-006-5",
+    "train_index": 498,
+    "group_id": "own-v3-r3-scene-006",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 114,
+    "new_characters": 302,
+    "old_basic_score": [
+      0,
+      0,
+      114,
+      "own-v3-train-0499"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0151",
+    "new_item_id": "own-v3-r3-007-1",
+    "train_index": 150,
+    "group_id": "own-v3-r3-scene-007",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 456,
+    "new_characters": 296,
+    "old_basic_score": [
+      0,
+      1,
+      456,
+      "own-v3-train-0151"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2351",
+    "new_item_id": "own-v3-r3-007-2",
+    "train_index": 2350,
+    "group_id": "own-v3-r3-scene-007",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 99,
+    "new_characters": 297,
+    "old_basic_score": [
+      0,
+      0,
+      99,
+      "own-v3-train-2351"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2783",
+    "new_item_id": "own-v3-r3-007-3",
+    "train_index": 2782,
+    "group_id": "own-v3-r3-scene-007",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 481,
+    "new_characters": 267,
+    "old_basic_score": [
+      0,
+      1,
+      481,
+      "own-v3-train-2783"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1778",
+    "new_item_id": "own-v3-r3-007-4",
+    "train_index": 1777,
+    "group_id": "own-v3-r3-scene-007",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 100,
+    "new_characters": 299,
+    "old_basic_score": [
+      0,
+      0,
+      100,
+      "own-v3-train-1778"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1597",
+    "new_item_id": "own-v3-r3-007-5",
+    "train_index": 1596,
+    "group_id": "own-v3-r3-scene-007",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 565,
+    "new_characters": 300,
+    "old_basic_score": [
+      0,
+      2,
+      565,
+      "own-v3-train-1597"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2962",
+    "new_item_id": "own-v3-r3-008-1",
+    "train_index": 2961,
+    "group_id": "own-v3-r3-scene-008",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 101,
+    "new_characters": 297,
+    "old_basic_score": [
+      0,
+      0,
+      101,
+      "own-v3-train-2962"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1643",
+    "new_item_id": "own-v3-r3-008-2",
+    "train_index": 1642,
+    "group_id": "own-v3-r3-scene-008",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 106,
+    "new_characters": 301,
+    "old_basic_score": [
+      0,
+      0,
+      106,
+      "own-v3-train-1643"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1060",
+    "new_item_id": "own-v3-r3-008-3",
+    "train_index": 1059,
+    "group_id": "own-v3-r3-scene-008",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 112,
+    "new_characters": 281,
+    "old_basic_score": [
+      0,
+      0,
+      112,
+      "own-v3-train-1060"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0027",
+    "new_item_id": "own-v3-r3-008-4",
+    "train_index": 26,
+    "group_id": "own-v3-r3-scene-008",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 110,
+    "new_characters": 305,
+    "old_basic_score": [
+      0,
+      0,
+      110,
+      "own-v3-train-0027"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0586",
+    "new_item_id": "own-v3-r3-008-5",
+    "train_index": 585,
+    "group_id": "own-v3-r3-scene-008",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 128,
+    "new_characters": 272,
+    "old_basic_score": [
+      0,
+      0,
+      128,
+      "own-v3-train-0586"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0520",
+    "new_item_id": "own-v3-r3-009-1",
+    "train_index": 519,
+    "group_id": "own-v3-r3-scene-009",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 104,
+    "new_characters": 290,
+    "old_basic_score": [
+      1,
+      0,
+      104,
+      "own-v3-train-0520"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2784",
+    "new_item_id": "own-v3-r3-009-2",
+    "train_index": 2783,
+    "group_id": "own-v3-r3-scene-009",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 113,
+    "new_characters": 280,
+    "old_basic_score": [
+      0,
+      0,
+      113,
+      "own-v3-train-2784"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1794",
+    "new_item_id": "own-v3-r3-009-3",
+    "train_index": 1793,
+    "group_id": "own-v3-r3-scene-009",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 126,
+    "new_characters": 276,
+    "old_basic_score": [
+      1,
+      0,
+      126,
+      "own-v3-train-1794"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2319",
+    "new_item_id": "own-v3-r3-009-4",
+    "train_index": 2318,
+    "group_id": "own-v3-r3-scene-009",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 115,
+    "new_characters": 281,
+    "old_basic_score": [
+      0,
+      0,
+      115,
+      "own-v3-train-2319"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0013",
+    "new_item_id": "own-v3-r3-009-5",
+    "train_index": 12,
+    "group_id": "own-v3-r3-scene-009",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 133,
+    "new_characters": 293,
+    "old_basic_score": [
+      1,
+      0,
+      133,
+      "own-v3-train-0013"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1276",
+    "new_item_id": "own-v3-r3-010-1",
+    "train_index": 1275,
+    "group_id": "own-v3-r3-scene-010",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 542,
+    "new_characters": 289,
+    "old_basic_score": [
+      1,
+      0,
+      542,
+      "own-v3-train-1276"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2399",
+    "new_item_id": "own-v3-r3-010-2",
+    "train_index": 2398,
+    "group_id": "own-v3-r3-scene-010",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 116,
+    "new_characters": 282,
+    "old_basic_score": [
+      0,
+      0,
+      116,
+      "own-v3-train-2399"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1872",
+    "new_item_id": "own-v3-r3-010-3",
+    "train_index": 1871,
+    "group_id": "own-v3-r3-scene-010",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 1344,
+    "new_characters": 269,
+    "old_basic_score": [
+      1,
+      0,
+      1344,
+      "own-v3-train-1872"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2568",
+    "new_item_id": "own-v3-r3-010-4",
+    "train_index": 2567,
+    "group_id": "own-v3-r3-scene-010",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 120,
+    "new_characters": 315,
+    "old_basic_score": [
+      0,
+      0,
+      120,
+      "own-v3-train-2568"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1596",
+    "new_item_id": "own-v3-r3-010-5",
+    "train_index": 1595,
+    "group_id": "own-v3-r3-scene-010",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 426,
+    "new_characters": 293,
+    "old_basic_score": [
+      1,
+      1,
+      426,
+      "own-v3-train-1596"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1942",
+    "new_item_id": "own-v3-r3-011-1",
+    "train_index": 1941,
+    "group_id": "own-v3-r3-scene-011",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 94,
+    "new_characters": 259,
+    "old_basic_score": [
+      0,
+      0,
+      94,
+      "own-v3-train-1942"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0259",
+    "new_item_id": "own-v3-r3-011-2",
+    "train_index": 258,
+    "group_id": "own-v3-r3-scene-011",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 297,
+    "new_characters": 255,
+    "old_basic_score": [
+      0,
+      0,
+      297,
+      "own-v3-train-0259"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1041",
+    "new_item_id": "own-v3-r3-011-3",
+    "train_index": 1040,
+    "group_id": "own-v3-r3-scene-011",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 98,
+    "new_characters": 248,
+    "old_basic_score": [
+      0,
+      0,
+      98,
+      "own-v3-train-1041"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0419",
+    "new_item_id": "own-v3-r3-011-4",
+    "train_index": 418,
+    "group_id": "own-v3-r3-scene-011",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 842,
+    "new_characters": 262,
+    "old_basic_score": [
+      0,
+      0,
+      842,
+      "own-v3-train-0419"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0274",
+    "new_item_id": "own-v3-r3-011-5",
+    "train_index": 273,
+    "group_id": "own-v3-r3-scene-011",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 102,
+    "new_characters": 285,
+    "old_basic_score": [
+      0,
+      0,
+      102,
+      "own-v3-train-0274"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2769",
+    "new_item_id": "own-v3-r3-012-1",
+    "train_index": 2768,
+    "group_id": "own-v3-r3-scene-012",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 105,
+    "new_characters": 241,
+    "old_basic_score": [
+      0,
+      0,
+      105,
+      "own-v3-train-2769"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2622",
+    "new_item_id": "own-v3-r3-012-2",
+    "train_index": 2621,
+    "group_id": "own-v3-r3-scene-012",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 877,
+    "new_characters": 255,
+    "old_basic_score": [
+      0,
+      0,
+      877,
+      "own-v3-train-2622"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2922",
+    "new_item_id": "own-v3-r3-012-3",
+    "train_index": 2921,
+    "group_id": "own-v3-r3-scene-012",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 319,
+    "new_characters": 232,
+    "old_basic_score": [
+      0,
+      1,
+      319,
+      "own-v3-train-2922"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1683",
+    "new_item_id": "own-v3-r3-012-4",
+    "train_index": 1682,
+    "group_id": "own-v3-r3-scene-012",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 919,
+    "new_characters": 254,
+    "old_basic_score": [
+      0,
+      0,
+      919,
+      "own-v3-train-1683"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1809",
+    "new_item_id": "own-v3-r3-012-5",
+    "train_index": 1808,
+    "group_id": "own-v3-r3-scene-012",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 444,
+    "new_characters": 275,
+    "old_basic_score": [
+      0,
+      1,
+      444,
+      "own-v3-train-1809"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0290",
+    "new_item_id": "own-v3-r3-013-1",
+    "train_index": 289,
+    "group_id": "own-v3-r3-scene-013",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 135,
+    "new_characters": 277,
+    "old_basic_score": [
+      0,
+      0,
+      135,
+      "own-v3-train-0290"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2068",
+    "new_item_id": "own-v3-r3-013-2",
+    "train_index": 2067,
+    "group_id": "own-v3-r3-scene-013",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 232,
+    "new_characters": 290,
+    "old_basic_score": [
+      0,
+      1,
+      232,
+      "own-v3-train-2068"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1664",
+    "new_item_id": "own-v3-r3-013-3",
+    "train_index": 1663,
+    "group_id": "own-v3-r3-scene-013",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 872,
+    "new_characters": 264,
+    "old_basic_score": [
+      0,
+      0,
+      872,
+      "own-v3-train-1664"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1146",
+    "new_item_id": "own-v3-r3-013-4",
+    "train_index": 1145,
+    "group_id": "own-v3-r3-scene-013",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 239,
+    "new_characters": 258,
+    "old_basic_score": [
+      0,
+      1,
+      239,
+      "own-v3-train-1146"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2828",
+    "new_item_id": "own-v3-r3-013-5",
+    "train_index": 2827,
+    "group_id": "own-v3-r3-scene-013",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1357,
+    "new_characters": 242,
+    "old_basic_score": [
+      0,
+      0,
+      1357,
+      "own-v3-train-2828"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1475",
+    "new_item_id": "own-v3-r3-014-1",
+    "train_index": 1474,
+    "group_id": "own-v3-r3-scene-014",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 392,
+    "new_characters": 257,
+    "old_basic_score": [
+      0,
+      0,
+      392,
+      "own-v3-train-1475"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1381",
+    "new_item_id": "own-v3-r3-014-2",
+    "train_index": 1380,
+    "group_id": "own-v3-r3-scene-014",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 249,
+    "new_characters": 257,
+    "old_basic_score": [
+      0,
+      1,
+      249,
+      "own-v3-train-1381"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1094",
+    "new_item_id": "own-v3-r3-014-3",
+    "train_index": 1093,
+    "group_id": "own-v3-r3-scene-014",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 279,
+    "new_characters": 279,
+    "old_basic_score": [
+      0,
+      1,
+      279,
+      "own-v3-train-1094"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0732",
+    "new_item_id": "own-v3-r3-014-4",
+    "train_index": 731,
+    "group_id": "own-v3-r3-scene-014",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 366,
+    "new_characters": 278,
+    "old_basic_score": [
+      0,
+      1,
+      366,
+      "own-v3-train-0732"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2681",
+    "new_item_id": "own-v3-r3-014-5",
+    "train_index": 2680,
+    "group_id": "own-v3-r3-scene-014",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 348,
+    "new_characters": 250,
+    "old_basic_score": [
+      0,
+      1,
+      348,
+      "own-v3-train-2681"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1515",
+    "new_item_id": "own-v3-r3-015-1",
+    "train_index": 1514,
+    "group_id": "own-v3-r3-scene-015",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 94,
+    "new_characters": 272,
+    "old_basic_score": [
+      0,
+      0,
+      94,
+      "own-v3-train-1515"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2018",
+    "new_item_id": "own-v3-r3-015-2",
+    "train_index": 2017,
+    "group_id": "own-v3-r3-scene-015",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 403,
+    "new_characters": 263,
+    "old_basic_score": [
+      0,
+      1,
+      403,
+      "own-v3-train-2018"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2512",
+    "new_item_id": "own-v3-r3-015-3",
+    "train_index": 2511,
+    "group_id": "own-v3-r3-scene-015",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 105,
+    "new_characters": 244,
+    "old_basic_score": [
+      0,
+      0,
+      105,
+      "own-v3-train-2512"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2502",
+    "new_item_id": "own-v3-r3-015-4",
+    "train_index": 2501,
+    "group_id": "own-v3-r3-scene-015",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 934,
+    "new_characters": 236,
+    "old_basic_score": [
+      0,
+      1,
+      934,
+      "own-v3-train-2502"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0242",
+    "new_item_id": "own-v3-r3-015-5",
+    "train_index": 241,
+    "group_id": "own-v3-r3-scene-015",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 110,
+    "new_characters": 230,
+    "old_basic_score": [
+      0,
+      0,
+      110,
+      "own-v3-train-0242"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1465",
+    "new_item_id": "own-v3-r3-016-1",
+    "train_index": 1464,
+    "group_id": "own-v3-r3-scene-016",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 1097,
+    "new_characters": 262,
+    "old_basic_score": [
+      0,
+      1,
+      1097,
+      "own-v3-train-1465"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0941",
+    "new_item_id": "own-v3-r3-016-2",
+    "train_index": 940,
+    "group_id": "own-v3-r3-scene-016",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1575,
+    "new_characters": 250,
+    "old_basic_score": [
+      0,
+      1,
+      1575,
+      "own-v3-train-0941"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2973",
+    "new_item_id": "own-v3-r3-016-3",
+    "train_index": 2972,
+    "group_id": "own-v3-r3-scene-016",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 1458,
+    "new_characters": 246,
+    "old_basic_score": [
+      0,
+      1,
+      1458,
+      "own-v3-train-2973"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0556",
+    "new_item_id": "own-v3-r3-016-4",
+    "train_index": 555,
+    "group_id": "own-v3-r3-scene-016",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 496,
+    "new_characters": 235,
+    "old_basic_score": [
+      0,
+      2,
+      496,
+      "own-v3-train-0556"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2954",
+    "new_item_id": "own-v3-r3-016-5",
+    "train_index": 2953,
+    "group_id": "own-v3-r3-scene-016",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 93,
+    "new_characters": 282,
+    "old_basic_score": [
+      1,
+      0,
+      93,
+      "own-v3-train-2954"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0276",
+    "new_item_id": "own-v3-r3-017-1",
+    "train_index": 275,
+    "group_id": "own-v3-r3-scene-017",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 248,
+    "new_characters": 249,
+    "old_basic_score": [
+      0,
+      1,
+      248,
+      "own-v3-train-0276"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1239",
+    "new_item_id": "own-v3-r3-017-2",
+    "train_index": 1238,
+    "group_id": "own-v3-r3-scene-017",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 509,
+    "new_characters": 259,
+    "old_basic_score": [
+      0,
+      2,
+      509,
+      "own-v3-train-1239"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2517",
+    "new_item_id": "own-v3-r3-017-3",
+    "train_index": 2516,
+    "group_id": "own-v3-r3-scene-017",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 448,
+    "new_characters": 274,
+    "old_basic_score": [
+      0,
+      1,
+      448,
+      "own-v3-train-2517"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0361",
+    "new_item_id": "own-v3-r3-017-4",
+    "train_index": 360,
+    "group_id": "own-v3-r3-scene-017",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 530,
+    "new_characters": 248,
+    "old_basic_score": [
+      0,
+      2,
+      530,
+      "own-v3-train-0361"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2232",
+    "new_item_id": "own-v3-r3-017-5",
+    "train_index": 2231,
+    "group_id": "own-v3-r3-scene-017",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 940,
+    "new_characters": 255,
+    "old_basic_score": [
+      0,
+      1,
+      940,
+      "own-v3-train-2232"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2855",
+    "new_item_id": "own-v3-r3-018-1",
+    "train_index": 2854,
+    "group_id": "own-v3-r3-scene-018",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 472,
+    "new_characters": 257,
+    "old_basic_score": [
+      1,
+      1,
+      472,
+      "own-v3-train-2855"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2364",
+    "new_item_id": "own-v3-r3-018-2",
+    "train_index": 2363,
+    "group_id": "own-v3-r3-scene-018",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 571,
+    "new_characters": 248,
+    "old_basic_score": [
+      0,
+      2,
+      571,
+      "own-v3-train-2364"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2624",
+    "new_item_id": "own-v3-r3-018-3",
+    "train_index": 2623,
+    "group_id": "own-v3-r3-scene-018",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 508,
+    "new_characters": 237,
+    "old_basic_score": [
+      1,
+      1,
+      508,
+      "own-v3-train-2624"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1649",
+    "new_item_id": "own-v3-r3-018-4",
+    "train_index": 1648,
+    "group_id": "own-v3-r3-scene-018",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 88,
+    "new_characters": 259,
+    "old_basic_score": [
+      1,
+      0,
+      88,
+      "own-v3-train-1649"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2645",
+    "new_item_id": "own-v3-r3-018-5",
+    "train_index": 2644,
+    "group_id": "own-v3-r3-scene-018",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 966,
+    "new_characters": 254,
+    "old_basic_score": [
+      1,
+      1,
+      966,
+      "own-v3-train-2645"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2835",
+    "new_item_id": "own-v3-r3-019-1",
+    "train_index": 2834,
+    "group_id": "own-v3-r3-scene-019",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 384,
+    "new_characters": 266,
+    "old_basic_score": [
+      0,
+      1,
+      384,
+      "own-v3-train-2835"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1981",
+    "new_item_id": "own-v3-r3-019-2",
+    "train_index": 1980,
+    "group_id": "own-v3-r3-scene-019",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 90,
+    "new_characters": 279,
+    "old_basic_score": [
+      1,
+      0,
+      90,
+      "own-v3-train-1981"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1256",
+    "new_item_id": "own-v3-r3-019-3",
+    "train_index": 1255,
+    "group_id": "own-v3-r3-scene-019",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 1463,
+    "new_characters": 260,
+    "old_basic_score": [
+      0,
+      1,
+      1463,
+      "own-v3-train-1256"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0935",
+    "new_item_id": "own-v3-r3-019-4",
+    "train_index": 934,
+    "group_id": "own-v3-r3-scene-019",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 103,
+    "new_characters": 293,
+    "old_basic_score": [
+      1,
+      0,
+      103,
+      "own-v3-train-0935"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0880",
+    "new_item_id": "own-v3-r3-019-5",
+    "train_index": 879,
+    "group_id": "own-v3-r3-scene-019",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 80,
+    "new_characters": 272,
+    "old_basic_score": [
+      1,
+      0,
+      80,
+      "own-v3-train-0880"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0533",
+    "new_item_id": "own-v3-r3-020-1",
+    "train_index": 532,
+    "group_id": "own-v3-r3-scene-020",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 104,
+    "new_characters": 249,
+    "old_basic_score": [
+      1,
+      0,
+      104,
+      "own-v3-train-0533"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2109",
+    "new_item_id": "own-v3-r3-020-2",
+    "train_index": 2108,
+    "group_id": "own-v3-r3-scene-020",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 107,
+    "new_characters": 250,
+    "old_basic_score": [
+      1,
+      0,
+      107,
+      "own-v3-train-2109"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2184",
+    "new_item_id": "own-v3-r3-020-3",
+    "train_index": 2183,
+    "group_id": "own-v3-r3-scene-020",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 115,
+    "new_characters": 251,
+    "old_basic_score": [
+      1,
+      0,
+      115,
+      "own-v3-train-2184"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2387",
+    "new_item_id": "own-v3-r3-020-4",
+    "train_index": 2386,
+    "group_id": "own-v3-r3-scene-020",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 110,
+    "new_characters": 273,
+    "old_basic_score": [
+      1,
+      0,
+      110,
+      "own-v3-train-2387"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2836",
+    "new_item_id": "own-v3-r3-020-5",
+    "train_index": 2835,
+    "group_id": "own-v3-r3-scene-020",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 157,
+    "new_characters": 257,
+    "old_basic_score": [
+      1,
+      0,
+      157,
+      "own-v3-train-2836"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1529",
+    "new_item_id": "own-v3-r3-021-1",
+    "train_index": 1528,
+    "group_id": "own-v3-r3-scene-021",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1046,
+    "new_characters": 158,
+    "old_basic_score": [
+      0,
+      1,
+      1046,
+      "own-v3-train-1529"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0118",
+    "new_item_id": "own-v3-r3-021-2",
+    "train_index": 117,
+    "group_id": "own-v3-r3-scene-021",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 113,
+    "new_characters": 179,
+    "old_basic_score": [
+      1,
+      0,
+      113,
+      "own-v3-train-0118"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0820",
+    "new_item_id": "own-v3-r3-021-3",
+    "train_index": 819,
+    "group_id": "own-v3-r3-scene-021",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1076,
+    "new_characters": 216,
+    "old_basic_score": [
+      0,
+      1,
+      1076,
+      "own-v3-train-0820"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0629",
+    "new_item_id": "own-v3-r3-021-4",
+    "train_index": 628,
+    "group_id": "own-v3-r3-scene-021",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 120,
+    "new_characters": 216,
+    "old_basic_score": [
+      1,
+      0,
+      120,
+      "own-v3-train-0629"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2130",
+    "new_item_id": "own-v3-r3-021-5",
+    "train_index": 2129,
+    "group_id": "own-v3-r3-scene-021",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1349,
+    "new_characters": 215,
+    "old_basic_score": [
+      0,
+      1,
+      1349,
+      "own-v3-train-2130"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1663",
+    "new_item_id": "own-v3-r3-022-1",
+    "train_index": 1662,
+    "group_id": "own-v3-r3-scene-022",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1622,
+    "new_characters": 177,
+    "old_basic_score": [
+      0,
+      1,
+      1622,
+      "own-v3-train-1663"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0908",
+    "new_item_id": "own-v3-r3-022-2",
+    "train_index": 907,
+    "group_id": "own-v3-r3-scene-022",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 121,
+    "new_characters": 163,
+    "old_basic_score": [
+      1,
+      0,
+      121,
+      "own-v3-train-0908"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0841",
+    "new_item_id": "own-v3-r3-022-3",
+    "train_index": 840,
+    "group_id": "own-v3-r3-scene-022",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 513,
+    "new_characters": 183,
+    "old_basic_score": [
+      0,
+      2,
+      513,
+      "own-v3-train-0841"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1870",
+    "new_item_id": "own-v3-r3-022-4",
+    "train_index": 1869,
+    "group_id": "own-v3-r3-scene-022",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 122,
+    "new_characters": 167,
+    "old_basic_score": [
+      1,
+      0,
+      122,
+      "own-v3-train-1870"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2613",
+    "new_item_id": "own-v3-r3-022-5",
+    "train_index": 2612,
+    "group_id": "own-v3-r3-scene-022",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 93,
+    "new_characters": 159,
+    "old_basic_score": [
+      1,
+      0,
+      93,
+      "own-v3-train-2613"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2649",
+    "new_item_id": "own-v3-r3-023-1",
+    "train_index": 2648,
+    "group_id": "own-v3-r3-scene-023",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 97,
+    "new_characters": 150,
+    "old_basic_score": [
+      1,
+      0,
+      97,
+      "own-v3-train-2649"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0903",
+    "new_item_id": "own-v3-r3-023-2",
+    "train_index": 902,
+    "group_id": "own-v3-r3-scene-023",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 126,
+    "new_characters": 171,
+    "old_basic_score": [
+      1,
+      0,
+      126,
+      "own-v3-train-0903"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2504",
+    "new_item_id": "own-v3-r3-023-3",
+    "train_index": 2503,
+    "group_id": "own-v3-r3-scene-023",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 100,
+    "new_characters": 171,
+    "old_basic_score": [
+      1,
+      0,
+      100,
+      "own-v3-train-2504"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0160",
+    "new_item_id": "own-v3-r3-023-4",
+    "train_index": 159,
+    "group_id": "own-v3-r3-scene-023",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 141,
+    "new_characters": 185,
+    "old_basic_score": [
+      1,
+      0,
+      141,
+      "own-v3-train-0160"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0777",
+    "new_item_id": "own-v3-r3-023-5",
+    "train_index": 776,
+    "group_id": "own-v3-r3-scene-023",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 116,
+    "new_characters": 167,
+    "old_basic_score": [
+      1,
+      0,
+      116,
+      "own-v3-train-0777"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1122",
+    "new_item_id": "own-v3-r3-024-1",
+    "train_index": 1121,
+    "group_id": "own-v3-r3-scene-024",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 119,
+    "new_characters": 189,
+    "old_basic_score": [
+      1,
+      0,
+      119,
+      "own-v3-train-1122"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0984",
+    "new_item_id": "own-v3-r3-024-2",
+    "train_index": 983,
+    "group_id": "own-v3-r3-scene-024",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 141,
+    "new_characters": 192,
+    "old_basic_score": [
+      1,
+      0,
+      141,
+      "own-v3-train-0984"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1790",
+    "new_item_id": "own-v3-r3-024-3",
+    "train_index": 1789,
+    "group_id": "own-v3-r3-scene-024",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 134,
+    "new_characters": 179,
+    "old_basic_score": [
+      1,
+      0,
+      134,
+      "own-v3-train-1790"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0199",
+    "new_item_id": "own-v3-r3-024-4",
+    "train_index": 198,
+    "group_id": "own-v3-r3-scene-024",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 860,
+    "new_characters": 206,
+    "old_basic_score": [
+      1,
+      0,
+      860,
+      "own-v3-train-0199"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2773",
+    "new_item_id": "own-v3-r3-024-5",
+    "train_index": 2772,
+    "group_id": "own-v3-r3-scene-024",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1079,
+    "new_characters": 195,
+    "old_basic_score": [
+      1,
+      1,
+      1079,
+      "own-v3-train-2773"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1001",
+    "new_item_id": "own-v3-r3-025-1",
+    "train_index": 1000,
+    "group_id": "own-v3-r3-scene-025",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1211,
+    "new_characters": 155,
+    "old_basic_score": [
+      1,
+      1,
+      1211,
+      "own-v3-train-1001"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2772",
+    "new_item_id": "own-v3-r3-025-2",
+    "train_index": 2771,
+    "group_id": "own-v3-r3-scene-025",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 870,
+    "new_characters": 180,
+    "old_basic_score": [
+      1,
+      0,
+      870,
+      "own-v3-train-2772"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0080",
+    "new_item_id": "own-v3-r3-025-3",
+    "train_index": 79,
+    "group_id": "own-v3-r3-scene-025",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1315,
+    "new_characters": 153,
+    "old_basic_score": [
+      1,
+      1,
+      1315,
+      "own-v3-train-0080"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1770",
+    "new_item_id": "own-v3-r3-025-4",
+    "train_index": 1769,
+    "group_id": "own-v3-r3-scene-025",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 925,
+    "new_characters": 194,
+    "old_basic_score": [
+      1,
+      0,
+      925,
+      "own-v3-train-1770"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2415",
+    "new_item_id": "own-v3-r3-025-5",
+    "train_index": 2414,
+    "group_id": "own-v3-r3-scene-025",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 1901,
+    "new_characters": 185,
+    "old_basic_score": [
+      1,
+      1,
+      1901,
+      "own-v3-train-2415"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1660",
+    "new_item_id": "own-v3-r3-026-1",
+    "train_index": 1659,
+    "group_id": "own-v3-r3-scene-026",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 1046,
+    "new_characters": 164,
+    "old_basic_score": [
+      1,
+      1,
+      1046,
+      "own-v3-train-1660"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1836",
+    "new_item_id": "own-v3-r3-026-2",
+    "train_index": 1835,
+    "group_id": "own-v3-r3-scene-026",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 997,
+    "new_characters": 189,
+    "old_basic_score": [
+      1,
+      0,
+      997,
+      "own-v3-train-1836"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1549",
+    "new_item_id": "own-v3-r3-026-3",
+    "train_index": 1548,
+    "group_id": "own-v3-r3-scene-026",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 1064,
+    "new_characters": 187,
+    "old_basic_score": [
+      1,
+      1,
+      1064,
+      "own-v3-train-1549"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2714",
+    "new_item_id": "own-v3-r3-026-4",
+    "train_index": 2713,
+    "group_id": "own-v3-r3-scene-026",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1321,
+    "new_characters": 200,
+    "old_basic_score": [
+      1,
+      0,
+      1321,
+      "own-v3-train-2714"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0489",
+    "new_item_id": "own-v3-r3-026-5",
+    "train_index": 488,
+    "group_id": "own-v3-r3-scene-026",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 1079,
+    "new_characters": 188,
+    "old_basic_score": [
+      1,
+      1,
+      1079,
+      "own-v3-train-0489"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1747",
+    "new_item_id": "own-v3-r3-027-1",
+    "train_index": 1746,
+    "group_id": "own-v3-r3-scene-027",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 1354,
+    "new_characters": 180,
+    "old_basic_score": [
+      1,
+      1,
+      1354,
+      "own-v3-train-1747"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1441",
+    "new_item_id": "own-v3-r3-027-2",
+    "train_index": 1440,
+    "group_id": "own-v3-r3-scene-027",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 241,
+    "new_characters": 184,
+    "old_basic_score": [
+      1,
+      1,
+      241,
+      "own-v3-train-1441"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0978",
+    "new_item_id": "own-v3-r3-027-3",
+    "train_index": 977,
+    "group_id": "own-v3-r3-scene-027",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 518,
+    "new_characters": 164,
+    "old_basic_score": [
+      1,
+      2,
+      518,
+      "own-v3-train-0978"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0926",
+    "new_item_id": "own-v3-r3-027-4",
+    "train_index": 925,
+    "group_id": "own-v3-r3-scene-027",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 396,
+    "new_characters": 176,
+    "old_basic_score": [
+      1,
+      1,
+      396,
+      "own-v3-train-0926"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0864",
+    "new_item_id": "own-v3-r3-027-5",
+    "train_index": 863,
+    "group_id": "own-v3-r3-scene-027",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 558,
+    "new_characters": 179,
+    "old_basic_score": [
+      1,
+      2,
+      558,
+      "own-v3-train-0864"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2969",
+    "new_item_id": "own-v3-r3-028-1",
+    "train_index": 2968,
+    "group_id": "own-v3-r3-scene-028",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 661,
+    "new_characters": 155,
+    "old_basic_score": [
+      1,
+      2,
+      661,
+      "own-v3-train-2969"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0180",
+    "new_item_id": "own-v3-r3-028-2",
+    "train_index": 179,
+    "group_id": "own-v3-r3-scene-028",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 453,
+    "new_characters": 162,
+    "old_basic_score": [
+      1,
+      1,
+      453,
+      "own-v3-train-0180"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2070",
+    "new_item_id": "own-v3-r3-028-3",
+    "train_index": 2069,
+    "group_id": "own-v3-r3-scene-028",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 663,
+    "new_characters": 169,
+    "old_basic_score": [
+      1,
+      2,
+      663,
+      "own-v3-train-2070"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2612",
+    "new_item_id": "own-v3-r3-028-4",
+    "train_index": 2611,
+    "group_id": "own-v3-r3-scene-028",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 455,
+    "new_characters": 176,
+    "old_basic_score": [
+      1,
+      1,
+      455,
+      "own-v3-train-2612"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2215",
+    "new_item_id": "own-v3-r3-028-5",
+    "train_index": 2214,
+    "group_id": "own-v3-r3-scene-028",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 2247,
+    "new_characters": 189,
+    "old_basic_score": [
+      1,
+      3,
+      2247,
+      "own-v3-train-2215"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1329",
+    "new_item_id": "own-v3-r3-029-1",
+    "train_index": 1328,
+    "group_id": "own-v3-r3-scene-029",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 88,
+    "new_characters": 195,
+    "old_basic_score": [
+      2,
+      0,
+      88,
+      "own-v3-train-1329"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1799",
+    "new_item_id": "own-v3-r3-029-2",
+    "train_index": 1798,
+    "group_id": "own-v3-r3-scene-029",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 470,
+    "new_characters": 179,
+    "old_basic_score": [
+      1,
+      1,
+      470,
+      "own-v3-train-1799"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0654",
+    "new_item_id": "own-v3-r3-029-3",
+    "train_index": 653,
+    "group_id": "own-v3-r3-scene-029",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 334,
+    "new_characters": 198,
+    "old_basic_score": [
+      2,
+      0,
+      334,
+      "own-v3-train-0654"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0325",
+    "new_item_id": "own-v3-r3-029-4",
+    "train_index": 324,
+    "group_id": "own-v3-r3-scene-029",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 896,
+    "new_characters": 190,
+    "old_basic_score": [
+      1,
+      1,
+      896,
+      "own-v3-train-0325"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0009",
+    "new_item_id": "own-v3-r3-029-5",
+    "train_index": 8,
+    "group_id": "own-v3-r3-scene-029",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 884,
+    "new_characters": 201,
+    "old_basic_score": [
+      2,
+      0,
+      884,
+      "own-v3-train-0009"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2485",
+    "new_item_id": "own-v3-r3-030-1",
+    "train_index": 2484,
+    "group_id": "own-v3-r3-scene-030",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 1312,
+    "new_characters": 160,
+    "old_basic_score": [
+      2,
+      0,
+      1312,
+      "own-v3-train-2485"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1415",
+    "new_item_id": "own-v3-r3-030-2",
+    "train_index": 1414,
+    "group_id": "own-v3-r3-scene-030",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 897,
+    "new_characters": 171,
+    "old_basic_score": [
+      1,
+      1,
+      897,
+      "own-v3-train-1415"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2950",
+    "new_item_id": "own-v3-r3-030-3",
+    "train_index": 2949,
+    "group_id": "own-v3-r3-scene-030",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 407,
+    "new_characters": 184,
+    "old_basic_score": [
+      2,
+      1,
+      407,
+      "own-v3-train-2950"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2165",
+    "new_item_id": "own-v3-r3-030-4",
+    "train_index": 2164,
+    "group_id": "own-v3-r3-scene-030",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1056,
+    "new_characters": 186,
+    "old_basic_score": [
+      1,
+      1,
+      1056,
+      "own-v3-train-2165"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1736",
+    "new_item_id": "own-v3-r3-030-5",
+    "train_index": 1735,
+    "group_id": "own-v3-r3-scene-030",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      103
+    ],
+    "scope_target_labels": [
+      103
+    ],
+    "old_characters": 459,
+    "new_characters": 158,
+    "old_basic_score": [
+      2,
+      1,
+      459,
+      "own-v3-train-1736"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2726",
+    "new_item_id": "own-v3-r3-031-1",
+    "train_index": 2725,
+    "group_id": "own-v3-r3-scene-031",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 80,
+    "new_characters": 156,
+    "old_basic_score": [
+      1,
+      0,
+      80,
+      "own-v3-train-2726"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1249",
+    "new_item_id": "own-v3-r3-031-2",
+    "train_index": 1248,
+    "group_id": "own-v3-r3-scene-031",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1135,
+    "new_characters": 191,
+    "old_basic_score": [
+      1,
+      1,
+      1135,
+      "own-v3-train-1249"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1920",
+    "new_item_id": "own-v3-r3-031-3",
+    "train_index": 1919,
+    "group_id": "own-v3-r3-scene-031",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 84,
+    "new_characters": 183,
+    "old_basic_score": [
+      1,
+      0,
+      84,
+      "own-v3-train-1920"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1039",
+    "new_item_id": "own-v3-r3-031-4",
+    "train_index": 1038,
+    "group_id": "own-v3-r3-scene-031",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1199,
+    "new_characters": 189,
+    "old_basic_score": [
+      1,
+      1,
+      1199,
+      "own-v3-train-1039"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2907",
+    "new_item_id": "own-v3-r3-031-5",
+    "train_index": 2906,
+    "group_id": "own-v3-r3-scene-031",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 115,
+    "new_characters": 177,
+    "old_basic_score": [
+      1,
+      0,
+      115,
+      "own-v3-train-2907"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2669",
+    "new_item_id": "own-v3-r3-032-1",
+    "train_index": 2668,
+    "group_id": "own-v3-r3-scene-032",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 129,
+    "new_characters": 168,
+    "old_basic_score": [
+      1,
+      0,
+      129,
+      "own-v3-train-2669"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2171",
+    "new_item_id": "own-v3-r3-032-2",
+    "train_index": 2170,
+    "group_id": "own-v3-r3-scene-032",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1288,
+    "new_characters": 160,
+    "old_basic_score": [
+      1,
+      1,
+      1288,
+      "own-v3-train-2171"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0207",
+    "new_item_id": "own-v3-r3-032-3",
+    "train_index": 206,
+    "group_id": "own-v3-r3-scene-032",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 914,
+    "new_characters": 204,
+    "old_basic_score": [
+      1,
+      0,
+      914,
+      "own-v3-train-0207"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0374",
+    "new_item_id": "own-v3-r3-032-4",
+    "train_index": 373,
+    "group_id": "own-v3-r3-scene-032",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1330,
+    "new_characters": 188,
+    "old_basic_score": [
+      1,
+      1,
+      1330,
+      "own-v3-train-0374"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0653",
+    "new_item_id": "own-v3-r3-032-5",
+    "train_index": 652,
+    "group_id": "own-v3-r3-scene-032",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 225,
+    "new_characters": 171,
+    "old_basic_score": [
+      1,
+      1,
+      225,
+      "own-v3-train-0653"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1716",
+    "new_item_id": "own-v3-r3-033-1",
+    "train_index": 1715,
+    "group_id": "own-v3-r3-scene-033",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 236,
+    "new_characters": 172,
+    "old_basic_score": [
+      1,
+      1,
+      236,
+      "own-v3-train-1716"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0752",
+    "new_item_id": "own-v3-r3-033-2",
+    "train_index": 751,
+    "group_id": "own-v3-r3-scene-033",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1334,
+    "new_characters": 167,
+    "old_basic_score": [
+      1,
+      1,
+      1334,
+      "own-v3-train-0752"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0541",
+    "new_item_id": "own-v3-r3-033-3",
+    "train_index": 540,
+    "group_id": "own-v3-r3-scene-033",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 404,
+    "new_characters": 173,
+    "old_basic_score": [
+      1,
+      1,
+      404,
+      "own-v3-train-0541"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0832",
+    "new_item_id": "own-v3-r3-033-4",
+    "train_index": 831,
+    "group_id": "own-v3-r3-scene-033",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1335,
+    "new_characters": 210,
+    "old_basic_score": [
+      1,
+      1,
+      1335,
+      "own-v3-train-0832"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0077",
+    "new_item_id": "own-v3-r3-033-5",
+    "train_index": 76,
+    "group_id": "own-v3-r3-scene-033",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 624,
+    "new_characters": 183,
+    "old_basic_score": [
+      1,
+      1,
+      624,
+      "own-v3-train-0077"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2555",
+    "new_item_id": "own-v3-r3-034-1",
+    "train_index": 2554,
+    "group_id": "own-v3-r3-scene-034",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 1033,
+    "new_characters": 205,
+    "old_basic_score": [
+      1,
+      1,
+      1033,
+      "own-v3-train-2555"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1616",
+    "new_item_id": "own-v3-r3-034-2",
+    "train_index": 1615,
+    "group_id": "own-v3-r3-scene-034",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1364,
+    "new_characters": 214,
+    "old_basic_score": [
+      1,
+      1,
+      1364,
+      "own-v3-train-1616"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1927",
+    "new_item_id": "own-v3-r3-034-3",
+    "train_index": 1926,
+    "group_id": "own-v3-r3-scene-034",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 1082,
+    "new_characters": 199,
+    "old_basic_score": [
+      1,
+      1,
+      1082,
+      "own-v3-train-1927"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1114",
+    "new_item_id": "own-v3-r3-034-4",
+    "train_index": 1113,
+    "group_id": "own-v3-r3-scene-034",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 508,
+    "new_characters": 201,
+    "old_basic_score": [
+      1,
+      2,
+      508,
+      "own-v3-train-1114"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0464",
+    "new_item_id": "own-v3-r3-034-5",
+    "train_index": 463,
+    "group_id": "own-v3-r3-scene-034",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 531,
+    "new_characters": 211,
+    "old_basic_score": [
+      1,
+      2,
+      531,
+      "own-v3-train-0464"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0115",
+    "new_item_id": "own-v3-r3-035-1",
+    "train_index": 114,
+    "group_id": "own-v3-r3-scene-035",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 103,
+    "new_characters": 191,
+    "old_basic_score": [
+      2,
+      0,
+      103,
+      "own-v3-train-0115"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2089",
+    "new_item_id": "own-v3-r3-035-2",
+    "train_index": 2088,
+    "group_id": "own-v3-r3-scene-035",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 515,
+    "new_characters": 197,
+    "old_basic_score": [
+      1,
+      2,
+      515,
+      "own-v3-train-2089"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2283",
+    "new_item_id": "own-v3-r3-035-3",
+    "train_index": 2282,
+    "group_id": "own-v3-r3-scene-035",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 103,
+    "new_characters": 228,
+    "old_basic_score": [
+      2,
+      0,
+      103,
+      "own-v3-train-2283"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0081",
+    "new_item_id": "own-v3-r3-035-4",
+    "train_index": 80,
+    "group_id": "own-v3-r3-scene-035",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 516,
+    "new_characters": 217,
+    "old_basic_score": [
+      1,
+      2,
+      516,
+      "own-v3-train-0081"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0212",
+    "new_item_id": "own-v3-r3-035-5",
+    "train_index": 211,
+    "group_id": "own-v3-r3-scene-035",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 107,
+    "new_characters": 211,
+    "old_basic_score": [
+      2,
+      0,
+      107,
+      "own-v3-train-0212"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0258",
+    "new_item_id": "own-v3-r3-036-1",
+    "train_index": 257,
+    "group_id": "own-v3-r3-scene-036",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 129,
+    "new_characters": 194,
+    "old_basic_score": [
+      0,
+      0,
+      129,
+      "own-v3-train-0258"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0455",
+    "new_item_id": "own-v3-r3-036-2",
+    "train_index": 454,
+    "group_id": "own-v3-r3-scene-036",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 542,
+    "new_characters": 213,
+    "old_basic_score": [
+      1,
+      2,
+      542,
+      "own-v3-train-0455"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1020",
+    "new_item_id": "own-v3-r3-036-3",
+    "train_index": 1019,
+    "group_id": "own-v3-r3-scene-036",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 130,
+    "new_characters": 202,
+    "old_basic_score": [
+      0,
+      0,
+      130,
+      "own-v3-train-1020"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2113",
+    "new_item_id": "own-v3-r3-036-4",
+    "train_index": 2112,
+    "group_id": "own-v3-r3-scene-036",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 564,
+    "new_characters": 224,
+    "old_basic_score": [
+      1,
+      2,
+      564,
+      "own-v3-train-2113"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0825",
+    "new_item_id": "own-v3-r3-036-5",
+    "train_index": 824,
+    "group_id": "own-v3-r3-scene-036",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 136,
+    "new_characters": 213,
+    "old_basic_score": [
+      0,
+      0,
+      136,
+      "own-v3-train-0825"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2798",
+    "new_item_id": "own-v3-r3-037-1",
+    "train_index": 2797,
+    "group_id": "own-v3-r3-scene-037",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 1305,
+    "new_characters": 188,
+    "old_basic_score": [
+      0,
+      1,
+      1305,
+      "own-v3-train-2798"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0302",
+    "new_item_id": "own-v3-r3-037-2",
+    "train_index": 301,
+    "group_id": "own-v3-r3-scene-037",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 579,
+    "new_characters": 200,
+    "old_basic_score": [
+      1,
+      2,
+      579,
+      "own-v3-train-0302"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1847",
+    "new_item_id": "own-v3-r3-037-3",
+    "train_index": 1846,
+    "group_id": "own-v3-r3-scene-037",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 544,
+    "new_characters": 185,
+    "old_basic_score": [
+      0,
+      2,
+      544,
+      "own-v3-train-1847"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2331",
+    "new_item_id": "own-v3-r3-037-4",
+    "train_index": 2330,
+    "group_id": "own-v3-r3-scene-037",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 595,
+    "new_characters": 213,
+    "old_basic_score": [
+      1,
+      2,
+      595,
+      "own-v3-train-2331"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2000",
+    "new_item_id": "own-v3-r3-037-5",
+    "train_index": 1999,
+    "group_id": "own-v3-r3-scene-037",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 103,
+    "new_characters": 185,
+    "old_basic_score": [
+      1,
+      0,
+      103,
+      "own-v3-train-2000"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2965",
+    "new_item_id": "own-v3-r3-038-1",
+    "train_index": 2964,
+    "group_id": "own-v3-r3-scene-038",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 117,
+    "new_characters": 185,
+    "old_basic_score": [
+      1,
+      0,
+      117,
+      "own-v3-train-2965"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0794",
+    "new_item_id": "own-v3-r3-038-2",
+    "train_index": 793,
+    "group_id": "own-v3-r3-scene-038",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 634,
+    "new_characters": 196,
+    "old_basic_score": [
+      1,
+      2,
+      634,
+      "own-v3-train-0794"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1242",
+    "new_item_id": "own-v3-r3-038-3",
+    "train_index": 1241,
+    "group_id": "own-v3-r3-scene-038",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 406,
+    "new_characters": 188,
+    "old_basic_score": [
+      1,
+      0,
+      406,
+      "own-v3-train-1242"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0898",
+    "new_item_id": "own-v3-r3-038-4",
+    "train_index": 897,
+    "group_id": "own-v3-r3-scene-038",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 374,
+    "new_characters": 217,
+    "old_basic_score": [
+      2,
+      0,
+      374,
+      "own-v3-train-0898"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0859",
+    "new_item_id": "own-v3-r3-038-5",
+    "train_index": 858,
+    "group_id": "own-v3-r3-scene-038",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 749,
+    "new_characters": 198,
+    "old_basic_score": [
+      1,
+      0,
+      749,
+      "own-v3-train-0859"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1104",
+    "new_item_id": "own-v3-r3-039-1",
+    "train_index": 1103,
+    "group_id": "own-v3-r3-scene-039",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 908,
+    "new_characters": 193,
+    "old_basic_score": [
+      1,
+      0,
+      908,
+      "own-v3-train-1104"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0068",
+    "new_item_id": "own-v3-r3-039-2",
+    "train_index": 67,
+    "group_id": "own-v3-r3-scene-039",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 424,
+    "new_characters": 194,
+    "old_basic_score": [
+      2,
+      0,
+      424,
+      "own-v3-train-0068"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0076",
+    "new_item_id": "own-v3-r3-039-3",
+    "train_index": 75,
+    "group_id": "own-v3-r3-scene-039",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 969,
+    "new_characters": 195,
+    "old_basic_score": [
+      1,
+      0,
+      969,
+      "own-v3-train-0076"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1031",
+    "new_item_id": "own-v3-r3-039-4",
+    "train_index": 1030,
+    "group_id": "own-v3-r3-scene-039",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 247,
+    "new_characters": 210,
+    "old_basic_score": [
+      2,
+      1,
+      247,
+      "own-v3-train-1031"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0502",
+    "new_item_id": "own-v3-r3-039-5",
+    "train_index": 501,
+    "group_id": "own-v3-r3-scene-039",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 443,
+    "new_characters": 210,
+    "old_basic_score": [
+      1,
+      1,
+      443,
+      "own-v3-train-0502"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2543",
+    "new_item_id": "own-v3-r3-040-1",
+    "train_index": 2542,
+    "group_id": "own-v3-r3-scene-040",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 466,
+    "new_characters": 187,
+    "old_basic_score": [
+      1,
+      1,
+      466,
+      "own-v3-train-2543"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0367",
+    "new_item_id": "own-v3-r3-040-2",
+    "train_index": 366,
+    "group_id": "own-v3-r3-scene-040",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 386,
+    "new_characters": 202,
+    "old_basic_score": [
+      2,
+      1,
+      386,
+      "own-v3-train-0367"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2618",
+    "new_item_id": "own-v3-r3-040-3",
+    "train_index": 2617,
+    "group_id": "own-v3-r3-scene-040",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 964,
+    "new_characters": 206,
+    "old_basic_score": [
+      1,
+      1,
+      964,
+      "own-v3-train-2618"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2991",
+    "new_item_id": "own-v3-r3-040-4",
+    "train_index": 2990,
+    "group_id": "own-v3-r3-scene-040",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 399,
+    "new_characters": 193,
+    "old_basic_score": [
+      2,
+      1,
+      399,
+      "own-v3-train-2991"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1704",
+    "new_item_id": "own-v3-r3-040-5",
+    "train_index": 1703,
+    "group_id": "own-v3-r3-scene-040",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 1154,
+    "new_characters": 199,
+    "old_basic_score": [
+      1,
+      1,
+      1154,
+      "own-v3-train-1704"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0166",
+    "new_item_id": "own-v3-r3-041-1",
+    "train_index": 165,
+    "group_id": "own-v3-r3-scene-041",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 473,
+    "new_characters": 177,
+    "old_basic_score": [
+      1,
+      0,
+      473,
+      "own-v3-train-0166"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0268",
+    "new_item_id": "own-v3-r3-041-2",
+    "train_index": 267,
+    "group_id": "own-v3-r3-scene-041",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 409,
+    "new_characters": 189,
+    "old_basic_score": [
+      2,
+      1,
+      409,
+      "own-v3-train-0268"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0447",
+    "new_item_id": "own-v3-r3-041-3",
+    "train_index": 446,
+    "group_id": "own-v3-r3-scene-041",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 1304,
+    "new_characters": 193,
+    "old_basic_score": [
+      1,
+      0,
+      1304,
+      "own-v3-train-0447"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0994",
+    "new_item_id": "own-v3-r3-041-4",
+    "train_index": 993,
+    "group_id": "own-v3-r3-scene-041",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 418,
+    "new_characters": 200,
+    "old_basic_score": [
+      2,
+      1,
+      418,
+      "own-v3-train-0994"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1247",
+    "new_item_id": "own-v3-r3-041-5",
+    "train_index": 1246,
+    "group_id": "own-v3-r3-scene-041",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 1315,
+    "new_characters": 200,
+    "old_basic_score": [
+      1,
+      0,
+      1315,
+      "own-v3-train-1247"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2826",
+    "new_item_id": "own-v3-r3-042-1",
+    "train_index": 2825,
+    "group_id": "own-v3-r3-scene-042",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 335,
+    "new_characters": 187,
+    "old_basic_score": [
+      1,
+      1,
+      335,
+      "own-v3-train-2826"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2709",
+    "new_item_id": "own-v3-r3-042-2",
+    "train_index": 2708,
+    "group_id": "own-v3-r3-scene-042",
+    "source_mcId": 105,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 431,
+    "new_characters": 177,
+    "old_basic_score": [
+      2,
+      1,
+      431,
+      "own-v3-train-2709"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2388",
+    "new_item_id": "own-v3-r3-042-3",
+    "train_index": 2387,
+    "group_id": "own-v3-r3-scene-042",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 405,
+    "new_characters": 165,
+    "old_basic_score": [
+      1,
+      1,
+      405,
+      "own-v3-train-2388"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2300",
+    "new_item_id": "own-v3-r3-042-4",
+    "train_index": 2299,
+    "group_id": "own-v3-r3-scene-042",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 464,
+    "new_characters": 183,
+    "old_basic_score": [
+      2,
+      1,
+      464,
+      "own-v3-train-2300"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0741",
+    "new_item_id": "own-v3-r3-042-5",
+    "train_index": 740,
+    "group_id": "own-v3-r3-scene-042",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 522,
+    "new_characters": 193,
+    "old_basic_score": [
+      1,
+      1,
+      522,
+      "own-v3-train-0741"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2608",
+    "new_item_id": "own-v3-r3-043-1",
+    "train_index": 2607,
+    "group_id": "own-v3-r3-scene-043",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 1332,
+    "new_characters": 179,
+    "old_basic_score": [
+      1,
+      1,
+      1332,
+      "own-v3-train-2608"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1984",
+    "new_item_id": "own-v3-r3-043-2",
+    "train_index": 1983,
+    "group_id": "own-v3-r3-scene-043",
+    "source_mcId": 104,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 473,
+    "new_characters": 175,
+    "old_basic_score": [
+      2,
+      1,
+      473,
+      "own-v3-train-1984"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2392",
+    "new_item_id": "own-v3-r3-043-3",
+    "train_index": 2391,
+    "group_id": "own-v3-r3-scene-043",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 1419,
+    "new_characters": 192,
+    "old_basic_score": [
+      1,
+      1,
+      1419,
+      "own-v3-train-2392"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2305",
+    "new_item_id": "own-v3-r3-043-4",
+    "train_index": 2304,
+    "group_id": "own-v3-r3-scene-043",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 532,
+    "new_characters": 195,
+    "old_basic_score": [
+      2,
+      1,
+      532,
+      "own-v3-train-2305"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1519",
+    "new_item_id": "own-v3-r3-043-5",
+    "train_index": 1518,
+    "group_id": "own-v3-r3-scene-043",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 584,
+    "new_characters": 205,
+    "old_basic_score": [
+      1,
+      2,
+      584,
+      "own-v3-train-1519"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1832",
+    "new_item_id": "own-v3-r3-044-1",
+    "train_index": 1831,
+    "group_id": "own-v3-r3-scene-044",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 2806,
+    "new_characters": 191,
+    "old_basic_score": [
+      1,
+      3,
+      2806,
+      "own-v3-train-1832"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1613",
+    "new_item_id": "own-v3-r3-044-2",
+    "train_index": 1612,
+    "group_id": "own-v3-r3-scene-044",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 539,
+    "new_characters": 191,
+    "old_basic_score": [
+      2,
+      1,
+      539,
+      "own-v3-train-1613"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1173",
+    "new_item_id": "own-v3-r3-044-3",
+    "train_index": 1172,
+    "group_id": "own-v3-r3-scene-044",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 86,
+    "new_characters": 184,
+    "old_basic_score": [
+      2,
+      0,
+      86,
+      "own-v3-train-1173"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0007",
+    "new_item_id": "own-v3-r3-044-4",
+    "train_index": 6,
+    "group_id": "own-v3-r3-scene-044",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 542,
+    "new_characters": 208,
+    "old_basic_score": [
+      2,
+      1,
+      542,
+      "own-v3-train-0007"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1002",
+    "new_item_id": "own-v3-r3-044-5",
+    "train_index": 1001,
+    "group_id": "own-v3-r3-scene-044",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 90,
+    "new_characters": 205,
+    "old_basic_score": [
+      2,
+      0,
+      90,
+      "own-v3-train-1002"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1757",
+    "new_item_id": "own-v3-r3-045-1",
+    "train_index": 1756,
+    "group_id": "own-v3-r3-scene-045",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 106,
+    "new_characters": 200,
+    "old_basic_score": [
+      2,
+      0,
+      106,
+      "own-v3-train-1757"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1848",
+    "new_item_id": "own-v3-r3-045-2",
+    "train_index": 1847,
+    "group_id": "own-v3-r3-scene-045",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 915,
+    "new_characters": 169,
+    "old_basic_score": [
+      2,
+      1,
+      915,
+      "own-v3-train-1848"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2554",
+    "new_item_id": "own-v3-r3-045-3",
+    "train_index": 2553,
+    "group_id": "own-v3-r3-scene-045",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 106,
+    "new_characters": 165,
+    "old_basic_score": [
+      2,
+      0,
+      106,
+      "own-v3-train-2554"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0002",
+    "new_item_id": "own-v3-r3-045-4",
+    "train_index": 1,
+    "group_id": "own-v3-r3-scene-045",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1013,
+    "new_characters": 194,
+    "old_basic_score": [
+      2,
+      1,
+      1013,
+      "own-v3-train-0002"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2478",
+    "new_item_id": "own-v3-r3-045-5",
+    "train_index": 2477,
+    "group_id": "own-v3-r3-scene-045",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      106
+    ],
+    "scope_target_labels": [
+      106
+    ],
+    "old_characters": 123,
+    "new_characters": 185,
+    "old_basic_score": [
+      2,
+      0,
+      123,
+      "own-v3-train-2478"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2427",
+    "new_item_id": "own-v3-r3-046-1",
+    "train_index": 2426,
+    "group_id": "own-v3-r3-scene-046",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 499,
+    "new_characters": 212,
+    "old_basic_score": [
+      2,
+      1,
+      499,
+      "own-v3-train-2427"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2003",
+    "new_item_id": "own-v3-r3-046-2",
+    "train_index": 2002,
+    "group_id": "own-v3-r3-scene-046",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1062,
+    "new_characters": 209,
+    "old_basic_score": [
+      2,
+      1,
+      1062,
+      "own-v3-train-2003"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0035",
+    "new_item_id": "own-v3-r3-046-3",
+    "train_index": 34,
+    "group_id": "own-v3-r3-scene-046",
+    "source_mcId": 103,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 569,
+    "new_characters": 193,
+    "old_basic_score": [
+      2,
+      1,
+      569,
+      "own-v3-train-0035"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1137",
+    "new_item_id": "own-v3-r3-046-4",
+    "train_index": 1136,
+    "group_id": "own-v3-r3-scene-046",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1078,
+    "new_characters": 208,
+    "old_basic_score": [
+      2,
+      1,
+      1078,
+      "own-v3-train-1137"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0893",
+    "new_item_id": "own-v3-r3-046-5",
+    "train_index": 892,
+    "group_id": "own-v3-r3-scene-046",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 1027,
+    "new_characters": 236,
+    "old_basic_score": [
+      2,
+      1,
+      1027,
+      "own-v3-train-0893"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0855",
+    "new_item_id": "own-v3-r3-047-1",
+    "train_index": 854,
+    "group_id": "own-v3-r3-scene-047",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 552,
+    "new_characters": 226,
+    "old_basic_score": [
+      1,
+      2,
+      552,
+      "own-v3-train-0855"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1873",
+    "new_item_id": "own-v3-r3-047-2",
+    "train_index": 1872,
+    "group_id": "own-v3-r3-scene-047",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1164,
+    "new_characters": 219,
+    "old_basic_score": [
+      2,
+      1,
+      1164,
+      "own-v3-train-1873"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1254",
+    "new_item_id": "own-v3-r3-047-3",
+    "train_index": 1253,
+    "group_id": "own-v3-r3-scene-047",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 591,
+    "new_characters": 205,
+    "old_basic_score": [
+      1,
+      2,
+      591,
+      "own-v3-train-1254"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2510",
+    "new_item_id": "own-v3-r3-047-4",
+    "train_index": 2509,
+    "group_id": "own-v3-r3-scene-047",
+    "source_mcId": 101,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1188,
+    "new_characters": 207,
+    "old_basic_score": [
+      2,
+      1,
+      1188,
+      "own-v3-train-2510"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0638",
+    "new_item_id": "own-v3-r3-047-5",
+    "train_index": 637,
+    "group_id": "own-v3-r3-scene-047",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 615,
+    "new_characters": 209,
+    "old_basic_score": [
+      1,
+      2,
+      615,
+      "own-v3-train-0638"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1901",
+    "new_item_id": "own-v3-r3-048-1",
+    "train_index": 1900,
+    "group_id": "own-v3-r3-scene-048",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 109,
+    "new_characters": 195,
+    "old_basic_score": [
+      2,
+      0,
+      109,
+      "own-v3-train-1901"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0937",
+    "new_item_id": "own-v3-r3-048-2",
+    "train_index": 936,
+    "group_id": "own-v3-r3-scene-048",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1323,
+    "new_characters": 232,
+    "old_basic_score": [
+      2,
+      1,
+      1323,
+      "own-v3-train-0937"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0337",
+    "new_item_id": "own-v3-r3-048-3",
+    "train_index": 336,
+    "group_id": "own-v3-r3-scene-048",
+    "source_mcId": 104,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 1129,
+    "new_characters": 195,
+    "old_basic_score": [
+      2,
+      0,
+      1129,
+      "own-v3-train-0337"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0280",
+    "new_item_id": "own-v3-r3-048-4",
+    "train_index": 279,
+    "group_id": "own-v3-r3-scene-048",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1335,
+    "new_characters": 212,
+    "old_basic_score": [
+      2,
+      1,
+      1335,
+      "own-v3-train-0280"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1393",
+    "new_item_id": "own-v3-r3-048-5",
+    "train_index": 1392,
+    "group_id": "own-v3-r3-scene-048",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      105
+    ],
+    "scope_target_labels": [
+      105
+    ],
+    "old_characters": 226,
+    "new_characters": 223,
+    "old_basic_score": [
+      2,
+      1,
+      226,
+      "own-v3-train-1393"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0560",
+    "new_item_id": "own-v3-r3-049-1",
+    "train_index": 559,
+    "group_id": "own-v3-r3-scene-049",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 514,
+    "new_characters": 230,
+    "old_basic_score": [
+      1,
+      2,
+      514,
+      "own-v3-train-0560"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-0529",
+    "new_item_id": "own-v3-r3-049-2",
+    "train_index": 528,
+    "group_id": "own-v3-r3-scene-049",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1345,
+    "new_characters": 201,
+    "old_basic_score": [
+      2,
+      1,
+      1345,
+      "own-v3-train-0529"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2967",
+    "new_item_id": "own-v3-r3-049-3",
+    "train_index": 2966,
+    "group_id": "own-v3-r3-scene-049",
+    "source_mcId": 105,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 572,
+    "new_characters": 213,
+    "old_basic_score": [
+      1,
+      2,
+      572,
+      "own-v3-train-2967"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1163",
+    "new_item_id": "own-v3-r3-049-4",
+    "train_index": 1162,
+    "group_id": "own-v3-r3-scene-049",
+    "source_mcId": 102,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1355,
+    "new_characters": 209,
+    "old_basic_score": [
+      2,
+      1,
+      1355,
+      "own-v3-train-1163"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2092",
+    "new_item_id": "own-v3-r3-049-5",
+    "train_index": 2091,
+    "group_id": "own-v3-r3-scene-049",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      102
+    ],
+    "scope_target_labels": [
+      102
+    ],
+    "old_characters": 579,
+    "new_characters": 211,
+    "old_basic_score": [
+      1,
+      2,
+      579,
+      "own-v3-train-2092"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1717",
+    "new_item_id": "own-v3-r3-050-1",
+    "train_index": 1716,
+    "group_id": "own-v3-r3-scene-050",
+    "source_mcId": 101,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 1029,
+    "new_characters": 224,
+    "old_basic_score": [
+      2,
+      1,
+      1029,
+      "own-v3-train-1717"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1138",
+    "new_item_id": "own-v3-r3-050-2",
+    "train_index": 1137,
+    "group_id": "own-v3-r3-scene-050",
+    "source_mcId": 103,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1451,
+    "new_characters": 222,
+    "old_basic_score": [
+      2,
+      1,
+      1451,
+      "own-v3-train-1138"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-2020",
+    "new_item_id": "own-v3-r3-050-3",
+    "train_index": 2019,
+    "group_id": "own-v3-r3-scene-050",
+    "source_mcId": 102,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 1105,
+    "new_characters": 209,
+    "old_basic_score": [
+      2,
+      1,
+      1105,
+      "own-v3-train-2020"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1625",
+    "new_item_id": "own-v3-r3-050-4",
+    "train_index": 1624,
+    "group_id": "own-v3-r3-scene-050",
+    "source_mcId": 106,
+    "scope_training_labels": [],
+    "scope_target_labels": [],
+    "old_characters": 1468,
+    "new_characters": 240,
+    "old_basic_score": [
+      2,
+      1,
+      1468,
+      "own-v3-train-1625"
+    ]
+  },
+  {
+    "old_item_id": "own-v3-train-1631",
+    "new_item_id": "own-v3-r3-050-5",
+    "train_index": 1630,
+    "group_id": "own-v3-r3-scene-050",
+    "source_mcId": 106,
+    "scope_training_labels": [
+      104
+    ],
+    "scope_target_labels": [
+      104
+    ],
+    "old_characters": 600,
+    "new_characters": 214,
+    "old_basic_score": [
+      2,
+      2,
+      600,
+      "own-v3-train-1631"
+    ]
+  }
+]
