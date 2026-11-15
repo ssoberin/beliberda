@@ -1,0 +1,122 @@
+{
+  "status": "passed",
+  "train_rows": 6519,
+  "calibration_rows": 1328,
+  "oof_all_recomputed": true,
+  "group_diagnostics": {
+    "n_ads": 6519,
+    "n_components": 5667,
+    "multi_item_groups": 233,
+    "max_group_size": 189,
+    "sim_threshold": 0.85
+  },
+  "oof_alphas": {
+    "102": [
+      1e-05,
+      0.0001,
+      1e-05,
+      1e-05,
+      3e-05
+    ],
+    "103": [
+      0.0001,
+      0.0001,
+      3e-05,
+      3e-05,
+      3e-05
+    ],
+    "104": [
+      3e-05,
+      1e-05,
+      0.0001,
+      0.0001,
+      3e-05
+    ],
+    "105": [
+      0.0001,
+      3e-05,
+      0.0001,
+      0.0001,
+      0.0001
+    ],
+    "106": [
+      3e-05,
+      3e-06,
+      1e-05,
+      0.0001,
+      3e-05
+    ]
+  },
+  "head_alphas": {
+    "102": 3e-05,
+    "103": 0.0001,
+    "104": 1e-05,
+    "105": 1e-05,
+    "106": 3e-05
+  },
+  "best_iteration": 769,
+  "parameters": {
+    "loss_function": "Logloss",
+    "eval_metric": "Logloss",
+    "iterations": 1200,
+    "depth": 4,
+    "learning_rate": 0.05,
+    "l2_leaf_reg": 5.0,
+    "random_seed": 42,
+    "early_stopping_rounds": 50,
+    "thread_count": 4,
+    "verbose": 200
+  },
+  "columns": [
+    "p_sgd",
+    "cat_id",
+    "ad_char_len",
+    "n_chunks",
+    "n_padded_slots",
+    "sim_slot0",
+    "sim_slot1",
+    "sim_slot2",
+    "sim_max",
+    "sim_mean",
+    "sim_margin_01",
+    "best_chunk_polarity",
+    "dominant_subject",
+    "temporal_state",
+    "service_link_status",
+    "syn_service_mentioned_top3",
+    "syn_service_mentioned_ad",
+    "syn_action_linked",
+    "syn_has_neg_on_action",
+    "syn_has_not_only",
+    "syn_double_neg_cancel",
+    "syn_affirmative_offer",
+    "syn_third_party_actor",
+    "syn_seller_actor",
+    "syn_temporal_stopped",
+    "syn_temporal_resumed",
+    "syn_price_condition_only",
+    "syn_global_turnkey_only",
+    "syn_global_partial_refusal",
+    "syn_global_outside_top3",
+    "syn_has_conflicting_claims",
+    "syn_min_dist_service_action",
+    "syn_min_dist_action_neg",
+    "syn_min_dist_service_neg",
+    "syn_n_offered_clauses_top3",
+    "syn_n_negated_clauses_top3",
+    "syn_n_third_party_clauses_top3",
+    "syn_net_polarity_score",
+    "syn_top_offer_sim",
+    "syn_top_neg_sim"
+  ],
+  "categorical_columns": [
+    "cat_id",
+    "best_chunk_polarity",
+    "dominant_subject",
+    "temporal_state",
+    "service_link_status"
+  ],
+  "training_seconds": 659.5026139559995,
+  "full_head_parameters_match_baseline": true,
+  "pre_evaluation_validation_correction": "Full-head CV replaced with baseline parameter clones; current B grouped nested OOF values retained unchanged, no old OOF mixed."
+}

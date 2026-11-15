@@ -1,0 +1,12 @@
+0:	learn: 0.6097117	test: 0.6115904	best: 0.6115904 (0)	total: 58ms	remaining: 1m 9s
+200:	learn: 0.1057566	test: 0.1102619	best: 0.1102619 (200)	total: 1.97s	remaining: 9.81s
+400:	learn: 0.0937561	test: 0.1049499	best: 0.1049482 (399)	total: 3.9s	remaining: 7.77s
+600:	learn: 0.0871007	test: 0.1021811	best: 0.1021723 (595)	total: 5.8s	remaining: 5.78s
+800:	learn: 0.0822264	test: 0.1005991	best: 0.1005644 (769)	total: 7.7s	remaining: 3.83s
+Stopped by overfitting detector  (50 iterations wait)
+
+bestTest = 0.1005644049
+bestIteration = 769
+
+Shrink model to first 770 iterations.
+VALIDATED: exact baseline full-head parameters; no test metrics computed.

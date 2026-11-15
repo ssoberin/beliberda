@@ -11,7 +11,7 @@ from avito_compare.scripts.eval_fixed_cat_aware import compute_detailed_metrics
 P=Path('output/hard-negatives-v3-experiment')
 def main():
  if (P/'metrics.json').exists():raise RuntimeError('Final evaluation already exists; no iterative scoring')
- assert json.loads((P/'training_validation.json').read_text())['status']=='passed'
+ validation=json.loads((P/'training_validation.json').read_text());assert validation['status']=='passed' and validation['full_head_parameters_match_baseline']
  with (P/'cache/trained.pkl').open('rb') as f:s=pickle.load(f)
  model=CatBoostClassifier();model.load_model(str(P/'models/catboost_C_syntax_B.cbm'))
  saved=pd.read_csv('output/syntax-aware-experiment/predictions.csv');official=pd.read_csv('output/syntax-aware-experiment/public_tests_predictions.csv')

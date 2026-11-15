@@ -83,5 +83,13 @@
     ]
   ],
   "repeated_support_warning": "Supporting transaction paragraphs are shared. Full descriptions and service briefs are unique; this is compositional authorship, not 200 independent hand-written full narratives.",
-  "train_sha256": "34a566302c37737041722ed4bff7591777445dd27d6e07cf2fbf6a4509a98c8b"
+  "train_sha256": "34a566302c37737041722ed4bff7591777445dd27d6e07cf2fbf6a4509a98c8b",
+  "category_lexical_proxy_counts": {
+    "102": 27,
+    "103": 46,
+    "104": 44,
+    "105": 50,
+    "106": 29
+  },
+  "category_proxy_warning": "Existing feature matcher counts surface mentions, not offered services or semantic annotation."
 }

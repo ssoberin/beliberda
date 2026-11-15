@@ -7,6 +7,7 @@ import hashlib,json,pickle,sys,time
 from pathlib import Path
 import joblib,numpy as np,pandas as pd
 from catboost import CatBoostClassifier,Pool
+from sklearn.base import clone
 sys.path.insert(0,str(Path.cwd()))
 from avito_compare.scripts import qwen3_category_aware_experiment as cae
 from avito_compare.scripts import run_syntax_experiment as se
@@ -50,9 +51,9 @@ def main():
  oof,alphas=se.fit_leakage_free_oof_sgd(features['train'],ytr,groups)
  assert np.isfinite(oof).all()
  print('OOF complete',time.monotonic()-start,flush=True)
- heads={};head_diag={}
+ heads={};head_diag={};baseline_heads=joblib.load('output/syntax-aware-experiment/models/sgd_full_heads.joblib')['heads']
  for j,cid in enumerate(cae.SCOPE_102_106):
-  heads[cid],alpha,_,_=cae._fit_cv_binary_head(features['train'][cid],ytr[:,j]);head_diag[str(cid)]=float(alpha)
+  heads[cid]=clone(baseline_heads[cid]).fit(features['train'][cid],ytr[:,j]);assert heads[cid].get_params()==baseline_heads[cid].get_params();head_diag[str(cid)]=float(heads[cid].alpha)
  joblib.dump({'heads':heads,'ids':cae.SCOPE_102_106,'diag':head_diag},P/'models/sgd_heads_B.joblib')
  with Path('output/syntax-aware-experiment/cache/chunk_syntax_cache.pkl').open('rb') as f:old=pickle.load(f)
  signals=dict(old['chunk_sig_cache']);globals_=dict(old['chunk_global_cache']);analyzer=None
@@ -87,6 +88,6 @@ def main():
  cb.save_model(str(P/'models/catboost_C_syntax_B.cbm'))
  # Save features/probabilities without computing or viewing test metrics.
  with (P/'cache/trained.pkl').open('wb') as f:pickle.dump({'frames':frames,'rows':allrows,'cols':cols,'groups':groups},f)
- (P/'training_validation.json').write_text(json.dumps({'status':'passed','train_rows':len(train),'calibration_rows':len(cal),'oof_all_recomputed':True,'group_diagnostics':diag,'oof_alphas':alphas,'head_alphas':head_diag,'best_iteration':cb.get_best_iteration(),'parameters':se.CATBOOST_PARAMS,'columns':cols,'categorical_columns':SYNTAX_CAT_FEATURES,'training_seconds':time.monotonic()-start},indent=2))
+ (P/'training_validation.json').write_text(json.dumps({'status':'passed','full_head_parameters_match_baseline':True,'train_rows':len(train),'calibration_rows':len(cal),'oof_all_recomputed':True,'group_diagnostics':diag,'oof_alphas':alphas,'head_alphas':head_diag,'best_iteration':cb.get_best_iteration(),'parameters':se.CATBOOST_PARAMS,'columns':cols,'categorical_columns':SYNTAX_CAT_FEATURES,'training_seconds':time.monotonic()-start},indent=2))
  print('TRAINING VALIDATED; no final test metrics computed.',flush=True)
 if __name__=='__main__':main()

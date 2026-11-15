@@ -1,0 +1,9 @@
+{
+  "existing_chunker_syntax_tests_passed": 17,
+  "source_sha256_unchanged": true,
+  "baseline_model_unchanged": true,
+  "full_head_estimator_params_equal_A_B": true,
+  "final_evaluation_once": true,
+  "threshold": 0.5,
+  "colab_session_stopped": true
+}
