@@ -85,7 +85,7 @@ def schema(ids):
 def classify_with_evidence(model, description, mcid, client):
     start = time.monotonic()
     pipeline = model["pipeline"]
-    # Candidates come from the running *unchanged* C_syntax, not the H123 scorer.
+    # Candidates come from the running H123 backend, not this separate bundle instance.
     response = client.post("http://127.0.0.1:18009/api/categories",
                            json={"description": description, "mcId": mcid})
     response.raise_for_status()
@@ -93,7 +93,7 @@ def classify_with_evidence(model, description, mcid, client):
     elapsed = round((time.monotonic() - start) * 1000)
     if not ids:
         return ids, {}, [], elapsed
-    # C_syntax uses raw text; H123 has the identical frozen encoder/query vectors.
+    # H123 normalizes before inference; this raw-text retrieval is an approximation.
     chunks = chunk_ad_fixed(description) or [""]
     unique = list(dict.fromkeys(chunks))
     vectors = pipeline._encode(unique)
