@@ -82,7 +82,7 @@ qwen:
 	  *) echo 'QWEN_MODE: managed или existing.' >&2; exit 1 ;; \
 	esac; \
 	for i in $$(seq 1 180); do \
-	  if curl -fsS --max-time 2 http://127.0.0.1:8000/props | grep -q 'Qwen3.5-9B-Q8_0.gguf'; then echo 'Qwen3.5 ready'; exit 0; fi; \
+	  if curl -fsS --max-time 2 http://127.0.0.1:8000/props 2>/dev/null | grep -q 'Qwen3.5-9B-Q8_0.gguf'; then echo 'Qwen3.5 ready'; exit 0; fi; \
 	  sleep 1; \
 	done; echo 'Qwen не готов на 8000; проверьте docker logs.' >&2; exit 1
 
@@ -95,6 +95,7 @@ backend:
 	  systemctl --user show "$(BACKEND_UNIT).service" -p ExecStart --value | grep -Fq -- '--port $(BACKEND_PORT)' || { echo 'Backend unit запущен с другим портом.' >&2; exit 1; }; \
 	  echo 'Backend уже запущен'; \
 	else \
+	  systemctl --user reset-failed "$(BACKEND_UNIT).service" 2>/dev/null || true; \
 	  systemd-run --user --unit="$(BACKEND_UNIT)" --property="WorkingDirectory=$(PROJECT_DIR)" \
 	    --setenv=CLASSIFIER_MODEL_PATH=models/h123 --setenv=QWEN_BASE_URL=http://127.0.0.1:8000/v1 \
 	    --setenv=PYTHONDONTWRITEBYTECODE=1 "$(PYTHON)" -m uvicorn backend.app.main:app \
@@ -113,6 +114,7 @@ site:
 	  systemctl --user show "$(SITE_UNIT).service" -p Environment --value | grep -Fq "PORT=$(SITE_PORT)" || { echo 'Сайт запущен с другим портом.' >&2; exit 1; }; \
 	  echo 'Сайт уже запущен'; \
 	else \
+	  systemctl --user reset-failed "$(SITE_UNIT).service" 2>/dev/null || true; \
 	  systemd-run --user --unit="$(SITE_UNIT)" --property="WorkingDirectory=$(PROJECT_DIR)/frontend" \
 	    --setenv="API_TARGET=http://127.0.0.1:$(BACKEND_PORT)" --setenv="HOST=$(SITE_HOST)" \
 	    --setenv="PORT=$(SITE_PORT)" "$(NODE)" scripts/server.mjs; \
