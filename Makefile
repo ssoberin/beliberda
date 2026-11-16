@@ -68,6 +68,8 @@ qwen:
 	      if ! docker container inspect -f '{{.State.Running}}' "$(LLAMA_CONTAINER)" | grep -qx true; then docker start "$(LLAMA_CONTAINER)"; fi; \
 	    else \
 	      docker run -d --name "$(LLAMA_CONTAINER)" --restart unless-stopped --gpus all --network host \
+	        --health-cmd='curl -fsS http://127.0.0.1:8002/health' --health-interval=30s \
+	        --health-timeout=5s --health-start-period=120s --health-retries=3 \
 	        -v "$(GGUF_DIR):/models:ro" ghcr.io/ggml-org/llama.cpp:server-cuda \
 	        -m /models/Qwen3.5-9B-Q8_0.gguf --host 127.0.0.1 --port 8002 \
 	        --ctx-size 65536 --n-gpu-layers 99 --parallel 2 --alias avito-qwen --reasoning off; \
