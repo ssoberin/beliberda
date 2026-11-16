@@ -9,6 +9,29 @@ checkout не проходит проверку SHA-256. Поэтому **все
 
 ## Быстрый старт для защиты
 
+Все команды собраны в [Makefile](Makefile): `make help`, `make install`,
+`make up`, `make check`, `make smoke`, `make status`, `make logs`, `make down`.
+На **чистом Linux-хосте** из распакованного архива: `make -C project install`,
+затем `make -C project up` (контейнеры Qwen, backend и сайт). Нужны Docker с
+NVIDIA runtime, Python 3.12, Node >=22 и сеть для образов/зависимостей.
+На **текущем хосте** генератор уже работает, поэтому не запускайте его второй раз:
+
+```bash
+make up QWEN_MODE=existing PYTHON=/srv/Hakaton/transformer-venv/bin/python \
+  NODE=/home/maaric/.lmstudio/.internal/utils/node \
+  SITE_HOST=192.168.1.181 SITE_PORT=15183 BACKEND_PORT=18020
+make smoke PYTHON=/srv/Hakaton/transformer-venv/bin/python BACKEND_PORT=18020
+make csv INPUT=input.csv OUTPUT=submission.csv \
+  PYTHON=/srv/Hakaton/transformer-venv/bin/python BACKEND_PORT=18020
+make down QWEN_MODE=existing
+```
+
+`down` останавливает только сервисы с именами из Makefile; существующий Qwen
+в режиме `existing` не трогает. `make up` без `QWEN_MODE=existing` рассчитан
+на свободные порты 8000/8002 и **не должен** использоваться одновременно с
+рабочим генератором. Порты и имена сервисов можно переопределить в командной
+строке; повторный `up` проверяет запущенные unit, а не переключает модель.
+
 - Рабочий сайт: `http://192.168.1.181:15181`. Проверка архива из отдельной
   распакованной копии: `http://192.168.1.181:15182` (backend `18019`).
 - Архив с весами и кэшем энкодера: `h123-demo-2026-11-16.tar.zst`;
